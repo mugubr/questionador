@@ -9,9 +9,7 @@
       "c": "3, 1, 4 e 2.",
       "d": "4, 1, 2 e 3."
     },
-    "_verbatim": [
-      "options"
-    ]
+    "_verbatim": ["options"]
   },
   "ENA25-Q14": {
     "_reason": "Two-column correlation table rendered side by side by pdftotext -layout. Rewritten as linear text.",
@@ -22,9 +20,7 @@
       "c": "A4, B1, C2 e D3",
       "d": "A3, B1, C2 e D4"
     },
-    "_verbatim": [
-      "options"
-    ]
+    "_verbatim": ["options"]
   },
   "AV2-MET-Q08": {
     "_reason": "Two a)-d) sets in the same block: the first is the list of definitions to match (part of the stem), the second is the real options. The definitions were relabelled (a)-(d) inside the stem so they cannot collide with the options.",
@@ -39,9 +35,7 @@
   "AV2-POL-Q10": {
     "_reason": "Flagged by the column-layout check because the stem announces 'Relacione as colunas I e II'. Reviewed: pdftotext already renders both columns stacked, so the extracted text is correct and is pinned here verbatim.",
     "stem": "Em uma perspectiva histórica, foram diferentes ciclos de mudança tecnológica\nocorridos no Brasil. Relacione as colunas I e II e, após, selecione e alterativa que\ncontém a sequência correta do preenchimento das lacunas da coluna II, de cima\npara baixo.\n\nColuna I:\n1. Período: 1789-1849\n2. Período: 1849-1896\n3. Período: 1896-1940\n4. Período: 1940-1990\n5. Período após 1990 e atual\n\nColuna II.\n( ) Petróleo e Indústria Automotiva\n( ) Ferrovia, Aço e Carvão\n( ) Indústria Têxtil\n( ) Eletricidade e Química\n\n( ) TICs, Nanotecnologia, Biotecnologia, Engenharia Genética e Novas Fontes\nEnergéticas.\n\nAssinale a alternativa correta:",
-    "_verbatim": [
-      "stem"
-    ]
+    "_verbatim": ["stem"]
   },
   "ENA18-Q40": {
     "_reason": "The closing line 'BOA PROVA!' of the last page sits after the last option and is reported as trailing text. The four options are pinned here.",
@@ -51,8 +45,6 @@
       "c": "Ser homogênea, significando que as plantas de uma variedade devem ser todas iguais ou muito semelhantes, salvo as variações previsíveis tendo em conta as particularidades de sua multiplicação ou reprodução.",
       "d": "Ser estável, significando que a variedade deve permanecer sem modificações nas suas características relevantes após sucessivas reproduções ou multiplicações."
     },
-    "_verbatim": [
-      "options"
-    ]
+    "_verbatim": ["options"]
   }
 }
