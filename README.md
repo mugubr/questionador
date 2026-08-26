@@ -1,15 +1,14 @@
 # Questionador PROFNIT
 
-Sorteia questões das provas do PROFNIT, corrige na hora e mostra por que aquela
-é a resposta.
+Sorteia questões das provas do PROFNIT, corrige na hora e mostra por que aquela é a resposta.
 
 **➜ [rubensbraz.github.io/questionador-profnit](https://rubensbraz.github.io/questionador-profnit/)**
 
-Abra o link e comece. Não há nada para instalar, nada para enviar, nenhum
-cadastro: as 144 questões já vêm carregadas na página.
+Abra o link e comece. Não há nada para instalar, nada para enviar, nenhum cadastro: as 144 questões já vêm carregadas na página.
 
-Se preferir estudar sem internet, baixe o repositório e abra `docs/index.html`
-com dois cliques — funciona igual, direto do arquivo.
+Se preferir estudar sem internet, baixe o repositório e abra `docs/index.html` com dois cliques — funciona igual, direto do arquivo.
+
+> **Este repositório é um fork de [mugubr/questionador](https://github.com/mugubr/questionador), e existe para contribuir de volta com ele.** Tudo aqui foi feito com a intenção de virar pull request no projeto original. Se você é mantenedor de lá, as mudanças estão organizadas em commits pequenos e independentes, e a seção [Contribuindo](#contribuindo) explica onde estão as regras que elas seguem.
 
 ## Como usar
 
@@ -17,13 +16,9 @@ com dois cliques — funciona igual, direto do arquivo.
 2. Sorteie as questões.
 3. Responda; a correção aparece na hora, com a explicação.
 
-**Teclado:** `a`, `b`, `c` e `d` selecionam a alternativa correspondente;
-`Enter` avança para a próxima questão depois que a atual já foi corrigida.
-Os atalhos cedem a vez para o controle que estiver com o foco, então navegar por
-`Tab` e acionar botões com `Enter` continua funcionando normalmente.
+**Teclado:** `a`, `b`, `c` e `d` selecionam a alternativa correspondente; `Enter` avança para a próxima questão depois que a atual já foi corrigida. Os atalhos cedem a vez para o controle que estiver com o foco, então navegar por `Tab` e acionar botões com `Enter` continua funcionando normalmente.
 
-**Tema:** o botão de tema alterna entre **sistema**, **claro** e **escuro**.
-A escolha fica guardada no seu navegador e vale para as próximas visitas.
+**Tema:** o seletor no cabeçalho alterna entre **sistema**, **claro** e **escuro**. A escolha fica guardada no seu navegador e vale para as próximas visitas.
 
 ## O banco de questões
 
@@ -39,74 +34,37 @@ A escolha fica guardada no seu navegador e vale para as próximas visitas.
 | `AV2-POL`   | Avaliação Nacional — Políticas Públicas de CT&I       | 2023-07-01 |       16 |
 | `AV2-PROSP` | Avaliação Nacional — Prospecção Tecnológica           | 2020-10-24 |       16 |
 
-Os 15 temas usados no filtro: informação tecnológica, inovação, marca e
-indicação geográfica, patente, desenho industrial, sistema de PI, direito
-autoral, prospecção tecnológica, economia da inovação, gestão da inovação na
-ICT, política pública de CT&I, metodologia científica, cultivar, transferência
-de tecnologia e comunicação científica.
+Os 15 temas usados no filtro: informação tecnológica, inovação, marca e indicação geográfica, patente, desenho industrial, sistema de PI, direito autoral, prospecção tecnológica, economia da inovação, gestão da inovação na ICT, política pública de CT&I, metodologia científica, cultivar, transferência de tecnologia e comunicação científica.
 
 ## De onde vem cada resposta
 
-**Todas as 144 respostas vêm do gabarito oficial publicado pela banca.** Os sete
-gabaritos estão em `exams/`, ao lado dos cadernos, e foram recuperados do
-[arquivo de exames do PROFNIT](https://profnit.org.br/exames/).
+**Todas as 144 respostas vêm do gabarito oficial publicado pela banca.** Os sete gabaritos estão em `exams/`, ao lado dos cadernos, e foram recuperados do [arquivo de exames do PROFNIT](https://profnit.org.br/exames/).
 
 Cada gabarito passou por duas verificações antes de ser aceito:
 
-1. **Identidade do caderno por MD5.** O caderno publicado junto com o gabarito
-   foi baixado e comparado byte a byte com o arquivo em `exams/`. Os sete batem.
-   Isso não é excesso de zelo: o PROFNIT aplicou **duas provas ENA18
-   Suplementar diferentes** para o mesmo ingresso, e a outra anula as questões
-   06 e 21. Um gabarito da prova irmã pareceria plausível e estaria inteiramente
-   errado.
-2. **A ressalva de aleatorização.** Os gabaritos das AV2 dizem que se referem ao
-   caderno _conforme publicado_ — é isso que torna válido casar pelo número da
-   questão. O do ENA18 não traz essa frase, mas ali a igualdade de MD5 torna a
-   ressalva desnecessária, porque não existe outro caderno para a numeração
-   divergir.
+1. **Identidade do caderno por MD5.** O caderno publicado junto com o gabarito foi baixado e comparado byte a byte com o arquivo em `exams/`. Os sete batem. Isso não é excesso de zelo: o PROFNIT aplicou **duas provas ENA18 Suplementar diferentes** para o mesmo ingresso, e a outra anula as questões 06 e 21. Um gabarito da prova irmã pareceria plausível e estaria inteiramente errado.
+2. **A ressalva de aleatorização.** Os gabaritos das AV2 dizem que se referem ao caderno _conforme publicado_ — é isso que torna válido casar pelo número da questão. O do ENA18 não traz essa frase, mas ali a igualdade de MD5 torna a ressalva desnecessária, porque não existe outro caderno para a numeração divergir.
 
-Além da resposta, 104 questões trazem uma **explicação** de por que aquela
-alternativa está certa e uma **referência** para aprofundar. A explicação não é
-o gabarito — o gabarito é oficial. Ela existe para ensinar.
+Além da resposta, 104 questões trazem uma **explicação** de por que aquela alternativa está certa e uma **referência** para aprofundar. A explicação não é o gabarito — o gabarito é oficial. Ela existe para ensinar, e pode estar mal fundamentada mesmo quando a resposta está certa.
 
 ### Três questões ficam fora do sorteio
 
-- **`AV2-POL-Q14` foi anulada** pela própria banca: o gabarito oficial traz
-  `ANULADA` no lugar da letra. Ela não tem resposta certa.
-- **`AV2-PI-Q14` e `AV2-PI-Q16` são defeito do caderno.** Elas reproduzem
-  palavra por palavra as questões 13 e 15, alternativas incluídas — mas o
-  gabarito oficial dá `13=A, 14=B` e `15=C, 16=D`. Um gabarito não pode dar duas
-  letras para a mesma questão, então a prova real tinha _outras_ questões nas
-  posições 14 e 16, e o caderno publicado é que está errado. As letras `B` e `D`
-  pertencem a questões que ninguém tem.
+- **`AV2-POL-Q14` foi anulada** pela própria banca: o gabarito oficial traz `ANULADA` no lugar da letra. Ela não tem resposta certa.
+- **`AV2-PI-Q14` e `AV2-PI-Q16` são defeito do caderno.** Elas reproduzem palavra por palavra as questões 13 e 15, alternativas incluídas — mas o gabarito oficial dá `13=A, 14=B` e `15=C, 16=D`. Um gabarito não pode dar duas letras para a mesma questão, então a prova real tinha _outras_ questões nas posições 14 e 16, e o caderno publicado é que está errado. As letras `B` e `D` pertencem a questões que ninguém tem.
 
-As três continuam no banco e no arquivo de revisão, com o motivo registrado. O
-sorteio apenas não as usa.
+As três continuam no banco e no arquivo de revisão, com o motivo registrado. O sorteio apenas não as usa.
 
 ## Ressalvas conhecidas
 
-Defeitos dos cadernos originais. Estão reproduzidos com fidelidade e registrados
-no dado, em vez de corrigidos em silêncio.
+Defeitos dos cadernos originais. Estão reproduzidos com fidelidade e registrados no dado, em vez de corrigidos em silêncio.
 
-- **A `AV2-MET-Q14` tem duas alternativas iguais.** As alternativas `a` e `d`
-  são a mesma frase no PDF original. Na prática, é uma questão de três
-  alternativas — e o app avisa isso na tela.
-- **Três questões precisaram de enunciado reescrito à mão** porque o layout do
-  PDF não se resolve de forma determinística: `ENA25-Q14`, `ENA25-Q09` e
-  `AV2-MET-Q08` (correlação em duas colunas, que o `pdftotext -layout` renderiza
-  lado a lado) e `ENA18-Q40` (texto de encerramento colado na última
-  alternativa). As reescritas estão em `data/overrides.json`, cada uma com o
-  motivo registrado.
-- **Nem toda explicação tem um PDF de `references/` que a sustente.** As de
-  metodologia, por exemplo, se apoiam em normas da ABNT, no Qualis da CAPES e em
-  bibliografia clássica, que não estão no repositório. Quando é esse o caso, o
-  campo de referência **diz isso** e nomeia a fonte real, em vez de apontar para
-  um arquivo que não trata do assunto.
+- **A `AV2-MET-Q14` tem duas alternativas iguais.** As alternativas `a` e `d` são a mesma frase no PDF original. Na prática, é uma questão de três alternativas — e o app avisa isso na tela.
+- **Quatro questões precisaram de enunciado reescrito à mão** porque o layout do PDF não se resolve de forma determinística: `ENA25-Q09`, `ENA25-Q14` e `AV2-MET-Q08` (correlação em duas colunas, que o `pdftotext -layout` renderiza lado a lado) e `ENA18-Q40` (texto de encerramento colado na última alternativa). As reescritas estão em `data/overrides.json`, cada uma com o motivo registrado.
+- **Nem toda explicação tem um PDF de `references/` que a sustente.** As de metodologia, por exemplo, se apoiam em normas da ABNT, no Qualis da CAPES e em bibliografia clássica, que não estão no repositório. Quando é esse o caso, o campo de referência **diz isso** e nomeia a fonte real, em vez de apontar para um arquivo que não trata do assunto.
 
 ## Achou uma explicação errada?
 
-A resposta em si vem do gabarito oficial, mas a explicação foi escrita à mão e
-pode estar mal fundamentada. Corrigir é uma edição de dado, sem mexer em código:
+A resposta em si vem do gabarito oficial, mas a explicação foi escrita à mão e pode estar mal fundamentada. Corrigir é uma edição de dado, sem mexer em código:
 
 1. Abra `data/answers/<caderno>.json` (por exemplo, `data/answers/AV2-POL.json`).
 2. Ajuste a explicação e a referência da questão.
@@ -116,12 +74,9 @@ pode estar mal fundamentada. Corrigir é uma edição de dado, sem mexer em cód
    python -m tools build
    ```
 
-`data/question-bank.md` é a superfície pensada para essa revisão: traz as 144
-questões em formato legível, cada uma com resposta, tema, explicação e
-referência. É o melhor lugar para ler tudo de uma vez.
+`data/question-bank.md` é a superfície pensada para essa revisão: traz as 144 questões em formato legível, cada uma com resposta, tema, explicação e referência. É o melhor lugar para ler tudo de uma vez.
 
-Para trocar uma **letra**, o caminho é outro: confira o gabarito oficial em
-`exams/`. Se o app discordar dele, é bug do extrator, não do dado.
+Para trocar uma **letra**, o caminho é outro: confira o gabarito oficial em `exams/`. Se o app discordar dele, é bug do extrator, não do dado.
 
 ## Regenerar o banco a partir dos PDFs
 
@@ -133,18 +88,11 @@ python -m tools build      # + correções + explicações + temas -> data/ e do
 python -m tools validate   # confere o banco publicado contra o contrato
 ```
 
-**Só o `extract` precisa do `pdftotext`.** O `build` lê apenas arquivos
-versionados, então corrigir uma explicação e reconstruir funciona com Python e
-mais nada — é justamente para isso que `raw-questions.json` e `answer-keys.json`
-estão no repositório.
+**Só o `extract` precisa do `pdftotext`.** O `build` lê apenas arquivos versionados, então corrigir uma explicação e reconstruir funciona com Python e mais nada — é justamente para isso que `raw-questions.json` e `answer-keys.json` estão no repositório.
 
 > ### ⚠️ O `pdftotext` precisa ser o do poppler
 >
-> O **Git para Windows** instala um `pdftotext` que é do **Xpdf**, não do
-> poppler. Ele tem o mesmo nome, aceita as mesmas opções, não dá erro — e
-> produz um banco **diferente**, com outra codificação e outros tipos de traço.
-> A extração passa, os testes quebram depois, e a causa não aparece em lugar
-> nenhum.
+> O **Git para Windows** instala um `pdftotext` que é do **Xpdf**, não do poppler. Ele tem o mesmo nome, aceita as mesmas opções, não dá erro — e produz um banco **diferente**, com outra codificação e outros tipos de traço. A extração passa, os testes quebram depois, e a causa não aparece em lugar nenhum.
 >
 > Confira antes de rodar:
 >
@@ -152,18 +100,11 @@ estão no repositório.
 > pdftotext -v
 > ```
 >
-> A saída precisa citar **`The Poppler Developers`**. Se citar
-> `Glyph & Cog, LLC`, é o Xpdf: instale o poppler e garanta que ele venha antes
-> no `PATH`.
+> A saída precisa citar **`The Poppler Developers`**. Se citar `Glyph & Cog, LLC`, é o Xpdf: instale o poppler e garanta que ele venha antes no `PATH`.
 >
-> Instalação: `winget install poppler` no Windows,
-> `sudo apt install poppler-utils` no Debian ou Ubuntu,
-> `brew install poppler` no macOS.
+> Instalação: `winget install poppler` no Windows, `sudo apt install poppler-utils` no Debian ou Ubuntu, `brew install poppler` no macOS.
 
-O extrator **falha em vez de adivinhar**: se a contagem de questões divergir do
-esperado, se alguma questão não tiver exatamente 4 alternativas ou se sobrar
-resíduo de cabeçalho ou rodapé, ele para e informa tudo o que encontrou. Um
-banco silenciosamente incompleto seria pior do que banco nenhum.
+O extrator **falha em vez de adivinhar**: se a contagem de questões divergir do esperado, se alguma questão não tiver exatamente 4 alternativas ou se sobrar resíduo de cabeçalho ou rodapé, ele para e informa tudo o que encontrou. Um banco silenciosamente incompleto seria pior do que banco nenhum.
 
 ## Estrutura
 
@@ -178,6 +119,7 @@ data/                       o banco e as camadas que o produzem
   question-bank.json        o banco canônico (gerado)
   question-bank.md          as 144 questões em formato legível (gerado)
   raw-questions.json        a extração bruta dos PDFs (gerado)
+  answer-keys.json          os gabaritos oficiais já lidos (gerado)
   overrides.json            reescritas manuais de enunciado
   topics.json               a taxonomia e o tema das 144 questões
   answers/*.json            explicações e referências, um arquivo por caderno
@@ -189,35 +131,30 @@ exams/                      PDFs das provas e dos gabaritos (somente leitura)
 references/                 PDFs de referência para aprofundar (somente leitura)
 ```
 
-Nada fora de `docs/` é publicado. Os PDFs de `exams/` e `references/` ficam no
-repositório, mas nunca chegam ao site.
+Nada fora de `docs/` é publicado. Os PDFs de `exams/` e `references/` ficam no repositório, mas nunca chegam ao site.
 
 ## Privacidade
 
-O app **não faz nenhuma requisição de rede**. Não há CDN, fonte externa,
-analytics ou envio de resposta para lugar algum. O banco de questões vem junto
-com a página e a correção acontece inteiramente no seu navegador.
+O app **não faz nenhuma requisição de rede**. Não há CDN, fonte externa, analytics ou envio de resposta para lugar algum. O banco de questões vem junto com a página e a correção acontece inteiramente no seu navegador.
 
-O que fica guardado — sua preferência de tema, por exemplo — fica no
-`localStorage` da sua máquina e não sai dela. Suas respostas não são registradas
-em nenhum servidor, porque não existe servidor.
+O que fica guardado — sua preferência de tema, o progresso da sessão e o histórico do que você já respondeu — fica no `localStorage` da sua máquina e não sai dela. Suas respostas não são registradas em nenhum servidor, porque não existe servidor.
 
 ## Contribuindo
 
-As regras do repositório — política de idioma, docstrings, tipos, contrato do
-banco, restrições do app, acessibilidade e testes — estão em
-**[AGENTS.md](AGENTS.md)**, que é a fonte única de verdade. Leia antes de abrir
-um pull request.
+Este fork existe para melhorar o [projeto original](https://github.com/mugubr/questionador) e devolver o resultado. Se você vai abrir um pull request, aqui ou lá, o mesmo caminho vale.
+
+As regras do repositório — política de idioma, docstrings, tipos, contrato do banco, restrições do app, acessibilidade e testes — estão em **[AGENTS.md](AGENTS.md)**, que é a fonte única de verdade. Leia antes de começar: várias decisões que parecem arbitrárias têm um motivo registrado lá, e boa parte delas foi aprendida com um defeito real.
 
 Verificações que rodam na CI e que você pode rodar localmente:
 
 ```bash
 ruff check . && ruff format --check .
+npx prettier --check .
 mypy tools tests
 python -m pytest
 node --test "tests/js/*.test.js"
+npx tsc --project jsconfig.json
 python -m tools validate
 ```
 
-O ambiente de desenvolvimento sai de `uv sync` — o app em si continua sem
-nenhuma dependência.
+O ambiente de desenvolvimento sai de `uv sync` e `npm ci` — o app em si continua sem nenhuma dependência e sem etapa de build.
