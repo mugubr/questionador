@@ -23,7 +23,10 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Set up uv and Python
-        uses: astral-sh/setup-uv@v10
+        # Pinned to an exact release: astral-sh stopped publishing a floating
+        # major tag after v7, so `@v10` resolves to nothing and the job dies
+        # while preparing actions, before a single step runs.
+        uses: astral-sh/setup-uv@v10.0.1
         with:
           python-version: '3.14'
           enable-cache: true
