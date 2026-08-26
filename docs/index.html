@@ -15,7 +15,7 @@
       (function () {
         'use strict';
         try {
-          var stored = window.localStorage.getItem('profnit.theme.v1');
+          const stored = window.localStorage.getItem('profnit.theme.v1');
           if (stored === 'light' || stored === 'dark') {
             document.documentElement.setAttribute('data-theme', stored);
           }
@@ -200,7 +200,7 @@
         </section>
       </noscript>
 
-      <!-- 1. Falha ao carregar o banco embutido -->
+      <!-- 1. The embedded bank failed to load. -->
       <section class="panel wrapper" id="panel-error" hidden aria-labelledby="error-heading">
         <div class="panel__head">
           <svg
@@ -232,7 +232,7 @@
         </p>
       </section>
 
-      <!-- 2. Filtros -->
+      <!-- 2. Filters. -->
       <section class="panel wrapper" id="panel-filters" hidden aria-labelledby="filters-heading">
         <h2 class="panel__title" id="filters-heading" tabindex="-1">O que você quer treinar?</h2>
         <p class="panel__support" id="bank-summary"></p>
@@ -416,7 +416,7 @@
         </details>
       </section>
 
-      <!-- 3. Questão -->
+      <!-- 3. The question on screen. -->
       <section class="panel wrapper" id="panel-question" hidden aria-labelledby="question-heading">
         <div class="question-head">
           <p class="question-head__exam" id="question-exam"></p>
@@ -462,7 +462,7 @@
         </p>
       </section>
 
-      <!-- 4. Resultado -->
+      <!-- 4. The result of the session. -->
       <section class="panel wrapper" id="panel-results" hidden aria-labelledby="results-heading">
         <h2 class="panel__title" id="results-heading" tabindex="-1">Sessão encerrada</h2>
 
@@ -540,6 +540,7 @@
     <script src="assets/js/storage.js" defer></script>
     <script src="assets/js/theme.js" defer></script>
     <script src="assets/js/preferences.js" defer></script>
+    <script src="assets/js/history.js" defer></script>
     <script src="assets/js/bank.js" defer></script>
     <script src="assets/js/session.js" defer></script>
     <script src="assets/js/ui.js" defer></script>

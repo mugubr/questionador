@@ -16,7 +16,7 @@ const { test } = require('node:test');
 
 const { loadAppScript, makeQuestion, publishedBank } = require('./helpers.js');
 
-const { Bank } = loadAppScript('bank.js', ['Bank']);
+const Bank = loadAppScript('bank.js', 'Bank');
 
 /**
  * Wrap questions in the smallest bank the app-side validator accepts.
@@ -39,7 +39,7 @@ function makeBank(questions, overrides) {
 }
 
 // ---------------------------------------------------------------------------
-// The committed bank has to load
+// The committed bank has to load.
 // ---------------------------------------------------------------------------
 
 test('the published bank loads without an error', function () {
@@ -86,7 +86,7 @@ test('every topic a published question names is declared in the taxonomy', funct
 });
 
 // ---------------------------------------------------------------------------
-// The letter is allowed to be missing in exactly one case
+// The letter is allowed to be missing in exactly one case.
 // ---------------------------------------------------------------------------
 
 test('a question with no letter is accepted only when it is excluded', function () {
@@ -125,7 +125,7 @@ test('an excludedReason outside the enum is rejected', function () {
 });
 
 // ---------------------------------------------------------------------------
-// Everything the app needs to render and grade
+// Everything the app needs to render and grade.
 // ---------------------------------------------------------------------------
 
 test('a missing option is rejected', function () {
@@ -164,7 +164,7 @@ test('an answer that is not an object is rejected', function () {
 });
 
 // ---------------------------------------------------------------------------
-// The shape of the bank itself
+// The shape of the bank itself.
 // ---------------------------------------------------------------------------
 
 test('a bank that is not an object is rejected', function () {
@@ -201,7 +201,7 @@ test('topics that are not a list are rejected', function () {
 });
 
 // ---------------------------------------------------------------------------
-// Parsing and identifying
+// Parsing and identifying.
 // ---------------------------------------------------------------------------
 
 test('invalid JSON is reported rather than thrown', function () {

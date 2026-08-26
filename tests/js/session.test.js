@@ -22,11 +22,8 @@ const {
   seededRandom
 } = require('./helpers.js');
 
-const { Session } = loadAppScript('session.js', ['Session']);
-const { AnswerHistory } = loadAppScript('preferences.js', [
-  'Preferences',
-  'AnswerHistory'
-]);
+const Session = loadAppScript('session.js', 'Session');
+const AnswerHistory = loadAppScript('history.js', 'AnswerHistory');
 
 /** A second question, so a deck can hold more than one card. */
 const SECOND = makeQuestion({
@@ -54,7 +51,7 @@ function draw(questions, settings, criteria) {
 }
 
 // ---------------------------------------------------------------------------
-// Objects keyed by data-derived strings
+// Objects keyed by data-derived strings.
 // ---------------------------------------------------------------------------
 
 test('a question whose id is "constructor" is not already answered', function () {
@@ -99,7 +96,7 @@ test('a fresh history reports a "constructor" question as unanswered', function 
 });
 
 // ---------------------------------------------------------------------------
-// Filtering
+// Filtering.
 // ---------------------------------------------------------------------------
 
 test('an empty criterion list means "do not filter", never "no result"', function () {
@@ -162,7 +159,7 @@ test('a history criterion with no history at all keeps everything unanswered', f
 });
 
 // ---------------------------------------------------------------------------
-// The questions that must never be drawn
+// The questions that must never be drawn.
 // ---------------------------------------------------------------------------
 
 test('an excluded question is never drawn by default', function () {
@@ -210,7 +207,7 @@ test("none of the published bank's excluded questions reach a default deck", fun
 });
 
 // ---------------------------------------------------------------------------
-// The annulled question has no letter at all
+// The annulled question has no letter at all.
 // ---------------------------------------------------------------------------
 
 test('the annulled question of the published bank carries no letter', function () {
@@ -260,7 +257,7 @@ test('a question that cannot be graded does not trap the session', function () {
 });
 
 // ---------------------------------------------------------------------------
-// Shuffling
+// Shuffling.
 // ---------------------------------------------------------------------------
 
 test('shuffling returns a new array and never touches the one it was given', function () {
@@ -345,7 +342,7 @@ test('a stored order of the wrong length falls back to the printed one', functio
 });
 
 // ---------------------------------------------------------------------------
-// The two identical options of AV2-MET-Q14
+// The two identical options of AV2-MET-Q14.
 // ---------------------------------------------------------------------------
 
 test('AV2-MET-Q14 really does print the same string twice', function () {
@@ -395,7 +392,7 @@ test('identical options do not grade as correct without the recorded defect', fu
 });
 
 // ---------------------------------------------------------------------------
-// Drawing a deck
+// Drawing a deck.
 // ---------------------------------------------------------------------------
 
 test('a size of zero draws every question that matches', function () {
@@ -425,7 +422,7 @@ test('a new session starts unanswered, at the top of its deck', function () {
 });
 
 // ---------------------------------------------------------------------------
-// Grading and scoring
+// Grading and scoring.
 // ---------------------------------------------------------------------------
 
 test('grading returns a new session and never mutates the old one', function () {
@@ -511,7 +508,7 @@ test('counts of a session that does not exist are zero', function () {
 });
 
 // ---------------------------------------------------------------------------
-// Review and statistics
+// Review and statistics.
 // ---------------------------------------------------------------------------
 
 test('the review lists the graded questions in the order they were drawn', function () {
@@ -579,7 +576,7 @@ test('the topics of a set of questions are listed once, sorted', function () {
 });
 
 // ---------------------------------------------------------------------------
-// Resuming a stored session
+// Resuming a stored session.
 // ---------------------------------------------------------------------------
 
 test('a session survives being written out and read back', function () {
@@ -667,6 +664,32 @@ test('a stored session drops the entries that did not parse', function () {
   assert.deepEqual(restored.deck, ['ENA26-Q01']);
   assert.deepEqual(Object.keys(restored.answers), ['ENA26-Q01']);
   assert.deepEqual(Object.keys(restored.orders), ['ENA26-Q01']);
+});
+
+test('the counters are recounted from the answers that survived', function () {
+  /* fromStored drops the records it cannot parse. Trusting the stored totals
+     after that left the scoreboard counting answers that no longer exist, and
+     "restantes" is derived from those totals. */
+  const restored = Session.fromStored({
+    version: 1,
+    signature: 's',
+    deck: ['ENA26-Q01', 'ENA26-Q02', 'ENA26-Q03'],
+    position: 2,
+    answers: {
+      'ENA26-Q01': { chosen: 'c', correct: true },
+      'ENA26-Q02': { chosen: 'a', correct: false },
+      'ENA26-Q03': { chosen: 'z', correct: true }
+    },
+    orders: {},
+    correctCount: 2,
+    incorrectCount: 1,
+    startedAt: 5
+  });
+
+  assert.equal(restored.correctCount, 1);
+  assert.equal(restored.incorrectCount, 1);
+  assert.equal(Session.answeredCount(restored), 2);
+  assert.equal(Session.unansweredCount(restored), 1);
 });
 
 test('a stored session with missing counters falls back to zero', function () {

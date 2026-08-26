@@ -119,6 +119,12 @@ const UI = (function () {
     results: { section: 'panel-results', heading: 'results-heading' }
   };
 
+  /**
+   * Every element the app writes to or listens on, plus `selection-figure`,
+   * which it never touches but which "Sortear" names in `aria-describedby`:
+   * losing that one would break the button's description silently, and this
+   * list is the only thing that would notice.
+   */
   const ELEMENT_IDS = [
     'scoreboard',
     'score-correct',
@@ -155,13 +161,11 @@ const UI = (function () {
     'reset-filters-button',
     'disclosure-scope',
     'scope-summary',
-    'disclosure-session',
     'session-summary',
     'resume',
     'resume-detail',
     'resume-continue',
     'resume-discard',
-    'loader',
     'dropzone',
     'file-input',
     'upload-notice',
@@ -257,7 +261,7 @@ const UI = (function () {
   }
 
   /**
-   * Cache every element the app touches.
+   * Look up every element of ELEMENT_IDS once, up front.
    *
    * @returns {void}
    */
@@ -2097,6 +2101,23 @@ const UI = (function () {
   }
 
   /**
+   * Go back to the filters with every count re-measured.
+   *
+   * The session that just ended fed every question it graded into the history,
+   * so "só as que errei", "nunca respondidas", the per-chip tallies and the
+   * "você já respondeu N delas" line are all stale by the time the student
+   * gets here. Showing the panel without recounting offered a number that the
+   * next draw would not honour.
+   *
+   * @returns {void}
+   */
+  function backToFilters() {
+    renderBankSummary();
+    updateSelection();
+    showPanel('filters');
+  }
+
+  /**
    * Throw the interrupted session away.
    *
    * @returns {void}
@@ -2347,9 +2368,7 @@ const UI = (function () {
     el['next-button'].addEventListener('click', advance);
     el['end-button'].addEventListener('click', renderResults);
     el['new-session-button'].addEventListener('click', startSession);
-    el['back-to-filters-button'].addEventListener('click', function () {
-      showPanel('filters');
-    });
+    el['back-to-filters-button'].addEventListener('click', backToFilters);
     el['review-toggle'].addEventListener('change', renderReview);
     bindDropzone();
     bindKeyboard();

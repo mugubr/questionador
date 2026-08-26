@@ -89,10 +89,10 @@
   --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
 
   /* One scale, roughly a minor third, with the two reading sizes fluid. */
-  --text-3xs: 0.6875rem; /* 11px - badges and eyebrow labels */
-  --text-2xs: 0.75rem; /* 12px - counts, meta */
-  --text-xs: 0.8125rem; /* 13px - footnotes, references */
-  --text-sm: 0.875rem; /* 14px - secondary controls */
+  --text-3xs: 0.6875rem; /* 11px - badges and eyebrow labels. */
+  --text-2xs: 0.75rem; /* 12px - counts, meta. */
+  --text-xs: 0.8125rem; /* 13px - footnotes, references. */
+  --text-sm: 0.875rem; /* 14px - secondary controls. */
   --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
   --text-md: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
   --text-lg: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
@@ -201,23 +201,14 @@ body {
 
 /* `hidden` loses to an explicit `display` at equal specificity, so every
    component that sets one and is ever toggled has to restate it. Miss one and
-   the element simply stays on screen. Everything else relies on the browser
-   default. */
+   the element simply stays on screen. This list is exactly the components the
+   app toggles; everything else relies on the browser default. */
 .scoreboard[hidden],
-.chip[hidden],
 .switch[hidden],
 .note[hidden],
 .resume[hidden],
 .button[hidden],
-.review-head[hidden],
-.review__outcome[hidden] {
-  display: none;
-}
-
-/* Chrome's user-agent rule for [hidden] is declared inside an @namespace for
-   XHTML, so it never matches an SVG element. Any inline icon this app hides
-   needs an author rule of its own. */
-svg[hidden] {
+.review-head[hidden] {
   display: none;
 }
 
@@ -2114,6 +2105,12 @@ main {
    Everything that is a control, a filter or a question in progress is
    dropped, and the palette is flattened to ink on white so a color printer
    and a laser printer produce the same page.
+
+   The `:root` block below is the ONE place in this file where a color is
+   written literally instead of coming from a token. It is an exception on
+   purpose: `light-dark()` follows the screen theme, and a page printed from
+   dark theme would come out as ink on black. Everything after it still reads
+   the tokens, so the exception stays one block wide.
    ------------------------------------------------------------------------ */
 
 @media print {
@@ -2140,7 +2137,7 @@ main {
   }
 
   body {
-    background: #fff;
+    background: var(--surface);
     font-size: 11pt;
   }
 
@@ -2158,7 +2155,7 @@ main {
   .site-header {
     position: static;
     box-shadow: none;
-    border-bottom: 1pt solid #000;
+    border-bottom: 1pt solid var(--text);
   }
 
   .panel {
@@ -2172,14 +2169,14 @@ main {
   .report,
   .topic-stat,
   .review__item {
-    border: 1pt solid #999;
+    border: 1pt solid var(--border);
     box-shadow: none;
     break-inside: avoid;
   }
 
   .review__item {
     border-left-width: 3pt;
-    border-left-color: #000;
+    border-left-color: var(--text);
   }
   .review__option--answer::after {
     content: ' (resposta correta)';

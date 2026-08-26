@@ -141,3 +141,8 @@ const AppStorage = (function () {
     forgetLegacyKeys
   };
 })();
+
+/* The node test runner loads these classic scripts into a shared context, where
+   a top-level `const` would not survive; the explicit assignment is what makes
+   the namespace reachable from the tests. */
+Object.assign(globalThis, { AppStorage });

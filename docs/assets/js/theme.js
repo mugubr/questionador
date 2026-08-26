@@ -15,7 +15,7 @@
 const Theme = (function () {
   'use strict';
 
-  /** @type {ThemeChoice[]} The cycle order of the toggle button. */
+  /** @type {ThemeChoice[]} The three states, in the order the control lists them. */
   const CHOICES = ['system', 'light', 'dark'];
 
   /** @type {Record<ThemeChoice, string>} Portuguese labels, shown to the user. */
@@ -84,3 +84,8 @@ const Theme = (function () {
 
   return { CHOICES, isChoice, read, store, apply, label };
 })();
+
+/* The node test runner loads these classic scripts into a shared context, where
+   a top-level `const` would not survive; the explicit assignment is what makes
+   the namespace reachable from the tests. */
+Object.assign(globalThis, { Theme });

@@ -438,6 +438,11 @@ const Session = (function () {
    * `Object.prototype`, so a question id of `constructor` would read as an
    * answer that was never given. The maps are rebuilt without a prototype.
    *
+   * The two counters are recomputed rather than trusted, because this function
+   * drops the answer records it cannot parse: keeping the stored totals would
+   * leave a scoreboard counting answers that no longer exist, and "restantes"
+   * is derived from them.
+   *
    * @param {unknown} raw - Whatever came out of storage.
    * @returns {Session | null} The session, or null when the value is unusable.
    */
@@ -478,6 +483,11 @@ const Session = (function () {
       });
     }
 
+    const graded = Object.keys(answers);
+    const correctCount = graded.filter(function (id) {
+      return answers[id].correct;
+    }).length;
+
     return {
       version: typeof stored.version === 'number' ? stored.version : 0,
       signature: typeof stored.signature === 'string' ? stored.signature : '',
@@ -487,9 +497,8 @@ const Session = (function () {
       position: stored.position,
       answers,
       orders,
-      correctCount: typeof stored.correctCount === 'number' ? stored.correctCount : 0,
-      incorrectCount:
-        typeof stored.incorrectCount === 'number' ? stored.incorrectCount : 0,
+      correctCount,
+      incorrectCount: graded.length - correctCount,
       startedAt: typeof stored.startedAt === 'number' ? stored.startedAt : 0
     };
   }

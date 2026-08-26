@@ -29,10 +29,10 @@ function installStorage(options) {
 }
 
 installStorage();
-const { AppStorage } = loadAppScript('storage.js', ['AppStorage']);
+const AppStorage = loadAppScript('storage.js', 'AppStorage');
 
 // ---------------------------------------------------------------------------
-// The keys
+// The keys.
 // ---------------------------------------------------------------------------
 
 test('every key the app persists is namespaced and versioned', function () {
@@ -54,7 +54,7 @@ test('the theme key is the one the pre-paint inline script reads', function () {
 });
 
 // ---------------------------------------------------------------------------
-// Round trips
+// Round trips.
 // ---------------------------------------------------------------------------
 
 test('what is written comes back', function () {
@@ -114,7 +114,7 @@ test('a value JSON cannot serialize is refused, not thrown', function () {
 });
 
 // ---------------------------------------------------------------------------
-// Storage that refuses to work at all
+// Storage that refuses to work at all.
 // ---------------------------------------------------------------------------
 
 test('blocked storage is detected rather than crashing the app', function () {
@@ -141,7 +141,7 @@ test('every read and write degrades quietly when storage throws', function () {
 });
 
 // ---------------------------------------------------------------------------
-// The bank is never cached
+// The bank is never cached.
 // ---------------------------------------------------------------------------
 
 test('the pre-Pages keys are deleted, so no stale bank survives', function () {

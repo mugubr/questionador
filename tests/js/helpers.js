@@ -9,9 +9,9 @@
  * object, exactly as a `<script>` tag would, with no bundler in between.
  *
  * A top-level `const` does not survive `runInThisContext` the way it survives
- * a script tag, so an export epilogue is appended to the source before it is
- * evaluated. The app's own files already assign their namespace to
- * `globalThis`; the epilogue is what makes the two that do not, testable.
+ * a script tag, which is why every one of those files ends by assigning its
+ * namespace to `globalThis`. Reading it back off the global is all this needs
+ * to do; the source is evaluated exactly as it ships.
  */
 
 'use strict';
@@ -25,27 +25,24 @@ const APP_SCRIPTS = path.join(REPO_ROOT, 'docs', 'assets', 'js');
 const BANK_PATH = path.join(REPO_ROOT, 'data', 'question-bank.json');
 
 /**
- * Evaluate one of the app's scripts and hand back the namespaces it defines.
+ * Evaluate one of the app's scripts and hand back the namespace it defines.
+ *
+ * A file that forgot its `Object.assign(globalThis, …)` fails here rather than
+ * handing the tests an `undefined` that only breaks on first use.
  *
  * @param {string} fileName - The file inside `docs/assets/js`.
- * @param {string[]} names - The namespace objects the file defines.
- * @returns {Record<string, any>} The namespaces, keyed by name.
+ * @param {string} name - The namespace object the file exposes.
+ * @returns {any} The namespace.
  */
-function loadAppScript(fileName, names) {
+function loadAppScript(fileName, name) {
   const source = fs.readFileSync(path.join(APP_SCRIPTS, fileName), 'utf8');
-  const epilogue = '\n;Object.assign(globalThis, { ' + names.join(', ') + ' });\n';
-  vm.runInThisContext(source + epilogue, { filename: fileName });
+  vm.runInThisContext(source, { filename: fileName });
 
-  /** @type {Record<string, any>} */
-  const exported = {};
-  names.forEach(function (name) {
-    const namespace = /** @type {Record<string, any>} */ (globalThis)[name];
-    if (!namespace) {
-      throw new Error(fileName + ' did not define ' + name);
-    }
-    exported[name] = namespace;
-  });
-  return exported;
+  const namespace = /** @type {Record<string, any>} */ (globalThis)[name];
+  if (!namespace) {
+    throw new Error(fileName + ' did not assign ' + name + ' to globalThis');
+  }
+  return namespace;
 }
 
 /**
