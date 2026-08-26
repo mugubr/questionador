@@ -9,7 +9,7 @@ a fresh guess about which language a name belongs to, and the boundary between
 "code" and "content" is invisible.
 
 Underneath that, a set of confirmed defects makes the current state hard to
-defend: extraction dies with `UnicodeEncodeError` on Windows *after* doing all
+defend: extraction dies with `UnicodeEncodeError` on Windows _after_ doing all
 the work and before writing its output; 13 questions ship with page footers
 inside their options while reporting `parseStatus: "ok"`; `ENA25-Q14` was fixed
 by hand but `ENA25-Q09` shipped with its two-column matching table unresolved;

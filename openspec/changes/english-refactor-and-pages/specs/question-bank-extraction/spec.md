@@ -291,7 +291,7 @@ For the 104 questions with no published answer key, the pipeline SHALL record th
 
 #### Scenario: Stem that cites the reference
 
-- **WHEN** the stem explicitly cites a material (e.g. "De acordo com o material *Criando uma marca* (OMPI)")
+- **WHEN** the stem explicitly cites a material (e.g. "De acordo com o material _Criando uma marca_ (OMPI)")
 - **THEN** `answer.reference` points to the corresponding file in `references/`
 
 #### Scenario: Underivable answer

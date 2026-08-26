@@ -52,7 +52,7 @@ that are committed and reviewed as diffs. That combination — Windows plus
 plain `<script>` tag before the app's own files. Upload remains, demoted to a
 secondary affordance for trying a hand-edited bank.
 
-Why: it is the only option that makes the site open already loaded *and* keeps
+Why: it is the only option that makes the site open already loaded _and_ keeps
 `file://` working, because no request is involved at all. It also deletes a
 whole class of staleness bugs — the embedded file is the truth and
 `localStorage` never caches the bank.
@@ -160,7 +160,7 @@ always `pdftotext -layout -enc UTF-8` with `encoding="utf-8"` on the subprocess.
 
 Why: Git for Windows ships **Xpdf 4.00** as `pdftotext`, and on a default
 Windows `PATH` it usually wins. It emits Latin-1 and different dash characters,
-and it produces a *different bank* without failing — the parser regressed
+and it produces a _different bank_ without failing — the parser regressed
 silently once already for exactly this reason. Checking before doing any work
 turns a silent data corruption into a startup error, and recording the version
 in the output makes a future divergence diagnosable from the artifact alone.
@@ -170,7 +170,7 @@ Rejected:
 - **Normalizing dashes after extraction.** Papers over one symptom of running
   the wrong tool and leaves the encoding difference in place.
 - **Vendoring the extracted text and never running `pdftotext` in CI.** This is
-  half-adopted deliberately: `data/raw-questions.json` *is* committed as the
+  half-adopted deliberately: `data/raw-questions.json` _is_ committed as the
   extraction anchor, so `build` and `validate` run anywhere without poppler.
   But `extract` still has to be reproducible, so the pin stays.
 
@@ -246,7 +246,7 @@ anything.
   offers to continue. A mismatch discards the stored session rather than
   resuming into questions that may no longer exist.
 - **Option shuffling.** The options are shuffled per question at draw time; the
-  stored answer letter is resolved against the *original* letter, so the graded
+  stored answer letter is resolved against the _original_ letter, so the graded
   result and the review surface stay in the bank's terms.
 - **Configurable session size.** The deck is truncated to N after shuffling.
 - **Cross-session history.** A separate `localStorage` key holds, per question
@@ -361,10 +361,10 @@ The phases land as separate commits, in this order, each one leaving the
 repository in a working state:
 
 1. **Rules and OpenSpec** — `AGENTS.md`, `CLAUDE.md`, the OpenSpec change, and
-   the `git mv` renames. No behaviour change. *Already applied.*
+   the `git mv` renames. No behaviour change. _Already applied._
 2. **Pipeline package** — `tools/` becomes importable with a subcommand CLI, the
    toolchain pin, LF writing and ASCII console output. The bank is regenerated
-   in the *old* format and must come out byte-identical apart from line endings,
+   in the _old_ format and must come out byte-identical apart from line endings,
    which proves the restructure changed nothing.
 3. **Data migration** — schema, validator and every data file move to the
    English contract in one commit, with `data/raw-questions.json` committed and
@@ -396,5 +396,5 @@ over `file://` exactly as before.
   In the 40 officially-keyed questions the correct option is the longest 60% of
   the time; in the 104 derived ones, 33% (Fisher p=0.0042). That is a signal,
   not proof, and re-deriving answers is a Non-Goal here. Option shuffling
-  removes the *student's* exposure to the bias; the standing reason to re-review
+  removes the _student's_ exposure to the bias; the standing reason to re-review
   the keys remains, as its own change.
