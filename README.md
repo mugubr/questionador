@@ -139,8 +139,6 @@ O que fica guardado — sua preferência de tema, o progresso da sessão e o his
 
 ## Contribuindo
 
-Este fork existe para melhorar o [projeto original](https://github.com/mugubr/questionador) e devolver o resultado. Se você vai abrir um pull request, aqui ou lá, o mesmo caminho vale.
-
 As regras do repositório — política de idioma, docstrings, tipos, contrato do banco, restrições do app, acessibilidade e testes — estão em **[AGENTS.md](AGENTS.md)**, que é a fonte única de verdade. Leia antes de começar: várias decisões que parecem arbitrárias têm um motivo registrado lá, e boa parte delas foi aprendida com um defeito real.
 
 Verificações que rodam na CI e que você pode rodar localmente:
