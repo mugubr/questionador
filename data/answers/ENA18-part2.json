@@ -1,0 +1,82 @@
+{
+  "ENA18-Q21": {
+    "explanation": "I, II e IV são verdadeiras: as taxas oficiais somam-se aos honorários do agente de PI, um desenho que funcione como sinal distintivo pode ser protegido como marca tridimensional, e a marca é renovável indefinidamente enquanto o desenho industrial tem prazo determinado. III é falsa pela expressão 'em todos os países': a cumulação entre registro de desenho industrial e direito de autor varia conforme a legislação de cada jurisdição.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q22": {
+    "explanation": "As quatro assertivas são corretas: a patente é direito exclusivo outorgado pelo Estado sobre invenção ou modelo de utilidade (I); os requisitos são novidade, atividade ou ato inventivo e aplicação industrial (II); o título confere exclusividade de exploração econômica (III); e permite impedir que terceiros fabriquem o produto sem autorização prévia e expressa (IV).",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q23": {
+    "explanation": "I, II e IV são verdadeiras: um produto complexo pode reunir patentes de titulares diversos; a patente de invenção vigora por 20 anos do depósito ou 10 anos da concessão, o que for maior (regra do parágrafo único do art. 40 da LPI, vigente à época da prova); e a suficiência descritiva é a contrapartida da exclusividade. III é falsa no prazo mínimo: para modelo de utilidade a lei fixa 15 anos do depósito ou 7 anos da concessão, não 10.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q24": {
+    "explanation": "As quatro assertivas são corretas: a invenção é criação intelectual que dá solução nova e inventiva a um problema técnico (I), podendo consistir em dispositivo, produto, método ou processo inteiramente novo (II) ou em melhoramento incremental de produto ou processo conhecido (III); e a mera descoberta do que já existe na natureza não é invenção sem a intervenção inventiva humana materializada em produto ou processo (IV).",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q25": {
+    "explanation": "I, III e IV são verdadeiras e convergem para a definição legal do modelo de utilidade (LPI art. 9º): objeto de uso prático, com nova forma ou disposição, envolvendo ato inventivo que resulte em melhoria funcional de uso ou fabricação, aplicável a aperfeiçoamentos incrementais. II é falsa porque descreve o DESENHO INDUSTRIAL: exclusividade de elementos ornamentais ou estéticos com resultado visual novo e original.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q26": {
+    "explanation": "I, II e IV são vantagens reais do segredo de negócio: dispensa custos de registro, não exige divulgação do conteúdo e não tem prazo de expiração. III é falsa: o segredo não depende de registro em cartório — protege-se pelo próprio sigilo e pela repressão à concorrência desleal. V é falsa por inversão: a proteção do segredo tem efeito IMEDIATO, o que é justamente uma de suas vantagens frente à patente.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q27": {
+    "explanation": "I, II e III são desvantagens efetivas: o segredo incorporado a produto pode ser reconstruído por engenharia reversa, a proteção só alcança a obtenção, uso ou divulgação INDEVIDA, e uma vez tornado público qualquer um pode usá-lo livremente. IV é falsa por inversão: um terceiro que chegue à mesma invenção de forma independente e lícita PODE patenteá-la — risco que é, ele próprio, uma desvantagem do segredo.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q28": {
+    "explanation": "I e III são verdadeiras: para o modelo de utilidade a exigência inventiva é menos rigorosa que a da patente de invenção, e o trâmite de concessão é mais rápido e simples. II é falsa pelo 'sempre... independente do período de concessão': como o prazo pode ser contado da concessão, um MU concedido tardiamente pode ultrapassar a vigência de uma invenção concedida cedo. IV é falsa: a conversão entre pedido de modelo de utilidade e de invenção é admitida.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q29": {
+    "explanation": "Organismos geneticamente modificados são a única categoria com espaço de patenteabilidade: a LPI veda patentear seres vivos, mas excetua expressamente os microrganismos transgênicos que atendam aos requisitos legais (art. 18, III). Regras de jogos (a) e projetos arquitetônicos (b) estão entre as exclusões do art. 10, e obras literárias (d) pertencem ao regime do direito de autor.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q30": {
+    "explanation": "A alternativa b reproduz a definição legal de ATO inventivo, próprio do modelo de utilidade (LPI art. 14): a modificação resulta em melhoria funcional no uso ou na fabricação do objeto. As demais são falsas por inverterem o critério de não obviedade: há atividade inventiva quando a solução NÃO é evidente (a) e NÃO pode ser facilmente elaborada (d) por técnico no assunto; e modificações vulgares sem ganho funcional novo (c) não configuram ato inventivo.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q31": {
+    "explanation": "A alternativa c é a INCORRETA: pessoa jurídica não concebe invenção — a concepção é sempre ato de pessoa física. A pessoa jurídica pode ser TITULAR dos direitos, mas não inventora. As demais estão corretas ao distinguir inventor (quem concebe), inventor-detentor (quem concebe e deposita) e detentor (pessoa jurídica que deposita).",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q32": {
+    "explanation": "Seis das sete assertivas descrevem informações efetivamente extraíveis de bases de patentes: concorrentes atuais e futuros, tendências tecnológicas, tecnologias licenciáveis, nichos de mercado, patentes expiradas em domínio público e possibilidades de desenvolvimento sobre tecnologias existentes. A exceção é VI: documentos de patente não trazem informações sobre o capital das empresas depositantes, que pertencem a fontes societárias e financeiras.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q33": {
+    "explanation": "Necessidades Humanas (a), Química e Metalurgia (b) e Engenharia Mecânica, Iluminação, Aquecimento, Armas e Dinamitação (d) são as seções A, C e F da IPC. 'Administração; Contabilidade' não figura nesse nível: corresponde à subclasse G06Q, dentro da seção G (Física). É, portanto, a alternativa que não pertence ao mesmo nível hierárquico das demais. Ressalva: o enunciado usa 'Classe' para o que a IPC denomina Seção.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q34": {
+    "explanation": "Entre as sequências oferecidas, b é a única que preserva a ordem lógica do trâmite: o exame FORMAL antecede qualquer análise de mérito, seguindo-se a pesquisa de anterioridade e o exame substantivo até a decisão. As demais invertem essa ordem, colocando a pesquisa ou o exame substantivo antes do exame formal, ou situando a oposição depois da concessão. Ressalva: nenhuma alternativa reflete com exatidão o rito da LPI, em que a publicação ocorre aos 18 meses, antes do exame substantivo.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q35": {
+    "explanation": "O art. 19 da LPI determina que o pedido de patente, nas condições estabelecidas pelo INPI, contenha requerimento, relatório descritivo, reivindicações, desenhos (se for o caso), resumo e comprovante de pagamento da retribuição. As demais alternativas substituem essas peças por seções de trabalho acadêmico — introdução e metodologia —, estranhas ao documento de patente.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q36": {
+    "explanation": "I, III e IV são verdadeiras: a licença decorre de autorização do titular mediante acordo; na licença não exclusiva vários licenciados e o próprio titular podem explorar a tecnologia; e o licenciamento é especialmente útil quando o titular não consegue fabricar em quantidade suficiente ou cobrir determinada área geográfica. II é autocontraditória: se a licença é exclusiva, apenas o licenciado explora — não há como assegurar simultaneamente a exploração pelo titular.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q37": {
+    "explanation": "As conferências, alocuções, sermões e obras da mesma natureza estão expressamente entre as obras protegidas (Lei 9.610/1998, art. 7º, II). As outras três constam do rol de exclusões do art. 8º: textos de tratados e convenções (inciso IV), formulários em branco e suas instruções (inciso III) e informações de uso comum como calendários e agendas (inciso V).",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q38": {
+    "explanation": "A alternativa a é a INCORRETA: os direitos morais são INDEPENDENTES dos patrimoniais — subsistem ainda que o autor ceda integralmente a exploração econômica da obra. As demais descrevem corretamente seus atributos: inalienáveis e intransmissíveis (b), irrenunciáveis (c) e imprescritíveis, persistindo após a morte do autor, quando passam a ser exercidos pelos sucessores (d).",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q39": {
+    "explanation": "Os direitos conexos alcançam três categorias, todas presentes nas alternativas a, b e d: artistas intérpretes ou executantes, produtores de fonogramas e empresas de radiodifusão quanto às suas emissões (Lei 9.610/1998, art. 89). Revendedores de mídias fonográficas e películas (c) são meros distribuidores comerciais, sem titularidade conexa sobre a obra.",
+    "reference": "Ref2-Patente_2021.pdf"
+  },
+  "ENA18-Q40": {
+    "explanation": "A alternativa a é a INCORRETA por errar os prazos de novidade comercial. A Lei 9.456/1997 exige, para a cultivar ser nova, que não tenha sido oferecida à venda no Brasil há mais de 12 meses e no exterior há mais de 6 anos para espécies arbóreas e videiras, ou 4 anos para as demais — e não '10 anos no exterior e 5 no Brasil'. Distintividade (b), homogeneidade (c) e estabilidade (d) estão corretamente enunciadas.",
+    "reference": "Ref2-Patente_2021.pdf"
+  }
+}

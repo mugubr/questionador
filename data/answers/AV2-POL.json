@@ -1,0 +1,66 @@
+{
+  "AV2-POL-Q01": {
+    "explanation": "As três funções clássicas do Governo na teoria das finanças públicas são a alocativa (provisão de bens públicos), a distributiva (ajuste na distribuição de renda e riqueza) e a estabilizadora (manutenção do nível de emprego, preços e crescimento). 'Fiscalizadora' não integra essa tríade, o que elimina as alternativas a, b e d.",
+    "reference": "Fora de `references/`: nenhum PDF do repositório expõe as funções fiscais do Estado. As três funções — alocativa, distributiva e estabilizadora — são as de MUSGRAVE, R. The Theory of Public Finance (1959), base da bibliografia de políticas públicas."
+  },
+  "AV2-POL-Q02": {
+    "explanation": "I e III são desafios reconhecidos de governança do SNCTI: estruturar o sistema e dar sinergia entre órgãos e agências nas várias esferas, e implantar acompanhamento e avaliação de resultados e impactos. II é falsa por inversão: a política busca a REDUÇÃO das disparidades regionais, não seu aumento.",
+    "reference": "Ref1-ENCTI-2024-2034.pdf"
+  },
+  "AV2-POL-Q03": {
+    "explanation": "A definição transcrita é a de paradigma tecnológico em Dosi: um modelo e um padrão de solução de problemas tecnológicos selecionados, que embute diretrizes fortes sobre a direção da mudança técnica. A trajetória tecnológica (c) é o padrão de atividade normal DENTRO de um paradigma, e não o modelo que a orienta.",
+    "reference": "Ref1-ENCTI-2024-2034.pdf"
+  },
+  "AV2-POL-Q04": {
+    "explanation": "O gabarito oficial aponta d: I, II e III. I e II são consensuais na abordagem evolucionista — a tendência mundial de ampliação dos investimentos em C&T e a centralidade da formação de capital humano em ciências naturais e engenharias. III, 'a inovação pode ser medida pelo número de patentes', também é aceita: a contagem de patentes é um indicador clássico de inovação e aparece como meta quantitativa de política de CT&I (ENCTI 2024-2034, Quadro 3.2: 'metas quantitativas claras (P&D/PIB, patentes, citações científicas)'), e o Manual de Oslo trata os indicadores baseados em direitos de PI, como invenções patenteadas, como medidas de estratégia de apropriação. A assertiva diz que a inovação PODE ser medida assim, não que só possa: é uma medida parcial, não uma definição, e nada nela contradiz a premissa de que a inovação é um processo complexo. Ressalva: a derivação anterior deste banco rejeitava III e defendia a alternativa c, que o gabarito oficial contradiz.",
+    "reference": "Ref1-ENCTI-2024-2034.pdf, Quadro 3.2 (metas quantitativas claras: P&D/PIB, patentes, citações científicas); Ref7-Manual_de_Oslo_2018.pdf, §11.50 (indicadores baseados em direitos de PI, como invenções patenteadas)."
+  },
+  "AV2-POL-Q05": {
+    "explanation": "A pergunta isola a dimensão de formação de recursos humanos. Formar engenheiros e pesquisadores e atrair e fixar talentos é ação de RH por definição. As demais pertencem a outras dimensões: articulação universidade-empresa (a) é de interação, modernização da concessão de patentes (b) é de marco regulatório e centros multiusuários (d) é de infraestrutura.",
+    "reference": "Ref1-ENCTI-2024-2034.pdf"
+  },
+  "AV2-POL-Q06": {
+    "explanation": "O trecho de Perez e Soete (1988) descreve o catching-up: processo de mudança e aprendizagem pelo qual países retardatários reduzem o gap tecnológico, apoiado em movimentos internacionais de capital e transferência de tecnologia, gerando capacitação local, produtividade e inovações. Spin-off, trajetória tecnológica e inovação incremental designam fenômenos distintos e de escala menor.",
+    "reference": "Ref1-ENCTI-2024-2034.pdf"
+  },
+  "AV2-POL-Q07": {
+    "explanation": "Os três são pilares evolucionistas da análise de sistemas setoriais de inovação (Malerba): paradigmas tecnológicos delimitam o espaço de busca, processos de aprendizagem explicam a acumulação de capacitações, e a coevolução entre tecnologias, instituições e organizações descreve a dinâmica conjunta do setor. Nenhum deles é estranho à abordagem.",
+    "reference": "Ref1-ENCTI-2024-2034.pdf"
+  },
+  "AV2-POL-Q08": {
+    "explanation": "O parágrafo único do art. 15-A da Lei 10.973/2004 arrola diretrizes que abrangem cooperação e parcerias em PD&I (I), constituição e gestão de ambientes promotores de inovação (II) e institucionalização e gestão do NIT (IV). III é falsa: a lei prevê licença SEM remuneração para o pesquisador público constituir empresa com finalidade de inovação (art. 15), e não afastamento remunerado para abrir empresa de qualquer natureza.",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf"
+  },
+  "AV2-POL-Q09": {
+    "explanation": "O fomento à PD&I, com recursos não reembolsáveis, é o principal instrumento do FNDCT para implantação e consolidação institucional da pesquisa e da pós-graduação e para expansão do sistema nacional de C&T. b atribui esse papel à subvenção econômica; c erra ao qualificar a subvenção como recurso reembolsável, quando ela é não reembolsável e dirigida a empresas; d restringe indevidamente o fomento, excluindo a formação de recursos humanos.",
+    "reference": "Ref1-ENCTI-2024-2034.pdf"
+  },
+  "AV2-POL-Q10": {
+    "explanation": "Ordenando os ciclos longos de mudança tecnológica: Petróleo e Indústria Automotiva correspondem a 1940-1990 (4); Ferrovia, Aço e Carvão a 1849-1896 (2); Indústria Têxtil ao primeiro ciclo, 1789-1849 (1); Eletricidade e Química a 1896-1940 (3); e TICs, nanotecnologia, biotecnologia e novas fontes energéticas ao período posterior a 1990 (5). A sequência de cima para baixo é 4, 2, 1, 3, 5.",
+    "reference": "Ref1-ENCTI-2024-2034.pdf"
+  },
+  "AV2-POL-Q11": {
+    "explanation": "As quatro frentes sustentam a Política de Inovação de uma ICT e são complementares, não excludentes: formação de RH estratégico, empreendedorismo tecnológico, parcerias público-privadas e cooperação internacional. Como nenhuma delas é estranha ao escopo do art. 15-A da Lei de Inovação, todas estão corretas.",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf"
+  },
+  "AV2-POL-Q12": {
+    "explanation": "A questão pede o que NÃO consta das diretrizes do art. 15-A. Gestão da PI e transferência de tecnologia (a), institucionalização e gestão do NIT (c) e parcerias com inventores independentes, empresas e outras entidades (d) são incisos expressos do parágrafo único. A abertura de empresas voltadas a políticas de redução da desigualdade (b) não figura entre as diretrizes: o dispositivo trata de empreendedorismo e incubação com finalidade de inovação, não de política social.",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf"
+  },
+  "AV2-POL-Q13": {
+    "explanation": "O gabarito oficial aponta d, 'Apenas as afirmativas IV estão corretas', e a fundamentação não foi localizada nos materiais de referência. A assertiva IV afirma que TODAS as dimensões de mensuração são qualitativas e que a ordem de preferência é eficácia, eficiência e efetividade; nenhuma fonte consultada sustenta nem o 'todas', nem essa ordenação. O referencial usual de avaliação de desempenho no setor público — a metodologia dos 6Es adotada pelo Ministério do Planejamento — trata eficiência, eficácia e efetividade como indicadores de resultado com aspectos tanto quantitativos (quantidade, cobertura, custo unitário, tempo) quanto qualitativos (qualidade do produto, acessibilidade), e não os hierarquiza. A questão ainda é mal redigida: fala em 'as afirmativas IV', no plural, para uma única assertiva. Fica registrado que a resposta é d por gabarito publicado, e não por raciocínio reconstruível. Ressalva: a derivação anterior deste banco defendia a alternativa a, que o gabarito oficial contradiz.",
+    "reference": "Sem apoio em `references/`: nenhum dos nove PDFs do repositório menciona 'contrato de desempenho' — zero ocorrências. O material mais próximo é `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf`, cap. 1, seção 5.1, que define efetividade, eficácia e eficiência como indicadores de resultado da metodologia dos 6Es (MP, 2009), mas não os ordena nem os classifica como puramente qualitativos, e portanto não decide a questão. A citação anterior a Ref3-A-caminho-da-inovacao_2010.pdf era falsa: o arquivo não contém a expressão."
+  },
+  "AV2-POL-Q14": {
+    "explanation": "Questão anulada pela própria banca: onde as demais linhas da tabela trazem uma letra, a linha 14 do gabarito final traz ANULADA. Não há resposta correta a estudar. A questão continua no banco e na contagem do caderno porque a prova impressa realmente a numerou, mas nunca é sorteada.",
+    "reference": "Gabarito-Final_AV2-POL.pdf, linha 14 da tabela QUESTÃO / RESPOSTA CORRETA: ANULADA. A citação anterior a Ref9-E-book+Guia+do+empreendedorismo+v.15.06.2026.pdf era falsa e anacrônica — documento datado de 2026 para uma prova de 2023, com duas menções de passagem a incubadoras e nenhuma que complete a definição do enunciado."
+  },
+  "AV2-POL-Q15": {
+    "explanation": "O gabarito oficial aponta d. O desafio que a literatura brasileira sobre parques tecnológicos identifica como central é exatamente a ausência de indicadores comuns: 'Não há consenso sobre o que seja um parque tecnológico de sucesso por não existir métricas comuns de avaliação que permitam a comparação dos diferentes parques de forma sistemática' (MCTI/NTG-UFV, 2021). Foi para suprir essa lacuna que o MCTI criou a plataforma InovaData-Br, que coleta anualmente os indicadores dos parques. As outras alternativas não enunciam um desafio a superar: a sustentabilidade dependente da região (b) é uma condição de contorno de cada empreendimento, e a redação de a e c é truncada demais para descrever um obstáculo. Ressalva: a derivação anterior deste banco defendia a alternativa b, que o gabarito oficial contradiz.",
+    "reference": "FARIA, A. F. et al. Parques Tecnológicos do Brasil. MCTI/NTG-UFV, 2021, cap. 2 (ausência de métricas comuns de avaliação) e cap. 4 (indicadores e plataforma MCTI-InovaData-Br) — obra externa: nenhum PDF de `references/` trata de parques tecnológicos. A citação anterior a Ref9-E-book+Guia+do+empreendedorismo+v.15.06.2026.pdf era falsa e anacrônica: documento datado de 2026 para uma prova de 2023, sem nenhuma ocorrência da palavra 'parque'."
+  },
+  "AV2-POL-Q16": {
+    "explanation": "A questão pede a EXCEÇÃO. Complementar a iniciativa privada (a), regular mercados (c) e fornecer bens e serviços públicos (d) são atividades pelas quais o Governo exerce suas funções alocativa, distributiva e estabilizadora. A alternativa b está invertida: o Governo compra bens e serviços DO SETOR PRIVADO — 'compra do setor público' não descreve atividade governamental de melhoria do padrão de vida.",
+    "reference": "Fora de `references/`: nenhum PDF do repositório expõe as funções fiscais do Estado. As três funções — alocativa, distributiva e estabilizadora — são as de MUSGRAVE, R. The Theory of Public Finance (1959), base da bibliografia de políticas públicas."
+  }
+}

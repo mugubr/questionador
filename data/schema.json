@@ -1,121 +1,376 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://profnit.local/questionador/schema.json",
-  "title": "Banco de questões PROFNIT",
+  "title": "PROFNIT question bank",
+  "description": "The contract for data/question-bank.json. tools/validate.py implements it and the two must agree: a rule in one and not the other is a bug.",
   "type": "object",
-  "required": ["versao", "provas", "questoes"],
+  "required": [
+    "version",
+    "generatedAt",
+    "toolchain",
+    "exams",
+    "topics",
+    "questions"
+  ],
   "additionalProperties": false,
   "properties": {
-    "versao": {
+    "version": {
       "type": "integer",
       "const": 1,
-      "description": "Versão do formato do banco. O app rejeita versões que não conhece."
+      "description": "Format version. The app rejects a version it does not know."
     },
-    "geradoEm": {
+    "generatedAt": {
       "type": "string",
-      "description": "Data de geração no formato AAAA-MM-DD."
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "The date the bank was built."
     },
-    "provas": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "object",
-        "required": ["id", "titulo", "temGabaritoOficial"],
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Z0-9-]+$",
-            "description": "Identificador curto, ex.: ENA26, AV2-PI."
-          },
-          "titulo": { "type": "string", "minLength": 1 },
-          "data": {
-            "type": "string",
-            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-            "description": "Data de aplicação da prova."
-          },
-          "arquivo": {
-            "type": "string",
-            "description": "PDF de origem em Provas/."
-          },
-          "temGabaritoOficial": { "type": "boolean" }
+    "toolchain": {
+      "type": "object",
+      "required": [
+        "pdftotext"
+      ],
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "description": "Version of every external tool that shaped the output. pdftotext must be the poppler build.",
+      "properties": {
+        "pdftotext": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
         }
       }
     },
-    "questoes": {
+    "exams": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/questao" }
+      "items": {
+        "$ref": "#/$defs/exam"
+      }
+    },
+    "topics": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "The taxonomy every question's topic is drawn from. A topic that no question uses is an error, and so is a question whose topic is not declared here.",
+      "items": {
+        "$ref": "#/$defs/topic"
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/question"
+      }
     }
   },
   "$defs": {
-    "letra": { "type": "string", "enum": ["a", "b", "c", "d"] },
-    "questao": {
+    "optionLetter": {
+      "type": "string",
+      "enum": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    "exam": {
       "type": "object",
-      "required": ["id", "prova", "numero", "tema", "enunciado", "alternativas", "resposta"],
+      "required": [
+        "id",
+        "title",
+        "date",
+        "file",
+        "hasOfficialAnswerKey"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Z0-9-]+$",
+          "description": "Short identifier, e.g. ENA26, AV2-PI. A proper noun, never translated."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "Portuguese title, displayed to the student."
+        },
+        "date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "The date the paper was applied."
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "The source PDF in exams/."
+        },
+        "hasOfficialAnswerKey": {
+          "type": "boolean",
+          "description": "Whether a published answer key backs this paper's answers."
+        }
+      }
+    },
+    "topic": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "definition"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "description": "The slug stored in question.topic. Portuguese kebab-case, singular, unaccented."
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "Portuguese label, displayed. The app shows this, never the slug."
+        },
+        "definition": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "Portuguese sentence delimiting what the topic covers."
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "required": [
+        "id",
+        "exam",
+        "number",
+        "topic",
+        "stem",
+        "options",
+        "answer"
+      ],
       "additionalProperties": false,
       "properties": {
         "id": {
           "type": "string",
           "pattern": "^[A-Z0-9-]+-Q\\d{2}$",
-          "description": "Ex.: ENA26-Q01."
+          "description": "Always <exam>-Q<NN>, and it must agree with exam and number."
         },
-        "prova": {
+        "exam": {
           "type": "string",
-          "description": "Deve corresponder ao id de uma entrada de provas[]."
+          "description": "Must match the id of an entry of exams[]."
         },
-        "numero": { "type": "integer", "minimum": 1, "maximum": 99 },
-        "tema": {
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 99,
+          "description": "The number printed on the paper. Contiguous 1..N per paper."
+        },
+        "topic": {
           "type": "string",
           "minLength": 1,
-          "description": "Chave de agrupamento usada no filtro por tema."
+          "pattern": "\\S",
+          "description": "The slug of an entry of topics[]. Displayed through that entry's label, never de-hyphenated."
         },
-        "enunciado": {
+        "stem": {
           "type": "string",
           "minLength": 10,
-          "description": "Texto completo, com quebras de linha significativas preservadas."
+          "description": "The question body, with its significant line breaks preserved. Holds no page header or footer residue."
         },
-        "alternativas": {
+        "options": {
           "type": "object",
-          "required": ["a", "b", "c", "d"],
+          "required": [
+            "a",
+            "b",
+            "c",
+            "d"
+          ],
           "additionalProperties": false,
+          "description": "The four options. Each one holds no page header or footer residue.",
           "properties": {
-            "a": { "type": "string", "minLength": 1 },
-            "b": { "type": "string", "minLength": 1 },
-            "c": { "type": "string", "minLength": 1 },
-            "d": { "type": "string", "minLength": 1 }
+            "a": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "b": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "c": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "d": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
           }
         },
-        "resposta": {
-          "type": "object",
-          "required": ["letra", "procedencia"],
-          "additionalProperties": false,
-          "properties": {
-            "letra": { "$ref": "#/$defs/letra" },
-            "procedencia": { "type": "string", "enum": ["oficial", "derivada"] },
-            "confianca": { "type": "string", "enum": ["alta", "media", "baixa"] },
-            "referencia": { "type": "string", "minLength": 1 },
-            "justificativa": { "type": "string", "minLength": 1 }
+        "answer": {
+          "$ref": "#/$defs/answer"
+        },
+        "duplicateOf": {
+          "type": "string",
+          "pattern": "^[A-Z0-9-]+-Q\\d{2}$",
+          "description": "Set when the paper prints this question twice. The target exists and is not itself a duplicate."
+        },
+        "knownDefects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
           },
-          "allOf": [
-            {
-              "if": { "properties": { "procedencia": { "const": "derivada" } } },
-              "then": { "required": ["letra", "procedencia", "confianca", "referencia", "justificativa"] }
-            },
-            {
-              "if": { "properties": { "procedencia": { "const": "oficial" } } },
-              "then": {
+          "description": "Defects of the printed paper, recorded rather than silently fixed."
+        },
+        "excludedReason": {
+          "type": "string",
+          "enum": [
+            "annulled",
+            "source-booklet-defect"
+          ],
+          "description": "Why the question must never be drawn. It still belongs to the bank, to its paper's count and to the review surface. annulled: the official key prints ANULADA instead of a letter. source-booklet-defect: the printed booklet reprints an earlier question here, so the letter the key gives this number answers a question the bank does not hold."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "answer": {
                 "not": {
-                  "anyOf": [
-                    { "required": ["confianca"] },
-                    { "required": ["justificativa"] }
+                  "required": [
+                    "letter"
                   ]
                 }
               }
-            }
-          ]
+            },
+            "required": [
+              "answer"
+            ]
+          },
+          "then": {
+            "required": [
+              "excludedReason"
+            ]
+          }
         }
-      }
+      ]
+    },
+    "answer": {
+      "type": "object",
+      "required": [
+        "source",
+        "reference"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "letter": {
+          "$ref": "#/$defs/optionLetter",
+          "description": "The correct option. Absent only on a question that carries excludedReason, which is enforced on the question, not here."
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "official",
+            "derived"
+          ],
+          "description": "official means a published answer key states this, and nothing else."
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ],
+          "description": "Derived answers only."
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "What supports the answer: a file in references/ with a locator, the answer-key PDF, or a plain statement that no file in references/ supports it."
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "Portuguese argument for a derived answer's letter, which no published key states."
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "Portuguese explanation of an official answer: why the published letter is the right one. Teaching material, not provenance."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "source": {
+                "const": "derived"
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          "then": {
+            "required": [
+              "letter",
+              "source",
+              "confidence",
+              "reference",
+              "rationale"
+            ],
+            "not": {
+              "required": [
+                "explanation"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "source": {
+                "const": "official"
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "confidence"
+                  ]
+                },
+                {
+                  "required": [
+                    "rationale"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
     }
   }
 }

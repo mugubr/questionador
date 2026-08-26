@@ -1,18 +1,47 @@
 # Banco de questões PROFNIT
 
-144 questões extraídas de 7 cadernos em `Provas/`.
+144 questões extraídas de 7 cadernos em `exams/`.
 
-Respostas marcadas como **derivada** NÃO vêm de gabarito publicado: foram deduzidas
-da fonte citada. Para corrigir uma delas, edite `data/respostas/<caderno>.json` e
-rode `python3 scripts/build.py` — nenhum código do app precisa mudar.
+Todas as respostas vêm de gabarito oficial publicado: a letra é fato
+publicado, não dedução. A **explicação** é material de estudo escrito a
+partir da fonte citada em **Referência** — essa parte pode errar, e a
+referência diz com todas as letras quando nenhum documento de
+`references/` sustenta a questão. Para corrigir uma explicação ou uma
+referência, edite `data/answers/<caderno>.json` e rode
+`python -m tools build` — nenhum código do app precisa mudar.
+
+3 questões continuam no banco, na contagem do caderno e
+neste documento, mas **nunca são sorteadas**:
+
+- `AV2-PI-Q14` — caderno defeituoso.
+- `AV2-PI-Q16` — caderno defeituoso.
+- `AV2-POL-Q14` — anulada.
+
+## Temas
+
+- **Patente** (`patente`): Requisitos de patenteabilidade, invenção e modelo de utilidade, matéria não patenteável, vigência, titularidade e trâmite do pedido no INPI.
+- **Marca e indicação geográfica** (`marca-e-indicacao-geografica`): Sinais distintivos: tipos e distintividade de marcas, requisitos e causas de indeferimento, direitos do titular e registro; indicação de procedência e denominação de origem.
+- **Desenho industrial** (`desenho-industrial`): Objeto e requisitos do registro, exclusões, período de graça, vigência, titularidade, proteção internacional e cumulação com outras modalidades.
+- **Direito autoral** (`direito-autoral`): Obras protegidas e não protegidas, direitos morais e patrimoniais, direitos conexos, prazo e domínio público autoral e proteção de programa de computador.
+- **Cultivar** (`cultivar`): Proteção de obtenções vegetais: novidade, distinguibilidade, homogeneidade e estabilidade, SNPC, RNC/RENASEM e a convenção UPOV.
+- **Sistema de PI** (`sistema-de-pi`): Visão geral do sistema: categorias e fronteiras entre as modalidades, escolha da forma de proteção (inclusive segredo industrial), titularidade, domínio público, territorialidade e tratados internacionais.
+- **Informação tecnológica** (`informacao-tecnologica`): Fontes de informação e sua confiabilidade, bases de patentes, classificações IPC/CPC, famílias de patentes e estratégias de busca de anterioridade e de prospecção documental.
+- **Prospecção tecnológica** (`prospeccao-tecnologica`): Estudos prospectivos: conceito, objetivos, fases, métodos (painel de especialistas, cenários, roadmapping) e níveis de maturidade tecnológica (TRL).
+- **Inovação** (`inovacao`): Conceitos do Manual de Oslo: tipos de inovação, atividades inovativas e P&D, barreiras, apropriabilidade e indicadores de inovação.
+- **Transferência de tecnologia** (`transferencia-de-tecnologia`): Licenciamento e cessão de direitos de PI, contratos de franquia, exclusividade e limites contratuais e comercialização de ativos intelectuais.
+- **Economia da inovação** (`economia-da-inovacao`): Abordagem evolucionista: paradigmas e trajetórias tecnológicas, sistemas de inovação, catching-up, ciclos históricos de mudança técnica e gerações de modelos de inovação.
+- **Gestão da inovação na ICT** (`gestao-da-inovacao-na-ict`): Política de inovação das ICTs e Marco Legal (Leis 10.973/2004 e 13.243/2016), atribuições do NIT, ambientes promotores de inovação (incubadoras, parques) e empreendedorismo tecnológico.
+- **Política pública de CT&I** (`politica-publica-de-cti`): Funções do Estado, governança do Sistema Nacional de CT&I, planos nacionais, instrumentos de fomento (FNDCT) e avaliação de políticas e contratos.
+- **Metodologia científica** (`metodologia-cientifica`): Natureza e tipos de conhecimento, características do conhecimento científico, tipos de pesquisa, projeto de pesquisa tecnológico e ética na pesquisa (plágio).
+- **Comunicação científica** (`comunicacao-cientifica`): Normalização e redação técnico-científica (NBR 6022, 6023 e 10719), tipos de relatório técnico e avaliação da produção técnico-tecnológica (Qualis).
 
 ---
 
 ## ENA18 — Exame Nacional de Acesso — Edital Suplementar, ingresso em 2018-02
 
-Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
+Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
-### ENA18-Q01 · inovacao
+### ENA18-Q01 · Inovação
 
 > Considere as assertivas a seguir acerca das interações no processo de inovação.
 > I- As atividades inovadoras de uma empresa dependem em parte da variedade e
@@ -25,7 +54,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 > III- Cada interação conecta a empresa inovadora a outros atores no sistema de
 > inovação: laboratórios governamentais, universidades, departamentos de políticas,
 > reguladores, concorrentes, fornecedores e consumidores.
-> IV – A identificação das interações em atividades de inovação fornece evidências
+> IV- A identificação das interações em atividades de inovação fornece evidências
 > sobre a complexidade da atividade, que é suficiente para prover a informação
 > necessária para um modelo dinâmico, com circuitos de respostas e resultados não
 > lineares positivos e negativos decorrentes da mudança
@@ -36,12 +65,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas I, III e IV estão corretas.
 - d) Apenas as assertivas II, III e IV estão corretas.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
 - Referência: Ref7-Manual_de_Oslo_2018.pdf
-- Justificativa: I, II e III reproduzem o tratamento das interações no Manual de Oslo: dependência da variedade e estrutura das interações, o espectro que vai de fontes passivas a parcerias cooperativas, e a conexão da empresa com os demais atores do sistema de inovação. IV é falsa pela palavra 'suficiente' — o Manual afirma que identificar as interações fornece evidências sobre a complexidade, mas NÃO basta para alimentar um modelo dinâmico com circuitos de retroalimentação.
+- Explicação: I, II e III reproduzem o tratamento das interações no Manual de Oslo: dependência da variedade e estrutura das interações, o espectro que vai de fontes passivas a parcerias cooperativas, e a conexão da empresa com os demais atores do sistema de inovação. IV é falsa pela palavra 'suficiente' — o Manual afirma que identificar as interações fornece evidências sobre a complexidade, mas NÃO basta para alimentar um modelo dinâmico com circuitos de retroalimentação.
 
-### ENA18-Q02 · inovacao
+### ENA18-Q02 · Inovação
 
 > Considere as assertivas a seguir acerca da pesquisa e do desenvolvimento
 > experimental:
@@ -63,12 +92,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas I e IV estão corretas.
 - d) Apenas as assertivas III e IV estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref7-Manual_de_Oslo_2018.pdf
-- Justificativa: I, III e IV são verdadeiras: o protótipo construído para novos melhoramentos é P&D; o desenvolvimento de software é P&D quando envolve avanço científico/tecnológico ou resolução sistemática de incerteza; e IV reproduz a definição canônica de P&D. II é falsa por inversão: a aceitação de um protótipo marca frequentemente o FIM da fase de desenvolvimento experimental, não o início de uma nova.
+- Explicação: I, III e IV são verdadeiras: o protótipo construído para novos melhoramentos é P&D; o desenvolvimento de software é P&D quando envolve avanço científico/tecnológico ou resolução sistemática de incerteza; e IV reproduz a definição canônica de P&D. II é falsa por inversão: a aceitação de um protótipo marca frequentemente o FIM da fase de desenvolvimento experimental, não o início de uma nova.
 
-### ENA18-Q03 · inovacao
+### ENA18-Q03 · Inovação
 
 > Em relação aos fatores que podem obstruir a atividade de inovação, considere as
 > assertivas a seguir:
@@ -93,12 +122,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas I, III e IV estão corretas.
 - **d)** Todas as assertivas estão corretas.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref7-Manual_de_Oslo_2018.pdf
-- Justificativa: As quatro assertivas correspondem ao tratamento dos obstáculos à inovação no Manual de Oslo: a existência de fatores que impedem, refreiam ou reduzem os resultados esperados (I); a ausência de infraestrutura como barreira, sobretudo fora dos grandes centros (II); a tipologia econômica, empresarial e legal dos fatores (III); e o fato de as barreiras poderem ser específicas de um tipo de inovação ou transversais a todos (IV).
+- Explicação: As quatro assertivas correspondem ao tratamento dos obstáculos à inovação no Manual de Oslo: a existência de fatores que impedem, refreiam ou reduzem os resultados esperados (I); a ausência de infraestrutura como barreira, sobretudo fora dos grandes centros (II); a tipologia econômica, empresarial e legal dos fatores (III); e o fato de as barreiras poderem ser específicas de um tipo de inovação ou transversais a todos (IV).
 
-### ENA18-Q04 · inovacao
+### ENA18-Q04 · Inovação
 
 > Considere as assertivas a seguir sobre a apropriabilidade das inovações:
 > I-A capacidade que as empresas possuem de se apropriar dos ganhos
@@ -119,12 +148,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II, III e IV estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref7-Manual_de_Oslo_2018.pdf
-- Justificativa: I, II e IV são verdadeiras: a apropriabilidade afeta o incentivo a inovar, a impossibilidade de proteger contra imitação reduz esse incentivo, e os dados de patentes funcionam como resultado intermediário e sinal de capacitação inovadora. III é falsa por inverter o argumento do Manual: quando uma indústria opera bem sem métodos formais de proteção, promovê-los PODE refrear o fluxo de conhecimentos e elevar preços.
+- Explicação: I, II e IV são verdadeiras: a apropriabilidade afeta o incentivo a inovar, a impossibilidade de proteger contra imitação reduz esse incentivo, e os dados de patentes funcionam como resultado intermediário e sinal de capacitação inovadora. III é falsa por inverter o argumento do Manual: quando uma indústria opera bem sem métodos formais de proteção, promovê-los PODE refrear o fluxo de conhecimentos e elevar preços.
 
-### ENA18-Q05 · inovacao
+### ENA18-Q05 · Inovação
 
 > Ao apontar exemplos de inovação, o Manual de Oslo define a inovação de produto
 > como sendo a introdução de um bem ou serviço novo ou significativamente
@@ -136,12 +165,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** Softwares incorporados.
 - d) Atualizações de rotina.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref7-Manual_de_Oslo_2018.pdf
-- Justificativa: O Manual de Oslo inclui expressamente os softwares incorporados entre as características que caracterizam a inovação de produto. As demais alternativas são exclusões explícitas do Manual: mudanças ou melhoramentos menores (a), mudanças sazonais regulares como as de linhas de vestuário (b) e atualizações de rotina (d) não configuram inovação.
+- Explicação: O Manual de Oslo inclui expressamente os softwares incorporados entre as características que caracterizam a inovação de produto. As demais alternativas são exclusões explícitas do Manual: mudanças ou melhoramentos menores (a), mudanças sazonais regulares como as de linhas de vestuário (b) e atualizações de rotina (d) não configuram inovação.
 
-### ENA18-Q06 · inovacao
+### ENA18-Q06 · Inovação
 
 > Ao apresentar inovações de produto, o Manual de Oslo traz alguns exemplos,
 > EXCETO:
@@ -151,12 +180,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** Digitalização de processos de impressão.
 - d) Produtos alimentícios com novas características funcionais.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref7-Manual_de_Oslo_2018.pdf
-- Justificativa: A questão pede a EXCEÇÃO entre exemplos de inovação de PRODUTO. Sistemas de fecho em vestuário (a), telefones IP (b) e alimentos com novas características funcionais (d) são exemplos de produto no Manual. A digitalização de processos de impressão é exemplo de inovação de PROCESSO — mudança no método de produção, não no bem ofertado.
+- Explicação: A questão pede a EXCEÇÃO entre exemplos de inovação de PRODUTO. Sistemas de fecho em vestuário (a), telefones IP (b) e alimentos com novas características funcionais (d) são exemplos de produto no Manual. A digitalização de processos de impressão é exemplo de inovação de PROCESSO — mudança no método de produção, não no bem ofertado.
 
-### ENA18-Q07 · inovacao
+### ENA18-Q07 · Inovação
 
 > Ao apresentar inovações em marketing, o Manual de Oslo traz alguns exemplos,
 > EXCETO:
@@ -166,12 +195,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) O uso pela primeira vez de ofertas especiais reservadas, acessíveis apenas aos possuidores de cartão de crédito da loja ou cartão de recompensas.
 - **d)** As novas formas de garantia, como a garantia estendida para bens novos ou usados, ou garantias em pacotes com outros serviços, como cartões de crédito, contas bancárias ou cartões de fidelidade para os consumidores.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref7-Manual_de_Oslo_2018.pdf
-- Justificativa: A questão pede a EXCEÇÃO entre exemplos de inovação de MARKETING. Nova concepção de frascos (a), novo símbolo de marca para posicionamento (b) e ofertas reservadas a portadores de cartão (c) são exemplos de marketing — concepção, promoção e posicionamento. As novas formas de garantia, incluindo a garantia estendida e garantias em pacote, são classificadas pelo Manual como inovação de PRODUTO em serviços.
+- Explicação: A questão pede a EXCEÇÃO entre exemplos de inovação de MARKETING. Nova concepção de frascos (a), novo símbolo de marca para posicionamento (b) e ofertas reservadas a portadores de cartão (c) são exemplos de marketing — concepção, promoção e posicionamento. As novas formas de garantia, incluindo a garantia estendida e garantias em pacote, são classificadas pelo Manual como inovação de PRODUTO em serviços.
 
-### ENA18-Q08 · inovacao
+### ENA18-Q08 · Inovação
 
 > Considere as assertivas a seguir sobre inovação organizacional:
 > I-Mudanças nas práticas de negócios, na organização do local de trabalho ou nas
@@ -190,12 +219,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** Apenas as assertivas II e IV estão corretas.
 - d) Apenas as assertivas III e IV estão corretas.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref7-Manual_de_Oslo_2018.pdf
-- Justificativa: II e IV são inovações organizacionais: introdução pela primeira vez de sistemas de gerenciamento da produção ou do fornecimento, e introdução pela primeira vez de padrões de controle de qualidade para fornecedores e subcontratados (relações externas). I é falsa porque método JÁ EM USO na empresa não constitui inovação; III é falsa porque o Manual exclui expressamente fusões e aquisições do conceito de inovação organizacional.
+- Explicação: II e IV são inovações organizacionais: introdução pela primeira vez de sistemas de gerenciamento da produção ou do fornecimento, e introdução pela primeira vez de padrões de controle de qualidade para fornecedores e subcontratados (relações externas). I é falsa porque método JÁ EM USO na empresa não constitui inovação; III é falsa porque o Manual exclui expressamente fusões e aquisições do conceito de inovação organizacional.
 
-### ENA18-Q09 · marcas
+### ENA18-Q09 · Marca e indicação geográfica
 
 > Considere as assertivas a seguir sobre Marcas:
 > I- No caso de venda ou cessão de uma marca para terceiros, exige-se a anotação
@@ -214,12 +243,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II, III e IV estão corretas.
 - **d)** Todas as assertivas estão corretas.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref4-Criando-uma-marca.pdf
-- Justificativa: As quatro assertivas descrevem corretamente a circulação econômica da marca: a cessão exige anotação junto ao INPI (I); modificações ou adaptações podem demandar novo pedido e novas taxas (II); no licenciamento o titular conserva a propriedade e autoriza o uso por terceiros (III); e o licenciante mantém o controle de qualidade sobre os produtos identificados pela marca licenciada (IV), condição para preservar a função distintiva.
+- Explicação: As quatro assertivas descrevem corretamente a circulação econômica da marca: a cessão exige anotação junto ao INPI (I); modificações ou adaptações podem demandar novo pedido e novas taxas (II); no licenciamento o titular conserva a propriedade e autoriza o uso por terceiros (III); e o licenciante mantém o controle de qualidade sobre os produtos identificados pela marca licenciada (IV), condição para preservar a função distintiva.
 
-### ENA18-Q10 · marcas
+### ENA18-Q10 · Transferência de tecnologia
 
 > Considere as assertivas a seguir sobre marcas e franquias:
 > I- A concessão de uma licença de marca é parte essencial de um contrato de
@@ -237,12 +266,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II e IV estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
 - Referência: Ref4-Criando-uma-marca.pdf
-- Justificativa: I, II e III são verdadeiras: a licença de marca é elemento essencial do contrato de franquia, o franqueador autoriza o franqueado a usar seus métodos comerciais, e a franquia se dá mediante compensação financeira ou royalties. IV é falsa ao negar ao franqueador o direito de supervisão e fiscalização — controle que é justamente o que preserva o padrão da rede franqueada.
+- Explicação: I, II e III são verdadeiras: a licença de marca é elemento essencial do contrato de franquia, o franqueador autoriza o franqueado a usar seus métodos comerciais, e a franquia se dá mediante compensação financeira ou royalties. IV é falsa ao negar ao franqueador o direito de supervisão e fiscalização — controle que é justamente o que preserva o padrão da rede franqueada.
 
-### ENA18-Q11 · marcas
+### ENA18-Q11 · Marca e indicação geográfica
 
 > Acerca de marcas e seus usos, qual das alternativas abaixo é INCORRETA?
 
@@ -251,12 +280,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) TM indica que se trata de uma marca de produto ou serviço (trademark).
 - d) SM é utilizado para as marcas de serviço.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
 - Referência: Ref4-Criando-uma-marca.pdf
-- Justificativa: A alternativa a é a INCORRETA: o uso dos símbolos ®, TM e SM é facultativo, servindo de aviso ao público, e não condição obrigatória para denotar registro — a proteção decorre do registro em si. As demais estão corretas: ® indica marca já registrada (b), TM identifica marca de produto ou serviço (c) e SM é reservado a marcas de serviço (d).
+- Explicação: A alternativa a é a INCORRETA: o uso dos símbolos ®, TM e SM é facultativo, servindo de aviso ao público, e não condição obrigatória para denotar registro — a proteção decorre do registro em si. As demais estão corretas: ® indica marca já registrada (b), TM identifica marca de produto ou serviço (c) e SM é reservado a marcas de serviço (d).
 
-### ENA18-Q12 · marcas
+### ENA18-Q12 · Marca e indicação geográfica
 
 > Acerca de marcas, qual das alternativas abaixo é INCORRETA?
 
@@ -265,12 +294,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) As marcas de alto renome gozam de uma proteção especial, perante o INPI, que engloba todas as classes de produtos e serviços.
 - d) Marcas distintas podem ser utilizadas para as diferentes linhas de produtos de uma empresa.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref4-Criando-uma-marca.pdf
-- Justificativa: A alternativa b é a INCORRETA por trocar as definições: atestar a conformidade de produtos ou serviços a padrões e especificações técnicas é função da marca de CERTIFICAÇÃO (LPI art. 123, II), não da marca COLETIVA (art. 123, III), que identifica produtos provenientes de membros de uma determinada entidade. As demais estão corretas: marca notoriamente conhecida dispensa registro prévio no Brasil (art. 126), alto renome protege em todas as classes (art. 125) e uma empresa pode usar marcas distintas por linha de produto.
+- Explicação: A alternativa b é a INCORRETA por trocar as definições: atestar a conformidade de produtos ou serviços a padrões e especificações técnicas é função da marca de CERTIFICAÇÃO (LPI art. 123, II), não da marca COLETIVA (art. 123, III), que identifica produtos provenientes de membros de uma determinada entidade. As demais estão corretas: marca notoriamente conhecida dispensa registro prévio no Brasil (art. 126), alto renome protege em todas as classes (art. 125) e uma empresa pode usar marcas distintas por linha de produto.
 
-### ENA18-Q13 · marcas
+### ENA18-Q13 · Marca e indicação geográfica
 
 > Acerca de marcas, considere as assertivas abaixo como recomendações para
 > escolha de uma boa marca:
@@ -289,12 +318,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas III e IV estão corretas.
 - **d)** Todas as assertivas estão corretas.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref4-Criando-uma-marca.pdf
-- Justificativa: As quatro assertivas são recomendações consagradas para a escolha de uma marca: busca de anterioridade na base do INPI (I); facilidade de leitura, escrita, soletração e memorização, com adequação aos meios publicitários (II); ausência de conotações indesejáveis no idioma próprio e nos dos mercados-alvo (III); e disponibilidade do nome de domínio correspondente (IV).
+- Explicação: As quatro assertivas são recomendações consagradas para a escolha de uma marca: busca de anterioridade na base do INPI (I); facilidade de leitura, escrita, soletração e memorização, com adequação aos meios publicitários (II); ausência de conotações indesejáveis no idioma próprio e nos dos mercados-alvo (III); e disponibilidade do nome de domínio correspondente (IV).
 
-### ENA18-Q14 · marcas
+### ENA18-Q14 · Marca e indicação geográfica
 
 > Qual alternativa apresenta as principais razões para a recusa de um pedido de
 > registro de marca?
@@ -304,12 +333,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** Termos genéricos, termos descritivos, marcas falaciosas e marcas consideradas contrárias à ordem pública ou à moral.
 - d) Termos administrativos, termos econômicos, marcas falaciosas e marcas consideradas contrárias à ordem pública ou à moral.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref4-Criando-uma-marca.pdf
-- Justificativa: As causas clássicas de recusa são termos genéricos (que designam o próprio produto), termos descritivos (que apenas indicam qualidade ou característica), marcas falaciosas (que induzem o consumidor a erro) e marcas contrárias à ordem pública ou à moral. As demais alternativas substituem um desses itens por 'termos administrativos' ou 'termos econômicos', categorias que não figuram entre os motivos de recusa.
+- Explicação: As causas clássicas de recusa são termos genéricos (que designam o próprio produto), termos descritivos (que apenas indicam qualidade ou característica), marcas falaciosas (que induzem o consumidor a erro) e marcas contrárias à ordem pública ou à moral. As demais alternativas substituem um desses itens por 'termos administrativos' ou 'termos econômicos', categorias que não figuram entre os motivos de recusa.
 
-### ENA18-Q15 · desenho-industrial
+### ENA18-Q15 · Desenho industrial
 
 > Considere as assertivas a seguir acerca de desenho industrial.
 > I-O registro de desenho industrial, como categoria do direito da propriedade
@@ -330,12 +359,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas III e IV estão corretas.
 - **d)** Todas as assertivas estão corretas.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: As quatro assertivas são corretas: o desenho industrial protege a natureza estética do produto acabado, independentemente de aspectos técnicos ou funcionais (I); abrange um espectro amplo de produtos, de mobiliário e instrumentos médicos a estampas têxteis e vestuário esportivo (II); alcança embalagens, recipientes e o feitio dos produtos (III); e admite configurações bi ou tridimensionais, ou combinação de elementos (IV).
+- Explicação: As quatro assertivas são corretas: o desenho industrial protege a natureza estética do produto acabado, independentemente de aspectos técnicos ou funcionais (I); abrange um espectro amplo de produtos, de mobiliário e instrumentos médicos a estampas têxteis e vestuário esportivo (II); alcança embalagens, recipientes e o feitio dos produtos (III); e admite configurações bi ou tridimensionais, ou combinação de elementos (IV).
 
-### ENA18-Q16 · desenho-industrial
+### ENA18-Q16 · Desenho industrial
 
 > Acerca da proteção de desenhos industriais, considere as assertivas a seguir:
 > I- Alguns desenhos podem eventualmente ser considerados obras de arte por
@@ -357,12 +386,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II e III estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: b** (derivada · confiança media)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: I, III e IV são verdadeiras: a cumulação com o direito de autor é possível quando há relevância estética; o registro confere exploração exclusiva, licenciamento e o direito de impedir cópias; e a concessão exclui temporariamente terceiros de fabricar, ofertar, importar, exportar ou vender o produto. II é considerada falsa por dizer marca BIDIMENSIONAL — quando um desenho industrial passa a funcionar como marca no mercado, a proteção cabível é a de marca TRIDIMENSIONAL. Confiança média: desenhos bidimensionais, como estampas, podem de fato ser registrados como marca figurativa.
+- Explicação: I, III e IV são verdadeiras: a cumulação com o direito de autor é possível quando há relevância estética; o registro confere exploração exclusiva, licenciamento e o direito de impedir cópias; e a concessão exclui temporariamente terceiros de fabricar, ofertar, importar, exportar ou vender o produto. II é considerada falsa por dizer marca BIDIMENSIONAL — quando um desenho industrial passa a funcionar como marca no mercado, a proteção cabível é a de marca TRIDIMENSIONAL. Ressalva: desenhos bidimensionais, como estampas, podem de fato ser registrados como marca figurativa.
 
-### ENA18-Q17 · desenho-industrial
+### ENA18-Q17 · Desenho industrial
 
 > Para que possa ser registrado, um desenho industrial deve satisfazer algumas
 > exigências. Qual das alternativas abaixo é uma exigência INCORRETA?
@@ -372,12 +401,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** O desenho industrial deve ser do tipo de fabricação artesanal.
 - d) O desenho industrial deve ser expresso em uma configuração externa de um objeto ou conjunto ornamental de linhas e cores.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: A exigência INCORRETA é a da alternativa c: o desenho industrial deve servir de tipo de fabricação INDUSTRIAL, não artesanal — a possibilidade de reprodução industrial é justamente um dos requisitos legais (LPI art. 95). Novidade (a), originalidade (b) e a expressão em configuração externa ou conjunto ornamental de linhas e cores (d) são exigências corretas.
+- Explicação: A exigência INCORRETA é a da alternativa c: o desenho industrial deve servir de tipo de fabricação INDUSTRIAL, não artesanal — a possibilidade de reprodução industrial é justamente um dos requisitos legais (LPI art. 95). Novidade (a), originalidade (b) e a expressão em configuração externa ou conjunto ornamental de linhas e cores (d) são exigências corretas.
 
-### ENA18-Q18 · desenho-industrial
+### ENA18-Q18 · Desenho industrial
 
 > Considere as assertivas abaixo quanto à exclusão de registro para desenhos
 > industriais, no Brasil.
@@ -396,12 +425,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II e III estão corretas.
 - **d)** Todas as assertivas estão corretas.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: As quatro hipóteses são causas de exclusão do registro: ausência de novidade, originalidade ou de aptidão para servir de tipo de fabricação industrial (I); incorporação de símbolos ou emblemas oficiais protegidos (II); contrariedade à moral, à ordem pública, aos bons costumes ou ofensa à honra, à imagem e à liberdade de crença (III, LPI art. 100, I); e obras de caráter puramente artístico (IV, LPI art. 98).
+- Explicação: As quatro hipóteses são causas de exclusão do registro: ausência de novidade, originalidade ou de aptidão para servir de tipo de fabricação industrial (I); incorporação de símbolos ou emblemas oficiais protegidos (II); contrariedade à moral, à ordem pública, aos bons costumes ou ofensa à honra, à imagem e à liberdade de crença (III, LPI art. 100, I); e obras de caráter puramente artístico (IV, LPI art. 98).
 
-### ENA18-Q19 · desenho-industrial
+### ENA18-Q19 · Desenho industrial
 
 > Qual a alternativa é INCORRETA quanto ao período de graça para desenho
 > industrial?
@@ -411,12 +440,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** Durante o período de graça não se pode comercializar o desenho, senão ele perde o caráter de novidade.
 - d) O criador goza de direitos não exclusivos sobre o desenho durante o período de graça.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: A alternativa c é a INCORRETA porque nega a própria função do instituto: o período de graça existe justamente para que a divulgação feita pelo criador nos 180 dias anteriores ao depósito — inclusive por comercialização — NÃO destrua a novidade. As demais estão corretas: o prazo brasileiro é de 180 dias (a, LPI art. 96 §3º), a exibição em feiras e a publicação em catálogos estão abrangidas (b), e durante o período o criador ainda não detém direitos exclusivos (d).
+- Explicação: A alternativa c é a INCORRETA porque nega a própria função do instituto: o período de graça existe justamente para que a divulgação feita pelo criador nos 180 dias anteriores ao depósito — inclusive por comercialização — NÃO destrua a novidade. As demais estão corretas: o prazo brasileiro é de 180 dias (a, LPI art. 96 §3º), a exibição em feiras e a publicação em catálogos estão abrangidas (b), e durante o período o criador ainda não detém direitos exclusivos (d).
 
-### ENA18-Q20 · desenho-industrial
+### ENA18-Q20 · Transferência de tecnologia
 
 > Com relação ao licenciamento de desenhos industriais, considere as assertivas a
 > seguir:
@@ -440,12 +469,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas III e IV estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: I e III são verdadeiras: o contrato de licença pode delimitar territórios, prazo e tipos de produto, e o licenciamento é fonte suplementar de receita e forma comum de explorar o registro. II é falsa porque licenciar o uso no exterior pressupõe proteção obtida ou ao menos requerida naquele país — sem título, não há direito exclusivo a licenciar. IV é falsa por vedar o que é prática corrente: contratos de desenho industrial frequentemente integram acordos de licença mais amplos sobre o produto.
+- Explicação: I e III são verdadeiras: o contrato de licença pode delimitar territórios, prazo e tipos de produto, e o licenciamento é fonte suplementar de receita e forma comum de explorar o registro. II é falsa porque licenciar o uso no exterior pressupõe proteção obtida ou ao menos requerida naquele país — sem título, não há direito exclusivo a licenciar. IV é falsa por vedar o que é prática corrente: contratos de desenho industrial frequentemente integram acordos de licença mais amplos sobre o produto.
 
-### ENA18-Q21 · desenho-industrial
+### ENA18-Q21 · Desenho industrial
 
 > Considere as assertivas abaixo acerca de proteção de desenho industrial.
 > I- Para obter o registro do seu desenho nos países de interesse, o depositante deve
@@ -466,12 +495,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II e III estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: I, II e IV são verdadeiras: as taxas oficiais somam-se aos honorários do agente de PI, um desenho que funcione como sinal distintivo pode ser protegido como marca tridimensional, e a marca é renovável indefinidamente enquanto o desenho industrial tem prazo determinado. III é falsa pela expressão 'em todos os países': a cumulação entre registro de desenho industrial e direito de autor varia conforme a legislação de cada jurisdição.
+- Explicação: I, II e IV são verdadeiras: as taxas oficiais somam-se aos honorários do agente de PI, um desenho que funcione como sinal distintivo pode ser protegido como marca tridimensional, e a marca é renovável indefinidamente enquanto o desenho industrial tem prazo determinado. III é falsa pela expressão 'em todos os países': a cumulação entre registro de desenho industrial e direito de autor varia conforme a legislação de cada jurisdição.
 
-### ENA18-Q22 · patentes
+### ENA18-Q22 · Patente
 
 > Considere as assertivas abaixo acerca de patentes.
 > I- Uma patente é um direito exclusivo concedido pelo Estado, relativo a uma
@@ -489,12 +518,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II, III e IV estão corretas.
 - **d)** Todas as assertivas estão corretas.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: As quatro assertivas são corretas: a patente é direito exclusivo outorgado pelo Estado sobre invenção ou modelo de utilidade (I); os requisitos são novidade, atividade ou ato inventivo e aplicação industrial (II); o título confere exclusividade de exploração econômica (III); e permite impedir que terceiros fabriquem o produto sem autorização prévia e expressa (IV).
+- Explicação: As quatro assertivas são corretas: a patente é direito exclusivo outorgado pelo Estado sobre invenção ou modelo de utilidade (I); os requisitos são novidade, atividade ou ato inventivo e aplicação industrial (II); o título confere exclusividade de exploração econômica (III); e permite impedir que terceiros fabriquem o produto sem autorização prévia e expressa (IV).
 
-### ENA18-Q23 · patentes
+### ENA18-Q23 · Patente
 
 > Considere as assertivas abaixo acerca de patentes.
 > I- Um produto complexo pode incorporar várias invenções cobertas por diversas
@@ -514,12 +543,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II, III e IV estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: I, II e IV são verdadeiras: um produto complexo pode reunir patentes de titulares diversos; a patente de invenção vigora por 20 anos do depósito ou 10 anos da concessão, o que for maior (regra do parágrafo único do art. 40 da LPI, vigente à época da prova); e a suficiência descritiva é a contrapartida da exclusividade. III é falsa no prazo mínimo: para modelo de utilidade a lei fixa 15 anos do depósito ou 7 anos da concessão, não 10.
+- Explicação: I, II e IV são verdadeiras: um produto complexo pode reunir patentes de titulares diversos; a patente de invenção vigora por 20 anos do depósito ou 10 anos da concessão, o que for maior (regra do parágrafo único do art. 40 da LPI, vigente à época da prova); e a suficiência descritiva é a contrapartida da exclusividade. III é falsa no prazo mínimo: para modelo de utilidade a lei fixa 15 anos do depósito ou 7 anos da concessão, não 10.
 
-### ENA18-Q24 · patentes
+### ENA18-Q24 · Patente
 
 > Considere as assertivas abaixo acerca de patentes de invenção.
 > I- Uma invenção pode definida como uma criação intelectual que objetiva
@@ -539,12 +568,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas III e IV estão corretas.
 - **d)** Todas as assertivas estão corretas.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: As quatro assertivas são corretas: a invenção é criação intelectual que dá solução nova e inventiva a um problema técnico (I), podendo consistir em dispositivo, produto, método ou processo inteiramente novo (II) ou em melhoramento incremental de produto ou processo conhecido (III); e a mera descoberta do que já existe na natureza não é invenção sem a intervenção inventiva humana materializada em produto ou processo (IV).
+- Explicação: As quatro assertivas são corretas: a invenção é criação intelectual que dá solução nova e inventiva a um problema técnico (I), podendo consistir em dispositivo, produto, método ou processo inteiramente novo (II) ou em melhoramento incremental de produto ou processo conhecido (III); e a mera descoberta do que já existe na natureza não é invenção sem a intervenção inventiva humana materializada em produto ou processo (IV).
 
-### ENA18-Q25 · patentes
+### ENA18-Q25 · Patente
 
 > Considere as assertivas abaixo acerca de patentes de modelo de utilidade.
 > I- O modelo de utilidade é considerado o objeto de uso prático ou parte deste,
@@ -566,12 +595,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II e IV estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: I, III e IV são verdadeiras e convergem para a definição legal do modelo de utilidade (LPI art. 9º): objeto de uso prático, com nova forma ou disposição, envolvendo ato inventivo que resulte em melhoria funcional de uso ou fabricação, aplicável a aperfeiçoamentos incrementais. II é falsa porque descreve o DESENHO INDUSTRIAL: exclusividade de elementos ornamentais ou estéticos com resultado visual novo e original.
+- Explicação: I, III e IV são verdadeiras e convergem para a definição legal do modelo de utilidade (LPI art. 9º): objeto de uso prático, com nova forma ou disposição, envolvendo ato inventivo que resulte em melhoria funcional de uso ou fabricação, aplicável a aperfeiçoamentos incrementais. II é falsa porque descreve o DESENHO INDUSTRIAL: exclusividade de elementos ornamentais ou estéticos com resultado visual novo e original.
 
-### ENA18-Q26 · propriedade-intelectual
+### ENA18-Q26 · Sistema de PI
 
 > Uma forma de proteção industrial é o segredo de negócio. Considere as assertivas
 > abaixo acerca das vantagens de segredo de negócio:
@@ -587,12 +616,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II e IV estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: I, II e IV são vantagens reais do segredo de negócio: dispensa custos de registro, não exige divulgação do conteúdo e não tem prazo de expiração. III é falsa: o segredo não depende de registro em cartório — protege-se pelo próprio sigilo e pela repressão à concorrência desleal. V é falsa por inversão: a proteção do segredo tem efeito IMEDIATO, o que é justamente uma de suas vantagens frente à patente.
+- Explicação: I, II e IV são vantagens reais do segredo de negócio: dispensa custos de registro, não exige divulgação do conteúdo e não tem prazo de expiração. III é falsa: o segredo não depende de registro em cartório — protege-se pelo próprio sigilo e pela repressão à concorrência desleal. V é falsa por inversão: a proteção do segredo tem efeito IMEDIATO, o que é justamente uma de suas vantagens frente à patente.
 
-### ENA18-Q27 · propriedade-intelectual
+### ENA18-Q27 · Sistema de PI
 
 > Ainda sobre segredo de negócio, considere as assertivas abaixo acerca das
 > desvantagens deste tipo de proteção:
@@ -613,12 +642,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II e IV estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: I, II e III são desvantagens efetivas: o segredo incorporado a produto pode ser reconstruído por engenharia reversa, a proteção só alcança a obtenção, uso ou divulgação INDEVIDA, e uma vez tornado público qualquer um pode usá-lo livremente. IV é falsa por inversão: um terceiro que chegue à mesma invenção de forma independente e lícita PODE patenteá-la — risco que é, ele próprio, uma desvantagem do segredo.
+- Explicação: I, II e III são desvantagens efetivas: o segredo incorporado a produto pode ser reconstruído por engenharia reversa, a proteção só alcança a obtenção, uso ou divulgação INDEVIDA, e uma vez tornado público qualquer um pode usá-lo livremente. IV é falsa por inversão: um terceiro que chegue à mesma invenção de forma independente e lícita PODE patenteá-la — risco que é, ele próprio, uma desvantagem do segredo.
 
-### ENA18-Q28 · patentes
+### ENA18-Q28 · Patente
 
 > Considere as assertivas acerca das características das patentes de modelo de
 > utilidade.
@@ -637,12 +666,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II, III e IV estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: I e III são verdadeiras: para o modelo de utilidade a exigência inventiva é menos rigorosa que a da patente de invenção, e o trâmite de concessão é mais rápido e simples. II é falsa pelo 'sempre... independente do período de concessão': como o prazo pode ser contado da concessão, um MU concedido tardiamente pode ultrapassar a vigência de uma invenção concedida cedo. IV é falsa: a conversão entre pedido de modelo de utilidade e de invenção é admitida.
+- Explicação: I e III são verdadeiras: para o modelo de utilidade a exigência inventiva é menos rigorosa que a da patente de invenção, e o trâmite de concessão é mais rápido e simples. II é falsa pelo 'sempre... independente do período de concessão': como o prazo pode ser contado da concessão, um MU concedido tardiamente pode ultrapassar a vigência de uma invenção concedida cedo. IV é falsa: a conversão entre pedido de modelo de utilidade e de invenção é admitida.
 
-### ENA18-Q29 · patentes
+### ENA18-Q29 · Patente
 
 > Assinale a alternativa que contém itens que podem ser considerados para efeito de
 > patentes de invenções ou patentes de modelos de utilidade:
@@ -652,12 +681,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** Organismos geneticamente modificados.
 - d) Obras literárias.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: Organismos geneticamente modificados são a única categoria com espaço de patenteabilidade: a LPI veda patentear seres vivos, mas excetua expressamente os microrganismos transgênicos que atendam aos requisitos legais (art. 18, III). Regras de jogos (a) e projetos arquitetônicos (b) estão entre as exclusões do art. 10, e obras literárias (d) pertencem ao regime do direito de autor.
+- Explicação: Organismos geneticamente modificados são a única categoria com espaço de patenteabilidade: a LPI veda patentear seres vivos, mas excetua expressamente os microrganismos transgênicos que atendam aos requisitos legais (art. 18, III). Regras de jogos (a) e projetos arquitetônicos (b) estão entre as exclusões do art. 10, e obras literárias (d) pertencem ao regime do direito de autor.
 
-### ENA18-Q30 · patentes
+### ENA18-Q30 · Patente
 
 > Um requisito para patenteamento é a existência de atividade ou ato inventivo. Qual
 > a alternativa correta sobre atividade ou ato inventivo?
@@ -667,12 +696,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Considera-se que existe ato inventivo quando são realizadas pequenas modificações na forma ou disposição do objeto que são vulgares e resultam em objetos tendo a mesma melhoria funcional de objetos conhecidos do estado da técnica.
 - d) Considera-se que existe ato inventivo quando uma pessoa qualificada na área em questão pode facilmente elaborar o invento a partir do que já existe no estado da técnica.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: A alternativa b reproduz a definição legal de ATO inventivo, próprio do modelo de utilidade (LPI art. 14): a modificação resulta em melhoria funcional no uso ou na fabricação do objeto. As demais são falsas por inverterem o critério de não obviedade: há atividade inventiva quando a solução NÃO é evidente (a) e NÃO pode ser facilmente elaborada (d) por técnico no assunto; e modificações vulgares sem ganho funcional novo (c) não configuram ato inventivo.
+- Explicação: A alternativa b reproduz a definição legal de ATO inventivo, próprio do modelo de utilidade (LPI art. 14): a modificação resulta em melhoria funcional no uso ou na fabricação do objeto. As demais são falsas por inverterem o critério de não obviedade: há atividade inventiva quando a solução NÃO é evidente (a) e NÃO pode ser facilmente elaborada (d) por técnico no assunto; e modificações vulgares sem ganho funcional novo (c) não configuram ato inventivo.
 
-### ENA18-Q31 · patentes
+### ENA18-Q31 · Patente
 
 > Acerca do depósito de patente de invenção ou modelo de utilidade, qual a
 > alternativa INCORRETA?
@@ -682,12 +711,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** É considerado como titular a pessoa jurídica que concebe a invenção.
 - d) É considerado como detentor a pessoa jurídica que deposita a invenção.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: A alternativa c é a INCORRETA: pessoa jurídica não concebe invenção — a concepção é sempre ato de pessoa física. A pessoa jurídica pode ser TITULAR dos direitos, mas não inventora. As demais estão corretas ao distinguir inventor (quem concebe), inventor-detentor (quem concebe e deposita) e detentor (pessoa jurídica que deposita).
+- Explicação: A alternativa c é a INCORRETA: pessoa jurídica não concebe invenção — a concepção é sempre ato de pessoa física. A pessoa jurídica pode ser TITULAR dos direitos, mas não inventora. As demais estão corretas ao distinguir inventor (quem concebe), inventor-detentor (quem concebe e deposita) e detentor (pessoa jurídica que deposita).
 
-### ENA18-Q32 · patentes
+### ENA18-Q32 · Informação tecnológica
 
 > Considere as assertivas a seguir acerca de informações úteis que podem ser
 > obtidas em bases de dados sobre patentes:
@@ -705,12 +734,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** Apenas 6 estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: Seis das sete assertivas descrevem informações efetivamente extraíveis de bases de patentes: concorrentes atuais e futuros, tendências tecnológicas, tecnologias licenciáveis, nichos de mercado, patentes expiradas em domínio público e possibilidades de desenvolvimento sobre tecnologias existentes. A exceção é VI: documentos de patente não trazem informações sobre o capital das empresas depositantes, que pertencem a fontes societárias e financeiras.
+- Explicação: Seis das sete assertivas descrevem informações efetivamente extraíveis de bases de patentes: concorrentes atuais e futuros, tendências tecnológicas, tecnologias licenciáveis, nichos de mercado, patentes expiradas em domínio público e possibilidades de desenvolvimento sobre tecnologias existentes. A exceção é VI: documentos de patente não trazem informações sobre o capital das empresas depositantes, que pertencem a fontes societárias e financeiras.
 
-### ENA18-Q33 · patentes
+### ENA18-Q33 · Informação tecnológica
 
 > A Classificação Internacional de Patentes (IPC) é um sistema de classificação
 > hierárquico adotado por vários países, inclusive o Brasil, e consiste em 8 seções
@@ -722,12 +751,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** Administração; Contabilidade.
 - d) Engenharia Mecânica; Iluminação; Aquecimento; Armas; Dinamitação.
 
-**Resposta: c** (derivada · confiança media)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: Necessidades Humanas (a), Química e Metalurgia (b) e Engenharia Mecânica, Iluminação, Aquecimento, Armas e Dinamitação (d) são as seções A, C e F da IPC. 'Administração; Contabilidade' não figura nesse nível: corresponde à subclasse G06Q, dentro da seção G (Física). É, portanto, a alternativa que não pertence ao mesmo nível hierárquico das demais. Confiança média: o enunciado usa 'Classe' para o que a IPC denomina Seção.
+- Explicação: Necessidades Humanas (a), Química e Metalurgia (b) e Engenharia Mecânica, Iluminação, Aquecimento, Armas e Dinamitação (d) são as seções A, C e F da IPC. 'Administração; Contabilidade' não figura nesse nível: corresponde à subclasse G06Q, dentro da seção G (Física). É, portanto, a alternativa que não pertence ao mesmo nível hierárquico das demais. Ressalva: o enunciado usa 'Classe' para o que a IPC denomina Seção.
 
-### ENA18-Q34 · patentes
+### ENA18-Q34 · Patente
 
 > No Brasil, o processamento de pedidos de patente no INPI obedece a seguinte
 > sequência:
@@ -737,12 +766,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Exame formal, Exame substantivo, Pesquisa, Oposição, Publicação, Concessão.
 - d) Pesquisa, Exame substantivo, Exame formal, Publicação, Concessão, Oposição.
 
-**Resposta: b** (derivada · confiança media)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: Entre as sequências oferecidas, b é a única que preserva a ordem lógica do trâmite: o exame FORMAL antecede qualquer análise de mérito, seguindo-se a pesquisa de anterioridade e o exame substantivo até a decisão. As demais invertem essa ordem, colocando a pesquisa ou o exame substantivo antes do exame formal, ou situando a oposição depois da concessão. Confiança média: nenhuma alternativa reflete com exatidão o rito da LPI, em que a publicação ocorre aos 18 meses, antes do exame substantivo.
+- Explicação: Entre as sequências oferecidas, b é a única que preserva a ordem lógica do trâmite: o exame FORMAL antecede qualquer análise de mérito, seguindo-se a pesquisa de anterioridade e o exame substantivo até a decisão. As demais invertem essa ordem, colocando a pesquisa ou o exame substantivo antes do exame formal, ou situando a oposição depois da concessão. Ressalva: nenhuma alternativa reflete com exatidão o rito da LPI, em que a publicação ocorre aos 18 meses, antes do exame substantivo.
 
-### ENA18-Q35 · patentes
+### ENA18-Q35 · Patente
 
 > O pedido de patente de invenção, nas condições estabelecidas pelo INPI, deve
 > conter os seguintes itens:
@@ -752,12 +781,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Introdução, relatório descritivo, desenhos (se for o caso) e resumo.
 - d) Introdução, metodologia, relatório descritivo, reivindicações, desenhos (se for o caso).
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: O art. 19 da LPI determina que o pedido de patente, nas condições estabelecidas pelo INPI, contenha requerimento, relatório descritivo, reivindicações, desenhos (se for o caso), resumo e comprovante de pagamento da retribuição. As demais alternativas substituem essas peças por seções de trabalho acadêmico — introdução e metodologia —, estranhas ao documento de patente.
+- Explicação: O art. 19 da LPI determina que o pedido de patente, nas condições estabelecidas pelo INPI, contenha requerimento, relatório descritivo, reivindicações, desenhos (se for o caso), resumo e comprovante de pagamento da retribuição. As demais alternativas substituem essas peças por seções de trabalho acadêmico — introdução e metodologia —, estranhas ao documento de patente.
 
-### ENA18-Q36 · patentes
+### ENA18-Q36 · Transferência de tecnologia
 
 > Considere as assertivas a seguir sobre o licenciamento de patentes.
 > I-Uma licença de patente é concedida quando o titular da patente autoriza outra
@@ -779,12 +808,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Apenas as assertivas II, III e IV estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: I, III e IV são verdadeiras: a licença decorre de autorização do titular mediante acordo; na licença não exclusiva vários licenciados e o próprio titular podem explorar a tecnologia; e o licenciamento é especialmente útil quando o titular não consegue fabricar em quantidade suficiente ou cobrir determinada área geográfica. II é autocontraditória: se a licença é exclusiva, apenas o licenciado explora — não há como assegurar simultaneamente a exploração pelo titular.
+- Explicação: I, III e IV são verdadeiras: a licença decorre de autorização do titular mediante acordo; na licença não exclusiva vários licenciados e o próprio titular podem explorar a tecnologia; e o licenciamento é especialmente útil quando o titular não consegue fabricar em quantidade suficiente ou cobrir determinada área geográfica. II é autocontraditória: se a licença é exclusiva, apenas o licenciado explora — não há como assegurar simultaneamente a exploração pelo titular.
 
-### ENA18-Q37 · direito-autoral
+### ENA18-Q37 · Direito autoral
 
 > Assinale a alternativa que apresenta itens passíveis de proteção pelo Direito de
 > Autor.
@@ -794,12 +823,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** As conferências, alocuções, sermões e outras obras da mesma natureza.
 - d) Os calendários e as agendas.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: As conferências, alocuções, sermões e obras da mesma natureza estão expressamente entre as obras protegidas (Lei 9.610/1998, art. 7º, II). As outras três constam do rol de exclusões do art. 8º: textos de tratados e convenções (inciso IV), formulários em branco e suas instruções (inciso III) e informações de uso comum como calendários e agendas (inciso V).
+- Explicação: As conferências, alocuções, sermões e obras da mesma natureza estão expressamente entre as obras protegidas (Lei 9.610/1998, art. 7º, II). As outras três constam do rol de exclusões do art. 8º: textos de tratados e convenções (inciso IV), formulários em branco e suas instruções (inciso III) e informações de uso comum como calendários e agendas (inciso V).
 
-### ENA18-Q38 · direito-autoral
+### ENA18-Q38 · Direito autoral
 
 > Com relação aos direitos morais, é INCORRETO afirmar que:
 
@@ -808,12 +837,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) São irrenunciáveis: mesmo que queira, o autor não pode renegá-los.
 - d) São imprescritíveis: duram para todo o sempre, mesmo depois da morte do autor.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: A alternativa a é a INCORRETA: os direitos morais são INDEPENDENTES dos patrimoniais — subsistem ainda que o autor ceda integralmente a exploração econômica da obra. As demais descrevem corretamente seus atributos: inalienáveis e intransmissíveis (b), irrenunciáveis (c) e imprescritíveis, persistindo após a morte do autor, quando passam a ser exercidos pelos sucessores (d).
+- Explicação: A alternativa a é a INCORRETA: os direitos morais são INDEPENDENTES dos patrimoniais — subsistem ainda que o autor ceda integralmente a exploração econômica da obra. As demais descrevem corretamente seus atributos: inalienáveis e intransmissíveis (b), irrenunciáveis (c) e imprescritíveis, persistindo após a morte do autor, quando passam a ser exercidos pelos sucessores (d).
 
-### ENA18-Q39 · direito-autoral
+### ENA18-Q39 · Direito autoral
 
 > No âmbito do Direito do Autor, aplica-se o Direito Conexo para os seguintes casos,
 > EXCETO:
@@ -823,12 +852,12 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - **c)** Direitos dos revendedores de mídias fonográficas e películas.
 - d) Direitos das empresas de radiodifusão sobre as suas emissões.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: Os direitos conexos alcançam três categorias, todas presentes nas alternativas a, b e d: artistas intérpretes ou executantes, produtores de fonogramas e empresas de radiodifusão quanto às suas emissões (Lei 9.610/1998, art. 89). Revendedores de mídias fonográficas e películas (c) são meros distribuidores comerciais, sem titularidade conexa sobre a obra.
+- Explicação: Os direitos conexos alcançam três categorias, todas presentes nas alternativas a, b e d: artistas intérpretes ou executantes, produtores de fonogramas e empresas de radiodifusão quanto às suas emissões (Lei 9.610/1998, art. 89). Revendedores de mídias fonográficas e películas (c) são meros distribuidores comerciais, sem titularidade conexa sobre a obra.
 
-### ENA18-Q40 · cultivares
+### ENA18-Q40 · Cultivar
 
 > Assinale a alternativa INCORRETA quando às necessidades para atendimento de
 > registro de cultivar.
@@ -838,10 +867,10 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 - c) Ser homogênea, significando que as plantas de uma variedade devem ser todas iguais ou muito semelhantes, salvo as variações previsíveis tendo em conta as particularidades de sua multiplicação ou reprodução.
 - d) Ser estável, significando que a variedade deve permanecer sem modificações nas suas características relevantes após sucessivas reproduções ou multiplicações.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: A alternativa a é a INCORRETA por errar os prazos de novidade comercial. A Lei 9.456/1997 exige, para a cultivar ser nova, que não tenha sido oferecida à venda no Brasil há mais de 12 meses e no exterior há mais de 6 anos para espécies arbóreas e videiras, ou 4 anos para as demais — e não '10 anos no exterior e 5 no Brasil'. Distintividade (b), homogeneidade (c) e estabilidade (d) estão corretamente enunciadas.
+- Explicação: A alternativa a é a INCORRETA por errar os prazos de novidade comercial. A Lei 9.456/1997 exige, para a cultivar ser nova, que não tenha sido oferecida à venda no Brasil há mais de 12 meses e no exterior há mais de 6 anos para espécies arbóreas e videiras, ou 4 anos para as demais — e não '10 anos no exterior e 5 no Brasil'. Distintividade (b), homogeneidade (c) e estabilidade (d) estão corretamente enunciadas.
 
 ---
 
@@ -849,28 +878,28 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · respostas derivadas
 
 Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 
-### ENA25-Q01 · patentes
+### ENA25-Q01 · Sistema de PI
 
 > Considere as assertivas a seguir, relacionadas ao funcionamento do sistema patentário
 > global:
-> I.      A Organização Mundial da Propriedade Intelectual administra o Tratado de
+> I. A Organização Mundial da Propriedade Intelectual administra o Tratado de
 > Cooperação de Patentes (PCT), o qual tem como prerrogativa que os estados
 > membros deste tratado sejam membros da Convenção da União de Paris (CUP).
-> II.       O PCT permite que um pedido de patente tenha efeito de múltiplos depósitos
+> II. O PCT permite que um pedido de patente tenha efeito de múltiplos depósitos
 > simultâneos para quaisquer países ou em todos os países membros do PCT ou
 > escritório regional, caso seja contratante do PCT. É um pedido internacional de
 > depósito de patente.
-> III.      Por força do acordo PCT, os países membros se obrigam a considerar a data do
+> III. Por força do acordo PCT, os países membros se obrigam a considerar a data do
 > pedido internacional como a data de depósito de pedido de patente em cada
 > Estado membro.
-> IV.       A fase nacional se destina a confirmação dos países onde realmente se busca a
+> IV. A fase nacional se destina a confirmação dos países onde realmente se busca a
 > proteção. O período de prioridade unionista assegura que a data de depósito do
 > primeiro pedido reivindicada no território do país membro de CUP seja
 > considerada como a data de apresentação do pedido na fase nacional.
-> V.        A fase internacional do PCT é a fase relativa ao depósito do pedido internacional,
+> V. A fase internacional do PCT é a fase relativa ao depósito do pedido internacional,
 > em que os requerentes dos Estados membros gozam do período de prioridade
 > unionista de 30 meses para sua solicitação.
-> VI.       O processamento do pedido para o ingresso na fase nacional é de 18 meses, além
+> VI. O processamento do pedido para o ingresso na fase nacional é de 18 meses, além
 > dos 12 meses requeridos pela prioridade unionista.
 > Das assertivas apresentadas:
 
@@ -879,22 +908,24 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - **c)** Apenas cinco assertivas estão corretas
 - d) Todas as assertivas estão corretas
 
-**Resposta: c** (oficial)
+**Resposta: c** (gabarito oficial)
 
-### ENA25-Q02 · marcas
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q02 · Marca e indicação geográfica
 
 > Considere as assertivas a seguir, relacionadas às marcas e sua proteção:
-> I.   Qualquer sinal capaz de distinguir bens ou serviços pode ser usado como marca,
+> I. Qualquer sinal capaz de distinguir bens ou serviços pode ser usado como marca,
 > sejam palavras, nomes, letras, numerais, desenhos, imagens, formas, cores,
 > rótulos ou qualquer combinação destes.
-> II.    Em nenhum país os lemas, slogans publicitários e títulos podem constituir uma
+> II. Em nenhum país os lemas, slogans publicitários e títulos podem constituir uma
 > marca registrada.
-> III.   Uma marca registrada pode ser composta apenas por palavras, letras, número
+> III. Uma marca registrada pode ser composta apenas por palavras, letras, número
 > ou uma combinação destes.
-> IV.    Por vezes, letras, números e slogans que carecem de caráter distintivo podem
+> IV. Por vezes, letras, números e slogans que carecem de caráter distintivo podem
 > ser difíceis de registrar isoladamente, mas podem ser protegidos se registrados
 > em conjunto com um elemento figurativo distintivo.
-> V.     As marcas registradas são um dos mais valiosos e duradouros ativos comerciais,
+> V. As marcas registradas são um dos mais valiosos e duradouros ativos comerciais,
 > com duração de 20 anos.
 >
 > Das assertivas apresentadas:
@@ -904,24 +935,26 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) Apenas quatro assertivas estão corretas
 - d) Todas as assertivas estão corretas
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA25-Q03 · marcas
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q03 · Marca e indicação geográfica
 
 > Considere as assertivas a seguir, relacionadas às marcas:
-> I.   Uma marca coletiva é, em geral, detida por uma associação ou cooperativa cujos
+> I. Uma marca coletiva é, em geral, detida por uma associação ou cooperativa cujos
 > membros podem utilizar a marca coletiva para vender seus produtos.
-> II.    A lei sobre as marcas confere proteção às marcas registradas que têm um caráter
+> II. A lei sobre as marcas confere proteção às marcas registradas que têm um caráter
 > distintivo, referindo-se à facilidade com que os clientes identificam uma marca
 > com os produtos associados a ela.
-> III.   Marcas distintivas são chamadas, por vezes, de marcas associativistas e
+> III. Marcas distintivas são chamadas, por vezes, de marcas associativistas e
 > solidárias.
-> IV.    Marcas inventadas ou fantasiosas, sem nenhum significado real, jamais podem
+> IV. Marcas inventadas ou fantasiosas, sem nenhum significado real, jamais podem
 > ser protegidas.
-> V.     Marcas evocativas são aquelas que dão a entender a natureza, qualidade ou
+> V. Marcas evocativas são aquelas que dão a entender a natureza, qualidade ou
 > atributos de um produto, sem descrevê-las. O consumidor tem que fazer uso da
 > sua imaginação para identificá-las.
-> VI.    Sinais genéricos são palavras ou sinais que dão nome à espécie ou ao objeto a
+> VI. Sinais genéricos são palavras ou sinais que dão nome à espécie ou ao objeto a
 > que se aplicam. Têm forte caráter distintivo e são passíveis de receber proteção
 > como marcas registradas.
 >
@@ -932,18 +965,20 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) Apenas quatro assertivas estão corretas
 - d) Todas as assertivas estão corretas
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA25-Q04 · marcas
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q04 · Marca e indicação geográfica
 
 > Considere as assertivas a seguir, relacionadas ao indeferimento de marcas:
-> I.      Marcas que usam termos genéricos não podem ser registradas.
-> II.      Marcas que não tem sinais distintivos claros não podem ser registradas.
-> III.      Os slogans publicitários são geralmente rejeitados por falta de carácter
+> I. Marcas que usam termos genéricos não podem ser registradas.
+> II. Marcas que não tem sinais distintivos claros não podem ser registradas.
+> III. Os slogans publicitários são geralmente rejeitados por falta de carácter
 > distintivo.
-> IV.       Marcas baseadas em nomes próprios/sobrenomes/apelidos de uma pessoa
+> IV. Marcas baseadas em nomes próprios/sobrenomes/apelidos de uma pessoa
 > física não podem ser registrados por pessoas jurídicas.
-> V.        Sinais enganosos geralmente têm indeferido o pedido de registro como marca,
+> V. Sinais enganosos geralmente têm indeferido o pedido de registro como marca,
 > pois podem induzir o consumidor a confundir-se com a natureza, qualidade ou
 > origem geográfica de um produto.
 > Das assertivas apresentadas:
@@ -953,20 +988,22 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - **c)** Apenas quatro assertivas estão corretas
 - d) Todas as assertivas estão corretas
 
-**Resposta: c** (oficial)
+**Resposta: c** (gabarito oficial)
 
-### ENA25-Q05 · direito-autoral
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q05 · Direito autoral
 
 > Considere as assertivas a seguir quanto à proteção pelo Direito de Autor:
-> I.      As ideias, os processos, os sistemas, os métodos operacionais, os conceitos, os
+> I. As ideias, os processos, os sistemas, os métodos operacionais, os conceitos, os
 > princípios ou as descobertas, por si só e enquanto tais, não podem ser
 > protegidos.
-> II.       Os títulos não originais de uma obra, que se confundem com o título de qualquer
+> II. Os títulos não originais de uma obra, que se confundem com o título de qualquer
 > outra obra do mesmo gênero de outro autor, anteriormente divulgada ou
 > publicada, podem ser protegidos.
-> III.      Os textos de tratados ou convenções, leis, decretos, regulamentos, decisões
+> III. Os textos de tratados ou convenções, leis, decretos, regulamentos, decisões
 > judiciais e demais atos oficiais, não podem ser protegidos.
-> IV.       Os formulários em branco para serem preenchidos por qualquer tipo de
+> IV. Os formulários em branco para serem preenchidos por qualquer tipo de
 > informação, científica ou não, e suas instruções, não podem ser protegidos.
 >
 > Das assertivas apresentadas:
@@ -976,24 +1013,26 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) Apenas uma assertiva está correta
 - d) Todas as assertivas estão corretas
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA25-Q06 · inovacao
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q06 · Inovação
 
 > Considere as assertivas a seguir quanto aos tipos de inovação listados no Manual de
 > Oslo.
-> I.      Inovações de produto envolvem mudanças significativas nas potencialidades de
+> I. Inovações de produto envolvem mudanças significativas nas potencialidades de
 > produtos e serviços.
-> II.      Inovações de processo representam mudanças significativas nos métodos de
+> II. Inovações de processo representam mudanças significativas nos métodos de
 > produção e de distribuição.
-> III.      As inovações organizacionais referem-se à implementação de novos métodos
+> III. As inovações organizacionais referem-se à implementação de novos métodos
 > organizacionais, tais como mudanças em práticas de negócios, na organização
 > do local de trabalho ou nas relações externas da empresa.
-> IV.       As inovações de marketing envolvem a implementação de novos métodos de
+> IV. As inovações de marketing envolvem a implementação de novos métodos de
 > marketing, incluindo mudanças no design do produto e na embalagem, na
 > promoção do produto e sua colocação, e em métodos de estabelecimento de
 > preços de bens e de serviços.
-> V.        As inovações de competitividade envolvem o aumento do faturamento de uma
+> V. As inovações de competitividade envolvem o aumento do faturamento de uma
 > empresa líder de mercado, mesmo que implantada numa região periférica
 >
 > Das assertivas apresentadas:
@@ -1003,19 +1042,21 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) Apenas três assertivas estão corretas
 - d) Todas as assertivas estão corretas
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA25-Q07 · inovacao
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q07 · Inovação
 
 > Considere as assertivas a seguir acerca dos tipos de inovação caracterizados por
 > Schumpeter.
-> I.      Introdução de novos produtos.
-> II.      Introdução de novos métodos de produção.
-> III.      Abertura de novos mercados.
-> IV.       Desenvolvimento de novas fontes provedoras de matérias-primas e outros
+> I. Introdução de novos produtos.
+> II. Introdução de novos métodos de produção.
+> III. Abertura de novos mercados.
+> IV. Desenvolvimento de novas fontes provedoras de matérias-primas e outros
 > insumos.
-> V.        Desenvolvimento de novas fontes de investimento ou de financiamento.
-> VI.       Criação de novas estruturas de mercado.
+> V. Desenvolvimento de novas fontes de investimento ou de financiamento.
+> VI. Criação de novas estruturas de mercado.
 > Das assertivas apresentadas:
 
 - **a)** Apenas cinco assertivas estão corretas
@@ -1023,18 +1064,20 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) Apenas quatro assertivas estão corretas
 - d) Todas as assertivas estão corretas
 
-**Resposta: a** (oficial)
+**Resposta: a** (gabarito oficial)
 
-### ENA25-Q08 · patentes
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q08 · Patente
 
 > Considere os aspectos da proteção legal conferida pela patente e as assertivas a seguir:
-> I.      É um título outorgado pelo Estado que concede a exclusividade de exploração
+> I. É um título outorgado pelo Estado que concede a exclusividade de exploração
 > da invenção ou aperfeiçoamento tecnológico aos titulares do direito por um
 > período indeterminado.
-> II.      O titular da patente concedida não tem direito de impedir terceiros de colocar à
+> II. O titular da patente concedida não tem direito de impedir terceiros de colocar à
 > venda, vender ou importar o seu invento tecnológico.
-> III.      No Brasil, há duas modalidades de proteção por patentes.
-> IV.       As duas modalidades de patentes são: patente de invenção e patente de modelo
+> III. No Brasil, há duas modalidades de proteção por patentes.
+> IV. As duas modalidades de patentes são: patente de invenção e patente de modelo
 > de utilidade.
 > Das assertivas apresentadas:
 
@@ -1043,16 +1086,25 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - **c)** Apenas duas assertivas estão corretas
 - d) Apenas uma assertiva está incorreta
 
-**Resposta: c** (oficial)
+**Resposta: c** (gabarito oficial)
 
-### ENA25-Q09 · marcas
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q09 · Marca e indicação geográfica
 
 > Associe a primeira com a segunda coluna:
 >
-> 1- Marca Tridimensional               ( ) Combinação de letras com logotipo
-> 2- Marca Figurativa                   ( ) Formato do produto
-> 3- Marca Nominativa                   ( ) Logotipo
-> 4- Marca Mista                        ( ) Palavra
+> Primeira coluna:
+> 1- Marca Tridimensional
+> 2- Marca Figurativa
+> 3- Marca Nominativa
+> 4- Marca Mista
+>
+> Segunda coluna:
+> ( ) Combinação de letras com logotipo
+> ( ) Formato do produto
+> ( ) Logotipo
+> ( ) Palavra
 >
 > A ordem CORRETA da segunda coluna é:
 
@@ -1061,9 +1113,11 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) 3, 1, 4 e 2.
 - **d)** 4, 1, 2 e 3.
 
-**Resposta: d** (oficial)
+**Resposta: d** (gabarito oficial)
 
-### ENA25-Q10 · desenho-industrial
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q10 · Desenho industrial
 
 > De maneira geral, sobre desenho industrial, é CORRETO afirmar:
 
@@ -1072,9 +1126,11 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) O certificado de registro do desenho industrial, que é fornecido mediante proteção de acordo com a legislação sobre desenhos industriais, porém não garante direitos exclusivos.
 - d) No Brasil, o pedido de registro de desenho industrial poderá referir-se a vários objetos, desde que se destinem ao mesmo propósito e guardem entre si a mesma característica distintiva preponderante.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA25-Q11 · marcas
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q11 · Marca e indicação geográfica
 
 > NÃO se incluem como os direitos conferidos ao titular da marca:
 
@@ -1083,23 +1139,25 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) Impedir o seu uso não autorizado.
 - d) Explorá-lo de forma exclusiva.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA25-Q12 · cultivares
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q12 · Cultivar
 
 > Com relação à Proteção de Cultivares, analise as informações apresentadas:
-> I.      No Brasil, uma obtenção vegetal para ser protegida deve ser nova, significando
+> I. No Brasil, uma obtenção vegetal para ser protegida deve ser nova, significando
 > que não tenha sido comercialmente explorada no exterior nos últimos quatro
 > anos e no Brasil no último ano, ser distintiva, homogênea, estável e ter um nome
 > por meio do qual seja designada.
-> II.       Um Cultivar não poderá ser utilizado sem a necessária autorização do criador
+> II. Um Cultivar não poderá ser utilizado sem a necessária autorização do criador
 > para atos realizados sem fins comerciais, a título experimental ou que vise à
 > criação e à exploração de outras variedades.
-> III.      A proteção, no Brasil, é formalizada mediante a concessão do Certificado de
+> III. A proteção, no Brasil, é formalizada mediante a concessão do Certificado de
 > Proteção de Cultivar, de responsabilidade do Serviço Nacional de Proteção de
 > Cultivares (SNPC), do Ministério da Agricultura e do Abastecimento (MAPA),
 > mediante o pagamento de taxas e anuidade.
-> IV.       Além do registro de proteção de cultivares, pode-se requerer também o Registro
+> IV. Além do registro de proteção de cultivares, pode-se requerer também o Registro
 > Nacional de Comercialização (RNC), que é o cadastro das cultivares habilitadas
 > para a produção e comercialização de sementes e mudas certificadas e
 > fiscalizadas em todo território nacional. Esse registro visa proteger o agricultor
@@ -1112,19 +1170,21 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) Apenas as assertivas II, III e IV estão corretas.
 - d) As assertivas I, II, III e IV estão corretas.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA25-Q13 · transferencia-tecnologia
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q13 · Transferência de tecnologia
 
 > Analise as opções em relação a comercialização de bens de Propriedade Intelectual:
-> I.      O Direito de uma propriedade intelectual pode garantir geração de receitas para
+> I. O Direito de uma propriedade intelectual pode garantir geração de receitas para
 > a empresa, por meio de licenças e vendas desses ativos.
 >
-> II.    A exploração de patentes tem como objeto exclusivamente o licenciamento de
+> II. A exploração de patentes tem como objeto exclusivamente o licenciamento de
 > patente já concedida pelo órgão competente (no Brasil, o INPI).
-> III.   Um bem de propriedade intelectual, legalmente protegido, pode abrir portas
+> III. Um bem de propriedade intelectual, legalmente protegido, pode abrir portas
 > para novos investimentos, desenvolvimentos e comercialização para a empresa.
-> IV.    Um ativo de propriedade intelectual pode gerar oportunidades de negócio que
+> IV. Um ativo de propriedade intelectual pode gerar oportunidades de negócio que
 > envolva fusões, aquisições, formação de spin out, joint ventures e trabalhos
 > colaborativos para a empresa.
 >
@@ -1135,9 +1195,11 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - **c)** Apenas as assertivas I, III e IV estão corretas.
 - d) As assertivas I, II, III e IV estão corretas.
 
-**Resposta: c** (oficial)
+**Resposta: c** (gabarito oficial)
 
-### ENA25-Q14 · inovacao
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q14 · Inovação
 
 > Correlacione a coluna 1 com a coluna 2 (ou seja, letras com números).
 >
@@ -1152,17 +1214,17 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 > 2. É a implementação de um novo método de marketing com mudanças significativas na concepção do produto ou em sua embalagem, no posicionamento do produto, em sua promoção ou na fixação de preços.
 > 3. É a implementação de um método de produção ou distribuição novo ou significativamente melhorado. Incluem-se mudanças significativas em técnicas, equipamentos e/ou softwares.
 > 4. É a introdução de um bem ou serviço novo ou significativamente melhorado no que concerne a suas características ou usos previstos; incluem-se melhoramentos significativos em especificações técnicas, componentes e materiais, softwares incorporados, facilidade de uso ou outras características funcionais.
->
-> Escolha uma:
 
 - **a)** A4, B3, C2 e D1
 - b) A1, B3, C2 e D4
 - c) A4, B1, C2 e D3
 - d) A3, B1, C2 e D4
 
-**Resposta: a** (oficial)
+**Resposta: a** (gabarito oficial)
 
-### ENA25-Q15 · patentes
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q15 · Patente
 
 > NÃO são passíveis de patenteamento as matérias abaixo relacionadas, EXCETO:
 
@@ -1171,9 +1233,11 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) As concepções puramente abstratas.
 - d) Os novos produtos que decorram do isolamento de uma substância encontrada, tal qual seu estado na natureza.
 
-**Resposta: a** (oficial)
+**Resposta: a** (gabarito oficial)
 
-### ENA25-Q16 · inovacao
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q16 · Inovação
 
 > O Manual de Oslo define alguns tipos de inovações que encerram um amplo conjunto
 > de mudanças nas atividades das empresas. Qual das alternativas abaixo está correta?
@@ -1183,9 +1247,11 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - **c)** Inovações de produto, inovações de processo, inovações organizacionais e inovações de marketing.
 - d) Inovações de produto, inovações de processo, inovações ambientais e inovações de marketing.
 
-**Resposta: c** (oficial)
+**Resposta: c** (gabarito oficial)
 
-### ENA25-Q17 · inovacao
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q17 · Inovação
 
 > Segundo o Manual de Oslo, as empresas podem sentir dificuldade em diferenciar os
 > gastos de P&D das outras atividades de inovação, especialmente nos casos de
@@ -1198,29 +1264,32 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) Trabalho de patenteamento; licenciamento.
 - d) Reengenharia de processo; provisão de ferramentas.
 
-**Resposta: a** (oficial)
+**Resposta: a** (gabarito oficial)
 
-### ENA25-Q18 · direito-autoral
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q18 · Direito autoral
 
 > Considere, nas assertivas abaixo, a aplicação dos direitos conexos:
 >
-> − Ao autor da letra.
-> − Ao compositor da música.
+> - Ao autor da letra.
+> - Ao compositor da música.
 >
-> − Aos músicos e cantores que interpretam a canção.
-> − Ao fonograma do produtor no qual a canção se encontra incluída.
-> − À empresa de radiodifusão que produz e transmite essa divulgação, a qual
+> - Aos músicos e cantores que interpretam a canção.
+> - Ao fonograma do produtor no qual a canção se encontra incluída.
+> - À empresa de radiodifusão que produz e transmite essa divulgação, a qual
 > contém a canção.
-> Escolha uma:
 
 - **a)** Apenas 3 assertivas são verdadeiras
 - b) Apenas 4 assertivas são verdadeiras
 - c) Todas as assertivas são verdadeiras
 - d) Apenas 2 assertivas são verdadeiras
 
-**Resposta: a** (oficial)
+**Resposta: a** (gabarito oficial)
 
-### ENA25-Q19 · inovacao
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q19 · Inovação
 
 > A exigência mínima, para que uma mudança nos produtos ou funções da empresa seja
 > considerada uma inovação, é que esta seja nova (ou significativamente melhorada)
@@ -1231,9 +1300,11 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) o empregado.
 - d) os financiadores.
 
-**Resposta: a** (oficial)
+**Resposta: a** (gabarito oficial)
 
-### ENA25-Q20 · desenho-industrial
+- Referência: Gabarito-Final_ENA25.pdf
+
+### ENA25-Q20 · Desenho industrial
 
 > Qual o prazo de vigência de um registro de Desenho Industrial no Brasil?
 
@@ -1242,7 +1313,9 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 - c) Indeterminado, sendo prorrogáveis a cada dez anos.
 - **d)** Dez anos, prorrogáveis por três períodos sucessivos de 5 anos.
 
-**Resposta: d** (oficial)
+**Resposta: d** (gabarito oficial)
+
+- Referência: Gabarito-Final_ENA25.pdf
 
 ---
 
@@ -1250,7 +1323,7 @@ Prova de 2024-09-14 · `Prova_ENA25.pdf` · 20 questões · gabarito oficial
 
 Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 
-### ENA26-Q01 · marcas
+### ENA26-Q01 · Marca e indicação geográfica
 
 > De acordo com o material “Criando uma marca — Uma introdução às marcas para
 > pequenas e médias empresas (OMPI)”, o uso de marcas registradas auxilia as
@@ -1261,9 +1334,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) Substitui a necessidade de estratégias de marketing digital.
 - d) Elimina a necessidade de ações judiciais contra concorrentes desleais.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA26-Q02 · marcas
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q02 · Marca e indicação geográfica
 
 > Segundo a classificação de marcas, qual das opções abaixo representa um exemplo de
 > marca inventada ou fantasiosa, categoria considerada a mais forte em termos de
@@ -1274,9 +1349,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) Expressões que sugerem atributos do produto, exigindo interpretação pelo consumidor.
 - **d)** Palavras sem significado prévio, criadas especificamente para designar um produto ou serviço.
 
-**Resposta: d** (oficial)
+**Resposta: d** (gabarito oficial)
 
-### ENA26-Q03 · marcas
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q03 · Marca e indicação geográfica
 
 > Qual das alternativas NÃO corresponde a um dos requisitos ou recomendações ao
 > selecionar uma marca?
@@ -1286,9 +1363,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - **c)** Priorizar nomes descritivos para facilitar o reconhecimento imediato do consumidor.
 - d) Checar se o nome do domínio correspondente está disponível para registro.
 
-**Resposta: c** (oficial)
+**Resposta: c** (gabarito oficial)
 
-### ENA26-Q04 · desenho-industrial
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q04 · Desenho industrial
 
 > No contexto da propriedade intelectual, o desenho industrial se refere:
 
@@ -1297,9 +1376,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) Ao conjunto de marcas, logotipos e slogans utilizados para diferenciar produtos.
 - d) Aos processos de fabricação e métodos industriais aplicados ao produto.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA26-Q05 · desenho-industrial
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q05 · Desenho industrial
 
 > Qual dos requisitos abaixo é geralmente necessário para que um desenho possa ser
 > registrado como desenho industrial?
@@ -1309,9 +1390,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) O desenho deve possuir características exclusivamente funcionais e utilitárias.
 - d) O desenho deve estar protegido previamente como marca tridimensional.
 
-**Resposta: a** (oficial)
+**Resposta: a** (gabarito oficial)
 
-### ENA26-Q06 · desenho-industrial
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q06 · Desenho industrial
 
 > Acerca da TITULARIDADE DO DESENHO INDUSTRIAL, assinale a alternativa correta:
 
@@ -1320,9 +1403,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - **c)** Quando o desenho é criado por um empregado como parte de suas funções, a titularidade geralmente pertence ao empregador.
 - d) No caso de contratação de um designer externo, a titularidade permanece obrigatoriamente com o designer, mesmo sem cláusula contratual específica.
 
-**Resposta: c** (oficial)
+**Resposta: c** (gabarito oficial)
 
-### ENA26-Q07 · desenho-industrial
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q07 · Desenho industrial
 
 > Sobre a proteção internacional de desenhos industriais, assinale a alternativa correta:
 
@@ -1331,9 +1416,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) O registro em um país latino-americano garante automaticamente proteção integral no Mercosul.
 - d) A proteção internacional dispensa o pagamento de taxas adicionais para cada país designado.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA26-Q08 · propriedade-intelectual
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q08 · Sistema de PI
 
 > A Propriedade Intelectual divide-se em três principais categorias: Propriedade
 > Industrial, Direitos Autorais e Proteção Sui Generis. Dentre os exemplos abaixo,
@@ -1345,9 +1432,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) Topografia de circuitos integrados, cultivares e conhecimentos tradicionais.
 - **d)** Patentes, marcas, desenhos industriais e indicações geográficas.
 
-**Resposta: d** (oficial)
+**Resposta: d** (gabarito oficial)
 
-### ENA26-Q09 · propriedade-intelectual
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q09 · Sistema de PI
 
 > Bens intelectuais entram em domínio público quando:
 
@@ -1356,9 +1445,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) O titular renúncia explicitamente ao direito de titularidade perante o INPI.
 - d) O governo determina que a criação seja nacionalizada e liberada à sociedade.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA26-Q10 · marcas
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q10 · Marca e indicação geográfica
 
 > Assinale a alternativa correta sobre registro de marca no Brasil:
 
@@ -1367,9 +1458,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - **c)** A proteção é válida por 10 anos, podendo ser renovada sucessivamente, e confere ao titular exclusividade de uso no território nacional.
 - d) O registro é automático quando o nome empresarial é registrado na Junta Comercial.
 
-**Resposta: c** (oficial)
+**Resposta: c** (gabarito oficial)
 
-### ENA26-Q11 · transferencia-tecnologia
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q11 · Sistema de PI
 
 > Uma empresa de biotecnologia brasileira desenvolveu uma nova enzima que acelera a
 > decomposição de resíduos orgânicos urbanos. Após o sucesso inicial do produto, a
@@ -1385,9 +1478,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) Registrar o design da embalagem, protegendo a aparência visual e ornamental do produto.
 - d) Adotar o segredo industrial, mantendo o processo confidencial sem necessidade de registro público.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA26-Q12 · desenho-industrial
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q12 · Desenho industrial
 
 > Uma startup de design desenvolveu uma linha de cadeiras com curvas e texturas
 > inéditas, voltadas para o mercado premium. Ao perceber cópias no exterior, busca
@@ -1400,9 +1495,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - **c)** Protege o aspecto ornamental e estético, não abrangendo os elementos funcionais.
 - d) Protege a marca e o logotipo aplicados ao produto.
 
-**Resposta: c** (oficial)
+**Resposta: c** (gabarito oficial)
 
-### ENA26-Q13 · direito-autoral
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q13 · Direito autoral
 
 > Uma empresa de marketing digital criou jingles e slogans exclusivos para campanhas
 > de clientes. Um concorrente passou a utilizar versões idênticas dos jingles sem
@@ -1415,9 +1512,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) Direito conexo; a proteção ocorre apenas mediante contrato privado.
 - d) Direito industrial; a proteção decorre de patente de invenção.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA26-Q14 · inovacao
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q14 · Inovação
 
 > Uma instituição pública deseja medir o impacto de inovações organizacionais
 > implementadas em escolas públicas, como novos métodos de gestão e digitalização de
@@ -1430,9 +1529,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) Inovação de marketing, pois modifica a forma de divulgação da escola.
 - d) Inovação incremental, pois se trata de melhoria contínua de processos pedagógicos.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA26-Q15 · propriedade-intelectual
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q15 · Sistema de PI
 
 > Durante o desenvolvimento de um novo produto eletrônico, uma empresa contratou
 > engenheiros externos e utilizou um software de design criado por outro fornecedor.
@@ -1444,9 +1545,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) Todo código de software pertence automaticamente ao desenvolvedor.
 - d) A invenção pertence ao governo, por se tratar de produto tecnológico.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA26-Q16 · direito-autoral
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q16 · Direito autoral
 
 > Uma agência de publicidade pretende usar trilhas sonoras de filmes antigos em seus
 > comerciais, acreditando que, por serem “obras antigas”, estariam em domínio público.
@@ -1458,9 +1561,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - **c)** Após 70 anos contados de 1º de janeiro do ano subsequente ao falecimento do autor.
 - d) Assim que a obra é registrada no INPI.
 
-**Resposta: c** (oficial)
+**Resposta: c** (gabarito oficial)
 
-### ENA26-Q17 · inovacao
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q17 · Inovação
 
 > Uma empresa do setor de energia busca medir o impacto de suas iniciativas de P&D,
 > incluindo design de turbinas mais eficientes, novos processos de gestão e parcerias
@@ -1471,17 +1576,17 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 > II. Engenharia e design.
 > III. Atividades de marketing e de gestão da marca.
 > IV. Treinamento de funcionários para novos processos.
->
-> Escolha uma:
 
 - a) Somente I e II.
 - b) Somente I, II e IV.
 - c) Somente II, III e IV.
 - **d)** Todas as alternativas (I, II, III e IV).
 
-**Resposta: d** (oficial)
+**Resposta: d** (gabarito oficial)
 
-### ENA26-Q18 · direito-autoral
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q18 · Direito autoral
 
 > Qual é a principal função do Instituto Nacional da Propriedade Industrial (INPI) em
 > relação ao registro de programas de computador no Brasil?
@@ -1491,9 +1596,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) O INPI é responsável por licenciar o uso de programas de computador registrados por empresas estrangeiras que desejam comercializar seus produtos no Brasil.
 - d) O INPI não tem nenhuma responsabilidade em relação ao registro de programas de computador, sendo essa tarefa exclusiva da Biblioteca Nacional.
 
-**Resposta: b** (oficial)
+**Resposta: b** (gabarito oficial)
 
-### ENA26-Q19 · desenho-industrial
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q19 · Desenho industrial
 
 > A Lei da Propriedade Industrial permite a acumulação de proteção para um mesmo
 > produto. Em quais situações um titular pode obter simultaneamente proteção de
@@ -1505,9 +1612,11 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) O titular pode acumular proteção de desenho industrial e direitos autorais, desde que o desenho tenha elementos artísticos significativos, mas essa acumulação não permite a reprodução comercial de cópias sem autorização.
 - **d)** A acumulação de desenho industrial e patente de modelo de utilidade é permitida quando o produto combina um formato ornamental inovador com uma melhoria funcional.
 
-**Resposta: d** (oficial)
+**Resposta: d** (gabarito oficial)
 
-### ENA26-Q20 · patentes
+- Referência: Gabarito-Final_ENA26.pdf
+
+### ENA26-Q20 · Patente
 
 > De acordo com a Lei da Propriedade Industrial, o que NÃO pode ser objeto de patente
 > no Brasil?
@@ -1517,15 +1626,17 @@ Prova de 2025-11-22 · `Prova_ENA26.pdf` · 20 questões · gabarito oficial
 - c) Micro-organismos transgênicos que cumpram os requisitos de patenteabilidade.
 - d) Processos químicos inovadores que resultem em novos compostos.
 
-**Resposta: a** (oficial)
+**Resposta: a** (gabarito oficial)
+
+- Referência: Gabarito-Final_ENA26.pdf
 
 ---
 
 ## AV2-PI — Avaliação Nacional — Conceitos e Aplicações de Propriedade Intelectual
 
-Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivadas
+Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
-### AV2-PI-Q01 · propriedade-intelectual
+### AV2-PI-Q01 · Sistema de PI
 
 > A respeito da Lei de Propriedade Industrial, analise as assertivas apresentadas a
 > seguir:
@@ -1544,12 +1655,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - **c)** Apenas as afirmações III e IV.
 - d) Apenas as afirmações I e III.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: LPI 9.279/1996: I é verdadeira (lei de 1996, pós-OMC/TRIPS); II é verdadeira (art. 40: invenção 20 anos, MU 15 anos); III é FALSA (art. 122 exige sinal 'visualmente perceptível' — sons não são registráveis no Brasil); IV é FALSA (art. 18, III veda patentear seres vivos, excetuando apenas microrganismos transgênicos — plantas não). Não verdadeiras: III e IV.
+- Explicação: LPI 9.279/1996: I é verdadeira (lei de 1996, pós-OMC/TRIPS); II é verdadeira (art. 40: invenção 20 anos, MU 15 anos); III é FALSA (art. 122 exige sinal 'visualmente perceptível' — sons não são registráveis no Brasil); IV é FALSA (art. 18, III veda patentear seres vivos, excetuando apenas microrganismos transgênicos — plantas não). Não verdadeiras: III e IV.
 
-### AV2-PI-Q02 · propriedade-intelectual
+### AV2-PI-Q02 · Sistema de PI
 
 > Em relação à Propriedade Intelectual, qual das seguintes afirmações é
 > CORRETA?
@@ -1559,12 +1670,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - c) Os direitos da propriedade industrial garantem ao titular exclusividade na exploração econômica de bens e processos produtivos em todos os países membros da OMC.
 - **d)** De acordo com a Convenção da União de Paris (CUP), aqueles domiciliados ou com estabelecimentos industriais ou comerciais efetivos em um dos países membros da Convenção são equiparados aos nacionais do país onde a patente, desenho industrial ou marca foi requerida.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: A CUP consagra o princípio do tratamento nacional (arts. 2º e 3º): domiciliados ou com estabelecimento efetivo em país membro são equiparados aos nacionais. As demais ignoram a territorialidade: nem a OMC nem o PCT concedem direito válido automaticamente em outros países.
+- Explicação: A CUP consagra o princípio do tratamento nacional (arts. 2º e 3º): domiciliados ou com estabelecimento efetivo em país membro são equiparados aos nacionais. As demais ignoram a territorialidade: nem a OMC nem o PCT concedem direito válido automaticamente em outros países.
 
-### AV2-PI-Q03 · cultivares
+### AV2-PI-Q03 · Cultivar
 
 > A Lei n. 10711/2003 regula o sistema nacional de sementes e mudas, no que se
 > inclui o Registro de Cultivares para Comercialização. Marque a alternativa
@@ -1575,12 +1686,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - c) A competência para fiscalizar o comércio estadual, interestadual ou internacional é do Estado;
 - d) O registro nacional de cultivares tem como finalidade habilitar previamente cultivares para produção de sementes e mudas no Exterior.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: Lei 10.711/2003: a inscrição no RENASEM é obrigatória para produtores e comerciantes de sementes e mudas, com inscrição periódica dos campos de produção. A fiscalização do comércio interestadual e internacional é da União (MAPA), não do Estado, e o registro nacional de cultivares habilita a produção no País, não no exterior.
+- Explicação: Lei 10.711/2003: a inscrição no RENASEM é obrigatória para produtores e comerciantes de sementes e mudas, com inscrição periódica dos campos de produção. A fiscalização do comércio interestadual e internacional é da União (MAPA), não do Estado, e o registro nacional de cultivares habilita a produção no País, não no exterior.
 
-### AV2-PI-Q04 · marcas
+### AV2-PI-Q04 · Marca e indicação geográfica
 
 > Com respeito às Marcas podemos afirmar que:
 >
@@ -1601,12 +1712,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - **c)** Apenas as alternativas II e IV estão corretas
 - d) Apenas as alternativas I e IV estão corretas
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: II reproduz a definição legal de marca (LPI art. 122: sinal distintivo visualmente perceptível não compreendido nas proibições legais) e IV descreve corretamente a função distintiva. I e III são falsas pelo mesmo motivo: marcas são bens negociáveis e sua titularidade pode ser cedida (LPI arts. 134 e seguintes).
+- Explicação: II reproduz a definição legal de marca (LPI art. 122: sinal distintivo visualmente perceptível não compreendido nas proibições legais) e IV descreve corretamente a função distintiva. I e III são falsas pelo mesmo motivo: marcas são bens negociáveis e sua titularidade pode ser cedida (LPI arts. 134 e seguintes).
 
-### AV2-PI-Q05 · propriedade-intelectual
+### AV2-PI-Q05 · Sistema de PI
 
 > Dentre os itens a seguir listados, quais não se caracterizam como um ativo de
 > Propriedade Industrial?
@@ -1622,12 +1733,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - c) II e III
 - **d)** I e IV
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: Conhecimento Tradicional Associado (I) e Cultivar (IV) são protegidos por regimes sui generis — respectivamente a Lei 13.123/2015 e a Lei 9.456/1997 —, fora da Propriedade Industrial. Desenho Industrial e Marca são ativos de Propriedade Industrial regidos pela LPI.
+- Explicação: Conhecimento Tradicional Associado (I) e Cultivar (IV) são protegidos por regimes sui generis — respectivamente a Lei 13.123/2015 e a Lei 9.456/1997 —, fora da Propriedade Industrial. Desenho Industrial e Marca são ativos de Propriedade Industrial regidos pela LPI.
 
-### AV2-PI-Q06 · patentes
+### AV2-PI-Q06 · Patente
 
 > Segundo a Lei de Propriedade Industrial (Lei n. 9279) são exemplos de criações
 > que configuram invenção ou modelo de utilidade:
@@ -1644,12 +1755,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - c) Apenas as alternativas II e IV estão corretas
 - d) Apenas as alternativas III e IV estão corretas
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: Vacina (I) e polímero sintético (III) são invenções patenteáveis. Uma nova espécie de gramínea (II) é obtenção vegetal, protegida por cultivar e vedada como patente pelo art. 18, III da LPI; um gene de Arabidopsis thaliana (IV) é material biológico encontrado na natureza, excluído pelo art. 10, IX.
+- Explicação: Vacina (I) e polímero sintético (III) são invenções patenteáveis. Uma nova espécie de gramínea (II) é obtenção vegetal, protegida por cultivar e vedada como patente pelo art. 18, III da LPI; um gene de Arabidopsis thaliana (IV) é material biológico encontrado na natureza, excluído pelo art. 10, IX.
 
-### AV2-PI-Q07 · transferencia-tecnologia
+### AV2-PI-Q07 · Gestão da inovação na ICT
 
 > De acordo com a legislação brasileira atual, estão entre as atribuições dos
 > Núcleos de Inovação Tecnológica. Marque V para alternativas verdadeiras e F
@@ -1674,12 +1785,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - c) F, V, V, V
 - d) V, F, V, F
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref3-A-caminho-da-inovacao_2010.pdf
-- Justificativa: Lei de Inovação 10.973/2004, art. 16: são competências do NIT desenvolver estudos de prospecção e inteligência competitiva (II) e promover e acompanhar o relacionamento da ICT com empresas, negociando e gerindo acordos de transferência de tecnologia (III). I é falsa porque a atribuição é desenvolver os estudos, não licitá-los a terceiros; IV é falsa pelo 'somente', que restringe indevidamente a avaliação. Sequência F, V, V, F.
+- Explicação: Lei de Inovação 10.973/2004, art. 16: são competências do NIT desenvolver estudos de prospecção e inteligência competitiva (II) e promover e acompanhar o relacionamento da ICT com empresas, negociando e gerindo acordos de transferência de tecnologia (III). I é falsa porque a atribuição é desenvolver os estudos, não licitá-los a terceiros; IV é falsa pelo 'somente', que restringe indevidamente a avaliação. Sequência F, V, V, F.
 
-### AV2-PI-Q08 · patentes
+### AV2-PI-Q08 · Patente
 
 > Qual dos casos a seguir listados não poderia se beneficiar de uma proteção por
 > patente, considerando-se as implementadas em computador (IIC)?
@@ -1689,12 +1800,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - c) Novo método de controle de velocidade de motor baseado em método matemático de integração numérica.
 - d) Novo método de processamento de imagens para obtenção de parâmetros que auxiliem em diagnósticos de problemas cardíacos.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: Interface gráfica para apresentação de informações recai na exclusão do art. 10, VI da LPI (apresentação de informações) e no art. 10, VIII (programas de computador em si), por não produzir efeito técnico. As demais alternativas descrevem soluções com efeito técnico concreto — gestão de memória, controle de motor e processamento de imagens — e são patenteáveis como invenções implementadas em computador.
+- Explicação: Interface gráfica para apresentação de informações recai na exclusão do art. 10, VI da LPI (apresentação de informações) e no art. 10, VIII (programas de computador em si), por não produzir efeito técnico. As demais alternativas descrevem soluções com efeito técnico concreto — gestão de memória, controle de motor e processamento de imagens — e são patenteáveis como invenções implementadas em computador.
 
-### AV2-PI-Q09 · propriedade-intelectual
+### AV2-PI-Q09 · Sistema de PI
 
 > Com relação aos acordos internacionais que tratam da propriedade intelectual e
 > matérias relacionadas, analise as afirmativas a seguir:
@@ -1718,12 +1829,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - c) Somente I, II e V são falsas
 - **d)** Somente III, IV e V são falsas
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: I e II são verdadeiras (Madri trata do registro internacional de marcas; Berna, da proteção das obras e dos autores). III é falsa: o Protocolo de Madri não elimina o exame substantivo de cada escritório designado. IV é falsa: não existe 'patente internacional' — o PCT unifica o depósito, mas a concessão segue nacional. V é falsa: o Tratado de Budapeste existe justamente para EVITAR múltiplos depósitos de material biológico, reconhecendo um depósito único.
+- Explicação: I e II são verdadeiras (Madri trata do registro internacional de marcas; Berna, da proteção das obras e dos autores). III é falsa: o Protocolo de Madri não elimina o exame substantivo de cada escritório designado. IV é falsa: não existe 'patente internacional' — o PCT unifica o depósito, mas a concessão segue nacional. V é falsa: o Tratado de Budapeste existe justamente para EVITAR múltiplos depósitos de material biológico, reconhecendo um depósito único.
 
-### AV2-PI-Q10 · desenho-industrial
+### AV2-PI-Q10 · Desenho industrial
 
 > Considerando os casos possíveis de indeferimento do pedido de proteção do
 > desenho industrial:
@@ -1745,12 +1856,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - **c)** V, V, F, V
 - d) V, F, V, F
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: I é verdadeira (LPI art. 98: obra de caráter puramente artístico não é desenho industrial); II é verdadeira (art. 100, II); IV é verdadeira (art. 100, I). III é FALSA porque descreve justamente o que É registrável — o desenho industrial é definido no art. 95 como forma plástica ornamental, tri ou bidimensional. Sequência V, V, F, V.
+- Explicação: I é verdadeira (LPI art. 98: obra de caráter puramente artístico não é desenho industrial); II é verdadeira (art. 100, II); IV é verdadeira (art. 100, I). III é FALSA porque descreve justamente o que É registrável — o desenho industrial é definido no art. 95 como forma plástica ornamental, tri ou bidimensional. Sequência V, V, F, V.
 
-### AV2-PI-Q11 · indicacao-geografica
+### AV2-PI-Q11 · Marca e indicação geográfica
 
 > Para efeitos legais do direito de Proteção de Indicação Geográfica, analise as
 > afirmativas abaixo:
@@ -1775,12 +1886,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - c) Somente as alternativas I e IV são verdadeiras
 - d) Somente as alternativas II e IV são verdadeiras
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: II é verdadeira (LPI art. 180: nome geográfico de uso comum não é IG) e III é verdadeira (produtor único legitimado pode requerer em nome próprio). I é falsa por trocar os conceitos: a definição apresentada é de Denominação de Origem (art. 178), não de Indicação de Procedência (art. 177). IV é falsa por inverter o art. 181, que PERMITE o nome geográfico como elemento de marca desde que não induza falsa procedência.
+- Explicação: II é verdadeira (LPI art. 180: nome geográfico de uso comum não é IG) e III é verdadeira (produtor único legitimado pode requerer em nome próprio). I é falsa por trocar os conceitos: a definição apresentada é de Denominação de Origem (art. 178), não de Indicação de Procedência (art. 177). IV é falsa por inverter o art. 181, que PERMITE o nome geográfico como elemento de marca desde que não induza falsa procedência.
 
-### AV2-PI-Q12 · cultivares
+### AV2-PI-Q12 · Cultivar
 
 > Com relação ao Acordo União Internacional para Proteção das Espécies
 > Vegetais, de 1961, conhecido pela sigla UPOV, é CORRETO afirmar:
@@ -1790,12 +1901,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - c) Este acordo tem por objetivo a eliminação de múltiplos depósitos espécies vegetais.
 - d) Garante a repartição justa e equitativa dos benefícios derivados da utilização dos recursos genéticos sendo um acordo guarda-chuva legal e político para diversas convenções.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: A UPOV (1961) é o acordo multilateral que estabelece normas comuns para reconhecimento e proteção da propriedade de novas variedades vegetais obtidas por melhoristas. A alternativa d descreve a Convenção sobre Diversidade Biológica (repartição de benefícios) e a c descreve o Tratado de Budapeste (depósito de material biológico).
+- Explicação: A UPOV (1961) é o acordo multilateral que estabelece normas comuns para reconhecimento e proteção da propriedade de novas variedades vegetais obtidas por melhoristas. A alternativa d descreve a Convenção sobre Diversidade Biológica (repartição de benefícios) e a c descreve o Tratado de Budapeste (depósito de material biológico).
 
-### AV2-PI-Q13 · patentes
+### AV2-PI-Q13 · Informação tecnológica
 
 > Sobre A Classificação Internacional de Patentes é CORRETO afirmar:
 >
@@ -1818,12 +1929,16 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - c) Somente as alternativas I, II e IV são verdadeiras
 - d) Somente as alternativas II, III e IV são verdadeiras
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
-- Justificativa: I, II e III descrevem corretamente a IPC: melhora a busca de anterioridade, tem hierarquia Seções/Classes/Subclasses/Grupos e cobre toda a tecnologia com cerca de 70 mil grupos. IV é falsa: a IPC não classifica desenho industrial (isso cabe à Classificação de Locarno) nem programa de computador.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório descreve a estrutura da IPC. Ref2-Patente_2021.pdf, citado antes, é a cartilha de patentes do INPI e não menciona a classificação; Ref3-A-caminho-da-inovacao_2010.pdf só remete à CIP do INPI na bibliografia. Fonte real: o Guia da IPC (OMPI), fora do repositório.
+- Explicação: I, II e III descrevem corretamente a IPC: melhora a busca de anterioridade, tem hierarquia Seções/Classes/Subclasses/Grupos e cobre toda a tecnologia com cerca de 70 mil grupos. IV é falsa: a IPC não classifica desenho industrial (isso cabe à Classificação de Locarno) nem programa de computador.
 
-### AV2-PI-Q14 · patentes
+### AV2-PI-Q14 · Informação tecnológica
+
+> Repete AV2-PI-Q13 no caderno original.
+
+> Nunca sorteada: o caderno publicado repete uma questão anterior neste número, mas o gabarito oficial dá letras diferentes às duas. Um gabarito não atribui duas letras à mesma questão, logo a prova real trazia aqui outra questão e o caderno publicado está defeituoso. A letra abaixo é a da questão repetida, que é o texto que temos; a letra que o gabarito dá a este número responde uma questão que não está no banco.
 
 > Sobre A Classificação Internacional de Patentes é CORRETO afirmar:
 >
@@ -1846,12 +1961,12 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - c) Somente as alternativas I, II e IV são verdadeiras
 - d) Somente as alternativas II, III e IV são verdadeiras
 
-**Resposta: a** (derivada · confiança media)
+**Resposta: a** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
-- Justificativa: Questão duplicada da 13 no caderno original, com a numeração das assertivas corrompida (a III foi absorvida pelo texto da II). Mantidas as mesmas alternativas e o mesmo mérito: as assertivas sobre busca de anterioridade, hierarquia e abrangência da IPC são verdadeiras, e a que atribui à IPC a classificação de desenho industrial e programa de computador é falsa. Confiança média pela corrupção do enunciado na fonte.
+- Referência: Gabarito-Final_AV2-PI.pdf, linhas 13 e 14 da tabela QUESTÃO / RESPOSTA CORRETA (A e B), que é o que revela o defeito do caderno. Para o mérito: sem apoio em `references/` — nenhum PDF do repositório descreve a estrutura da IPC; fonte real é o Guia da IPC (OMPI).
+- Explicação: Defeito do caderno publicado. A questão 14 impressa em `PROFNIT-AV2-PI.pdf` reproduz a questão 13, com a numeração das assertivas corrompida — a III foi absorvida pelo texto da II. O gabarito oficial, porém, dá 13=A e 14=B, e um gabarito não atribui duas letras à mesma questão: a prova real trazia outra questão neste número e o caderno publicado está defeituoso. A letra registrada aqui, a, é a que o gabarito dá à questão 13, que é o texto que de fato temos — as assertivas sobre busca de anterioridade, hierarquia Seções/Classes/Subclasses/Grupos e abrangência da IPC são verdadeiras, e a que atribui à IPC a classificação de desenho industrial e de programa de computador é falsa. A letra B, que o gabarito dá ao número 14, responde uma questão que não está no banco. Por isso esta questão nunca é sorteada.
 
-### AV2-PI-Q15 · direito-autoral
+### AV2-PI-Q15 · Direito autoral
 
 > O direito autoral refere-se a todas as criações que não possuem requisitos de
 > novidade absoluta e aplicação industrial. Analise as alternativas:
@@ -1865,7 +1980,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 > IV. O direito autoral não protege as ideias de forma isolada, mas sim a forma de
 > expressão da obra intelectual, ou seja, “a forma de um trabalho literário ou
 > científico é o texto escrito; da obra oral, a palavra; da obra musical, o som; e da
-> obra de arte figurativa, o desenho, a cor e o volume etc.
+> obra de arte figurativa, o desenho, a cor e o volume etc.”
 >
 > Das assertivas apresentadas:
 
@@ -1874,17 +1989,21 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - **c)** Apenas as alternativas II e IV são verdadeiras
 - d) Apenas a alternativa II é verdadeira.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref2-Patente_2021.pdf
-- Justificativa: II é verdadeira (a Convenção de Berna é administrada pela OMPI e conta com mais de cem signatários) e IV é verdadeira (o direito autoral protege a forma de expressão, não a ideia isolada). I é falsa por atribuir o direito autoral à CUP, quando a convenção aplicável é a de Berna. III é falsa por rotular como direito MORAL o que é direito PATRIMONIAL (utilizar, fruir e dispor — art. 28 da Lei 9.610/1998).
+- Explicação: II é verdadeira (a Convenção de Berna é administrada pela OMPI e conta com mais de cem signatários) e IV é verdadeira (o direito autoral protege a forma de expressão, não a ideia isolada). I é falsa por atribuir o direito autoral à CUP, quando a convenção aplicável é a de Berna. III é falsa por rotular como direito MORAL o que é direito PATRIMONIAL (utilizar, fruir e dispor — art. 28 da Lei 9.610/1998).
 
-### AV2-PI-Q16 · direito-autoral
+### AV2-PI-Q16 · Direito autoral
+
+> Repete AV2-PI-Q15 no caderno original.
+
+> Nunca sorteada: o caderno publicado repete uma questão anterior neste número, mas o gabarito oficial dá letras diferentes às duas. Um gabarito não atribui duas letras à mesma questão, logo a prova real trazia aqui outra questão e o caderno publicado está defeituoso. A letra abaixo é a da questão repetida, que é o texto que temos; a letra que o gabarito dá a este número responde uma questão que não está no banco.
 
 > O direito autoral refere-se a todas as criações que não possuem requisitos de
 > novidade absoluta e aplicação industrial. Analise as alternativas:
 >
-> I.   Os direitos de autor possuem validade internacional a partir da Convenção da
+> I. Os direitos de autor possuem validade internacional a partir da Convenção da
 > União de Paris.
 > II. A Convenção que trata do direito autoral é administrada pela OMPI e
 > atualmente tem mais de cem países signatários.
@@ -1893,7 +2012,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 > IV. O direito autoral não protege as ideias de forma isolada, mas sim a forma de
 > expressão da obra intelectual, ou seja, “a forma de um trabalho literário ou
 > científico é o texto escrito; da obra oral, a palavra; da obra musical, o som; e da
-> obra de arte figurativa, o desenho, a cor e o volume etc.
+> obra de arte figurativa, o desenho, a cor e o volume etc.”
 >
 > Das assertivas apresentadas:
 
@@ -1902,24 +2021,24 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · respostas derivad
 - **c)** Apenas as alternativas II e IV são verdadeiras
 - d) Apenas a alternativa II é verdadeira.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
-- Justificativa: Questão idêntica à 15 no caderno original. Mesmo mérito: II e IV são verdadeiras; I confunde a Convenção de Berna com a CUP e III rotula como direito moral o direito patrimonial de utilizar, fruir e dispor da obra (art. 28 da Lei 9.610/1998).
+- Referência: Gabarito-Final_AV2-PI.pdf, linhas 15 e 16 da tabela QUESTÃO / RESPOSTA CORRETA (C e D), que é o que revela o defeito do caderno. Para o mérito: Ref3-A-caminho-da-inovacao_2010.pdf, seção de direito autoral (Lei 9.610/1998 e Convenção de Berna) — Ref2-Patente_2021.pdf, citado antes, trata só de patentes e não menciona direito autoral.
+- Explicação: Defeito do caderno publicado. A questão 16 impressa em `PROFNIT-AV2-PI.pdf` é idêntica à 15. O gabarito oficial dá 15=C e 16=D, e um gabarito não atribui duas letras à mesma questão: a prova real trazia outra questão neste número e o caderno publicado está defeituoso. A letra registrada aqui, c, é a que o gabarito dá à questão 15, que é o texto que de fato temos — II e IV são verdadeiras, I confunde a Convenção de Berna com a CUP e III rotula como direito moral o direito patrimonial de utilizar, fruir e dispor da obra (art. 28 da Lei 9.610/1998). A letra D, que o gabarito dá ao número 16, responde uma questão que não está no banco. Por isso esta questão nunca é sorteada.
 
 ---
 
 ## AV2-MET — Avaliação Nacional — Metodologia da Pesquisa Científica e Tecnológica
 
-Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas derivadas
+Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · gabarito oficial
 
-### AV2-MET-Q01 · metodologia
+### AV2-MET-Q01 · Metodologia científica
 
 > Embasado na premissa, que as organizações partindo de um nível inferior de ética
 > e moral é impossível alcançar um nível superior em inovação tecnológica, é correto
 > afirmar:
 >
-> I.   Essas organizações e o mercado de tecnologia podem partir de aspectos
+> I. Essas organizações e o mercado de tecnologia podem partir de aspectos
 > interdisciplinares.
 > II. As organizações devem compreender essas questões éticas e morais objetivando
 > a promoção de ações inovadoras.
@@ -1936,12 +2055,12 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - c) Apenas I e IV estão corretas.
 - d) Apenas III e IV estão corretas.
 
-**Resposta: a** (derivada · confiança media)
+**Resposta: a** (gabarito oficial)
 
-- Referência: PITHAN & VIDAL (2013), Ética e plágio acadêmico — bibliografia da disciplina
-- Justificativa: As quatro assertivas são afirmações convergentes com a premissa do enunciado: partem da interdisciplinaridade (I), da compreensão das questões éticas como meio de promover inovação (II), do impacto socioambiental conjunto com o empresarial (III) e do alinhamento com sustentabilidade e cultura (IV). Nenhuma contradiz a premissa, logo todas estão corretas. Confiança média: a questão é conceitualmente aberta e não tem âncora normativa.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório trata de ética organizacional e inovação. A citação anterior a PITHAN & VIDAL (2013) estava trocada — aquele artigo é sobre plágio acadêmico e é a fonte da questão 02, não desta.
+- Explicação: As quatro assertivas são afirmações convergentes com a premissa do enunciado: partem da interdisciplinaridade (I), da compreensão das questões éticas como meio de promover inovação (II), do impacto socioambiental conjunto com o empresarial (III) e do alinhamento com sustentabilidade e cultura (IV). Nenhuma contradiz a premissa, logo todas estão corretas. Ressalva: a questão é conceitualmente aberta e não tem âncora normativa.
 
-### AV2-MET-Q02 · metodologia
+### AV2-MET-Q02 · Metodologia científica
 
 > A Ética ou Filosofia Moral consiste no “estudo da conduta humana na medida em
 > que ela pode ser chamada de boa ou má”. O questionamento da ética que emerge
@@ -1963,12 +2082,12 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - **c)** Apenas I e IV estão corretas.
 - d) Apenas III e IV estão corretas.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
-- Referência: PITHAN & VIDAL (2013), citados no próprio enunciado
-- Justificativa: O artigo defende justamente a abordagem INTERDISCIPLINAR do plágio acadêmico. I é verdadeira (âmbito ético) e IV é verdadeira (âmbito pedagógico). II é falsa pelo advérbio 'somente', que nega a interdisciplinaridade defendida pelos autores; III é falsa ao excluir o âmbito institucional, que é uma das dimensões centrais do artigo.
+- Referência: PITHAN, L. H.; VIDAL, T. R. A. Ética e plágio acadêmico (2013), citados no próprio enunciado — artigo fora de `references/`.
+- Explicação: O artigo defende justamente a abordagem INTERDISCIPLINAR do plágio acadêmico. I é verdadeira (âmbito ético) e IV é verdadeira (âmbito pedagógico). II é falsa pelo advérbio 'somente', que nega a interdisciplinaridade defendida pelos autores; III é falsa ao excluir o âmbito institucional, que é uma das dimensões centrais do artigo.
 
-### AV2-MET-Q03 · metodologia
+### AV2-MET-Q03 · Metodologia científica
 
 > Quanto ao conhecimento, analise os itens abaixo.
 >
@@ -1992,12 +2111,12 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - c) II, III e V estão corretas
 - **d)** I, III e V estão corretas
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Classificação clássica dos tipos de conhecimento (Lakatos & Marconi; Bunge)
-- Justificativa: I é verdadeira (conhecimento como recurso econômico), III é verdadeira (conhecimento filosófico como fruto do raciocínio e da reflexão) e V é verdadeira (o procedimento científico delimita, fragmenta e analisa o objeto). II é falsa: o conhecimento religioso caracteriza-se por ser inspiracional e NÃO verificável — dizer que suas evidências são 'verificadas' contradiz sua definição. IV é falsa: formular hipóteses sobre fenômenos além da percepção objetiva não é traço do senso comum, que é superficial e assistemático.
+- Referência: Fora de `references/`: classificação clássica dos tipos de conhecimento (LAKATOS; MARCONI, Fundamentos de metodologia científica; BUNGE, La ciencia, su método y su filosofía). Nenhum PDF do repositório cobre o tema.
+- Explicação: I é verdadeira (conhecimento como recurso econômico), III é verdadeira (conhecimento filosófico como fruto do raciocínio e da reflexão) e V é verdadeira (o procedimento científico delimita, fragmenta e analisa o objeto). II é falsa: o conhecimento religioso caracteriza-se por ser inspiracional e NÃO verificável — dizer que suas evidências são 'verificadas' contradiz sua definição. IV é falsa: formular hipóteses sobre fenômenos além da percepção objetiva não é traço do senso comum, que é superficial e assistemático.
 
-### AV2-MET-Q04 · metodologia
+### AV2-MET-Q04 · Informação tecnológica
 
 > Na gestão da propriedade intelectual e transferência de tecnologia é necessária a
 > utilização de um amplo conjunto de informações, as quais podem ser obtidas de
@@ -2011,12 +2130,12 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - **c)** Além das informações de natureza científica e tecnológica, uma série de fontes referentes a negócios é necessária para efetivação da gestão da Propriedade Intelectual e da Transferência de Tecnologia.
 - d) Quando se buscar informações sobre empresas, deve-se considerar apenas informações certificadas por auditores independentes, como seus balanços financeiros, devendo-se desconsiderar informações com potencial de viés, como releases e homepages de empresas.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
-- Referência: Bibliografia da disciplina sobre fontes de informação para gestão de PI e TT
-- Justificativa: A gestão de PI e TT exige, além das fontes científicas e tecnológicas, fontes de negócios (mercado, concorrência, financeiras). As demais alternativas são absolutistas e por isso falsas: 'as únicas informações confiáveis' (a), 'não possuem utilidade' (b) e 'devendo-se desconsiderar' releases e homepages (d) — que, ainda que enviesados, são fontes legítimas quando avaliadas criticamente.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório trata de fontes de informação para a gestão de PI e TT nem da avaliação de sua confiabilidade — `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf` (2025), apesar do nome da série, é sobre indicadores cientométricos e incentivos a tecnologias verdes. Fonte real: bibliografia da disciplina MET, fora do repositório.
+- Explicação: A gestão de PI e TT exige, além das fontes científicas e tecnológicas, fontes de negócios (mercado, concorrência, financeiras). As demais alternativas são absolutistas e por isso falsas: 'as únicas informações confiáveis' (a), 'não possuem utilidade' (b) e 'devendo-se desconsiderar' releases e homepages (d) — que, ainda que enviesados, são fontes legítimas quando avaliadas criticamente.
 
-### AV2-MET-Q05 · metodologia
+### AV2-MET-Q05 · Informação tecnológica
 
 > No caso de coleta de informações sobre negócios, as empresas de capital aberto
 > possibilitam o acesso a uma ampla gama de dados confiáveis, pois estão sujeitas a
@@ -2030,12 +2149,12 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - c) Nos sites das empresas, nas áreas de Relações Institucionais da Empresa
 - **d)** No Comex Stat na área de Setores e Produtos.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Bibliografia da disciplina sobre fontes de informação de negócios
-- Justificativa: CVM (a), B3 (b) e as áreas de Relações com Investidores nos sites das empresas (c) são de fato canais de divulgação de comunicados de companhias abertas. O Comex Stat é a base de estatísticas de comércio exterior do MDIC: traz dados agregados de exportação e importação por setor e produto, não comunicados societários. Por isso é a exceção pedida.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório menciona a CVM, a B3 ou o Comex Stat. A alternativa se resolve pelo objeto do próprio Comex Stat (MDIC), que publica estatísticas de comércio exterior por setor e produto, e não comunicados de companhias abertas.
+- Explicação: CVM (a), B3 (b) e as áreas de Relações com Investidores nos sites das empresas (c) são de fato canais de divulgação de comunicados de companhias abertas. O Comex Stat é a base de estatísticas de comércio exterior do MDIC: traz dados agregados de exportação e importação por setor e produto, não comunicados societários. Por isso é a exceção pedida.
 
-### AV2-MET-Q06 · metodologia
+### AV2-MET-Q06 · Informação tecnológica
 
 > Dentre as bases de dados disponíveis para o pesquisador brasileiro encontramos o
 > Catálogo Coletivo Nacional de Publicações Seriadas (CCN), disponibilizado pelo
@@ -2051,12 +2170,12 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - **c)** Pode disponibilizar informações sobre a ocorrência do uso de determinada tecnologia, que possa caracterizar a falta de novidade de uma invenção.
 - d) A importância do CCN deve-se a sua conexão com o INPI, sendo o meio oficial de divulgação da Revista de Propriedade Industrial (RPI).
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
-- Referência: Bibliografia da disciplina sobre bases de dados e busca de anterioridade
-- Justificativa: A pergunta é sobre a importância do CCN PARA a propriedade intelectual. Publicações seriadas constituem estado da técnica: localizar o registro do uso de uma tecnologia em periódico pode caracterizar a falta de novidade de uma invenção, destruindo o requisito de patenteabilidade. A alternativa b descreve uma função do catálogo, mas não sua relevância para PI; a d é falsa, pois a RPI é publicada pelo próprio INPI.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório menciona o Catálogo Coletivo Nacional de Publicações Seriadas, o Ibict ou o Comut. Fonte real: a documentação do próprio CCN/Ibict, fora do repositório.
+- Explicação: A pergunta é sobre a importância do CCN PARA a propriedade intelectual. Publicações seriadas constituem estado da técnica: localizar o registro do uso de uma tecnologia em periódico pode caracterizar a falta de novidade de uma invenção, destruindo o requisito de patenteabilidade. A alternativa b descreve uma função do catálogo, mas não sua relevância para PI; a d é falsa, pois a RPI é publicada pelo próprio INPI.
 
-### AV2-MET-Q07 · patentes
+### AV2-MET-Q07 · Informação tecnológica
 
 > Na busca de patentes pode-se utilizar uma série de bases de dados diferentes. Cada
 > país possui sua própria base de busca para aqueles que desejam fazer pesquisa
@@ -2070,12 +2189,12 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - c) Espacenet
 - **d)** Patentscope
 
-**Resposta: d** (derivada · confiança media)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Bibliografia da disciplina sobre bases de patentes
-- Justificativa: O PATENTSCOPE, da OMPI, oferece a aba de análise que gera, sobre o resultado da busca, a distribuição preliminar por requerentes, inventores, datas de publicação e classificação. INPI e Latipat não trazem esse recurso analítico, e o Espacenet oferece filtros e estatísticas mais limitados. Confiança média: Espacenet também permite algum recorte por esses campos.
+- Referência: Sem apoio em `references/` para o que a questão discrimina: Ref3-A-caminho-da-inovacao_2010.pdf, p. 33, apenas lista bases de patentes gratuitas, sem comparar seus recursos de análise. Fonte real: a documentação do PATENTSCOPE (OMPI), fora do repositório.
+- Explicação: O PATENTSCOPE, da OMPI, oferece a aba de análise que gera, sobre o resultado da busca, a distribuição preliminar por requerentes, inventores, datas de publicação e classificação. INPI e Latipat não trazem esse recurso analítico, e o Espacenet oferece filtros e estatísticas mais limitados. Ressalva: Espacenet também permite algum recorte por esses campos.
 
-### AV2-MET-Q08 · metodologia
+### AV2-MET-Q08 · Comunicação científica
 
 > Os termos, abaixo, referem-se às definições utilizadas na NBR 6023:
 >
@@ -2103,12 +2222,12 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - **c)** Apenas III está correta.
 - d) Apenas IV e V estão corretas.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
-- Referência: ABNT NBR 6023 — Referências
-- Justificativa: Correlacionando pelas definições da NBR 6023: 1 (Monografia) = documento em uma só parte ou número pré-estabelecido de partes que se complementam; 2 (Publicação seriada) = editada em unidades físicas sucessivas, destinada a ser continuada indefinidamente; 3 (Editor) = responsável intelectual ou científico que reúne artigos; 4 (Editora) = casa publicadora responsável pela produção editorial. Logo 1a, 2d, 3c, 4b, que corresponde exatamente à ordenação III — e somente a ela.
+- Referência: ABNT NBR 6023 — Informação e documentação: referências. Norma fora de `references/`; nenhum PDF do repositório a reproduz.
+- Explicação: Correlacionando pelas definições da NBR 6023: 1 (Monografia) = documento em uma só parte ou número pré-estabelecido de partes que se complementam; 2 (Publicação seriada) = editada em unidades físicas sucessivas, destinada a ser continuada indefinidamente; 3 (Editor) = responsável intelectual ou científico que reúne artigos; 4 (Editora) = casa publicadora responsável pela produção editorial. Logo 1a, 2d, 3c, 4b, que corresponde exatamente à ordenação III — e somente a ela.
 
-### AV2-MET-Q09 · inovacao
+### AV2-MET-Q09 · Inovação
 
 > Em relação às principais métricas utilizadas para cálculo do índice de inovação,
 > assinale a alternativa incorreta.
@@ -2118,25 +2237,25 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - c) Os investimentos em P&D são levados em consideração no cálculo do índice de inovação.
 - **d)** O índice de publicação de artigo científicos não é um indicador utilizado para cômputo do índice de inovação.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Ref6-OCDE-Manual-Frascati-em-portugues-Brasil.pdf
-- Justificativa: A questão pede a alternativa INCORRETA. Volume de patentes (a), balanço de pagamento tecnológico (b) e investimentos em P&D (c) são indicadores consagrados de inovação, conforme o Manual de Frascati. A alternativa d afirma que a publicação de artigos científicos NÃO é indicador utilizado — o oposto do que ocorre: produção científica é insumo corrente dos índices de inovação. Por ser a única afirmação falsa, é a resposta.
+- Referência: Ref6-OCDE-Manual-Frascati-em-portugues-Brasil.pdf (balanço de pagamentos tecnológico e dispêndio em P&D como indicadores) e `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf`, cap. 1, seção 1, que arrola publicações e Qualis entre os indicadores científicos e famílias de patentes e patentes concedidas entre os tecnológicos.
+- Explicação: A questão pede a alternativa INCORRETA. Volume de patentes (a), balanço de pagamento tecnológico (b) e investimentos em P&D (c) são indicadores consagrados de inovação, conforme o Manual de Frascati. A alternativa d afirma que a publicação de artigos científicos NÃO é indicador utilizado — o oposto do que ocorre: produção científica é insumo corrente dos índices de inovação. Por ser a única afirmação falsa, é a resposta.
 
-### AV2-MET-Q10 · metodologia
+### AV2-MET-Q10 · Metodologia científica
 
 > Quanto aos tipos de pesquisa, analise as alternativas a seguir:
-> I.      Pesquisa bibliográfica explica e discute um tema ou problema com base em
+> I. Pesquisa bibliográfica explica e discute um tema ou problema com base em
 > referências teóricas já publicadas em livros, revistas, periódicos, artigos
 > científicos.
-> II.      Pesquisa experimental consiste na realização de experimentos, em condições
+> II. Pesquisa experimental consiste na realização de experimentos, em condições
 > controladas e conhecidas pelo investigador, em que são verificados os efeitos da
 > ação de uma ou mais variáveis determinadas no fenômeno ou objeto estudado.
-> III.      Estudo de caso consiste num estudo de natureza empírica que investiga um
+> III. Estudo de caso consiste num estudo de natureza empírica que investiga um
 > determinado fenômeno, geralmente contemporâneo, dentro de um contexto real
 > de vida, quando as fronteiras entre o fenômeno e o contexto em que ele se insere
 > não são claramente definidas.
-> IV.       A pesquisa-ação é centrada na intervenção planejada dos sujeitos em uma dada
+> IV. A pesquisa-ação é centrada na intervenção planejada dos sujeitos em uma dada
 > realidade, enquanto a chamada pesquisa participante induz a discussões entre
 > pesquisador e o sujeito, mas não implica uma ação planejada.
 >
@@ -2147,15 +2266,15 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - c) Apenas III e IV estão corretas
 - d) Apenas I e III estão corretas
 
-**Resposta: a** (derivada · confiança media)
+**Resposta: a** (gabarito oficial)
 
-- Referência: Tipologia clássica de pesquisa (Gil; Lakatos & Marconi; Thiollent)
-- Justificativa: I, II e III reproduzem as definições correntes de pesquisa bibliográfica, experimental e estudo de caso. IV também é verdadeira na tipologia usual: a pesquisa-ação pressupõe intervenção planejada dos sujeitos na realidade, ao passo que a pesquisa participante se caracteriza pela interação entre pesquisador e sujeito sem necessariamente implicar ação planejada. Logo todas estão corretas. Confiança média: a distinção entre pesquisa-ação e participante varia entre autores.
+- Referência: Fora de `references/`: tipologia clássica de pesquisa (GIL, Como elaborar projetos de pesquisa; LAKATOS; MARCONI; THIOLLENT, Metodologia da pesquisa-ação; YIN, Estudo de caso). Nenhum PDF do repositório cobre o tema.
+- Explicação: I, II e III reproduzem as definições correntes de pesquisa bibliográfica, experimental e estudo de caso. IV também é verdadeira na tipologia usual: a pesquisa-ação pressupõe intervenção planejada dos sujeitos na realidade, ao passo que a pesquisa participante se caracteriza pela interação entre pesquisador e sujeito sem necessariamente implicar ação planejada. Logo todas estão corretas. Ressalva: a distinção entre pesquisa-ação e participante varia entre autores.
 
-### AV2-MET-Q11 · metodologia
+### AV2-MET-Q11 · Comunicação científica
 
 > Sobre o Qualis técnico-tecnológico analise as alternativas abaixo:
-> I.   Foi criado para o aperfeiçoamento da mensuração da produção técnica e
+> I. Foi criado para o aperfeiçoamento da mensuração da produção técnica e
 > tecnológica dos programas de pós-graduação nacionais.
 > II. A produção técnica-tecnológica está subdividida em 4 eixos, entre eles estão os
 > produtos e processos, tais como: base de dados técnico-científica, carta, mapa ou
@@ -2171,15 +2290,15 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - c) Apenas III está correta
 - d) Apenas I e III estão corretas
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
-- Referência: Qualis Técnico-Tecnológico — CAPES
-- Justificativa: I é verdadeira (o Qualis T&T foi criado para aperfeiçoar a mensuração da produção técnica e tecnológica dos programas de pós-graduação) e II é verdadeira (a produção está organizada em eixos, entre eles Produtos e Processos, que abrange base de dados técnico-científica, carta/mapa, cultivar, curadoria de coleções biológicas). III é falsa: atividades de capacitação — docência, criação e organização — constituem um dos eixos da produção técnico-tecnológica, e não uma exclusão.
+- Referência: Qualis Técnico-Tecnológico — relatório do Grupo de Trabalho da Produção Técnica da CAPES. Documento fora de `references/`.
+- Explicação: I é verdadeira (o Qualis T&T foi criado para aperfeiçoar a mensuração da produção técnica e tecnológica dos programas de pós-graduação) e II é verdadeira (a produção está organizada em eixos, entre eles Produtos e Processos, que abrange base de dados técnico-científica, carta/mapa, cultivar, curadoria de coleções biológicas). III é falsa: atividades de capacitação — docência, criação e organização — constituem um dos eixos da produção técnico-tecnológica, e não uma exclusão.
 
-### AV2-MET-Q12 · metodologia
+### AV2-MET-Q12 · Comunicação científica
 
 > Sobre os tipos de relatórios técnicos, analise os itens a seguir:
-> I.   Relatórios técnicos de pesquisa é um relatório de andamento ou de conclusão da
+> I. Relatórios técnicos de pesquisa é um relatório de andamento ou de conclusão da
 > pesquisa em andamento, parcial, ou que está concluindo, final.
 > II. A NBR 10719 é uma norma que especifica os princípios gerais para a elaboração
 > e a apresentação do relatório técnico e/ou científico.
@@ -2195,15 +2314,15 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - **c)** Todas as alternativas estão corretas
 - d) Apenas I e III estão corretas
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
-- Referência: ABNT NBR 10719 — Relatório técnico e/ou científico
-- Justificativa: As quatro assertivas estão corretas: relatórios técnicos de pesquisa podem ser parciais ou finais (I); a NBR 10719 especifica os princípios gerais de elaboração e apresentação do relatório técnico e/ou científico (II); o laudo técnico é elaborado por profissional especializado no assunto (III); e relatórios gerenciais são documentos baseados em fatos, voltados à avaliação e à tomada de decisão (IV).
+- Referência: ABNT NBR 10719 — Informação e documentação: relatório técnico e/ou científico. Norma fora de `references/`.
+- Explicação: As quatro assertivas estão corretas: relatórios técnicos de pesquisa podem ser parciais ou finais (I); a NBR 10719 especifica os princípios gerais de elaboração e apresentação do relatório técnico e/ou científico (II); o laudo técnico é elaborado por profissional especializado no assunto (III); e relatórios gerenciais são documentos baseados em fatos, voltados à avaliação e à tomada de decisão (IV).
 
-### AV2-MET-Q13 · metodologia
+### AV2-MET-Q13 · Metodologia científica
 
 > Sobre projeto de pesquisa tecnológico é correto afirmar:
-> I.   A formulação de um projeto de inovação tecnológica é a transformação de uma
+> I. A formulação de um projeto de inovação tecnológica é a transformação de uma
 > ideia em uma proposta de investimento.
 > II. A formulação de um projeto tecnológico não requer tempo e amadurecimento
 > dos proponentes.
@@ -2217,16 +2336,18 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - c) Apenas I e III estão corretas.
 - **d)** Apenas I, III e IV estão corretas
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Bibliografia da disciplina sobre projetos de pesquisa tecnológica e TRL
-- Justificativa: I é verdadeira (formular um projeto de inovação é converter uma ideia em proposta de investimento), III é verdadeira (o escopo delimita o alcance e pode estar contido no objetivo) e IV é verdadeira (os impactos dependem do nível de maturidade tecnológica — TRL). II é falsa por negar que a formulação de um projeto tecnológico exija tempo e amadurecimento, quando o oposto é condição do processo.
+- Referência: Sem apoio em `references/` para a formulação de projetos tecnológicos: `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf`, cap. 1, seção 1, associa faixas de TRL a tipos de indicador, mas não trata de projeto. As definições dos níveis TRL estão em QUINTELLA, C. M. et al. Maturidade Tecnológica: Níveis de Prontidão TRL, citado nas referências do próprio Ref8 e fora do repositório.
+- Explicação: I é verdadeira (formular um projeto de inovação é converter uma ideia em proposta de investimento), III é verdadeira (o escopo delimita o alcance e pode estar contido no objetivo) e IV é verdadeira (os impactos dependem do nível de maturidade tecnológica — TRL). II é falsa por negar que a formulação de um projeto tecnológico exija tempo e amadurecimento, quando o oposto é condição do processo.
 
-### AV2-MET-Q14 · metodologia
+### AV2-MET-Q14 · Comunicação científica
+
+> Defeitos da fonte: identical-options.
 
 > Sobre a escrita de artigos científicos, de acordo com a NBR 6022, é correto afirmar
 > sobre a Introdução:
-> I.   É a parte principal do artigo, que contém os principais resultados encontrados e
+> I. É a parte principal do artigo, que contém os principais resultados encontrados e
 > contextualização do assunto retratado.
 > II. Parte do artigo onde se apresentam as conclusões correspondentes aos objetivos
 > e hipóteses.
@@ -2239,12 +2360,12 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - c) Apenas II e IV estão corretas.
 - d) Apenas I e II estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
-- Referência: ABNT NBR 6022 — Artigo em publicação periódica científica impressa
-- Justificativa: Pela NBR 6022, a Introdução é a parte inicial do artigo, curta, que contextualiza o assunto, indica sua importância e delimita o tema — exatamente o que descreve a assertiva IV. I e III descrevem o Desenvolvimento (parte principal, com seções e subseções, onde estão os resultados) e II descreve as Considerações Finais/Conclusão. Logo apenas IV está correta.
+- Referência: ABNT NBR 6022 — Informação e documentação: artigo em publicação periódica científica impressa. Norma fora de `references/`.
+- Explicação: Pela NBR 6022, a Introdução é a parte inicial do artigo, curta, que contextualiza o assunto, indica sua importância e delimita o tema — exatamente o que descreve a assertiva IV. I e III descrevem o Desenvolvimento (parte principal, com seções e subseções, onde estão os resultados) e II descreve as Considerações Finais/Conclusão. Logo apenas IV está correta.
 
-### AV2-MET-Q15 · metodologia
+### AV2-MET-Q15 · Informação tecnológica
 
 > Analise as alternativas sobre as fontes de informações e marque a opção correta.
 > I. Dentre as fontes de informações informais podemos citar congressos,
@@ -2262,12 +2383,12 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - c) Apenas I, II e IV estão corretas.
 - d) Todas as opções estão corretas.
 
-**Resposta: a** (derivada · confiança media)
+**Resposta: a** (gabarito oficial)
 
-- Referência: Bibliografia da disciplina sobre fontes formais e informais de informação
-- Justificativa: II é verdadeira ao classificar periódicos, teses, bases de dados e livros como fontes formais, e IV é verdadeira ao afirmar que a avaliação da fonte — formal ou informal — subsidia o julgamento de confiança, limites e vieses. I é falsa por classificar bibliotecas e centros de informação como fontes informais, quando são canais formais; III é falsa pelo absolutismo ('toda informação é confiável'); V é falsa ao misturar indistintamente os níveis primário, secundário e terciário. Confiança média: a assertiva II inclui 'comunicações orais', usualmente tidas como canal informal.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório classifica fontes de informação em formais e informais nem em primárias, secundárias e terciárias. Fonte real: bibliografia da disciplina MET sobre fontes de informação, fora do repositório.
+- Explicação: II é verdadeira ao classificar periódicos, teses, bases de dados e livros como fontes formais, e IV é verdadeira ao afirmar que a avaliação da fonte — formal ou informal — subsidia o julgamento de confiança, limites e vieses. I é falsa por classificar bibliotecas e centros de informação como fontes informais, quando são canais formais; III é falsa pelo absolutismo ('toda informação é confiável'); V é falsa ao misturar indistintamente os níveis primário, secundário e terciário. Ressalva: a assertiva II inclui 'comunicações orais', usualmente tidas como canal informal.
 
-### AV2-MET-Q16 · metodologia
+### AV2-MET-Q16 · Metodologia científica
 
 > Sobre o Conhecimento Científico, é correto afirmar:
 
@@ -2276,18 +2397,18 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · respostas deriva
 - c) Valorativo, verificável, falível, inexato onde as verdades são infalíveis.
 - **d)** Claro e preciso, comunicável, verificável, sistemático, geral, legal, preditivo
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Caracterização do conhecimento científico (Bunge; Lakatos & Marconi)
-- Justificativa: O conhecimento científico é caracterizado como factual, claro e preciso, comunicável, verificável, sistemático, geral, legal, explicativo e preditivo — a enumeração da alternativa d. A alternativa b descreve o conhecimento popular (senso comum); a c é autocontraditória ('falível, inexato onde as verdades são infalíveis') e mistura traços do conhecimento religioso; a a descreve de forma incompleta e aproxima-se do conhecimento filosófico.
+- Referência: Fora de `references/`: caracterização do conhecimento científico (BUNGE, La ciencia, su método y su filosofía; LAKATOS; MARCONI, Fundamentos de metodologia científica). Nenhum PDF do repositório cobre o tema.
+- Explicação: O conhecimento científico é caracterizado como factual, claro e preciso, comunicável, verificável, sistemático, geral, legal, explicativo e preditivo — a enumeração da alternativa d. A alternativa b descreve o conhecimento popular (senso comum); a c é autocontraditória ('falível, inexato onde as verdades são infalíveis') e mistura traços do conhecimento religioso; a a descreve de forma incompleta e aproxima-se do conhecimento filosófico.
 
 ---
 
 ## AV2-POL — Avaliação Nacional — Políticas Públicas de CT&I
 
-Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas derivadas
+Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
-### AV2-POL-Q01 · politicas-cti
+### AV2-POL-Q01 · Política pública de CT&I
 
 > Em relação às funções que o Governo deve exercer, assinale a alternativa
 > correta:
@@ -2297,12 +2418,12 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - **c)** distributiva, alocativa e estabilizadora.
 - d) fiscalizadora, alocativa e estabilizadora.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
-- Referência: Musgrave — funções fiscais do Estado, base da bibliografia de políticas públicas
-- Justificativa: As três funções clássicas do Governo na teoria das finanças públicas são a alocativa (provisão de bens públicos), a distributiva (ajuste na distribuição de renda e riqueza) e a estabilizadora (manutenção do nível de emprego, preços e crescimento). 'Fiscalizadora' não integra essa tríade, o que elimina as alternativas a, b e d.
+- Referência: Fora de `references/`: nenhum PDF do repositório expõe as funções fiscais do Estado. As três funções — alocativa, distributiva e estabilizadora — são as de MUSGRAVE, R. The Theory of Public Finance (1959), base da bibliografia de políticas públicas.
+- Explicação: As três funções clássicas do Governo na teoria das finanças públicas são a alocativa (provisão de bens públicos), a distributiva (ajuste na distribuição de renda e riqueza) e a estabilizadora (manutenção do nível de emprego, preços e crescimento). 'Fiscalizadora' não integra essa tríade, o que elimina as alternativas a, b e d.
 
-### AV2-POL-Q02 · politicas-cti
+### AV2-POL-Q02 · Política pública de CT&I
 
 > Avalie as seguintes afirmações sobre a institucionalidade e governança do
 > Sistema Nacional de CT&I:
@@ -2319,12 +2440,12 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - c) Apenas I, II estão corretas.
 - **d)** Apenas I e III estão corretas.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref1-ENCTI-2024-2034.pdf
-- Justificativa: I e III são desafios reconhecidos de governança do SNCTI: estruturar o sistema e dar sinergia entre órgãos e agências nas várias esferas, e implantar acompanhamento e avaliação de resultados e impactos. II é falsa por inversão: a política busca a REDUÇÃO das disparidades regionais, não seu aumento.
+- Explicação: I e III são desafios reconhecidos de governança do SNCTI: estruturar o sistema e dar sinergia entre órgãos e agências nas várias esferas, e implantar acompanhamento e avaliação de resultados e impactos. II é falsa por inversão: a política busca a REDUÇÃO das disparidades regionais, não seu aumento.
 
-### AV2-POL-Q03 · politicas-cti
+### AV2-POL-Q03 · Economia da inovação
 
 > A qual conceito se refere o seguinte trecho:
 > …pode ser definido como um modelo e um padrão de solução para problemas
@@ -2336,12 +2457,12 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - c) Trajetória tecnológica
 - d) Sociedade industrial
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref1-ENCTI-2024-2034.pdf
-- Justificativa: A definição transcrita é a de paradigma tecnológico em Dosi: um modelo e um padrão de solução de problemas tecnológicos selecionados, que embute diretrizes fortes sobre a direção da mudança técnica. A trajetória tecnológica (c) é o padrão de atividade normal DENTRO de um paradigma, e não o modelo que a orienta.
+- Explicação: A definição transcrita é a de paradigma tecnológico em Dosi: um modelo e um padrão de solução de problemas tecnológicos selecionados, que embute diretrizes fortes sobre a direção da mudança técnica. A trajetória tecnológica (c) é o padrão de atividade normal DENTRO de um paradigma, e não o modelo que a orienta.
 
-### AV2-POL-Q04 · politicas-cti
+### AV2-POL-Q04 · Economia da inovação
 
 > A adoção de uma abordagem evolucionista dos sistemas de inovação pressupõe
 > colocar a inovação, um processo complexo e dinâmico, no centro do
@@ -2359,15 +2480,15 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 
 - a) Apenas I.
 - b) Apenas III.
-- **c)** Apenas I e II.
-- d) I, II e III.
+- c) Apenas I e II.
+- **d)** I, II e III.
 
-**Resposta: c** (derivada · confiança media)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Ref1-ENCTI-2024-2034.pdf
-- Justificativa: I e II são consensuais na abordagem evolucionista: a tendência mundial de ampliação dos investimentos em C&T e a centralidade da formação de capital humano em ciências naturais e engenharias. III é rejeitada porque a própria premissa do enunciado trata a inovação como processo complexo e dinâmico — reduzi-la à contagem de patentes contraria a abordagem, ainda que patentes sejam um indicador parcial. Confiança média por essa ressalva.
+- Referência: Ref1-ENCTI-2024-2034.pdf, Quadro 3.2 (metas quantitativas claras: P&D/PIB, patentes, citações científicas); Ref7-Manual_de_Oslo_2018.pdf, §11.50 (indicadores baseados em direitos de PI, como invenções patenteadas).
+- Explicação: O gabarito oficial aponta d: I, II e III. I e II são consensuais na abordagem evolucionista — a tendência mundial de ampliação dos investimentos em C&T e a centralidade da formação de capital humano em ciências naturais e engenharias. III, 'a inovação pode ser medida pelo número de patentes', também é aceita: a contagem de patentes é um indicador clássico de inovação e aparece como meta quantitativa de política de CT&I (ENCTI 2024-2034, Quadro 3.2: 'metas quantitativas claras (P&D/PIB, patentes, citações científicas)'), e o Manual de Oslo trata os indicadores baseados em direitos de PI, como invenções patenteadas, como medidas de estratégia de apropriação. A assertiva diz que a inovação PODE ser medida assim, não que só possa: é uma medida parcial, não uma definição, e nada nela contradiz a premissa de que a inovação é um processo complexo. Ressalva: a derivação anterior deste banco rejeitava III e defendia a alternativa c, que o gabarito oficial contradiz.
 
-### AV2-POL-Q05 · politicas-cti
+### AV2-POL-Q05 · Política pública de CT&I
 
 > O Plano de expansão, consolidação e integração do sistema nacional de CT&I
 > está centrado nas dimensões social, econômica e científica e tecnológica. Qual
@@ -2379,12 +2500,12 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - **c)** Formação de engenheiros e pesquisadores e atração e fixação de talentos.
 - d) Criação de centros e laboratórios nacionais multiusuários.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref1-ENCTI-2024-2034.pdf
-- Justificativa: A pergunta isola a dimensão de formação de recursos humanos. Formar engenheiros e pesquisadores e atrair e fixar talentos é ação de RH por definição. As demais pertencem a outras dimensões: articulação universidade-empresa (a) é de interação, modernização da concessão de patentes (b) é de marco regulatório e centros multiusuários (d) é de infraestrutura.
+- Explicação: A pergunta isola a dimensão de formação de recursos humanos. Formar engenheiros e pesquisadores e atrair e fixar talentos é ação de RH por definição. As demais pertencem a outras dimensões: articulação universidade-empresa (a) é de interação, modernização da concessão de patentes (b) é de marco regulatório e centros multiusuários (d) é de infraestrutura.
 
-### AV2-POL-Q06 · politicas-cti
+### AV2-POL-Q06 · Economia da inovação
 
 > Analise a seguinte descrição de um conceito. Após, analise as alternativas e
 > escolha aquela que se refere ao conceito apresentado. “Processo de mudança e
@@ -2399,12 +2520,12 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - c) Technological trajectory
 - d) Incremental innovations
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref1-ENCTI-2024-2034.pdf
-- Justificativa: O trecho de Perez e Soete (1988) descreve o catching-up: processo de mudança e aprendizagem pelo qual países retardatários reduzem o gap tecnológico, apoiado em movimentos internacionais de capital e transferência de tecnologia, gerando capacitação local, produtividade e inovações. Spin-off, trajetória tecnológica e inovação incremental designam fenômenos distintos e de escala menor.
+- Explicação: O trecho de Perez e Soete (1988) descreve o catching-up: processo de mudança e aprendizagem pelo qual países retardatários reduzem o gap tecnológico, apoiado em movimentos internacionais de capital e transferência de tecnologia, gerando capacitação local, produtividade e inovações. Spin-off, trajetória tecnológica e inovação incremental designam fenômenos distintos e de escala menor.
 
-### AV2-POL-Q07 · politicas-cti
+### AV2-POL-Q07 · Economia da inovação
 
 > São conceitos evolucionistas que embasam as análises dos sistemas setoriais:
 >
@@ -2419,12 +2540,12 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - c) Apenas I e III.
 - d) Apenas II e III.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
 - Referência: Ref1-ENCTI-2024-2034.pdf
-- Justificativa: Os três são pilares evolucionistas da análise de sistemas setoriais de inovação (Malerba): paradigmas tecnológicos delimitam o espaço de busca, processos de aprendizagem explicam a acumulação de capacitações, e a coevolução entre tecnologias, instituições e organizações descreve a dinâmica conjunta do setor. Nenhum deles é estranho à abordagem.
+- Explicação: Os três são pilares evolucionistas da análise de sistemas setoriais de inovação (Malerba): paradigmas tecnológicos delimitam o espaço de busca, processos de aprendizagem explicam a acumulação de capacitações, e a coevolução entre tecnologias, instituições e organizações descreve a dinâmica conjunta do setor. Nenhum deles é estranho à abordagem.
 
-### AV2-POL-Q08 · politicas-cti
+### AV2-POL-Q08 · Gestão da inovação na ICT
 
 > O parágrafo único da Art. 15 A da Lei 10.973/2004 prevê diretrizes mínimas para a
 > Política de Inovação das ICTs. Algumas dessas diretrizes estão expostas abaixo.
@@ -2444,12 +2565,12 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - **c)** Apenas I, II e IV.
 - d) I, II, III e IV.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
 - Referência: Ref3-A-caminho-da-inovacao_2010.pdf
-- Justificativa: O parágrafo único do art. 15-A da Lei 10.973/2004 arrola diretrizes que abrangem cooperação e parcerias em PD&I (I), constituição e gestão de ambientes promotores de inovação (II) e institucionalização e gestão do NIT (IV). III é falsa: a lei prevê licença SEM remuneração para o pesquisador público constituir empresa com finalidade de inovação (art. 15), e não afastamento remunerado para abrir empresa de qualquer natureza.
+- Explicação: O parágrafo único do art. 15-A da Lei 10.973/2004 arrola diretrizes que abrangem cooperação e parcerias em PD&I (I), constituição e gestão de ambientes promotores de inovação (II) e institucionalização e gestão do NIT (IV). III é falsa: a lei prevê licença SEM remuneração para o pesquisador público constituir empresa com finalidade de inovação (art. 15), e não afastamento remunerado para abrir empresa de qualquer natureza.
 
-### AV2-POL-Q09 · politicas-cti
+### AV2-POL-Q09 · Política pública de CT&I
 
 > Sobre os instrumentos do FNDCT, pode-se associar a seguinte afirmação
 > (verdadeira):
@@ -2459,12 +2580,12 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - c) A subvenção econômica à inovação apoia todo o espectro de atividades de pesquisa, através da aplicação exclusiva de recursos públicos reembolsáveis.
 - d) O fomento à PD&I prevê apenas a participação em ações relacionadas à pesquisa científica e de desenvolvimento tecnológico em determinadas áreas e setores, não sendo aplicável à formação de recursos humanos.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
 - Referência: Ref1-ENCTI-2024-2034.pdf
-- Justificativa: O fomento à PD&I, com recursos não reembolsáveis, é o principal instrumento do FNDCT para implantação e consolidação institucional da pesquisa e da pós-graduação e para expansão do sistema nacional de C&T. b atribui esse papel à subvenção econômica; c erra ao qualificar a subvenção como recurso reembolsável, quando ela é não reembolsável e dirigida a empresas; d restringe indevidamente o fomento, excluindo a formação de recursos humanos.
+- Explicação: O fomento à PD&I, com recursos não reembolsáveis, é o principal instrumento do FNDCT para implantação e consolidação institucional da pesquisa e da pós-graduação e para expansão do sistema nacional de C&T. b atribui esse papel à subvenção econômica; c erra ao qualificar a subvenção como recurso reembolsável, quando ela é não reembolsável e dirigida a empresas; d restringe indevidamente o fomento, excluindo a formação de recursos humanos.
 
-### AV2-POL-Q10 · politicas-cti
+### AV2-POL-Q10 · Economia da inovação
 
 > Em uma perspectiva histórica, foram diferentes ciclos de mudança tecnológica
 > ocorridos no Brasil. Relacione as colunas I e II e, após, selecione e alterativa que
@@ -2494,12 +2615,12 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - c) 2, 4, 1, 3, 5.
 - d) 4, 2, 3, 5, 1.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref1-ENCTI-2024-2034.pdf
-- Justificativa: Ordenando os ciclos longos de mudança tecnológica: Petróleo e Indústria Automotiva correspondem a 1940-1990 (4); Ferrovia, Aço e Carvão a 1849-1896 (2); Indústria Têxtil ao primeiro ciclo, 1789-1849 (1); Eletricidade e Química a 1896-1940 (3); e TICs, nanotecnologia, biotecnologia e novas fontes energéticas ao período posterior a 1990 (5). A sequência de cima para baixo é 4, 2, 1, 3, 5.
+- Explicação: Ordenando os ciclos longos de mudança tecnológica: Petróleo e Indústria Automotiva correspondem a 1940-1990 (4); Ferrovia, Aço e Carvão a 1849-1896 (2); Indústria Têxtil ao primeiro ciclo, 1789-1849 (1); Eletricidade e Química a 1896-1940 (3); e TICs, nanotecnologia, biotecnologia e novas fontes energéticas ao período posterior a 1990 (5). A sequência de cima para baixo é 4, 2, 1, 3, 5.
 
-### AV2-POL-Q11 · politicas-cti
+### AV2-POL-Q11 · Gestão da inovação na ICT
 
 > A construção da Política de Inovação, nas ICTs, demanda estratégias e ações
 > robustas com objetivos e metas em alicerçadas em:
@@ -2516,12 +2637,12 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - c) Apenas II, III e IV.
 - **d)** I, II, III e IV.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
 - Referência: Ref3-A-caminho-da-inovacao_2010.pdf
-- Justificativa: As quatro frentes sustentam a Política de Inovação de uma ICT e são complementares, não excludentes: formação de RH estratégico, empreendedorismo tecnológico, parcerias público-privadas e cooperação internacional. Como nenhuma delas é estranha ao escopo do art. 15-A da Lei de Inovação, todas estão corretas.
+- Explicação: As quatro frentes sustentam a Política de Inovação de uma ICT e são complementares, não excludentes: formação de RH estratégico, empreendedorismo tecnológico, parcerias público-privadas e cooperação internacional. Como nenhuma delas é estranha ao escopo do art. 15-A da Lei de Inovação, todas estão corretas.
 
-### AV2-POL-Q12 · politicas-cti
+### AV2-POL-Q12 · Gestão da inovação na ICT
 
 > A Lei 10.973/2004 (alterada pela Lei 13.243/2016), no art. 15-A, prevê que “A ICT
 > de direito público deverá instituir sua política de inovação, dispondo sobre a
@@ -2536,12 +2657,12 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - c) institucionalização e gestão do Núcleo de Inovação Tecnológica.
 - d) estabelecimento de parcerias para desenvolvimento de tecnologias com inventores independentes, empresas e outras entidades.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
 - Referência: Ref3-A-caminho-da-inovacao_2010.pdf
-- Justificativa: A questão pede o que NÃO consta das diretrizes do art. 15-A. Gestão da PI e transferência de tecnologia (a), institucionalização e gestão do NIT (c) e parcerias com inventores independentes, empresas e outras entidades (d) são incisos expressos do parágrafo único. A abertura de empresas voltadas a políticas de redução da desigualdade (b) não figura entre as diretrizes: o dispositivo trata de empreendedorismo e incubação com finalidade de inovação, não de política social.
+- Explicação: A questão pede o que NÃO consta das diretrizes do art. 15-A. Gestão da PI e transferência de tecnologia (a), institucionalização e gestão do NIT (c) e parcerias com inventores independentes, empresas e outras entidades (d) são incisos expressos do parágrafo único. A abertura de empresas voltadas a políticas de redução da desigualdade (b) não figura entre as diretrizes: o dispositivo trata de empreendedorismo e incubação com finalidade de inovação, não de política social.
 
-### AV2-POL-Q13 · politicas-cti
+### AV2-POL-Q13 · Política pública de CT&I
 
 > Em relação à avaliação de contratos de desempenho ICT é correto afirma que:
 >
@@ -2555,17 +2676,19 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 >
 > Das proposições apresentadas:
 
-- **a)** Apenas a afirmativa I está correta.
+- a) Apenas a afirmativa I está correta.
 - b) Apenas a afirmativa II está correta.
 - c) Apenas a afirmativa III está correta.
-- d) Apenas as afirmativas IV estão corretas.
+- **d)** Apenas as afirmativas IV estão corretas.
 
-**Resposta: a** (derivada · confiança baixa)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Ref3-A-caminho-da-inovacao_2010.pdf
-- Justificativa: Das quatro proposições, apenas I é sustentável: há dimensões singulares de mensuração de desempenho, entre elas eficiência e efetividade. III e IV são eliminadas pelo absolutismo de 'todas as dimensões são quantitativas/qualitativas', e II restringe indevidamente as dimensões qualitativas a eficiência e eficácia. Confiança BAIXA: a questão é mal formulada e as quatro assertivas são vagas, sem âncora normativa que decida com segurança.
+- Referência: Sem apoio em `references/`: nenhum dos nove PDFs do repositório menciona 'contrato de desempenho' — zero ocorrências. O material mais próximo é `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf`, cap. 1, seção 5.1, que define efetividade, eficácia e eficiência como indicadores de resultado da metodologia dos 6Es (MP, 2009), mas não os ordena nem os classifica como puramente qualitativos, e portanto não decide a questão. A citação anterior a Ref3-A-caminho-da-inovacao_2010.pdf era falsa: o arquivo não contém a expressão.
+- Explicação: O gabarito oficial aponta d, 'Apenas as afirmativas IV estão corretas', e a fundamentação não foi localizada nos materiais de referência. A assertiva IV afirma que TODAS as dimensões de mensuração são qualitativas e que a ordem de preferência é eficácia, eficiência e efetividade; nenhuma fonte consultada sustenta nem o 'todas', nem essa ordenação. O referencial usual de avaliação de desempenho no setor público — a metodologia dos 6Es adotada pelo Ministério do Planejamento — trata eficiência, eficácia e efetividade como indicadores de resultado com aspectos tanto quantitativos (quantidade, cobertura, custo unitário, tempo) quanto qualitativos (qualidade do produto, acessibilidade), e não os hierarquiza. A questão ainda é mal redigida: fala em 'as afirmativas IV', no plural, para uma única assertiva. Fica registrado que a resposta é d por gabarito publicado, e não por raciocínio reconstruível. Ressalva: a derivação anterior deste banco defendia a alternativa a, que o gabarito oficial contradiz.
 
-### AV2-POL-Q14 · empreendedorismo
+### AV2-POL-Q14 · Gestão da inovação na ICT
+
+> Nunca sorteada: o gabarito oficial imprime ANULADA no lugar da letra, ou seja, a própria banca retirou a questão. Ela continua no banco e na contagem do caderno porque a prova impressa realmente a numerou.
 
 > “Uma incubadora de empresas é um local onde empresas criadas recentemente
 > estão concentradas em um espaço específico...”
@@ -2574,30 +2697,30 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 
 - a) ...nos centros de pesquisas.
 - b) ...e o objetivo é fortalecer as ideias.
-- **c)** ... para melhorar a taxa de sobrevivência do ambiente de negócio.
+- c) ... para melhorar a taxa de sobrevivência do ambiente de negócio.
 - d) ... para desenvolvimento local estruturado na geração de empregos.
 
-**Resposta: c** (derivada · confiança media)
+**Sem resposta correta** (questão anulada)
 
-- Referência: Ref9-E-book+Guia+do+empreendedorismo+v.15.06.2026.pdf
-- Justificativa: A definição corrente de incubadora — concentração de empresas nascentes num espaço específico com apoio compartilhado — tem como propósito declarado elevar a taxa de sobrevivência e crescimento dessas empresas nos primeiros anos, fase de maior mortalidade. As demais alternativas indicam efeitos possíveis, como emprego e desenvolvimento local, mas não o objetivo que completa a definição. Confiança média pela redação truncada da alternativa.
+- Referência: Gabarito-Final_AV2-POL.pdf, linha 14 da tabela QUESTÃO / RESPOSTA CORRETA: ANULADA. A citação anterior a Ref9-E-book+Guia+do+empreendedorismo+v.15.06.2026.pdf era falsa e anacrônica — documento datado de 2026 para uma prova de 2023, com duas menções de passagem a incubadoras e nenhuma que complete a definição do enunciado.
+- Explicação: Questão anulada pela própria banca: onde as demais linhas da tabela trazem uma letra, a linha 14 do gabarito final traz ANULADA. Não há resposta correta a estudar. A questão continua no banco e na contagem do caderno porque a prova impressa realmente a numerou, mas nunca é sorteada.
 
-### AV2-POL-Q15 · empreendedorismo
+### AV2-POL-Q15 · Gestão da inovação na ICT
 
 > Qual das alternativas abaixo representa verdadeiramente um desafio para o
 > fortalecimento dos Parques Tecnológicos no Brasil?
 
 - a) Relativa obrigação da comunidade científica e tecnológica na geração da inovação.
-- **b)** Sustentabilidade dos parques tecnológicos, dependendo da região em que se localiza.
+- b) Sustentabilidade dos parques tecnológicos, dependendo da região em que se localiza.
 - c) Apoio a demanda crescente dos parques tecnológicos gerando expectativas irrealistas.
-- d) Elaboração de indicadores para parques tecnológicos.
+- **d)** Elaboração de indicadores para parques tecnológicos.
 
-**Resposta: b** (derivada · confiança baixa)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Ref9-E-book+Guia+do+empreendedorismo+v.15.06.2026.pdf
-- Justificativa: A sustentabilidade financeira e institucional dos parques, fortemente condicionada pela região onde se instalam, é o desafio mais recorrente na literatura brasileira sobre parques tecnológicos. Confiança BAIXA: a alternativa d (elaboração de indicadores) também descreve um desafio real e documentado, e a redação de a e c é truncada demais para descartá-las com segurança.
+- Referência: FARIA, A. F. et al. Parques Tecnológicos do Brasil. MCTI/NTG-UFV, 2021, cap. 2 (ausência de métricas comuns de avaliação) e cap. 4 (indicadores e plataforma MCTI-InovaData-Br) — obra externa: nenhum PDF de `references/` trata de parques tecnológicos. A citação anterior a Ref9-E-book+Guia+do+empreendedorismo+v.15.06.2026.pdf era falsa e anacrônica: documento datado de 2026 para uma prova de 2023, sem nenhuma ocorrência da palavra 'parque'.
+- Explicação: O gabarito oficial aponta d. O desafio que a literatura brasileira sobre parques tecnológicos identifica como central é exatamente a ausência de indicadores comuns: 'Não há consenso sobre o que seja um parque tecnológico de sucesso por não existir métricas comuns de avaliação que permitam a comparação dos diferentes parques de forma sistemática' (MCTI/NTG-UFV, 2021). Foi para suprir essa lacuna que o MCTI criou a plataforma InovaData-Br, que coleta anualmente os indicadores dos parques. As outras alternativas não enunciam um desafio a superar: a sustentabilidade dependente da região (b) é uma condição de contorno de cada empreendimento, e a redação de a e c é truncada demais para descrever um obstáculo. Ressalva: a derivação anterior deste banco defendia a alternativa b, que o gabarito oficial contradiz.
 
-### AV2-POL-Q16 · politicas-cti
+### AV2-POL-Q16 · Política pública de CT&I
 
 > Ao exercer suas funções alocativa, distributiva e estabilizadora, o Governo pode
 > promover melhoras no padrão de vida da população a partir das seguintes
@@ -2608,18 +2731,18 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · respostas deriva
 - c) Regulando mercados.
 - d) Fornecimento de bens e serviços públicos.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
-- Referência: Musgrave — funções fiscais do Estado, base da bibliografia de políticas públicas
-- Justificativa: A questão pede a EXCEÇÃO. Complementar a iniciativa privada (a), regular mercados (c) e fornecer bens e serviços públicos (d) são atividades pelas quais o Governo exerce suas funções alocativa, distributiva e estabilizadora. A alternativa b está invertida: o Governo compra bens e serviços DO SETOR PRIVADO — 'compra do setor público' não descreve atividade governamental de melhoria do padrão de vida.
+- Referência: Fora de `references/`: nenhum PDF do repositório expõe as funções fiscais do Estado. As três funções — alocativa, distributiva e estabilizadora — são as de MUSGRAVE, R. The Theory of Public Finance (1959), base da bibliografia de políticas públicas.
+- Explicação: A questão pede a EXCEÇÃO. Complementar a iniciativa privada (a), regular mercados (c) e fornecer bens e serviços públicos (d) são atividades pelas quais o Governo exerce suas funções alocativa, distributiva e estabilizadora. A alternativa b está invertida: o Governo compra bens e serviços DO SETOR PRIVADO — 'compra do setor público' não descreve atividade governamental de melhoria do padrão de vida.
 
 ---
 
 ## AV2-PROSP — Avaliação Nacional — Prospecção Tecnológica
 
-Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respostas derivadas
+Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · gabarito oficial
 
-### AV2-PROSP-Q01 · inovacao
+### AV2-PROSP-Q01 · Economia da inovação
 
 > A inovação tecnológica tem sido associada a modelos e gerações, conforme a sua
 > relação com o mercado. Avalie as seguintes assertivas:
@@ -2644,12 +2767,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) Apenas as assertivas II e III estão corretas.
 - d) Apenas as assertivas II e IV estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: I é verdadeira (a 1ª geração é o technology push, com o mercado como mero receptor dos resultados de P&D) e III é verdadeira (a 5ª geração é a de redes, com P&D cooperativo, bases compartilhadas e alta conectividade). IV é autocontraditória e por isso falsa: descreve o modelo integrado como 'sequencial, lógico e contínuo' — traço dos modelos lineares — e em seguida afirma que ocorre em rede, que é a 5ª geração. Restam I e III.
+- Referência: Sem apoio em `references/`: as cinco gerações de modelos de inovação são de ROTHWELL, R. Towards the Fifth-generation Innovation Process (1994), fora do repositório. `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf` (2025), apesar do nome da série, é sobre indicadores cientométricos e incentivos a tecnologias verdes e não trata do tema.
+- Explicação: I é verdadeira (a 1ª geração é o technology push, com o mercado como mero receptor dos resultados de P&D) e III é verdadeira (a 5ª geração é a de redes, com P&D cooperativo, bases compartilhadas e alta conectividade). IV é autocontraditória e por isso falsa: descreve o modelo integrado como 'sequencial, lógico e contínuo' — traço dos modelos lineares — e em seguida afirma que ocorre em rede, que é a 5ª geração. Restam I e III.
 
-### AV2-PROSP-Q02 · prospeccao
+### AV2-PROSP-Q02 · Prospecção tecnológica
 
 > Em relação aos Estudos Prospectivos, há diversas assertivas. Escolha a incorreta:
 
@@ -2658,12 +2781,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - **c)** No que se refere ao desenvolvimento científico e tecnológico, os estudos prospectivos têm sido considerados complementares, não fundamentais, para promover a criação e organizar sistemas de inovação que respondam aos interesses da sociedade.
 - d) podem ser divididos em três grandes grupos: Estudos de Futuro, Inteligência Competitiva e Inteligência Tecnológica.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: A questão pede a assertiva INCORRETA. a, b e d descrevem corretamente os estudos prospectivos: combinam métodos quantitativos e qualitativos, transformam informação em conhecimento para decisores, e dividem-se em Estudos de Futuro, Inteligência Competitiva e Inteligência Tecnológica. c é a incorreta ao rebaixá-los a 'complementares, não fundamentais' — a literatura os trata como fundamentais para criar e organizar sistemas de inovação.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório trata do conceito e da tipologia dos estudos prospectivos — `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf` (2025), apesar do nome da série, é sobre indicadores cientométricos e incentivos a tecnologias verdes. Fonte real: bibliografia da disciplina PROSP (Coleção PROFNIT, Série Prospecção Tecnológica, volumes anteriores), fora do repositório.
+- Explicação: A questão pede a assertiva INCORRETA. a, b e d descrevem corretamente os estudos prospectivos: combinam métodos quantitativos e qualitativos, transformam informação em conhecimento para decisores, e dividem-se em Estudos de Futuro, Inteligência Competitiva e Inteligência Tecnológica. c é a incorreta ao rebaixá-los a 'complementares, não fundamentais' — a literatura os trata como fundamentais para criar e organizar sistemas de inovação.
 
-### AV2-PROSP-Q03 · prospeccao
+### AV2-PROSP-Q03 · Prospecção tecnológica
 
 > Analise as assertivas sobre os objetivos dos Estudos Prospectivos.
 > I. Prospectar os impactos das pesquisas atuais e da política tecnológica, descobrir novas
@@ -2683,12 +2806,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) Apenas as assertivas I, III, IV e V estão corretas.
 - **d)** Apenas as assertivas I, II, IV e V estão corretas.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: I, II, IV e V enunciam objetivos correntes dos estudos prospectivos: prospectar impactos e descobrir demandas, subsidiar a decisão em C&T&I, promover a circulação de conhecimento estratégico e identificar prioridades de pesquisa. III é falsa pela restrição 'de curto prazo apenas': estudos prospectivos trabalham justamente com horizontes de médio e longo prazo.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório enumera os objetivos dos estudos prospectivos — `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf` (2025), apesar do nome da série, é sobre indicadores cientométricos e incentivos a tecnologias verdes. Fonte real: bibliografia da disciplina PROSP (Coleção PROFNIT, Série Prospecção Tecnológica, volumes anteriores), fora do repositório.
+- Explicação: I, II, IV e V enunciam objetivos correntes dos estudos prospectivos: prospectar impactos e descobrir demandas, subsidiar a decisão em C&T&I, promover a circulação de conhecimento estratégico e identificar prioridades de pesquisa. III é falsa pela restrição 'de curto prazo apenas': estudos prospectivos trabalham justamente com horizontes de médio e longo prazo.
 
-### AV2-PROSP-Q04 · prospeccao
+### AV2-PROSP-Q04 · Prospecção tecnológica
 
 > Os estudos prospectivos englobam fases sobre as quais NÃO se pode AFIRMAR
 > que: (escolha a assertiva incorreta)
@@ -2698,12 +2821,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) Na Fase Pré-Prospectiva, ocorre definição da técnica a ser utilizada; seleção da equipe de trabalho (interna e externa); estudo do tema por parte dos pesquisadores que irão conduzir a prospecção; identificação das fontes de informação; definição de estratégia de busca; definição da abrangência; definição do período de cobertura; estimativa de tempo para elaboração do estudo; estimativa de custo (se usar bases comerciais).
 - d) Na Fase Prospectiva, é colocada em prática a(s) técnica(s) selecionada, e nela ocorrem a coleta, o tratamento, a análise e a consolidação das informações: análise das informações tabuladas; identificação dos tipos de informações relevantes ou disponíveis; reavaliação das fontes de dados escolhidas/custos; definição dos relatórios e gráficos que constituirão o trabalho; elaboração de relatórios conclusivos; elaboração do texto do estudo; avaliação final e conclusão do trabalho.
 
-**Resposta: a** (derivada · confiança media)
+**Resposta: a** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: O modelo consagrado organiza a prospecção em três fases — pré-prospectiva, prospectiva e pós-prospectiva —, corretamente descritas em c, d e b. a é a assertiva incorreta por inventar uma 'fase preparatória' e atribuir-lhe atividades (definição de objetivos, escopo e escolha das técnicas) que a própria alternativa c já situa, corretamente, na fase pré-prospectiva. Confiança média: alguns textos usam 'preparatória' como sinônimo informal de pré-prospectiva.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório descreve as fases pré-prospectiva, prospectiva e pós-prospectiva — `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf` (2025), apesar do nome da série, é sobre indicadores cientométricos e incentivos a tecnologias verdes. Fonte real: bibliografia da disciplina PROSP (Coleção PROFNIT, Série Prospecção Tecnológica, volumes anteriores), fora do repositório.
+- Explicação: O modelo consagrado organiza a prospecção em três fases — pré-prospectiva, prospectiva e pós-prospectiva —, corretamente descritas em c, d e b. a é a assertiva incorreta por inventar uma 'fase preparatória' e atribuir-lhe atividades (definição de objetivos, escopo e escolha das técnicas) que a própria alternativa c já situa, corretamente, na fase pré-prospectiva. Ressalva: alguns textos usam 'preparatória' como sinônimo informal de pré-prospectiva.
 
-### AV2-PROSP-Q05 · prospeccao
+### AV2-PROSP-Q05 · Prospecção tecnológica
 
 > Quanto à classificação TRL (Technology Readiness Assessment), AVALIE as
 > afirmações na sequência:
@@ -2731,12 +2854,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - **c)** Apenas as assertivas II, III e IV estão corretas.
 - d) Apenas as assertivas II, III e V estão corretas.
 
-**Resposta: c** (derivada · confiança media)
+**Resposta: c** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: II, III e IV são verdadeiras: a escala vai de TRL1 a TRL9, as definições variam entre organizações sendo a da NASA a mais difundida, e existem calculadoras TRL para uniformizar a avaliação. V é falsa por afirmar evolução tecnológica linear e uniforme entre áreas. I é descartada porque o TRA é uma avaliação de maturidade técnica, não um exercício de 'definição do mercado futuro'. Confiança média: a assertiva I é parcialmente defensável.
+- Referência: Sem apoio direto em `references/`: `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf`, cap. 1, seção 1, só usa as faixas TRL1-TRL3 e TRL4-TRL8 para separar indicadores científicos de tecnológicos. As definições nível a nível e a escala da NASA estão em QUINTELLA, C. M. et al. Maturidade Tecnológica: Níveis de Prontidão TRL, citado nas referências do próprio Ref8 e fora do repositório.
+- Explicação: II, III e IV são verdadeiras: a escala vai de TRL1 a TRL9, as definições variam entre organizações sendo a da NASA a mais difundida, e existem calculadoras TRL para uniformizar a avaliação. V é falsa por afirmar evolução tecnológica linear e uniforme entre áreas. I é descartada porque o TRA é uma avaliação de maturidade técnica, não um exercício de 'definição do mercado futuro'. Ressalva: a assertiva I é parcialmente defensável.
 
-### AV2-PROSP-Q06 · prospeccao
+### AV2-PROSP-Q06 · Prospecção tecnológica
 
 > Em relação ao nível de prontidão da tecnologia ou TRL, escolha a assertiva
 > ERRADA:
@@ -2746,12 +2869,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - **c)** No nível TRL 4 ocorre a validação dos componentes da tecnologia em ambiente operacional real. No setor biomédico, consiste na terceira fase de ensaios clínicos. No caso de produtos de software, inserem-se nesta etapa os alpha tests.
 - d) No nível TRL 2 tem-se a pesquisa baseada num conceito tecnológico e/ou ideia de aplicação. Nesta fase, a ciência ou tecnologia já possui algum grau de sustentação: foram observados alguns princípios básicos e iniciou-se a P&D, mas as aplicações ainda são especulativas.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: A questão pede a assertiva ERRADA. c está errada em dois pontos: no TRL 4 a validação dos componentes ocorre em ambiente LABORATORIAL, não em ambiente operacional real, e a terceira fase de ensaios clínicos corresponde a níveis bem mais altos (TRL 7-8). As descrições de TRL 2 (d), TRL 3 (a) e TRL 7 (b) estão coerentes com a escala.
+- Referência: Sem apoio direto em `references/`: `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf`, cap. 1, seção 1, só usa as faixas TRL1-TRL3 e TRL4-TRL8 para separar indicadores científicos de tecnológicos, sem descrever cada nível. Fonte real: QUINTELLA, C. M. et al. Maturidade Tecnológica: Níveis de Prontidão TRL, citado nas referências do próprio Ref8 e fora do repositório.
+- Explicação: A questão pede a assertiva ERRADA. c está errada em dois pontos: no TRL 4 a validação dos componentes ocorre em ambiente LABORATORIAL, não em ambiente operacional real, e a terceira fase de ensaios clínicos corresponde a níveis bem mais altos (TRL 7-8). As descrições de TRL 2 (d), TRL 3 (a) e TRL 7 (b) estão coerentes com a escala.
 
-### AV2-PROSP-Q07 · prospeccao
+### AV2-PROSP-Q07 · Prospecção tecnológica
 
 > Em relação aos diversos métodos utilizados em prospecção tecnológica, avalie as
 > seguintes assertivas:
@@ -2776,12 +2899,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) Apenas as assertivas II, III e IV estão corretas.
 - **d)** Apenas as assertivas I, III e IV estão corretas.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: I, III e IV descrevem corretamente painel de especialistas, construção de cenários e a divisão entre métodos quantitativos (bibliometria, extrapolação de tendências) e qualitativos (julgamento, conhecimento tácito). II é falsa ao afirmar que a revisão de literatura não é utilizada em prospecção tecnológica — ela é, ao contrário, um dos métodos de base.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório descreve painel de especialistas, construção de cenários ou revisão de literatura como métodos de prospecção — `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf` (2025), apesar do nome da série, é sobre indicadores cientométricos e incentivos a tecnologias verdes. Fonte real: bibliografia da disciplina PROSP (Coleção PROFNIT, Série Prospecção Tecnológica, volumes anteriores), fora do repositório.
+- Explicação: I, III e IV descrevem corretamente painel de especialistas, construção de cenários e a divisão entre métodos quantitativos (bibliometria, extrapolação de tendências) e qualitativos (julgamento, conhecimento tácito). II é falsa ao afirmar que a revisão de literatura não é utilizada em prospecção tecnológica — ela é, ao contrário, um dos métodos de base.
 
-### AV2-PROSP-Q08 · prospeccao
+### AV2-PROSP-Q08 · Informação tecnológica
 
 > Na prospecção tecnológica utilizando patentes, pode-se realizar uma busca de
 > documentos em diversos campos. Analise as afirmações sobre os campos utilizados
@@ -2809,12 +2932,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) Apenas as assertivas I, II e IV estão corretas.
 - d) Apenas as assertivas I, III e IV estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: I é verdadeira: as reivindicações definem o escopo legal e, por seu custo de análise, são examinadas caso a caso, nos documentos de maior interesse. IV é verdadeira: o requerente/titular é o detentor com quem se negociam os direitos. II é falsa pelo absolutismo 'devendo ser usado em todas as buscas e análises'; III é falsa ao restringir a análise temporal 'apenas à data de prioridade', ignorando as datas de depósito, publicação e concessão.
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, p. 30 e 32: partes do pedido de patente (relatório descritivo, reivindicações, desenhos e resumo) e a função das reivindicações, cujo conteúdo 'delimita as peculiaridades sobre as quais o titular terá direito de exclusividade'.
+- Explicação: I é verdadeira: as reivindicações definem o escopo legal e, por seu custo de análise, são examinadas caso a caso, nos documentos de maior interesse. IV é verdadeira: o requerente/titular é o detentor com quem se negociam os direitos. II é falsa pelo absolutismo 'devendo ser usado em todas as buscas e análises'; III é falsa ao restringir a análise temporal 'apenas à data de prioridade', ignorando as datas de depósito, publicação e concessão.
 
-### AV2-PROSP-Q09 · patentes
+### AV2-PROSP-Q09 · Informação tecnológica
 
 > No que se refere a Classificação de Patentes, assinale a alternativa correta:
 
@@ -2823,12 +2946,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) A CPC é baseada na IPC, entretanto, enquanto a CPC possui cerca de 70 mil grupos, a IPC possui cerca de 200 mil grupos nas suas 8 seções.
 - d) As buscas para estudos de prospecção somente podem utilizar os códigos completos de classificação de patentes, pois os códigos de classificação contendo apenas as informações, por exemplo, de seção, classe ou subclasse, podem levar a recuperar dados incompletos.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
-- Justificativa: a é correta: a IPC é um sistema hierárquico de símbolos que classifica documentos de patente por área tecnológica. b erra a composição da CPC, que resulta da parceria entre os escritórios Europeu (EPO) e Americano (USPTO). c inverte as ordens de grandeza — a IPC tem cerca de 75 mil grupos e a CPC ultrapassa 250 mil. d é falsa: buscas prospectivas legitimamente usam recortes mais amplos por seção, classe ou subclasse.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório descreve a estrutura da IPC nem a CPC. Ref2-Patente_2021.pdf, citado antes, não menciona nenhuma das duas; Ref3-A-caminho-da-inovacao_2010.pdf só remete à CIP do INPI na bibliografia. Fonte real: o Guia da IPC (OMPI) e a documentação da CPC (EPO/USPTO), fora do repositório.
+- Explicação: a é correta: a IPC é um sistema hierárquico de símbolos que classifica documentos de patente por área tecnológica. b erra a composição da CPC, que resulta da parceria entre os escritórios Europeu (EPO) e Americano (USPTO). c inverte as ordens de grandeza — a IPC tem cerca de 75 mil grupos e a CPC ultrapassa 250 mil. d é falsa: buscas prospectivas legitimamente usam recortes mais amplos por seção, classe ou subclasse.
 
-### AV2-PROSP-Q10 · patentes
+### AV2-PROSP-Q10 · Informação tecnológica
 
 > O conhecimento de aspectos do sistema de patentes é fundamental para a
 > realização de estudos prospectivos utilizando patentes. Analise as assertivas a
@@ -2857,12 +2980,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - **c)** Apenas as assertivas II, III e IV estão corretas.
 - d) Apenas as assertivas II e IV estão corretas.
 
-**Resposta: c** (derivada · confiança alta)
+**Resposta: c** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: II (prioridade unionista do art. 4º da CUP), III (definição de família de patentes) e IV (a IPC como base para disseminação seletiva, busca do estado da técnica e estatísticas de propriedade industrial) são verdadeiras. I é falsa por inverter os conceitos: família SIMPLES é a que reúne documentos com exatamente a mesma prioridade ou combinação de prioridades, e família ESTENDIDA (INPADOC) é a que liga documentos direta ou indiretamente por um documento de prioridade.
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, p. 31 (prioridade unionista: o primeiro depósito num país membro da CUP vale como base nos demais dentro de 12 meses). As definições de família simples e de família estendida não constam de nenhum PDF de `references/`; são da documentação do EPO/INPADOC, fora do repositório.
+- Explicação: II (prioridade unionista do art. 4º da CUP), III (definição de família de patentes) e IV (a IPC como base para disseminação seletiva, busca do estado da técnica e estatísticas de propriedade industrial) são verdadeiras. I é falsa por inverter os conceitos: família SIMPLES é a que reúne documentos com exatamente a mesma prioridade ou combinação de prioridades, e família ESTENDIDA (INPADOC) é a que liga documentos direta ou indiretamente por um documento de prioridade.
 
-### AV2-PROSP-Q11 · patentes
+### AV2-PROSP-Q11 · Informação tecnológica
 
 > Sobre o uso de patentes em busca de anterioridade e estudos de prospecção,
 > assinale a alternativa correta:
@@ -2872,12 +2995,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) A utilização de bases que indexam documentos de patentes é a mais comum e aconselhável, por contemplar aspectos de apropriação, abarcar todos os campos tecnológicos, porém não são documentos com dados bibliográficos padronizados, sendo dificultada a busca.
 - d) As bases de patentes podem ser gratuitas ou comerciais, devendo ser avaliada a abrangência geográfica e temporal da base a utilizar, sendo que todas as bases permitem realizar o download dos dados em planilhas eletrônicas.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
-- Justificativa: a é correta ao definir a busca de anterioridade como a investigação do que já foi divulgado ou apropriado, verificando o requisito de novidade. b erra o prazo: o sigilo é de 18 meses contados da prioridade, não 12 do depósito. c é falsa porque documentos de patente são, ao contrário, altamente padronizados (códigos INID). d é falsa pelo absolutismo de que todas as bases permitem exportação em planilha.
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, p. 33 (bancos de patentes gratuitos, busca por palavras-chave e uso da informação patentária para estudar o estado da arte). O prazo de sigilo do pedido, que a alternativa b troca por 12 meses, é de 18 meses pelo art. 30 da LPI 9.279/1996 — texto legal fora de `references/`.
+- Explicação: a é correta ao definir a busca de anterioridade como a investigação do que já foi divulgado ou apropriado, verificando o requisito de novidade. b erra o prazo: o sigilo é de 18 meses contados da prioridade, não 12 do depósito. c é falsa porque documentos de patente são, ao contrário, altamente padronizados (códigos INID). d é falsa pelo absolutismo de que todas as bases permitem exportação em planilha.
 
-### AV2-PROSP-Q12 · prospeccao
+### AV2-PROSP-Q12 · Informação tecnológica
 
 > Em agosto de 2020, foi realizada uma pesquisa nas bases de dados de patentes
 > PatentScope, utilizando a opção de busca por meio de combinação de campos e
@@ -2896,12 +3019,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) 645 e 2500 documentos recuperados.
 - **d)** 2050 e 3200 documentos recuperados.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: Aritmética de conjuntos sobre os resultados dados. |bioremediation| = (bioremediation NOT microbial degradation) + (bioremediation AND microbial degradation) = 645 + 20 = 665. Da união, |A OR B| = |A| + |B| - |A AND B|, logo 3796 = 665 + |microbial degradation| - 20, e |microbial degradation| = 3151. O valor cai na faixa de 2050 a 3200 documentos.
+- Referência: A própria questão: os três números do enunciado fecham a conta por inclusão-exclusão, sem fonte externa. A citação anterior a Ref8 não cabia — o arquivo não trata de sintaxe de busca.
+- Explicação: Aritmética de conjuntos sobre os resultados dados. |bioremediation| = (bioremediation NOT microbial degradation) + (bioremediation AND microbial degradation) = 645 + 20 = 665. Da união, |A OR B| = |A| + |B| - |A AND B|, logo 3796 = 665 + |microbial degradation| - 20, e |microbial degradation| = 3151. O valor cai na faixa de 2050 a 3200 documentos.
 
-### AV2-PROSP-Q13 · prospeccao
+### AV2-PROSP-Q13 · Prospecção tecnológica
 
 > Sobre Roadmap analise as seguintes assertivas.
 >
@@ -2930,12 +3053,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) Apenas as assertivas II, III e IV estão corretas.
 - **d)** Todas as assertivas estão corretas.
 
-**Resposta: d** (derivada · confiança alta)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: As quatro assertivas são corretas: o roadmap conecta tecnologia, produtos e mercados articulando prioridades de curto, médio e longo prazo (I); o método remonta à indústria automobilística norte-americana e teve suas primeiras aplicações bem-sucedidas na Corning e na Motorola entre o fim dos anos 1970 e o início dos 1980 (II); o Technology Roadmapping representa graficamente a rota de evolução de tecnologias, produtos e mercados (III); e a distinção entre método (TRM), processo (roadmapping) e resultado (roadmap) é a terminologia adotada na área (IV).
+- Referência: Sem apoio em `references/`: `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf` cita 'Roadmap tecnológico' apenas no prefácio e na nota biográfica de um dos autores, sem desenvolver o método. Fonte real: PHAAL, R.; FARRUKH, C.; PROBERT, D. Technology roadmapping — a planning framework for evolution and revolution (2004), fora do repositório.
+- Explicação: As quatro assertivas são corretas: o roadmap conecta tecnologia, produtos e mercados articulando prioridades de curto, médio e longo prazo (I); o método remonta à indústria automobilística norte-americana e teve suas primeiras aplicações bem-sucedidas na Corning e na Motorola entre o fim dos anos 1970 e o início dos 1980 (II); o Technology Roadmapping representa graficamente a rota de evolução de tecnologias, produtos e mercados (III); e a distinção entre método (TRM), processo (roadmapping) e resultado (roadmap) é a terminologia adotada na área (IV).
 
-### AV2-PROSP-Q14 · prospeccao
+### AV2-PROSP-Q14 · Informação tecnológica
 
 > As análises obtidas a partir de informações tecnológicas contidas em documentos
 > de patentes podem ser, EXCETO:
@@ -2945,12 +3068,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) Onde (quais escritórios de patentes/países) foram depositados os pedidos de patente, ou seja, a abrangência territorial da proteção.
 - d) Qual é a evolução temporal dos pedidos de patente de cada empresa, mostrando a evolução da tecnologia.
 
-**Resposta: a** (derivada · confiança alta)
+**Resposta: a** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: A questão pede a EXCEÇÃO. Documentos de patente permitem identificar as tecnologias protegidas e suas áreas (parte de a), os atores e cotitulares (b), os escritórios e países de depósito (c) e a evolução temporal dos depósitos (d). O que a patente NÃO fornece são dados de comércio internacional da tecnologia — informação de fluxo comercial, obtida em bases como o Comex Stat, e estranha ao documento de patente. Isso torna a incorreta.
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, p. 33, seção 'Análise de informação patentária': concorrentes, tendências de tecnologias similares, estado da arte e oportunidades de negócio. Dados de comércio internacional, que a alternativa a acrescenta, não constam de um documento de patente.
+- Explicação: A questão pede a EXCEÇÃO. Documentos de patente permitem identificar as tecnologias protegidas e suas áreas (parte de a), os atores e cotitulares (b), os escritórios e países de depósito (c) e a evolução temporal dos depósitos (d). O que a patente NÃO fornece são dados de comércio internacional da tecnologia — informação de fluxo comercial, obtida em bases como o Comex Stat, e estranha ao documento de patente. Isso torna a incorreta.
 
-### AV2-PROSP-Q15 · prospeccao
+### AV2-PROSP-Q15 · Informação tecnológica
 
 > Ao realizar uma busca de patentes, deve-se seguir uma série de passos. Assinale a
 > alternativa que contém um passo não utilizado nas buscas:
@@ -2960,12 +3083,12 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) Escolher a base de dados e/ou ferramenta de busca de acordo com a disponibilidade de acesso; elaborar a tabela de características e resultados.
 - **d)** Fazer o levantamento e análise dos documentos recuperados; elaborar o relatório de busca e submeter a um grupo de especialistas na área para validação.
 
-**Resposta: d** (derivada · confiança media)
+**Resposta: d** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: Delimitar objeto e campos (a), escolher palavras-chave, sinônimos e classificação (b) e escolher a base e tabular características e resultados (c) são passos correntes de uma busca de patentes. d contém o passo estranho ao roteiro: submeter o relatório de busca a um grupo de especialistas para validação é etapa de métodos prospectivos como o painel de especialistas, não da busca em si. Confiança média: o levantamento e a análise dos documentos, citados na mesma alternativa, são passos legítimos.
+- Referência: Sem apoio em `references/` para a sequência de passos de uma busca: Ref3-A-caminho-da-inovacao_2010.pdf, p. 33, registra apenas que as ferramentas se apoiam em palavras-chave definidas pelo usuário, e `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf` (2025), apesar do nome da série, é sobre indicadores cientométricos e incentivos a tecnologias verdes. Fonte real: bibliografia da disciplina PROSP (Coleção PROFNIT, Série Prospecção Tecnológica, volumes anteriores), fora do repositório.
+- Explicação: Delimitar objeto e campos (a), escolher palavras-chave, sinônimos e classificação (b) e escolher a base e tabular características e resultados (c) são passos correntes de uma busca de patentes. d contém o passo estranho ao roteiro: submeter o relatório de busca a um grupo de especialistas para validação é etapa de métodos prospectivos como o painel de especialistas, não da busca em si. Ressalva: o levantamento e a análise dos documentos, citados na mesma alternativa, são passos legítimos.
 
-### AV2-PROSP-Q16 · prospeccao
+### AV2-PROSP-Q16 · Informação tecnológica
 
 > Ao se realizar um estudo de prospecção por meio de patentes, é fundamental a
 > definição das palavras-chave. Analise as assertivas:
@@ -2987,7 +3110,7 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · respost
 - c) Apenas as assertivas II, III e IV estão corretas.
 - d) Todas as assertivas estão corretas.
 
-**Resposta: b** (derivada · confiança alta)
+**Resposta: b** (gabarito oficial)
 
-- Referência: Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf
-- Justificativa: I, III e IV são verdadeiras: os resultados dependem da escolha das palavras-chave e seus sinônimos; o uso de muitos sinônimos pode trazer ruído, o que recomenda combiná-los com a classificação; e há termos específicos por idioma, exigindo operadores booleanos. II é falsa por inverter a lógica da recuperação: usar TODOS os sinônimos amplia o recall — a perda de documentos decorre de OMITIR sinônimos, não de incluí-los.
+- Referência: Sem apoio em `references/` para a escolha de palavras-chave e o uso de operadores booleanos: Ref3-A-caminho-da-inovacao_2010.pdf, p. 33, menciona a busca por palavras-chave sem detalhar a estratégia, e `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf` (2025), apesar do nome da série, é sobre indicadores cientométricos e incentivos a tecnologias verdes. Fonte real: bibliografia da disciplina PROSP (Coleção PROFNIT, Série Prospecção Tecnológica, volumes anteriores), fora do repositório.
+- Explicação: I, III e IV são verdadeiras: os resultados dependem da escolha das palavras-chave e seus sinônimos; o uso de muitos sinônimos pode trazer ruído, o que recomenda combiná-los com a classificação; e há termos específicos por idioma, exigindo operadores booleanos. II é falsa por inverter a lógica da recuperação: usar TODOS os sinônimos amplia o recall — a perda de documentos decorre de OMITIR sinônimos, não de incluí-los.

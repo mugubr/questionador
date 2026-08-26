@@ -1,0 +1,66 @@
+{
+  "AV2-MET-Q01": {
+    "explanation": "As quatro assertivas são afirmações convergentes com a premissa do enunciado: partem da interdisciplinaridade (I), da compreensão das questões éticas como meio de promover inovação (II), do impacto socioambiental conjunto com o empresarial (III) e do alinhamento com sustentabilidade e cultura (IV). Nenhuma contradiz a premissa, logo todas estão corretas. Ressalva: a questão é conceitualmente aberta e não tem âncora normativa.",
+    "reference": "Sem apoio em `references/`: nenhum PDF do repositório trata de ética organizacional e inovação. A citação anterior a PITHAN & VIDAL (2013) estava trocada — aquele artigo é sobre plágio acadêmico e é a fonte da questão 02, não desta."
+  },
+  "AV2-MET-Q02": {
+    "explanation": "O artigo defende justamente a abordagem INTERDISCIPLINAR do plágio acadêmico. I é verdadeira (âmbito ético) e IV é verdadeira (âmbito pedagógico). II é falsa pelo advérbio 'somente', que nega a interdisciplinaridade defendida pelos autores; III é falsa ao excluir o âmbito institucional, que é uma das dimensões centrais do artigo.",
+    "reference": "PITHAN, L. H.; VIDAL, T. R. A. Ética e plágio acadêmico (2013), citados no próprio enunciado — artigo fora de `references/`."
+  },
+  "AV2-MET-Q03": {
+    "explanation": "I é verdadeira (conhecimento como recurso econômico), III é verdadeira (conhecimento filosófico como fruto do raciocínio e da reflexão) e V é verdadeira (o procedimento científico delimita, fragmenta e analisa o objeto). II é falsa: o conhecimento religioso caracteriza-se por ser inspiracional e NÃO verificável — dizer que suas evidências são 'verificadas' contradiz sua definição. IV é falsa: formular hipóteses sobre fenômenos além da percepção objetiva não é traço do senso comum, que é superficial e assistemático.",
+    "reference": "Fora de `references/`: classificação clássica dos tipos de conhecimento (LAKATOS; MARCONI, Fundamentos de metodologia científica; BUNGE, La ciencia, su método y su filosofía). Nenhum PDF do repositório cobre o tema."
+  },
+  "AV2-MET-Q04": {
+    "explanation": "A gestão de PI e TT exige, além das fontes científicas e tecnológicas, fontes de negócios (mercado, concorrência, financeiras). As demais alternativas são absolutistas e por isso falsas: 'as únicas informações confiáveis' (a), 'não possuem utilidade' (b) e 'devendo-se desconsiderar' releases e homepages (d) — que, ainda que enviesados, são fontes legítimas quando avaliadas criticamente.",
+    "reference": "Sem apoio em `references/`: nenhum PDF do repositório trata de fontes de informação para a gestão de PI e TT nem da avaliação de sua confiabilidade — `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf` (2025), apesar do nome da série, é sobre indicadores cientométricos e incentivos a tecnologias verdes. Fonte real: bibliografia da disciplina MET, fora do repositório."
+  },
+  "AV2-MET-Q05": {
+    "explanation": "CVM (a), B3 (b) e as áreas de Relações com Investidores nos sites das empresas (c) são de fato canais de divulgação de comunicados de companhias abertas. O Comex Stat é a base de estatísticas de comércio exterior do MDIC: traz dados agregados de exportação e importação por setor e produto, não comunicados societários. Por isso é a exceção pedida.",
+    "reference": "Sem apoio em `references/`: nenhum PDF do repositório menciona a CVM, a B3 ou o Comex Stat. A alternativa se resolve pelo objeto do próprio Comex Stat (MDIC), que publica estatísticas de comércio exterior por setor e produto, e não comunicados de companhias abertas."
+  },
+  "AV2-MET-Q06": {
+    "explanation": "A pergunta é sobre a importância do CCN PARA a propriedade intelectual. Publicações seriadas constituem estado da técnica: localizar o registro do uso de uma tecnologia em periódico pode caracterizar a falta de novidade de uma invenção, destruindo o requisito de patenteabilidade. A alternativa b descreve uma função do catálogo, mas não sua relevância para PI; a d é falsa, pois a RPI é publicada pelo próprio INPI.",
+    "reference": "Sem apoio em `references/`: nenhum PDF do repositório menciona o Catálogo Coletivo Nacional de Publicações Seriadas, o Ibict ou o Comut. Fonte real: a documentação do próprio CCN/Ibict, fora do repositório."
+  },
+  "AV2-MET-Q07": {
+    "explanation": "O PATENTSCOPE, da OMPI, oferece a aba de análise que gera, sobre o resultado da busca, a distribuição preliminar por requerentes, inventores, datas de publicação e classificação. INPI e Latipat não trazem esse recurso analítico, e o Espacenet oferece filtros e estatísticas mais limitados. Ressalva: Espacenet também permite algum recorte por esses campos.",
+    "reference": "Sem apoio em `references/` para o que a questão discrimina: Ref3-A-caminho-da-inovacao_2010.pdf, p. 33, apenas lista bases de patentes gratuitas, sem comparar seus recursos de análise. Fonte real: a documentação do PATENTSCOPE (OMPI), fora do repositório."
+  },
+  "AV2-MET-Q08": {
+    "explanation": "Correlacionando pelas definições da NBR 6023: 1 (Monografia) = documento em uma só parte ou número pré-estabelecido de partes que se complementam; 2 (Publicação seriada) = editada em unidades físicas sucessivas, destinada a ser continuada indefinidamente; 3 (Editor) = responsável intelectual ou científico que reúne artigos; 4 (Editora) = casa publicadora responsável pela produção editorial. Logo 1a, 2d, 3c, 4b, que corresponde exatamente à ordenação III — e somente a ela.",
+    "reference": "ABNT NBR 6023 — Informação e documentação: referências. Norma fora de `references/`; nenhum PDF do repositório a reproduz."
+  },
+  "AV2-MET-Q09": {
+    "explanation": "A questão pede a alternativa INCORRETA. Volume de patentes (a), balanço de pagamento tecnológico (b) e investimentos em P&D (c) são indicadores consagrados de inovação, conforme o Manual de Frascati. A alternativa d afirma que a publicação de artigos científicos NÃO é indicador utilizado — o oposto do que ocorre: produção científica é insumo corrente dos índices de inovação. Por ser a única afirmação falsa, é a resposta.",
+    "reference": "Ref6-OCDE-Manual-Frascati-em-portugues-Brasil.pdf (balanço de pagamentos tecnológico e dispêndio em P&D como indicadores) e `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf`, cap. 1, seção 1, que arrola publicações e Qualis entre os indicadores científicos e famílias de patentes e patentes concedidas entre os tecnológicos."
+  },
+  "AV2-MET-Q10": {
+    "explanation": "I, II e III reproduzem as definições correntes de pesquisa bibliográfica, experimental e estudo de caso. IV também é verdadeira na tipologia usual: a pesquisa-ação pressupõe intervenção planejada dos sujeitos na realidade, ao passo que a pesquisa participante se caracteriza pela interação entre pesquisador e sujeito sem necessariamente implicar ação planejada. Logo todas estão corretas. Ressalva: a distinção entre pesquisa-ação e participante varia entre autores.",
+    "reference": "Fora de `references/`: tipologia clássica de pesquisa (GIL, Como elaborar projetos de pesquisa; LAKATOS; MARCONI; THIOLLENT, Metodologia da pesquisa-ação; YIN, Estudo de caso). Nenhum PDF do repositório cobre o tema."
+  },
+  "AV2-MET-Q11": {
+    "explanation": "I é verdadeira (o Qualis T&T foi criado para aperfeiçoar a mensuração da produção técnica e tecnológica dos programas de pós-graduação) e II é verdadeira (a produção está organizada em eixos, entre eles Produtos e Processos, que abrange base de dados técnico-científica, carta/mapa, cultivar, curadoria de coleções biológicas). III é falsa: atividades de capacitação — docência, criação e organização — constituem um dos eixos da produção técnico-tecnológica, e não uma exclusão.",
+    "reference": "Qualis Técnico-Tecnológico — relatório do Grupo de Trabalho da Produção Técnica da CAPES. Documento fora de `references/`."
+  },
+  "AV2-MET-Q12": {
+    "explanation": "As quatro assertivas estão corretas: relatórios técnicos de pesquisa podem ser parciais ou finais (I); a NBR 10719 especifica os princípios gerais de elaboração e apresentação do relatório técnico e/ou científico (II); o laudo técnico é elaborado por profissional especializado no assunto (III); e relatórios gerenciais são documentos baseados em fatos, voltados à avaliação e à tomada de decisão (IV).",
+    "reference": "ABNT NBR 10719 — Informação e documentação: relatório técnico e/ou científico. Norma fora de `references/`."
+  },
+  "AV2-MET-Q13": {
+    "explanation": "I é verdadeira (formular um projeto de inovação é converter uma ideia em proposta de investimento), III é verdadeira (o escopo delimita o alcance e pode estar contido no objetivo) e IV é verdadeira (os impactos dependem do nível de maturidade tecnológica — TRL). II é falsa por negar que a formulação de um projeto tecnológico exija tempo e amadurecimento, quando o oposto é condição do processo.",
+    "reference": "Sem apoio em `references/` para a formulação de projetos tecnológicos: `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf`, cap. 1, seção 1, associa faixas de TRL a tipos de indicador, mas não trata de projeto. As definições dos níveis TRL estão em QUINTELLA, C. M. et al. Maturidade Tecnológica: Níveis de Prontidão TRL, citado nas referências do próprio Ref8 e fora do repositório."
+  },
+  "AV2-MET-Q14": {
+    "explanation": "Pela NBR 6022, a Introdução é a parte inicial do artigo, curta, que contextualiza o assunto, indica sua importância e delimita o tema — exatamente o que descreve a assertiva IV. I e III descrevem o Desenvolvimento (parte principal, com seções e subseções, onde estão os resultados) e II descreve as Considerações Finais/Conclusão. Logo apenas IV está correta.",
+    "reference": "ABNT NBR 6022 — Informação e documentação: artigo em publicação periódica científica impressa. Norma fora de `references/`."
+  },
+  "AV2-MET-Q15": {
+    "explanation": "II é verdadeira ao classificar periódicos, teses, bases de dados e livros como fontes formais, e IV é verdadeira ao afirmar que a avaliação da fonte — formal ou informal — subsidia o julgamento de confiança, limites e vieses. I é falsa por classificar bibliotecas e centros de informação como fontes informais, quando são canais formais; III é falsa pelo absolutismo ('toda informação é confiável'); V é falsa ao misturar indistintamente os níveis primário, secundário e terciário. Ressalva: a assertiva II inclui 'comunicações orais', usualmente tidas como canal informal.",
+    "reference": "Sem apoio em `references/`: nenhum PDF do repositório classifica fontes de informação em formais e informais nem em primárias, secundárias e terciárias. Fonte real: bibliografia da disciplina MET sobre fontes de informação, fora do repositório."
+  },
+  "AV2-MET-Q16": {
+    "explanation": "O conhecimento científico é caracterizado como factual, claro e preciso, comunicável, verificável, sistemático, geral, legal, explicativo e preditivo — a enumeração da alternativa d. A alternativa b descreve o conhecimento popular (senso comum); a c é autocontraditória ('falível, inexato onde as verdades são infalíveis') e mistura traços do conhecimento religioso; a a descreve de forma incompleta e aproxima-se do conhecimento filosófico.",
+    "reference": "Fora de `references/`: caracterização do conhecimento científico (BUNGE, La ciencia, su método y su filosofía; LAKATOS; MARCONI, Fundamentos de metodologia científica). Nenhum PDF do repositório cobre o tema."
+  }
+}
