@@ -29,7 +29,7 @@
   },
   "AV2-PROSP-Q08": {
     "explanation": "I é verdadeira: as reivindicações definem o escopo legal e, por seu custo de análise, são examinadas caso a caso, nos documentos de maior interesse. IV é verdadeira: o requerente/titular é o detentor com quem se negociam os direitos. II é falsa pelo absolutismo 'devendo ser usado em todas as buscas e análises'; III é falsa ao restringir a análise temporal 'apenas à data de prioridade', ignorando as datas de depósito, publicação e concessão.",
-    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, p. 30 e 32: partes do pedido de patente (relatório descritivo, reivindicações, desenhos e resumo) e a função das reivindicações, cujo conteúdo 'delimita as peculiaridades sobre as quais o titular terá direito de exclusividade'."
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, p. 30: as partes do pedido de patente e a função das reivindicações, cujo conteúdo 'delimita as peculiaridades sobre as quais o titular terá direito de exclusividade'; Ref2-Patente_2021.pdf, seção 3.5, p. 23, acrescenta que 'o quadro reivindicatório define o escopo da proteção requerida'. O requerente/titular como interlocutor da negociação está em Ref3-A-caminho-da-inovacao_2010.pdf, p. 32."
   },
   "AV2-PROSP-Q09": {
     "explanation": "a é correta: a IPC é um sistema hierárquico de símbolos que classifica documentos de patente por área tecnológica. b erra a composição da CPC, que resulta da parceria entre os escritórios Europeu (EPO) e Americano (USPTO). c inverte as ordens de grandeza — a IPC tem cerca de 75 mil grupos e a CPC ultrapassa 250 mil. d é falsa: buscas prospectivas legitimamente usam recortes mais amplos por seção, classe ou subclasse.",
@@ -37,7 +37,7 @@
   },
   "AV2-PROSP-Q10": {
     "explanation": "II (prioridade unionista do art. 4º da CUP), III (definição de família de patentes) e IV (a IPC como base para disseminação seletiva, busca do estado da técnica e estatísticas de propriedade industrial) são verdadeiras. I é falsa por inverter os conceitos: família SIMPLES é a que reúne documentos com exatamente a mesma prioridade ou combinação de prioridades, e família ESTENDIDA (INPADOC) é a que liga documentos direta ou indiretamente por um documento de prioridade.",
-    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, p. 31 (prioridade unionista: o primeiro depósito num país membro da CUP vale como base nos demais dentro de 12 meses). As definições de família simples e de família estendida não constam de nenhum PDF de `references/`; são da documentação do EPO/INPADOC, fora do repositório."
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, p. 32, quadro lateral 'Prioridade Unionista para patentes' e o parágrafo sobre a CUP: o primeiro depósito num país membro vale como base nos demais dentro de 12 meses. As definições de família simples e de família estendida (INPADOC) não constam de nenhum PDF de `references/`: são da documentação do EPO, fora do repositório."
   },
   "AV2-PROSP-Q11": {
     "explanation": "a é correta ao definir a busca de anterioridade como a investigação do que já foi divulgado ou apropriado, verificando o requisito de novidade. b erra o prazo: o sigilo é de 18 meses contados da prioridade, não 12 do depósito. c é falsa porque documentos de patente são, ao contrário, altamente padronizados (códigos INID). d é falsa pelo absolutismo de que todas as bases permitem exportação em planilha.",

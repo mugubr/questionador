@@ -67,7 +67,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Ref7-Manual_de_Oslo_2018.pdf
+- Referência: Sem apoio em `references/`: as assertivas são do Manual de Oslo 3ª edição (OCDE/Eurostat/FINEP, 2005), fora do repositório — Ref7-Manual_de_Oslo_2018.pdf é a 4ª edição, de outubro de 2018, posterior a esta prova, e não contém 'retroalimentação'. Tema correlato na 4ª edição: Ref7-Manual_de_Oslo_2018.pdf, cap. 6, seção 6.3, p. 145-157 (fontes de conhecimento de entrada).
 - Explicação: I, II e III reproduzem o tratamento das interações no Manual de Oslo: dependência da variedade e estrutura das interações, o espectro que vai de fontes passivas a parcerias cooperativas, e a conexão da empresa com os demais atores do sistema de inovação. IV é falsa pela palavra 'suficiente' — o Manual afirma que identificar as interações fornece evidências sobre a complexidade, mas NÃO basta para alimentar um modelo dinâmico com circuitos de retroalimentação.
 
 ### ENA18-Q02 · Inovação
@@ -94,7 +94,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref7-Manual_de_Oslo_2018.pdf
+- Referência: Ref6-OCDE-Manual-Frascati-em-portugues-Brasil.pdf, cap. 2: quadro 'Protótipos', §114-115, p. 54-55 (incluir em P&D quando o objetivo principal é a realização de novas melhorias; concluídos os testes, chega-se ao limite da P&D) e seção 2.4.1, §135, p. 60 (software é P&D quando exige progresso científico/tecnológico e dissipa incerteza de forma sistemática).
 - Explicação: I, III e IV são verdadeiras: o protótipo construído para novos melhoramentos é P&D; o desenvolvimento de software é P&D quando envolve avanço científico/tecnológico ou resolução sistemática de incerteza; e IV reproduz a definição canônica de P&D. II é falsa por inversão: a aceitação de um protótipo marca frequentemente o FIM da fase de desenvolvimento experimental, não o início de uma nova.
 
 ### ENA18-Q03 · Inovação
@@ -124,7 +124,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref7-Manual_de_Oslo_2018.pdf
+- Referência: Sem apoio em `references/` para a tipologia das assertivas, que é do Manual de Oslo 3ª edição (2005): 'obstruir' não ocorre em nenhum PDF do repositório. O tema aparece em Ref7-Manual_de_Oslo_2018.pdf (4ª edição), seção 7.7.2 e Tabela 7.8, p. 178-180 (fatores externos como barreiras ou obstáculos à inovação).
 - Explicação: As quatro assertivas correspondem ao tratamento dos obstáculos à inovação no Manual de Oslo: a existência de fatores que impedem, refreiam ou reduzem os resultados esperados (I); a ausência de infraestrutura como barreira, sobretudo fora dos grandes centros (II); a tipologia econômica, empresarial e legal dos fatores (III); e o fato de as barreiras poderem ser específicas de um tipo de inovação ou transversais a todos (IV).
 
 ### ENA18-Q04 · Inovação
@@ -150,7 +150,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref7-Manual_de_Oslo_2018.pdf
+- Referência: Sem apoio em `references/`: a palavra 'apropriabilidade' não ocorre em nenhum PDF do repositório; as assertivas são do Manual de Oslo 3ª edição (2005). Tratamento equivalente na 4ª edição: Ref7-Manual_de_Oslo_2018.pdf, seção 5.3.5 e Tabela 5.1, p. 125-126 (gestão e apropriação da propriedade intelectual).
 - Explicação: I, II e IV são verdadeiras: a apropriabilidade afeta o incentivo a inovar, a impossibilidade de proteger contra imitação reduz esse incentivo, e os dados de patentes funcionam como resultado intermediário e sinal de capacitação inovadora. III é falsa por inverter o argumento do Manual: quando uma indústria opera bem sem métodos formais de proteção, promovê-los PODE refrear o fluxo de conhecimentos e elevar preços.
 
 ### ENA18-Q05 · Inovação
@@ -167,7 +167,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref7-Manual_de_Oslo_2018.pdf
+- Referência: Sem apoio em `references/` para os 'softwares incorporados' como característica da inovação de produto, que é redação da 3ª edição do Manual de Oslo (2005). As exclusões usadas como distratores estão em Ref7-Manual_de_Oslo_2018.pdf (4ª edição), seção 3.4 'Mudanças que não são inovações', p. 86-88, que cita as mudanças sazonais na moda das roupas.
 - Explicação: O Manual de Oslo inclui expressamente os softwares incorporados entre as características que caracterizam a inovação de produto. As demais alternativas são exclusões explícitas do Manual: mudanças ou melhoramentos menores (a), mudanças sazonais regulares como as de linhas de vestuário (b) e atualizações de rotina (d) não configuram inovação.
 
 ### ENA18-Q06 · Inovação
@@ -182,7 +182,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref7-Manual_de_Oslo_2018.pdf
+- Referência: Sem apoio em `references/`: os exemplos do enunciado (sistemas de fecho em vestuário, telefones IP) são do Manual de Oslo 3ª edição (2005) e não ocorrem em Ref7-Manual_de_Oslo_2018.pdf, que é a 4ª edição. Fonte real: Manual de Oslo 3ª ed., cap. 3, fora do repositório.
 - Explicação: A questão pede a EXCEÇÃO entre exemplos de inovação de PRODUTO. Sistemas de fecho em vestuário (a), telefones IP (b) e alimentos com novas características funcionais (d) são exemplos de produto no Manual. A digitalização de processos de impressão é exemplo de inovação de PROCESSO — mudança no método de produção, não no bem ofertado.
 
 ### ENA18-Q07 · Inovação
@@ -197,7 +197,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref7-Manual_de_Oslo_2018.pdf
+- Referência: Sem apoio em `references/`: a 4ª edição do Manual de Oslo eliminou a categoria 'inovação de marketing' — Ref7-Manual_de_Oslo_2018.pdf, §3.44, p. 81, registra a mudança em relação à 3ª edição. Fonte real: Manual de Oslo 3ª ed. (2005), cap. 3, fora do repositório.
 - Explicação: A questão pede a EXCEÇÃO entre exemplos de inovação de MARKETING. Nova concepção de frascos (a), novo símbolo de marca para posicionamento (b) e ofertas reservadas a portadores de cartão (c) são exemplos de marketing — concepção, promoção e posicionamento. As novas formas de garantia, incluindo a garantia estendida e garantias em pacote, são classificadas pelo Manual como inovação de PRODUTO em serviços.
 
 ### ENA18-Q08 · Inovação
@@ -221,7 +221,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref7-Manual_de_Oslo_2018.pdf
+- Referência: Sem apoio em `references/`: a 4ª edição do Manual de Oslo eliminou a categoria 'inovação organizacional' — Ref7-Manual_de_Oslo_2018.pdf, glossário, p. 283 ('tipo de inovação usado na edição anterior deste Manual') e §3.44-3.46, p. 81-82. Fonte real: Manual de Oslo 3ª ed. (2005), cap. 3, fora do repositório.
 - Explicação: II e IV são inovações organizacionais: introdução pela primeira vez de sistemas de gerenciamento da produção ou do fornecimento, e introdução pela primeira vez de padrões de controle de qualidade para fornecedores e subcontratados (relações externas). I é falsa porque método JÁ EM USO na empresa não constitui inovação; III é falsa porque o Manual exclui expressamente fusões e aquisições do conceito de inovação organizacional.
 
 ### ENA18-Q09 · Marca e indicação geográfica
@@ -245,7 +245,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref4-Criando-uma-marca.pdf
+- Referência: Ref4-Criando-uma-marca.pdf, perguntas 42 a 47, p. 72-77 (licenciamento de marca, o controle que o licenciante retém sobre o licenciado, e a venda ou cessão de marcas entre empresas) e pergunta 27, p. 49 (modificações da marca registrada podem exigir novo pedido).
 - Explicação: As quatro assertivas descrevem corretamente a circulação econômica da marca: a cessão exige anotação junto ao INPI (I); modificações ou adaptações podem demandar novo pedido e novas taxas (II); no licenciamento o titular conserva a propriedade e autoriza o uso por terceiros (III); e o licenciante mantém o controle de qualidade sobre os produtos identificados pela marca licenciada (IV), condição para preservar a função distintiva.
 
 ### ENA18-Q10 · Transferência de tecnologia
@@ -268,7 +268,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Ref4-Criando-uma-marca.pdf
+- Referência: Ref4-Criando-uma-marca.pdf, pergunta 46 'O que os acordos de franquia têm a ver com as marcas?', p. 75-76, com o exemplo NANDO'S: o franqueador licencia marca, modelo de negócio e know-how mediante taxa, e mantém os padrões da rede.
 - Explicação: I, II e III são verdadeiras: a licença de marca é elemento essencial do contrato de franquia, o franqueador autoriza o franqueado a usar seus métodos comerciais, e a franquia se dá mediante compensação financeira ou royalties. IV é falsa ao negar ao franqueador o direito de supervisão e fiscalização — controle que é justamente o que preserva o padrão da rede franqueada.
 
 ### ENA18-Q11 · Marca e indicação geográfica
@@ -282,7 +282,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Ref4-Criando-uma-marca.pdf
+- Referência: Ref4-Criando-uma-marca.pdf, quadro 'TM ou ®?' ao lado da pergunta 35, p. 62: o uso dos símbolos não é obrigatório e habitualmente não confere proteção legal adicional; ® só depois do registro, TM para marcas não registradas e SM para serviços.
 - Explicação: A alternativa a é a INCORRETA: o uso dos símbolos ®, TM e SM é facultativo, servindo de aviso ao público, e não condição obrigatória para denotar registro — a proteção decorre do registro em si. As demais estão corretas: ® indica marca já registrada (b), TM identifica marca de produto ou serviço (c) e SM é reservado a marcas de serviço (d).
 
 ### ENA18-Q12 · Marca e indicação geográfica
@@ -296,7 +296,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref4-Criando-uma-marca.pdf
+- Referência: Ref4-Criando-uma-marca.pdf, perguntas 5 a 8, p. 15-20 (marcas de serviço, notoriamente conhecidas, coletivas e de certificação): a de certificação atesta conformidade a normas e especificações técnicas, a coletiva identifica origem em membros de uma entidade. Complementa Ref3-A-caminho-da-inovacao_2010.pdf, p. 36-37.
 - Explicação: A alternativa b é a INCORRETA por trocar as definições: atestar a conformidade de produtos ou serviços a padrões e especificações técnicas é função da marca de CERTIFICAÇÃO (LPI art. 123, II), não da marca COLETIVA (art. 123, III), que identifica produtos provenientes de membros de uma determinada entidade. As demais estão corretas: marca notoriamente conhecida dispensa registro prévio no Brasil (art. 126), alto renome protege em todas as classes (art. 125) e uma empresa pode usar marcas distintas por linha de produto.
 
 ### ENA18-Q13 · Marca e indicação geográfica
@@ -320,7 +320,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref4-Criando-uma-marca.pdf
+- Referência: Ref4-Criando-uma-marca.pdf, lista de verificação após a pergunta 11, p. 27 (marca fácil de ler, escrever, soletrar e lembrar, adaptada aos meios de publicidade; sem conotação indesejada nas línguas dos mercados de exportação; nome de domínio disponível) e pergunta 19, p. 43-44 (busca de anterioridade).
 - Explicação: As quatro assertivas são recomendações consagradas para a escolha de uma marca: busca de anterioridade na base do INPI (I); facilidade de leitura, escrita, soletração e memorização, com adequação aos meios publicitários (II); ausência de conotações indesejáveis no idioma próprio e nos dos mercados-alvo (III); e disponibilidade do nome de domínio correspondente (IV).
 
 ### ENA18-Q14 · Marca e indicação geográfica
@@ -335,7 +335,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref4-Criando-uma-marca.pdf
+- Referência: Ref4-Criando-uma-marca.pdf, pergunta 17 'Quais as principais razões para o indeferimento de uma solicitação?', p. 38-41: motivos absolutos (termos genéricos, ausência de caráter distintivo, sinais descritivos, marcas enganosas, marcas contrárias à ordem pública ou à moral) e motivos relativos.
 - Explicação: As causas clássicas de recusa são termos genéricos (que designam o próprio produto), termos descritivos (que apenas indicam qualidade ou característica), marcas falaciosas (que induzem o consumidor a erro) e marcas contrárias à ordem pública ou à moral. As demais alternativas substituem um desses itens por 'termos administrativos' ou 'termos econômicos', categorias que não figuram entre os motivos de recusa.
 
 ### ENA18-Q15 · Desenho industrial
@@ -361,7 +361,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.4, p. 43 (o desenho industrial refere-se unicamente à natureza estética ou ornamental do produto acabado, distinta dos aspectos técnicos ou funcionais; características tri ou bidimensionais; embalagens, recipientes e apresentação dos produtos) e quadro resumo, p. 46.
 - Explicação: As quatro assertivas são corretas: o desenho industrial protege a natureza estética do produto acabado, independentemente de aspectos técnicos ou funcionais (I); abrange um espectro amplo de produtos, de mobiliário e instrumentos médicos a estampas têxteis e vestuário esportivo (II); alcança embalagens, recipientes e o feitio dos produtos (III); e admite configurações bi ou tridimensionais, ou combinação de elementos (IV).
 
 ### ENA18-Q16 · Desenho industrial
@@ -388,7 +388,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.4, quadro resumo 'Desenho industrial', p. 46 (direito assegurado ao titular: uso exclusivo e proibição de terceiros de produzir, oferecer, importar, exportar ou vender) e p. 43-44 (desenho industrial e desenho artístico). A cumulação com marca tridimensional está em Ref3-A-caminho-da-inovacao_2010.pdf, p. 41-42.
 - Explicação: I, III e IV são verdadeiras: a cumulação com o direito de autor é possível quando há relevância estética; o registro confere exploração exclusiva, licenciamento e o direito de impedir cópias; e a concessão exclui temporariamente terceiros de fabricar, ofertar, importar, exportar ou vender o produto. II é considerada falsa por dizer marca BIDIMENSIONAL — quando um desenho industrial passa a funcionar como marca no mercado, a proteção cabível é a de marca TRIDIMENSIONAL. Ressalva: desenhos bidimensionais, como estampas, podem de fato ser registrados como marca figurativa.
 
 ### ENA18-Q17 · Desenho industrial
@@ -403,7 +403,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.4, p. 44: 'para ser registrável, o desenho precisa atender aos requisitos de: Novidade; Originalidade; Utilização ou aplicação industrial' — é a aplicação industrial, e não a artesanal, que a lei exige. Quadro resumo na p. 46.
 - Explicação: A exigência INCORRETA é a da alternativa c: o desenho industrial deve servir de tipo de fabricação INDUSTRIAL, não artesanal — a possibilidade de reprodução industrial é justamente um dos requisitos legais (LPI art. 95). Novidade (a), originalidade (b) e a expressão em configuração externa ou conjunto ornamental de linhas e cores (d) são exigências corretas.
 
 ### ENA18-Q18 · Desenho industrial
@@ -427,7 +427,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Apoio parcial: Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.4, p. 44, traz os requisitos cuja ausência gera a exclusão da assertiva I (novidade, originalidade, aplicação industrial). As demais hipóteses — símbolos oficiais, ofensa à moral e à ordem pública, caráter puramente artístico — são dos arts. 98 e 100 da LPI 9.279/1996, texto legal fora de `references/`.
 - Explicação: As quatro hipóteses são causas de exclusão do registro: ausência de novidade, originalidade ou de aptidão para servir de tipo de fabricação industrial (I); incorporação de símbolos ou emblemas oficiais protegidos (II); contrariedade à moral, à ordem pública, aos bons costumes ou ofensa à honra, à imagem e à liberdade de crença (III, LPI art. 100, I); e obras de caráter puramente artístico (IV, LPI art. 98).
 
 ### ENA18-Q19 · Desenho industrial
@@ -442,7 +442,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Sem apoio em `references/`: a expressão 'período de graça' não ocorre em nenhum PDF do repositório, e o único prazo de 180 dias em Ref3-A-caminho-da-inovacao_2010.pdf, p. 45, é o do sigilo do pedido, que é outra figura. Fonte real: LPI 9.279/1996, art. 96, §3º.
 - Explicação: A alternativa c é a INCORRETA porque nega a própria função do instituto: o período de graça existe justamente para que a divulgação feita pelo criador nos 180 dias anteriores ao depósito — inclusive por comercialização — NÃO destrua a novidade. As demais estão corretas: o prazo brasileiro é de 180 dias (a, LPI art. 96 §3º), a exibição em feiras e a publicação em catálogos estão abrangidas (b), e durante o período o criador ainda não detém direitos exclusivos (d).
 
 ### ENA18-Q20 · Transferência de tecnologia
@@ -471,7 +471,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 6.15, p. 97: os tipos de licença, a exigência de que o bem esteja formalmente protegido no país de interesse para poder ser licenciado (o que torna a assertiva II falsa) e a delimitação expressa de territórios nos contratos (assertiva I). Ver também p. 44 e p. 46.
 - Explicação: I e III são verdadeiras: o contrato de licença pode delimitar territórios, prazo e tipos de produto, e o licenciamento é fonte suplementar de receita e forma comum de explorar o registro. II é falsa porque licenciar o uso no exterior pressupõe proteção obtida ou ao menos requerida naquele país — sem título, não há direito exclusivo a licenciar. IV é falsa por vedar o que é prática corrente: contratos de desenho industrial frequentemente integram acordos de licença mais amplos sobre o produto.
 
 ### ENA18-Q21 · Desenho industrial
@@ -497,7 +497,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.4, quadro resumo, p. 46 (desenho industrial: 10 anos prorrogáveis até o máximo de 25) contra o quadro resumo da marca, p. 42 (10 anos prorrogáveis indefinidamente); o custo do agente de propriedade intelectual está em Ref3-A-caminho-da-inovacao_2010.pdf, p. 31.
 - Explicação: I, II e IV são verdadeiras: as taxas oficiais somam-se aos honorários do agente de PI, um desenho que funcione como sinal distintivo pode ser protegido como marca tridimensional, e a marca é renovável indefinidamente enquanto o desenho industrial tem prazo determinado. III é falsa pela expressão 'em todos os países': a cumulação entre registro de desenho industrial e direito de autor varia conforme a legislação de cada jurisdição.
 
 ### ENA18-Q22 · Patente
@@ -520,7 +520,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref2-Patente_2021.pdf, seção 1.1, p. 11 (a patente como título outorgado pelo Estado, que concede exclusividade e o direito de impedir terceiros de produzir, usar, colocar à venda, vender ou importar) e a tabela de requisitos de patenteabilidade da seção 2, p. 13.
 - Explicação: As quatro assertivas são corretas: a patente é direito exclusivo outorgado pelo Estado sobre invenção ou modelo de utilidade (I); os requisitos são novidade, atividade ou ato inventivo e aplicação industrial (II); o título confere exclusividade de exploração econômica (III); e permite impedir que terceiros fabriquem o produto sem autorização prévia e expressa (IV).
 
 ### ENA18-Q23 · Patente
@@ -545,7 +545,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref2-Patente_2021.pdf, seção 3.3 'Prazo de proteção e Extinção dos Direitos', p. 22: 20 anos para a patente de invenção e 15 para o modelo de utilidade a contar do depósito, com o quadro IMPORTANTE fixando os mínimos de 10 e 7 anos a contar da concessão.
 - Explicação: I, II e IV são verdadeiras: um produto complexo pode reunir patentes de titulares diversos; a patente de invenção vigora por 20 anos do depósito ou 10 anos da concessão, o que for maior (regra do parágrafo único do art. 40 da LPI, vigente à época da prova); e a suficiência descritiva é a contrapartida da exclusividade. III é falsa no prazo mínimo: para modelo de utilidade a lei fixa 15 anos do depósito ou 7 anos da concessão, não 10.
 
 ### ENA18-Q24 · Patente
@@ -570,7 +570,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref2-Patente_2021.pdf, seção 2, p. 13 (a invenção como novo processo, produto, técnica ou aperfeiçoamento tecnológico que resolve um problema técnico) e seção 2.1.2, p. 16, que exclui as descobertas — o que já existe na natureza — da noção de invenção.
 - Explicação: As quatro assertivas são corretas: a invenção é criação intelectual que dá solução nova e inventiva a um problema técnico (I), podendo consistir em dispositivo, produto, método ou processo inteiramente novo (II) ou em melhoramento incremental de produto ou processo conhecido (III); e a mera descoberta do que já existe na natureza não é invenção sem a intervenção inventiva humana materializada em produto ou processo (IV).
 
 ### ENA18-Q25 · Patente
@@ -597,7 +597,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref2-Patente_2021.pdf, seção 2, p. 13 (o modelo de utilidade protege o aperfeiçoamento tecnológico decorrente da melhoria funcional na forma do objeto) e seção 2.1.1, p. 14-15, com a definição de ato inventivo: nova forma ou disposição com melhoria funcional no uso ou na fabricação.
 - Explicação: I, III e IV são verdadeiras e convergem para a definição legal do modelo de utilidade (LPI art. 9º): objeto de uso prático, com nova forma ou disposição, envolvendo ato inventivo que resulte em melhoria funcional de uso ou fabricação, aplicável a aperfeiçoamentos incrementais. II é falsa porque descreve o DESENHO INDUSTRIAL: exclusividade de elementos ornamentais ou estéticos com resultado visual novo e original.
 
 ### ENA18-Q26 · Sistema de PI
@@ -618,7 +618,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.6, p. 51: a lista de vantagens do segredo industrial — sem custos de registro, sem necessidade de tornar a tecnologia pública, duração ilimitada enquanto o segredo existir e efeito imediato, que é o ponto invertido pela assertiva V. Ver também Ref2-Patente_2021.pdf, seção 1.2.1, p. 12.
 - Explicação: I, II e IV são vantagens reais do segredo de negócio: dispensa custos de registro, não exige divulgação do conteúdo e não tem prazo de expiração. III é falsa: o segredo não depende de registro em cartório — protege-se pelo próprio sigilo e pela repressão à concorrência desleal. V é falsa por inversão: a proteção do segredo tem efeito IMEDIATO, o que é justamente uma de suas vantagens frente à patente.
 
 ### ENA18-Q27 · Sistema de PI
@@ -644,7 +644,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.6, p. 51, quadro lateral 'Algumas desvantagens dessa forma de proteção' (engenharia reversa, roubo, acordos de confidencialidade onerosos); Ref2-Patente_2021.pdf, seção 1.2.1, p. 12, acrescenta que quem alcança a mesma solução por meios lícitos próprios não pode ser impedido.
 - Explicação: I, II e III são desvantagens efetivas: o segredo incorporado a produto pode ser reconstruído por engenharia reversa, a proteção só alcança a obtenção, uso ou divulgação INDEVIDA, e uma vez tornado público qualquer um pode usá-lo livremente. IV é falsa por inversão: um terceiro que chegue à mesma invenção de forma independente e lícita PODE patenteá-la — risco que é, ele próprio, uma desvantagem do segredo.
 
 ### ENA18-Q28 · Patente
@@ -668,7 +668,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Apoio parcial: Ref2-Patente_2021.pdf, seção 2.1.1, p. 14-15 (o ato inventivo do modelo de utilidade é exigência menos rigorosa que a atividade inventiva) e seção 3.3, p. 22 (o prazo também se conta da concessão, o que sustenta a falsidade da assertiva II). A conversão entre pedido de MU e de invenção não consta de `references/`: é o art. 76 da LPI 9.279/1996.
 - Explicação: I e III são verdadeiras: para o modelo de utilidade a exigência inventiva é menos rigorosa que a da patente de invenção, e o trâmite de concessão é mais rápido e simples. II é falsa pelo 'sempre... independente do período de concessão': como o prazo pode ser contado da concessão, um MU concedido tardiamente pode ultrapassar a vigência de uma invenção concedida cedo. IV é falsa: a conversão entre pedido de modelo de utilidade e de invenção é admitida.
 
 ### ENA18-Q29 · Patente
@@ -683,7 +683,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref2-Patente_2021.pdf, seções 2.1.2 e 2.1.3, p. 16: regras de jogo, obras arquitetônicas e obras literárias estão entre as matérias excluídas, e o quadro IMPORTANTE afirma que somente os micro-organismos transgênicos ou reengenheirados que atendam aos critérios de patenteabilidade podem ser patenteados.
 - Explicação: Organismos geneticamente modificados são a única categoria com espaço de patenteabilidade: a LPI veda patentear seres vivos, mas excetua expressamente os microrganismos transgênicos que atendam aos requisitos legais (art. 18, III). Regras de jogos (a) e projetos arquitetônicos (b) estão entre as exclusões do art. 10, e obras literárias (d) pertencem ao regime do direito de autor.
 
 ### ENA18-Q30 · Patente
@@ -698,7 +698,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref2-Patente_2021.pdf, seção 2.1.1 'Entendendo os requisitos de patenteabilidade', p. 14-15, que distingue a atividade inventiva (a solução não decorre de maneira evidente do estado da técnica, para a invenção) do ato inventivo (nova forma ou disposição com melhoria funcional, para o modelo de utilidade).
 - Explicação: A alternativa b reproduz a definição legal de ATO inventivo, próprio do modelo de utilidade (LPI art. 14): a modificação resulta em melhoria funcional no uso ou na fabricação do objeto. As demais são falsas por inverterem o critério de não obviedade: há atividade inventiva quando a solução NÃO é evidente (a) e NÃO pode ser facilmente elaborada (d) por técnico no assunto; e modificações vulgares sem ganho funcional novo (c) não configuram ato inventivo.
 
 ### ENA18-Q31 · Patente
@@ -713,7 +713,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref2-Patente_2021.pdf, seção 3.4 'Quem pode requerer?', p. 22: qualquer pessoa física ou jurídica pode depositar — entre as físicas, o próprio autor, seus herdeiros ou sucessores no caso de morte do inventor —, o que separa a titularidade, aberta à pessoa jurídica, da autoria da invenção.
 - Explicação: A alternativa c é a INCORRETA: pessoa jurídica não concebe invenção — a concepção é sempre ato de pessoa física. A pessoa jurídica pode ser TITULAR dos direitos, mas não inventora. As demais estão corretas ao distinguir inventor (quem concebe), inventor-detentor (quem concebe e deposita) e detentor (pessoa jurídica que deposita).
 
 ### ENA18-Q32 · Informação tecnológica
@@ -736,7 +736,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, p. 33, seção 'Análise de informação patentária': a lista de vantagens do uso da informação tecnológica dos bancos de patentes (empresas competidoras, tendências de tecnologias similares, ameaças competitivas, estado da arte, compra, venda e licenciamento de tecnologia). Dados de capital das depositantes, a exceção pedida, não figuram na lista.
 - Explicação: Seis das sete assertivas descrevem informações efetivamente extraíveis de bases de patentes: concorrentes atuais e futuros, tendências tecnológicas, tecnologias licenciáveis, nichos de mercado, patentes expiradas em domínio público e possibilidades de desenvolvimento sobre tecnologias existentes. A exceção é VI: documentos de patente não trazem informações sobre o capital das empresas depositantes, que pertencem a fontes societárias e financeiras.
 
 ### ENA18-Q33 · Informação tecnológica
@@ -753,7 +753,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório descreve as oito seções da IPC — Ref2-Patente_2021.pdf não menciona a classificação e Ref3-A-caminho-da-inovacao_2010.pdf só remete à CIP do INPI na bibliografia, p. 110. Fonte real: o Guia da IPC (OMPI), fora do repositório.
 - Explicação: Necessidades Humanas (a), Química e Metalurgia (b) e Engenharia Mecânica, Iluminação, Aquecimento, Armas e Dinamitação (d) são as seções A, C e F da IPC. 'Administração; Contabilidade' não figura nesse nível: corresponde à subclasse G06Q, dentro da seção G (Física). É, portanto, a alternativa que não pertence ao mesmo nível hierárquico das demais. Ressalva: o enunciado usa 'Classe' para o que a IPC denomina Seção.
 
 ### ENA18-Q34 · Patente
@@ -768,7 +768,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref2-Patente_2021.pdf, seção 3.2 'Proteção: o ciclo de vida do pedido de patentes e seu esquema geral', p. 20-21, que numera as etapas: (i) apresentação do pedido, (ii) exame formal, (iii) sigilo, (iv) pedido de exame e (v) exame de mérito — o exame formal antes de qualquer análise de mérito.
 - Explicação: Entre as sequências oferecidas, b é a única que preserva a ordem lógica do trâmite: o exame FORMAL antecede qualquer análise de mérito, seguindo-se a pesquisa de anterioridade e o exame substantivo até a decisão. As demais invertem essa ordem, colocando a pesquisa ou o exame substantivo antes do exame formal, ou situando a oposição depois da concessão. Ressalva: nenhuma alternativa reflete com exatidão o rito da LPI, em que a publicação ocorre aos 18 meses, antes do exame substantivo.
 
 ### ENA18-Q35 · Patente
@@ -783,7 +783,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref2-Patente_2021.pdf, seção 3.5 'Como apresentar o pedido de patente', p. 23: requerimento, relatório descritivo, reivindicações, desenho se for o caso, resumo e comprovante de pagamento da retribuição. Corresponde ao art. 19 da LPI 9.279/1996.
 - Explicação: O art. 19 da LPI determina que o pedido de patente, nas condições estabelecidas pelo INPI, contenha requerimento, relatório descritivo, reivindicações, desenhos (se for o caso), resumo e comprovante de pagamento da retribuição. As demais alternativas substituem essas peças por seções de trabalho acadêmico — introdução e metodologia —, estranhas ao documento de patente.
 
 ### ENA18-Q36 · Transferência de tecnologia
@@ -810,7 +810,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 6.15, p. 96-97: na licença exclusiva 'o licenciado passa a ser o detentor do direito exclusivo [...] o licenciante não dispõe mais do direito de explorar', o que torna a assertiva II autocontraditória, e a não exclusiva pode ser concedida a mais de um licenciado. Ver também Ref2-Patente_2021.pdf, p. 11.
 - Explicação: I, III e IV são verdadeiras: a licença decorre de autorização do titular mediante acordo; na licença não exclusiva vários licenciados e o próprio titular podem explorar a tecnologia; e o licenciamento é especialmente útil quando o titular não consegue fabricar em quantidade suficiente ou cobrir determinada área geográfica. II é autocontraditória: se a licença é exclusiva, apenas o licenciado explora — não há como assegurar simultaneamente a exploração pelo titular.
 
 ### ENA18-Q37 · Direito autoral
@@ -825,7 +825,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 4.1, p. 55 (as conferências entre os exemplos de obras protegidas) e o quadro lateral da p. 58, que arrola as exclusões: textos de tratados ou convenções e leis, formulários em branco e suas instruções, e informações de uso comum como calendários e agendas.
 - Explicação: As conferências, alocuções, sermões e obras da mesma natureza estão expressamente entre as obras protegidas (Lei 9.610/1998, art. 7º, II). As outras três constam do rol de exclusões do art. 8º: textos de tratados e convenções (inciso IV), formulários em branco e suas instruções (inciso III) e informações de uso comum como calendários e agendas (inciso V).
 
 ### ENA18-Q38 · Direito autoral
@@ -839,7 +839,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 4.2, p. 58-59: o direito moral é de natureza pessoal do autor, 'irrenunciável e intransferível', transmite-se aos sucessores na morte do autor, e é distinto do direito patrimonial, que é o que pode ser negociado e transferido.
 - Explicação: A alternativa a é a INCORRETA: os direitos morais são INDEPENDENTES dos patrimoniais — subsistem ainda que o autor ceda integralmente a exploração econômica da obra. As demais descrevem corretamente seus atributos: inalienáveis e intransmissíveis (b), irrenunciáveis (c) e imprescritíveis, persistindo após a morte do autor, quando passam a ser exercidos pelos sucessores (d).
 
 ### ENA18-Q39 · Direito autoral
@@ -854,7 +854,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 4.3, p. 64, e quadro resumo 'Direitos conexos', p. 66: a proteção alcança artistas intérpretes ou executantes, produtores fonográficos e empresas de radiodifusão — as três categorias, sem revendedores de mídias.
 - Explicação: Os direitos conexos alcançam três categorias, todas presentes nas alternativas a, b e d: artistas intérpretes ou executantes, produtores de fonogramas e empresas de radiodifusão quanto às suas emissões (Lei 9.610/1998, art. 89). Revendedores de mídias fonográficas e películas (c) são meros distribuidores comerciais, sem titularidade conexa sobre a obra.
 
 ### ENA18-Q40 · Cultivar
@@ -869,7 +869,7 @@ Prova de 2018-06-30 · `Prova_ENA18.pdf` · 40 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 5.2, p. 77: os requisitos da Lei 9.456/1997 para a obtenção vegetal — ser nova (não explorada comercialmente no exterior nos últimos quatro anos e no Brasil no último ano), distintiva, homogênea, estável e com denominação adequada.
 - Explicação: A alternativa a é a INCORRETA por errar os prazos de novidade comercial. A Lei 9.456/1997 exige, para a cultivar ser nova, que não tenha sido oferecida à venda no Brasil há mais de 12 meses e no exterior há mais de 6 anos para espécies arbóreas e videiras, ou 4 anos para as demais — e não '10 anos no exterior e 5 no Brasil'. Distintividade (b), homogeneidade (c) e estabilidade (d) estão corretamente enunciadas.
 
 ---
@@ -1657,7 +1657,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, p. 21 (TRIPS/OMC) e p. 34 (a marca como 'sinal distintivo, visualmente perceptível'); Ref2-Patente_2021.pdf, seção 3.3, p. 22 (20 anos para invenção, 15 para modelo de utilidade) e seção 2.1.3, p. 16 (vedação de patentear o todo ou parte dos seres vivos, ressalvados os micro-organismos transgênicos).
 - Explicação: LPI 9.279/1996: I é verdadeira (lei de 1996, pós-OMC/TRIPS); II é verdadeira (art. 40: invenção 20 anos, MU 15 anos); III é FALSA (art. 122 exige sinal 'visualmente perceptível' — sons não são registráveis no Brasil); IV é FALSA (art. 18, III veda patentear seres vivos, excetuando apenas microrganismos transgênicos — plantas não). Não verdadeiras: III e IV.
 
 ### AV2-PI-Q02 · Sistema de PI
@@ -1672,7 +1672,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Apoio parcial: Ref2-Patente_2021.pdf, seção 3.1, p. 17-19, expõe a CUP de 1883, a territorialidade, a prioridade unionista e o PCT — o que elimina as alternativas que supõem direito automático em outros países. A expressão 'tratamento nacional' não ocorre em nenhum PDF de `references/`: é dos arts. 2º e 3º da própria Convenção da União de Paris.
 - Explicação: A CUP consagra o princípio do tratamento nacional (arts. 2º e 3º): domiciliados ou com estabelecimento efetivo em país membro são equiparados aos nacionais. As demais ignoram a territorialidade: nem a OMC nem o PCT concedem direito válido automaticamente em outros países.
 
 ### AV2-PI-Q03 · Cultivar
@@ -1688,7 +1688,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório menciona o RENASEM ou a Lei 10.711/2003 — Ref3-A-caminho-da-inovacao_2010.pdf, seção 5.2, p. 76-80, trata da proteção de cultivares pela Lei 9.456/1997, que é outro regime. Fonte real: Lei 10.711/2003 e o Decreto 5.153/2004, fora do repositório.
 - Explicação: Lei 10.711/2003: a inscrição no RENASEM é obrigatória para produtores e comerciantes de sementes e mudas, com inscrição periódica dos campos de produção. A fiscalização do comércio interestadual e internacional é da União (MAPA), não do Estado, e o registro nacional de cultivares habilita a produção no País, não no exterior.
 
 ### AV2-PI-Q04 · Marca e indicação geográfica
@@ -1714,7 +1714,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, p. 34 (a marca como sinal distintivo visualmente perceptível que identifica e distingue produtos) e p. 42 ('Pode ser licenciado e fornecer uma fonte alternativa de receita [...] Pode ser um ativo comercial de valor'), além de p. 22, que arrola a cessão entre os mecanismos de circulação dos bens de propriedade intelectual.
 - Explicação: II reproduz a definição legal de marca (LPI art. 122: sinal distintivo visualmente perceptível não compreendido nas proibições legais) e IV descreve corretamente a função distintiva. I e III são falsas pelo mesmo motivo: marcas são bens negociáveis e sua titularidade pode ser cedida (LPI arts. 134 e seguintes).
 
 ### AV2-PI-Q05 · Sistema de PI
@@ -1735,7 +1735,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, cap. 5 'Proteção sui generis', p. 72-81, que reúne topografia de circuito integrado, cultivares (5.2) e conhecimentos tradicionais (5.3), contra o cap. 3 'Propriedade industrial', p. 26-52, onde estão marca (3.3) e desenho industrial (3.4). A figura da p. 21 dá o mapa das categorias.
 - Explicação: Conhecimento Tradicional Associado (I) e Cultivar (IV) são protegidos por regimes sui generis — respectivamente a Lei 13.123/2015 e a Lei 9.456/1997 —, fora da Propriedade Industrial. Desenho Industrial e Marca são ativos de Propriedade Industrial regidos pela LPI.
 
 ### AV2-PI-Q06 · Patente
@@ -1757,7 +1757,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref2-Patente_2021.pdf, seções 2.1.2 e 2.1.3, p. 16: excluem-se 'todo ou parte de seres vivos naturais e materiais biológicos encontrados na natureza, ou ainda que dela isolados, inclusive o genoma ou germoplasma' e 'o todo ou parte dos seres vivos'; o quadro IMPORTANTE ressalva os micro-organismos transgênicos.
 - Explicação: Vacina (I) e polímero sintético (III) são invenções patenteáveis. Uma nova espécie de gramínea (II) é obtenção vegetal, protegida por cultivar e vedada como patente pelo art. 18, III da LPI; um gene de Arabidopsis thaliana (IV) é material biológico encontrado na natureza, excluído pelo art. 10, IX.
 
 ### AV2-PI-Q07 · Gestão da inovação na ICT
@@ -1787,7 +1787,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref3-A-caminho-da-inovacao_2010.pdf
+- Referência: Sem apoio em `references/`: as competências do NIT são do art. 16 da Lei 10.973/2004, texto legal fora do repositório — Ref3-A-caminho-da-inovacao_2010.pdf é de 2010 e só cita a Lei de Inovação nos Anexos A e B, p. 124-125, sem reproduzir o artigo. O papel do NIT no sistema aparece em Ref1-ENCTI-2024-2034.pdf, Quadro 2.1, p. 35.
 - Explicação: Lei de Inovação 10.973/2004, art. 16: são competências do NIT desenvolver estudos de prospecção e inteligência competitiva (II) e promover e acompanhar o relacionamento da ICT com empresas, negociando e gerindo acordos de transferência de tecnologia (III). I é falsa porque a atribuição é desenvolver os estudos, não licitá-los a terceiros; IV é falsa pelo 'somente', que restringe indevidamente a avaliação. Sequência F, V, V, F.
 
 ### AV2-PI-Q08 · Patente
@@ -1802,7 +1802,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref2-Patente_2021.pdf, seção 2.1.2, p. 16: entre o que não é considerado invenção nem modelo de utilidade estão 'programa de computador em si' e 'apresentação de informações' — as duas exclusões em que recai a interface gráfica da alternativa correta.
 - Explicação: Interface gráfica para apresentação de informações recai na exclusão do art. 10, VI da LPI (apresentação de informações) e no art. 10, VIII (programas de computador em si), por não produzir efeito técnico. As demais alternativas descrevem soluções com efeito técnico concreto — gestão de memória, controle de motor e processamento de imagens — e são patenteáveis como invenções implementadas em computador.
 
 ### AV2-PI-Q09 · Sistema de PI
@@ -1831,7 +1831,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Apoio parcial: Ref3-A-caminho-da-inovacao_2010.pdf, p. 41 (o Protocolo de Madri como instrumento de registro de marcas no exterior) e p. 55 (a Convenção de Berna, de 1886, para obras literárias e artísticas); Ref2-Patente_2021.pdf, seção 3.1, p. 17-19 (o PCT unifica o depósito, mas a concessão segue nacional). O Tratado de Budapeste não é mencionado em nenhum PDF de `references/`.
 - Explicação: I e II são verdadeiras (Madri trata do registro internacional de marcas; Berna, da proteção das obras e dos autores). III é falsa: o Protocolo de Madri não elimina o exame substantivo de cada escritório designado. IV é falsa: não existe 'patente internacional' — o PCT unifica o depósito, mas a concessão segue nacional. V é falsa: o Tratado de Budapeste existe justamente para EVITAR múltiplos depósitos de material biológico, reconhecendo um depósito único.
 
 ### AV2-PI-Q10 · Desenho industrial
@@ -1858,7 +1858,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Apoio parcial: Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.4, p. 43-44, define o desenho industrial como forma plástica ornamental com resultado visual novo e original e fixa os requisitos de novidade, originalidade e aplicação industrial. As hipóteses específicas de indeferimento — caráter puramente artístico, forma comum ou vulgar — são dos arts. 98 e 100 da LPI 9.279/1996, fora de `references/`.
 - Explicação: I é verdadeira (LPI art. 98: obra de caráter puramente artístico não é desenho industrial); II é verdadeira (art. 100, II); IV é verdadeira (art. 100, I). III é FALSA porque descreve justamente o que É registrável — o desenho industrial é definido no art. 95 como forma plástica ornamental, tri ou bidimensional. Sequência V, V, F, V.
 
 ### AV2-PI-Q11 · Marca e indicação geográfica
@@ -1888,7 +1888,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.5, p. 47-48: a distinção entre indicação de procedência e denominação de origem, e a regra de que, 'quando não existir pluralidade de entidades, então o único produtor ou prestador de serviço estabelecido na região pode requerer diretamente a indicação geográfica' (assertiva III).
 - Explicação: II é verdadeira (LPI art. 180: nome geográfico de uso comum não é IG) e III é verdadeira (produtor único legitimado pode requerer em nome próprio). I é falsa por trocar os conceitos: a definição apresentada é de Denominação de Origem (art. 178), não de Indicação de Procedência (art. 177). IV é falsa por inverter o art. 181, que PERMITE o nome geográfico como elemento de marca desde que não induza falsa procedência.
 
 ### AV2-PI-Q12 · Cultivar
@@ -1903,7 +1903,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 5.2, p. 78-79: 'A organização que supervisiona mundialmente a proteção de novas variedades de plantas é a União Internacional para Proteção das Obtenções Vegetais (UPOV) [...] que, por meio de uma convenção, disciplina' a matéria, com a reciprocidade automática entre os países-membros.
 - Explicação: A UPOV (1961) é o acordo multilateral que estabelece normas comuns para reconhecimento e proteção da propriedade de novas variedades vegetais obtidas por melhoristas. A alternativa d descreve a Convenção sobre Diversidade Biológica (repartição de benefícios) e a c descreve o Tratado de Budapeste (depósito de material biológico).
 
 ### AV2-PI-Q13 · Informação tecnológica
@@ -1931,7 +1931,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Sem apoio em `references/`: nenhum PDF do repositório descreve a estrutura da IPC. Ref2-Patente_2021.pdf, citado antes, é a cartilha de patentes do INPI e não menciona a classificação; Ref3-A-caminho-da-inovacao_2010.pdf só remete à CIP do INPI na bibliografia. Fonte real: o Guia da IPC (OMPI), fora do repositório.
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório descreve a estrutura da IPC. Ref2-Patente_2021.pdf é a cartilha de patentes do INPI e não menciona a classificação; Ref3-A-caminho-da-inovacao_2010.pdf só remete à CIP do INPI na bibliografia, p. 110, e trata da Classificação de Locarno, para desenhos industriais, na p. 44. Fonte real: o Guia da IPC (OMPI), fora do repositório.
 - Explicação: I, II e III descrevem corretamente a IPC: melhora a busca de anterioridade, tem hierarquia Seções/Classes/Subclasses/Grupos e cobre toda a tecnologia com cerca de 70 mil grupos. IV é falsa: a IPC não classifica desenho industrial (isso cabe à Classificação de Locarno) nem programa de computador.
 
 ### AV2-PI-Q14 · Informação tecnológica
@@ -1963,7 +1963,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Gabarito-Final_AV2-PI.pdf, linhas 13 e 14 da tabela QUESTÃO / RESPOSTA CORRETA (A e B), que é o que revela o defeito do caderno. Para o mérito: sem apoio em `references/` — nenhum PDF do repositório descreve a estrutura da IPC; fonte real é o Guia da IPC (OMPI).
+- Referência: Gabarito-Final_AV2-PI.pdf, linhas 13 e 14 da tabela QUESTÃO / RESPOSTA CORRETA (A e B), que é o que revela o defeito do caderno. Para o mérito, sem apoio em `references/`: nenhum PDF do repositório descreve a estrutura da IPC; a fonte real é o Guia da IPC (OMPI).
 - Explicação: Defeito do caderno publicado. A questão 14 impressa em `PROFNIT-AV2-PI.pdf` reproduz a questão 13, com a numeração das assertivas corrompida — a III foi absorvida pelo texto da II. O gabarito oficial, porém, dá 13=A e 14=B, e um gabarito não atribui duas letras à mesma questão: a prova real trazia outra questão neste número e o caderno publicado está defeituoso. A letra registrada aqui, a, é a que o gabarito dá à questão 13, que é o texto que de fato temos — as assertivas sobre busca de anterioridade, hierarquia Seções/Classes/Subclasses/Grupos e abrangência da IPC são verdadeiras, e a que atribui à IPC a classificação de desenho industrial e de programa de computador é falsa. A letra B, que o gabarito dá ao número 14, responde uma questão que não está no banco. Por isso esta questão nunca é sorteada.
 
 ### AV2-PI-Q15 · Direito autoral
@@ -1991,7 +1991,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref2-Patente_2021.pdf
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, seção 4.1, p. 55 (a Convenção de Berna como marco da proteção das obras literárias e artísticas, e o direito autoral protegendo a forma de expressão, não a ideia isolada) e seção 4.2, p. 59, que situa 'utilizar, fruir e dispor' no direito patrimonial, e não no moral, como quer a assertiva III.
 - Explicação: II é verdadeira (a Convenção de Berna é administrada pela OMPI e conta com mais de cem signatários) e IV é verdadeira (o direito autoral protege a forma de expressão, não a ideia isolada). I é falsa por atribuir o direito autoral à CUP, quando a convenção aplicável é a de Berna. III é falsa por rotular como direito MORAL o que é direito PATRIMONIAL (utilizar, fruir e dispor — art. 28 da Lei 9.610/1998).
 
 ### AV2-PI-Q16 · Direito autoral
@@ -2023,7 +2023,7 @@ Prova de 2023-11-18 · `PROFNIT-AV2-PI.pdf` · 16 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Gabarito-Final_AV2-PI.pdf, linhas 15 e 16 da tabela QUESTÃO / RESPOSTA CORRETA (C e D), que é o que revela o defeito do caderno. Para o mérito: Ref3-A-caminho-da-inovacao_2010.pdf, seção de direito autoral (Lei 9.610/1998 e Convenção de Berna) — Ref2-Patente_2021.pdf, citado antes, trata só de patentes e não menciona direito autoral.
+- Referência: Gabarito-Final_AV2-PI.pdf, linhas 15 e 16 da tabela QUESTÃO / RESPOSTA CORRETA (C e D), que é o que revela o defeito do caderno. Para o mérito: Ref3-A-caminho-da-inovacao_2010.pdf, seção 4.1, p. 55 (Convenção de Berna; a forma de expressão, não a ideia) e seção 4.2, p. 59 (utilizar, fruir e dispor é direito patrimonial).
 - Explicação: Defeito do caderno publicado. A questão 16 impressa em `PROFNIT-AV2-PI.pdf` é idêntica à 15. O gabarito oficial dá 15=C e 16=D, e um gabarito não atribui duas letras à mesma questão: a prova real trazia outra questão neste número e o caderno publicado está defeituoso. A letra registrada aqui, c, é a que o gabarito dá à questão 15, que é o texto que de fato temos — II e IV são verdadeiras, I confunde a Convenção de Berna com a CUP e III rotula como direito moral o direito patrimonial de utilizar, fruir e dispor da obra (art. 28 da Lei 9.610/1998). A letra D, que o gabarito dá ao número 16, responde uma questão que não está no banco. Por isso esta questão nunca é sorteada.
 
 ---
@@ -2239,7 +2239,7 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref6-OCDE-Manual-Frascati-em-portugues-Brasil.pdf (balanço de pagamentos tecnológico e dispêndio em P&D como indicadores) e `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf`, cap. 1, seção 1, que arrola publicações e Qualis entre os indicadores científicos e famílias de patentes e patentes concedidas entre os tecnológicos.
+- Referência: Ref6-OCDE-Manual-Frascati-em-portugues-Brasil.pdf, cap. 1 e 2, que definem a P&D e seu dispêndio como o indicador central de C&T, e p. 19 e 22, que arrolam os dados de patentes entre os indicadores da ciência e da tecnologia; `Ref8-Versao-PDF-do-arquivo-Livro-PROSP-PROFNIT-Volume-3-22.08.2025.pdf`, cap. 1, seção 1, põe publicações e Qualis entre os indicadores científicos e famílias de patentes entre os tecnológicos. A balança de pagamentos tecnológicos não é desenvolvida em Ref6-OCDE-Manual-Frascati-em-portugues-Brasil.pdf: consta só da bibliografia, p. 309, como o TBP Manual (OCDE, 1990).
 - Explicação: A questão pede a alternativa INCORRETA. Volume de patentes (a), balanço de pagamento tecnológico (b) e investimentos em P&D (c) são indicadores consagrados de inovação, conforme o Manual de Frascati. A alternativa d afirma que a publicação de artigos científicos NÃO é indicador utilizado — o oposto do que ocorre: produção científica é insumo corrente dos índices de inovação. Por ser a única afirmação falsa, é a resposta.
 
 ### AV2-MET-Q10 · Metodologia científica
@@ -2442,7 +2442,7 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref1-ENCTI-2024-2034.pdf
+- Referência: Ref1-ENCTI-2024-2034.pdf, cap. 8 'Os desafios do Sistema Nacional de Ciência, Tecnologia e Inovação', seções 8.1 a 8.3, p. 119-122: a estruturação e a articulação do SNCTI (assertiva I), o monitoramento e a avaliação como componentes de governança (assertiva III) e a redução — não o aumento — das desigualdades regionais, repetida ao longo do capítulo.
 - Explicação: I e III são desafios reconhecidos de governança do SNCTI: estruturar o sistema e dar sinergia entre órgãos e agências nas várias esferas, e implantar acompanhamento e avaliação de resultados e impactos. II é falsa por inversão: a política busca a REDUÇÃO das disparidades regionais, não seu aumento.
 
 ### AV2-POL-Q03 · Economia da inovação
@@ -2459,7 +2459,7 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref1-ENCTI-2024-2034.pdf
+- Referência: Sem apoio em `references/`: 'paradigma tecnológico' e 'trajetória tecnológica' não ocorrem em nenhum PDF do repositório, nem o nome de Dosi. Fonte real: DOSI, G. Technological paradigms and technological trajectories (Research Policy, 1982), fora do repositório.
 - Explicação: A definição transcrita é a de paradigma tecnológico em Dosi: um modelo e um padrão de solução de problemas tecnológicos selecionados, que embute diretrizes fortes sobre a direção da mudança técnica. A trajetória tecnológica (c) é o padrão de atividade normal DENTRO de um paradigma, e não o modelo que a orienta.
 
 ### AV2-POL-Q04 · Economia da inovação
@@ -2485,7 +2485,7 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref1-ENCTI-2024-2034.pdf, Quadro 3.2 (metas quantitativas claras: P&D/PIB, patentes, citações científicas); Ref7-Manual_de_Oslo_2018.pdf, §11.50 (indicadores baseados em direitos de PI, como invenções patenteadas).
+- Referência: Ref1-ENCTI-2024-2034.pdf, Quadro 3.2 'Uma análise do plano chinês de CT&I', p. 54, linha Planejamento: 'metas quantitativas claras (P&D/PIB, patentes, citações científicas)'; Ref7-Manual_de_Oslo_2018.pdf, seção 5.3.5 e Tabela 5.1, p. 125-126, trata os direitos de PI e as invenções patenteadas como medidas de apropriação.
 - Explicação: O gabarito oficial aponta d: I, II e III. I e II são consensuais na abordagem evolucionista — a tendência mundial de ampliação dos investimentos em C&T e a centralidade da formação de capital humano em ciências naturais e engenharias. III, 'a inovação pode ser medida pelo número de patentes', também é aceita: a contagem de patentes é um indicador clássico de inovação e aparece como meta quantitativa de política de CT&I (ENCTI 2024-2034, Quadro 3.2: 'metas quantitativas claras (P&D/PIB, patentes, citações científicas)'), e o Manual de Oslo trata os indicadores baseados em direitos de PI, como invenções patenteadas, como medidas de estratégia de apropriação. A assertiva diz que a inovação PODE ser medida assim, não que só possa: é uma medida parcial, não uma definição, e nada nela contradiz a premissa de que a inovação é um processo complexo. Ressalva: a derivação anterior deste banco rejeitava III e defendia a alternativa c, que o gabarito oficial contradiz.
 
 ### AV2-POL-Q05 · Política pública de CT&I
@@ -2502,7 +2502,7 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref1-ENCTI-2024-2034.pdf
+- Referência: Ref1-ENCTI-2024-2034.pdf, cap. 4 'Eixo Estruturante I — Expansão, consolidação e integração do SNCTI', p. 59-71, que separa as dimensões do eixo e trata a formação e a fixação de talentos — bolsas, redes regionais de pesquisa, formação e fixação de talentos locais — como dimensão própria, distinta da infraestrutura e do marco regulatório.
 - Explicação: A pergunta isola a dimensão de formação de recursos humanos. Formar engenheiros e pesquisadores e atrair e fixar talentos é ação de RH por definição. As demais pertencem a outras dimensões: articulação universidade-empresa (a) é de interação, modernização da concessão de patentes (b) é de marco regulatório e centros multiusuários (d) é de infraestrutura.
 
 ### AV2-POL-Q06 · Economia da inovação
@@ -2522,7 +2522,7 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref1-ENCTI-2024-2034.pdf
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório contém 'catching-up' nem os nomes de Perez ou Soete. Fonte real: PEREZ, C.; SOETE, L. Catching up in technology: entry barriers and windows of opportunity (in DOSI et al., Technical Change and Economic Theory, 1988), citada no próprio enunciado e fora do repositório.
 - Explicação: O trecho de Perez e Soete (1988) descreve o catching-up: processo de mudança e aprendizagem pelo qual países retardatários reduzem o gap tecnológico, apoiado em movimentos internacionais de capital e transferência de tecnologia, gerando capacitação local, produtividade e inovações. Spin-off, trajetória tecnológica e inovação incremental designam fenômenos distintos e de escala menor.
 
 ### AV2-POL-Q07 · Economia da inovação
@@ -2542,7 +2542,7 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Ref1-ENCTI-2024-2034.pdf
+- Referência: Sem apoio em `references/`: 'sistemas setoriais' e o nome de Malerba não ocorrem em nenhum PDF do repositório. Fonte real: MALERBA, F. Sectoral innovation systems (Research Policy, 2002), fora do repositório.
 - Explicação: Os três são pilares evolucionistas da análise de sistemas setoriais de inovação (Malerba): paradigmas tecnológicos delimitam o espaço de busca, processos de aprendizagem explicam a acumulação de capacitações, e a coevolução entre tecnologias, instituições e organizações descreve a dinâmica conjunta do setor. Nenhum deles é estranho à abordagem.
 
 ### AV2-POL-Q08 · Gestão da inovação na ICT
@@ -2567,7 +2567,7 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref3-A-caminho-da-inovacao_2010.pdf
+- Referência: Sem apoio em `references/`: o art. 15-A foi inserido na Lei 10.973/2004 pela Lei 13.243/2016, seis anos depois de Ref3-A-caminho-da-inovacao_2010.pdf, que só cita a Lei de Inovação nos Anexos A e B, p. 124-125, sem reproduzir artigos. Fonte real: Lei 10.973/2004, art. 15-A, parágrafo único, fora do repositório.
 - Explicação: O parágrafo único do art. 15-A da Lei 10.973/2004 arrola diretrizes que abrangem cooperação e parcerias em PD&I (I), constituição e gestão de ambientes promotores de inovação (II) e institucionalização e gestão do NIT (IV). III é falsa: a lei prevê licença SEM remuneração para o pesquisador público constituir empresa com finalidade de inovação (art. 15), e não afastamento remunerado para abrir empresa de qualquer natureza.
 
 ### AV2-POL-Q09 · Política pública de CT&I
@@ -2582,7 +2582,7 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
 **Resposta: a** (gabarito oficial)
 
-- Referência: Ref1-ENCTI-2024-2034.pdf
+- Referência: Sem apoio em `references/` para a distinção entre os instrumentos: Ref1-ENCTI-2024-2034.pdf cita o FNDCT como principal fundo de apoio à CT&I (p. 19, 22-23) e a subvenção econômica entre as ações estruturantes (p. 132), mas não define fomento e subvenção nem os separa. Fonte real: Lei 11.540/2007, arts. 12 e 13, fora do repositório.
 - Explicação: O fomento à PD&I, com recursos não reembolsáveis, é o principal instrumento do FNDCT para implantação e consolidação institucional da pesquisa e da pós-graduação e para expansão do sistema nacional de C&T. b atribui esse papel à subvenção econômica; c erra ao qualificar a subvenção como recurso reembolsável, quando ela é não reembolsável e dirigida a empresas; d restringe indevidamente o fomento, excluindo a formação de recursos humanos.
 
 ### AV2-POL-Q10 · Economia da inovação
@@ -2617,7 +2617,7 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref1-ENCTI-2024-2034.pdf
+- Referência: Sem apoio em `references/`: nenhum PDF do repositório traz a periodização dos ciclos longos de mudança tecnológica — 'ciclos longos' e 'Kondratiev' têm zero ocorrências. Fonte real: FREEMAN, C.; PEREZ, C. Structural crises of adjustment, business cycles and investment behaviour (1988), fora do repositório.
 - Explicação: Ordenando os ciclos longos de mudança tecnológica: Petróleo e Indústria Automotiva correspondem a 1940-1990 (4); Ferrovia, Aço e Carvão a 1849-1896 (2); Indústria Têxtil ao primeiro ciclo, 1789-1849 (1); Eletricidade e Química a 1896-1940 (3); e TICs, nanotecnologia, biotecnologia e novas fontes energéticas ao período posterior a 1990 (5). A sequência de cima para baixo é 4, 2, 1, 3, 5.
 
 ### AV2-POL-Q11 · Gestão da inovação na ICT
@@ -2639,7 +2639,7 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
 **Resposta: d** (gabarito oficial)
 
-- Referência: Ref3-A-caminho-da-inovacao_2010.pdf
+- Referência: Sem apoio em `references/`: as frentes da Política de Inovação da ICT vêm do art. 15-A da Lei 10.973/2004, acrescentado pela Lei 13.243/2016 e, portanto, posterior a Ref3-A-caminho-da-inovacao_2010.pdf (2010), que não reproduz o artigo. Fonte real: Lei 10.973/2004, art. 15-A, fora do repositório.
 - Explicação: As quatro frentes sustentam a Política de Inovação de uma ICT e são complementares, não excludentes: formação de RH estratégico, empreendedorismo tecnológico, parcerias público-privadas e cooperação internacional. Como nenhuma delas é estranha ao escopo do art. 15-A da Lei de Inovação, todas estão corretas.
 
 ### AV2-POL-Q12 · Gestão da inovação na ICT
@@ -2659,7 +2659,7 @@ Prova de 2023-07-01 · `PROFNIT-AV2-POL.pdf` · 16 questões · gabarito oficial
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref3-A-caminho-da-inovacao_2010.pdf
+- Referência: Sem apoio em `references/`: o rol de diretrizes mínimas está no parágrafo único do art. 15-A da Lei 10.973/2004, inserido pela Lei 13.243/2016 e posterior a Ref3-A-caminho-da-inovacao_2010.pdf (2010), que só lista a Lei de Inovação no Anexo B, p. 125. Fonte real: o próprio texto legal, fora do repositório.
 - Explicação: A questão pede o que NÃO consta das diretrizes do art. 15-A. Gestão da PI e transferência de tecnologia (a), institucionalização e gestão do NIT (c) e parcerias com inventores independentes, empresas e outras entidades (d) são incisos expressos do parágrafo único. A abertura de empresas voltadas a políticas de redução da desigualdade (b) não figura entre as diretrizes: o dispositivo trata de empreendedorismo e incubação com finalidade de inovação, não de política social.
 
 ### AV2-POL-Q13 · Política pública de CT&I
@@ -2934,7 +2934,7 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · gabarit
 
 **Resposta: b** (gabarito oficial)
 
-- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, p. 30 e 32: partes do pedido de patente (relatório descritivo, reivindicações, desenhos e resumo) e a função das reivindicações, cujo conteúdo 'delimita as peculiaridades sobre as quais o titular terá direito de exclusividade'.
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, p. 30: as partes do pedido de patente e a função das reivindicações, cujo conteúdo 'delimita as peculiaridades sobre as quais o titular terá direito de exclusividade'; Ref2-Patente_2021.pdf, seção 3.5, p. 23, acrescenta que 'o quadro reivindicatório define o escopo da proteção requerida'. O requerente/titular como interlocutor da negociação está em Ref3-A-caminho-da-inovacao_2010.pdf, p. 32.
 - Explicação: I é verdadeira: as reivindicações definem o escopo legal e, por seu custo de análise, são examinadas caso a caso, nos documentos de maior interesse. IV é verdadeira: o requerente/titular é o detentor com quem se negociam os direitos. II é falsa pelo absolutismo 'devendo ser usado em todas as buscas e análises'; III é falsa ao restringir a análise temporal 'apenas à data de prioridade', ignorando as datas de depósito, publicação e concessão.
 
 ### AV2-PROSP-Q09 · Informação tecnológica
@@ -2982,7 +2982,7 @@ Prova de 2020-10-24 · `PROFNIT-AV2-201024-PROSP.pdf` · 16 questões · gabarit
 
 **Resposta: c** (gabarito oficial)
 
-- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, p. 31 (prioridade unionista: o primeiro depósito num país membro da CUP vale como base nos demais dentro de 12 meses). As definições de família simples e de família estendida não constam de nenhum PDF de `references/`; são da documentação do EPO/INPADOC, fora do repositório.
+- Referência: Ref3-A-caminho-da-inovacao_2010.pdf, p. 32, quadro lateral 'Prioridade Unionista para patentes' e o parágrafo sobre a CUP: o primeiro depósito num país membro vale como base nos demais dentro de 12 meses. As definições de família simples e de família estendida (INPADOC) não constam de nenhum PDF de `references/`: são da documentação do EPO, fora do repositório.
 - Explicação: II (prioridade unionista do art. 4º da CUP), III (definição de família de patentes) e IV (a IPC como base para disseminação seletiva, busca do estado da técnica e estatísticas de propriedade industrial) são verdadeiras. I é falsa por inverter os conceitos: família SIMPLES é a que reúne documentos com exatamente a mesma prioridade ou combinação de prioridades, e família ESTENDIDA (INPADOC) é a que liga documentos direta ou indiretamente por um documento de prioridade.
 
 ### AV2-PROSP-Q11 · Informação tecnológica

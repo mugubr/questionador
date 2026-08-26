@@ -5,47 +5,47 @@
   },
   "AV2-POL-Q02": {
     "explanation": "I e III são desafios reconhecidos de governança do SNCTI: estruturar o sistema e dar sinergia entre órgãos e agências nas várias esferas, e implantar acompanhamento e avaliação de resultados e impactos. II é falsa por inversão: a política busca a REDUÇÃO das disparidades regionais, não seu aumento.",
-    "reference": "Ref1-ENCTI-2024-2034.pdf"
+    "reference": "Ref1-ENCTI-2024-2034.pdf, cap. 8 'Os desafios do Sistema Nacional de Ciência, Tecnologia e Inovação', seções 8.1 a 8.3, p. 119-122: a estruturação e a articulação do SNCTI (assertiva I), o monitoramento e a avaliação como componentes de governança (assertiva III) e a redução — não o aumento — das desigualdades regionais, repetida ao longo do capítulo."
   },
   "AV2-POL-Q03": {
     "explanation": "A definição transcrita é a de paradigma tecnológico em Dosi: um modelo e um padrão de solução de problemas tecnológicos selecionados, que embute diretrizes fortes sobre a direção da mudança técnica. A trajetória tecnológica (c) é o padrão de atividade normal DENTRO de um paradigma, e não o modelo que a orienta.",
-    "reference": "Ref1-ENCTI-2024-2034.pdf"
+    "reference": "Sem apoio em `references/`: 'paradigma tecnológico' e 'trajetória tecnológica' não ocorrem em nenhum PDF do repositório, nem o nome de Dosi. Fonte real: DOSI, G. Technological paradigms and technological trajectories (Research Policy, 1982), fora do repositório."
   },
   "AV2-POL-Q04": {
     "explanation": "O gabarito oficial aponta d: I, II e III. I e II são consensuais na abordagem evolucionista — a tendência mundial de ampliação dos investimentos em C&T e a centralidade da formação de capital humano em ciências naturais e engenharias. III, 'a inovação pode ser medida pelo número de patentes', também é aceita: a contagem de patentes é um indicador clássico de inovação e aparece como meta quantitativa de política de CT&I (ENCTI 2024-2034, Quadro 3.2: 'metas quantitativas claras (P&D/PIB, patentes, citações científicas)'), e o Manual de Oslo trata os indicadores baseados em direitos de PI, como invenções patenteadas, como medidas de estratégia de apropriação. A assertiva diz que a inovação PODE ser medida assim, não que só possa: é uma medida parcial, não uma definição, e nada nela contradiz a premissa de que a inovação é um processo complexo. Ressalva: a derivação anterior deste banco rejeitava III e defendia a alternativa c, que o gabarito oficial contradiz.",
-    "reference": "Ref1-ENCTI-2024-2034.pdf, Quadro 3.2 (metas quantitativas claras: P&D/PIB, patentes, citações científicas); Ref7-Manual_de_Oslo_2018.pdf, §11.50 (indicadores baseados em direitos de PI, como invenções patenteadas)."
+    "reference": "Ref1-ENCTI-2024-2034.pdf, Quadro 3.2 'Uma análise do plano chinês de CT&I', p. 54, linha Planejamento: 'metas quantitativas claras (P&D/PIB, patentes, citações científicas)'; Ref7-Manual_de_Oslo_2018.pdf, seção 5.3.5 e Tabela 5.1, p. 125-126, trata os direitos de PI e as invenções patenteadas como medidas de apropriação."
   },
   "AV2-POL-Q05": {
     "explanation": "A pergunta isola a dimensão de formação de recursos humanos. Formar engenheiros e pesquisadores e atrair e fixar talentos é ação de RH por definição. As demais pertencem a outras dimensões: articulação universidade-empresa (a) é de interação, modernização da concessão de patentes (b) é de marco regulatório e centros multiusuários (d) é de infraestrutura.",
-    "reference": "Ref1-ENCTI-2024-2034.pdf"
+    "reference": "Ref1-ENCTI-2024-2034.pdf, cap. 4 'Eixo Estruturante I — Expansão, consolidação e integração do SNCTI', p. 59-71, que separa as dimensões do eixo e trata a formação e a fixação de talentos — bolsas, redes regionais de pesquisa, formação e fixação de talentos locais — como dimensão própria, distinta da infraestrutura e do marco regulatório."
   },
   "AV2-POL-Q06": {
     "explanation": "O trecho de Perez e Soete (1988) descreve o catching-up: processo de mudança e aprendizagem pelo qual países retardatários reduzem o gap tecnológico, apoiado em movimentos internacionais de capital e transferência de tecnologia, gerando capacitação local, produtividade e inovações. Spin-off, trajetória tecnológica e inovação incremental designam fenômenos distintos e de escala menor.",
-    "reference": "Ref1-ENCTI-2024-2034.pdf"
+    "reference": "Sem apoio em `references/`: nenhum PDF do repositório contém 'catching-up' nem os nomes de Perez ou Soete. Fonte real: PEREZ, C.; SOETE, L. Catching up in technology: entry barriers and windows of opportunity (in DOSI et al., Technical Change and Economic Theory, 1988), citada no próprio enunciado e fora do repositório."
   },
   "AV2-POL-Q07": {
     "explanation": "Os três são pilares evolucionistas da análise de sistemas setoriais de inovação (Malerba): paradigmas tecnológicos delimitam o espaço de busca, processos de aprendizagem explicam a acumulação de capacitações, e a coevolução entre tecnologias, instituições e organizações descreve a dinâmica conjunta do setor. Nenhum deles é estranho à abordagem.",
-    "reference": "Ref1-ENCTI-2024-2034.pdf"
+    "reference": "Sem apoio em `references/`: 'sistemas setoriais' e o nome de Malerba não ocorrem em nenhum PDF do repositório. Fonte real: MALERBA, F. Sectoral innovation systems (Research Policy, 2002), fora do repositório."
   },
   "AV2-POL-Q08": {
     "explanation": "O parágrafo único do art. 15-A da Lei 10.973/2004 arrola diretrizes que abrangem cooperação e parcerias em PD&I (I), constituição e gestão de ambientes promotores de inovação (II) e institucionalização e gestão do NIT (IV). III é falsa: a lei prevê licença SEM remuneração para o pesquisador público constituir empresa com finalidade de inovação (art. 15), e não afastamento remunerado para abrir empresa de qualquer natureza.",
-    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf"
+    "reference": "Sem apoio em `references/`: o art. 15-A foi inserido na Lei 10.973/2004 pela Lei 13.243/2016, seis anos depois de Ref3-A-caminho-da-inovacao_2010.pdf, que só cita a Lei de Inovação nos Anexos A e B, p. 124-125, sem reproduzir artigos. Fonte real: Lei 10.973/2004, art. 15-A, parágrafo único, fora do repositório."
   },
   "AV2-POL-Q09": {
     "explanation": "O fomento à PD&I, com recursos não reembolsáveis, é o principal instrumento do FNDCT para implantação e consolidação institucional da pesquisa e da pós-graduação e para expansão do sistema nacional de C&T. b atribui esse papel à subvenção econômica; c erra ao qualificar a subvenção como recurso reembolsável, quando ela é não reembolsável e dirigida a empresas; d restringe indevidamente o fomento, excluindo a formação de recursos humanos.",
-    "reference": "Ref1-ENCTI-2024-2034.pdf"
+    "reference": "Sem apoio em `references/` para a distinção entre os instrumentos: Ref1-ENCTI-2024-2034.pdf cita o FNDCT como principal fundo de apoio à CT&I (p. 19, 22-23) e a subvenção econômica entre as ações estruturantes (p. 132), mas não define fomento e subvenção nem os separa. Fonte real: Lei 11.540/2007, arts. 12 e 13, fora do repositório."
   },
   "AV2-POL-Q10": {
     "explanation": "Ordenando os ciclos longos de mudança tecnológica: Petróleo e Indústria Automotiva correspondem a 1940-1990 (4); Ferrovia, Aço e Carvão a 1849-1896 (2); Indústria Têxtil ao primeiro ciclo, 1789-1849 (1); Eletricidade e Química a 1896-1940 (3); e TICs, nanotecnologia, biotecnologia e novas fontes energéticas ao período posterior a 1990 (5). A sequência de cima para baixo é 4, 2, 1, 3, 5.",
-    "reference": "Ref1-ENCTI-2024-2034.pdf"
+    "reference": "Sem apoio em `references/`: nenhum PDF do repositório traz a periodização dos ciclos longos de mudança tecnológica — 'ciclos longos' e 'Kondratiev' têm zero ocorrências. Fonte real: FREEMAN, C.; PEREZ, C. Structural crises of adjustment, business cycles and investment behaviour (1988), fora do repositório."
   },
   "AV2-POL-Q11": {
     "explanation": "As quatro frentes sustentam a Política de Inovação de uma ICT e são complementares, não excludentes: formação de RH estratégico, empreendedorismo tecnológico, parcerias público-privadas e cooperação internacional. Como nenhuma delas é estranha ao escopo do art. 15-A da Lei de Inovação, todas estão corretas.",
-    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf"
+    "reference": "Sem apoio em `references/`: as frentes da Política de Inovação da ICT vêm do art. 15-A da Lei 10.973/2004, acrescentado pela Lei 13.243/2016 e, portanto, posterior a Ref3-A-caminho-da-inovacao_2010.pdf (2010), que não reproduz o artigo. Fonte real: Lei 10.973/2004, art. 15-A, fora do repositório."
   },
   "AV2-POL-Q12": {
     "explanation": "A questão pede o que NÃO consta das diretrizes do art. 15-A. Gestão da PI e transferência de tecnologia (a), institucionalização e gestão do NIT (c) e parcerias com inventores independentes, empresas e outras entidades (d) são incisos expressos do parágrafo único. A abertura de empresas voltadas a políticas de redução da desigualdade (b) não figura entre as diretrizes: o dispositivo trata de empreendedorismo e incubação com finalidade de inovação, não de política social.",
-    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf"
+    "reference": "Sem apoio em `references/`: o rol de diretrizes mínimas está no parágrafo único do art. 15-A da Lei 10.973/2004, inserido pela Lei 13.243/2016 e posterior a Ref3-A-caminho-da-inovacao_2010.pdf (2010), que só lista a Lei de Inovação no Anexo B, p. 125. Fonte real: o próprio texto legal, fora do repositório."
   },
   "AV2-POL-Q13": {
     "explanation": "O gabarito oficial aponta d, 'Apenas as afirmativas IV estão corretas', e a fundamentação não foi localizada nos materiais de referência. A assertiva IV afirma que TODAS as dimensões de mensuração são qualitativas e que a ordem de preferência é eficácia, eficiência e efetividade; nenhuma fonte consultada sustenta nem o 'todas', nem essa ordenação. O referencial usual de avaliação de desempenho no setor público — a metodologia dos 6Es adotada pelo Ministério do Planejamento — trata eficiência, eficácia e efetividade como indicadores de resultado com aspectos tanto quantitativos (quantidade, cobertura, custo unitário, tempo) quanto qualitativos (qualidade do produto, acessibilidade), e não os hierarquiza. A questão ainda é mal redigida: fala em 'as afirmativas IV', no plural, para uma única assertiva. Fica registrado que a resposta é d por gabarito publicado, e não por raciocínio reconstruível. Ressalva: a derivação anterior deste banco defendia a alternativa a, que o gabarito oficial contradiz.",
