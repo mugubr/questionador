@@ -125,14 +125,18 @@ Para trocar uma **letra**, o caminho é outro: confira o gabarito oficial em
 
 ## Regenerar o banco a partir dos PDFs
 
-Só é necessário se você mexer nos cadernos ou no extrator. Requer Python 3.14 e
-o `pdftotext` do **poppler**.
+Só é necessário se você mexer nos cadernos ou no extrator.
 
 ```bash
-python -m tools extract    # exams/*.pdf            -> data/raw-questions.json
-python -m tools build      # + correções + gabaritos + respostas -> data/ e docs/
+python -m tools extract    # exams/*.pdf -> raw-questions.json + answer-keys.json
+python -m tools build      # + correções + explicações + temas -> data/ e docs/
 python -m tools validate   # confere o banco publicado contra o contrato
 ```
+
+**Só o `extract` precisa do `pdftotext`.** O `build` lê apenas arquivos
+versionados, então corrigir uma explicação e reconstruir funciona com Python e
+mais nada — é justamente para isso que `raw-questions.json` e `answer-keys.json`
+estão no repositório.
 
 > ### ⚠️ O `pdftotext` precisa ser o do poppler
 >
@@ -211,7 +215,7 @@ Verificações que rodam na CI e que você pode rodar localmente:
 ruff check . && ruff format --check .
 mypy tools tests
 python -m pytest
-node --test tests/js/
+node --test "tests/js/*.test.js"
 python -m tools validate
 ```
 

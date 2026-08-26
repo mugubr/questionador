@@ -441,7 +441,7 @@ Everything runs offline with no network and no service.
 
 ```bash
 python -m pytest              # the pipeline
-node --test tests/js/         # the app's pure logic
+node --test "tests/js/*.test.js"         # the app's pure logic
 python -m tools validate      # the published bank against the contract
 ruff check . && ruff format --check .
 mypy tools tests

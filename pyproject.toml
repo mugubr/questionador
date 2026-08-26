@@ -20,6 +20,11 @@ dev = [
   "ruff>=0.16.4,<0.17",
   "mypy>=2.3,<3",
   "pytest>=9.1,<10",
+  # Only tests/test_schema_agreement.py needs this: it feeds the same mutations
+  # to data/schema.json and to tools/validate.py and asserts they reject the
+  # same things. The pipeline itself never imports it -- the runtime stays
+  # dependency-free -- and the test skips cleanly when it is absent.
+  "jsonschema>=4.25,<5",
 ]
 
 [tool.uv]

@@ -21,7 +21,7 @@ python -m tools build      # publish data/ and docs/data/question-bank.js
 python -m tools validate   # check the published bank against the contract
 
 python -m pytest           # pipeline tests
-node --test tests/js/      # app logic tests
+node --test "tests/js/*.test.js"      # app logic tests
 ruff check . && mypy tools tests
 ```
 

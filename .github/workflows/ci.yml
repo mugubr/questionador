@@ -50,7 +50,11 @@ jobs:
         run: uv run python -m pytest
 
       - name: node --test
-        run: node --test tests/js/
+        # The glob is quoted so node expands it rather than the shell, and it
+        # names the files explicitly: passing the directory makes node resolve
+        # `tests/js` as a module and fail with MODULE_NOT_FOUND before running
+        # a single test.
+        run: node --test "tests/js/*.test.js"
 
       - name: Type-check the JavaScript
         # The JSDoc annotations are load-bearing, so jsconfig.json runs here and
