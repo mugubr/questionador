@@ -16,7 +16,7 @@ one gets fixed.
 ## Quick reference
 
 ```bash
-python -m tools extract    # exams/*.pdf -> data/raw-questions.json
+python -m tools extract    # exams/*.pdf -> raw-questions.json + answer-keys.json
 python -m tools build      # publish data/ and docs/data/question-bank.js
 python -m tools validate   # check the published bank against the contract
 

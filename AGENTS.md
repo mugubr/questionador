@@ -43,8 +43,9 @@ Portuguese:
 - `README.md`.
 - Every string rendered in the interface.
 - Question text, options, rationales, references.
-- Taxonomy values that are displayed as labels — `topic` values stay Portuguese
-  kebab-case (`propriedade-intelectual`), because the UI shows them.
+- Taxonomy values. A `topic` slug stays Portuguese kebab-case, unaccented and
+  singular (`marca-e-indicacao-geografica`); the accented label the UI actually
+  shows lives beside it in `data/topics.json`.
 
 The dividing line: **an enum the code branches on is English; a value a student
 reads is Portuguese.** Enum values are mapped to Portuguese labels through an
@@ -129,10 +130,16 @@ it:
 - **`openspec/changes/archive/`.** An archived change records what shipped;
   reformatting it rewrites that record.
 - **`.claude/`.** Vendored plugin files, not ours to restyle.
+- **`uv.lock` and `package-lock.json`.** Owned by their package managers.
+- **`node_modules/` and `.venv/`.** Installed dependencies, never ours.
 
-Markdown uses `proseWrap: preserve`. The prose here is hand-wrapped with
-deliberate breaks, and reflowing it churns every paragraph for no gain — the
-formatter still normalises tables, list markers and code fences.
+Markdown uses `proseWrap: preserve` so the two conventions in this repository
+can coexist, each one suiting its reader. **`README.md` is unwrapped**, one line
+per paragraph: GitHub reflows it in the viewer, so a hard wrap buys nothing
+there and turns a two-word edit into a diff across the whole paragraph.
+**`AGENTS.md` and the OpenSpec artifacts stay hand-wrapped** at their current
+width, because they are read in an editor as often as on a web page. Either way
+the formatter still normalises tables, list markers and code fences.
 
 ### Type hints — mandatory
 
@@ -172,8 +179,17 @@ AGENTS.md                     these rules; the source of truth
 CLAUDE.md                     pointer to AGENTS.md
 README.md                     Portuguese, written for students
 pyproject.toml                package metadata, ruff, mypy, pytest config
+package.json                  prettier and typescript; the app itself ships none
 jsconfig.json                 type-checking for the JavaScript
+.prettierrc.json              formatter settings for everything but Python
+.prettierignore               what prettier must not touch, each with a reason
+.editorconfig                 the same settings for the editor
 .gitattributes                LF for every generated artifact
+.gitignore                    caches only; nothing under data/ or docs/
+
+.github/workflows/
+  ci.yml                      lint, type-check, test, validate, rebuild guard
+  pages.yml                   publishes docs/ after CI passes
 
 docs/                         GitHub Pages serves this directory
   .nojekyll
@@ -190,10 +206,11 @@ data/                         the bank and its editable source layers
   raw-questions.json          generated and versioned: the extraction anchor
   answer-keys.json            generated and versioned: the parsed official keys
   overrides.json              hand-written parse fixes
-  topics.json                 the taxonomy and all 144 topic assignments
-  answers/*.json              explanations and references, one file per paper
+  topics.json                 the 15 topics and all 144 topic assignments
+  answers/*.json              explanation and reference, for the 104 with one
 
 tools/                        the Python package
+  __init__.py                 the package docstring and configure_stdio()
   __main__.py                 CLI: python -m tools <extract|build|validate>
   config.py                   exam paper registry and shared constants
   models.py                   dataclasses and enums
@@ -202,7 +219,7 @@ tools/                        the Python package
 
 tests/                        pytest for Python, node:test for JavaScript
 exams/                        source exam PDFs (read-only)
-references/                   reference PDFs used to derive answers (read-only)
+references/                   reference PDFs the explanations cite (read-only)
 openspec/                     spec-driven change workflow
 ```
 
@@ -230,21 +247,28 @@ two must agree; a rule in one and not the other is a bug.
       "hasOfficialAnswerKey": true
     }
   ],
+  "topics": [
+    {
+      "id": "patente", // the slug a question's `topic` holds
+      "label": "Patente", // Portuguese, accented: this is what the UI shows
+      "definition": "..." // Portuguese: what the topic covers
+    }
+  ],
   "questions": [
     {
       "id": "ENA26-Q01", // always <exam>-Q<NN>, matches exam + number
       "exam": "ENA26",
       "number": 1,
-      "topic": "patentes", // Portuguese: it is displayed
+      "topic": "patente", // a slug declared in topics[]
       "stem": "...", // Portuguese: the question body
       "options": { "a": "...", "b": "...", "c": "...", "d": "..." },
       "answer": {
         "letter": "c",
         "source": "official", // official | derived
         "confidence": "high", // derived only: high | medium | low
-        "reference": "...", // what was consulted
-        "explanation": "...", // official: Portuguese, why this answer is right
-        "rationale": "..." // derived only: Portuguese, how it was deduced
+        "reference": "...", // always present: what was consulted
+        "explanation": "...", // official only, optional: why the letter is right
+        "rationale": "..." // derived only, required: how it was deduced
       },
       "duplicateOf": "AV2-PI-Q13", // optional, set on known repeats
       "knownDefects": ["identical-options"], // optional, defects of the source
@@ -259,13 +283,17 @@ Invariants the validator enforces:
 - `id == f"{exam}-Q{number:02d}"`. Three fields, one truth.
 - Every `exam` appears in `exams[]`, and every exam has at least one question.
 - Per-paper counts match `tools/config.py`, and numbering is contiguous 1..N.
-- `source: "official"` never carries `confidence`; it may carry `explanation`
-  and `reference`.
-- `source: "derived"` carries all of `confidence`, `reference`, `rationale`.
+- Every answer carries a `reference`, whatever its source.
+- `source: "official"` carries neither `confidence` nor `rationale`.
+  `explanation` is optional and, when present, non-empty.
+- `source: "derived"` carries all of `confidence`, `reference` and `rationale`,
+  and never an `explanation`.
 - A question may omit `answer.letter` **only** when `excludedReason` is set.
-- Every `topic` exists in the bank's `topics` array.
+- Every `topic` is declared in `topics[]`, and every declared topic is used by
+  at least one question.
 - No stem or option holds page-header or footer residue.
 - A `duplicateOf` target exists and is not itself a duplicate.
+- No object carries a field the contract does not declare, at any level.
 
 ### Provenance is not optional
 
@@ -302,10 +330,13 @@ checks above. `official` means "a published answer key states this", nothing
 else.
 
 **The derivation work was measurably good, and that is a fact, not a
-reassurance.** Of the 103 comparable derived answers, 98 were already right —
-88 of 89 marked `high`, and 0 of 2 marked `low`. The hand-assigned confidence
-predicted the errors exactly. When something must be deduced again, label its
-confidence honestly and the label will be worth trusting.
+reassurance.** 104 answers were once derived, and 103 of them could be compared
+against a key — the exception is `AV2-POL-Q14`, which the key annuls. 100 of
+those 103 were already right. The hand-assigned confidence sorted them almost
+perfectly: all 89 marked `high` were correct, both marked `low` were wrong, and
+the single remaining error was one of the 12 marked `medium`. When something
+must be deduced again, label its confidence honestly and the label will be
+worth trusting.
 
 ---
 
@@ -330,10 +361,11 @@ Layers, applied in this order, each one narrow and auditable:
 
 1. `data/raw-questions.json` — deterministic output of `extract`, versioned so
    the chain can be rebuilt and diffed without running `pdftotext`.
-2. `data/answer-keys.json` — the parsed official keys for all seven papers,
+2. `data/overrides.json` — hand-written fixes for layout the parser cannot
+   resolve, overlaid on the extracted text before anything else reads it. Each
+   entry records its reason.
+3. `data/answer-keys.json` — the parsed official keys for all seven papers,
    matched by question number, with `null` where a question was annulled.
-3. `data/overrides.json` — hand-written fixes for layout the parser cannot
-   resolve. Each entry records its reason.
 4. `data/answers/*.json` — the explanation and reference for each question that
    has one.
 5. `data/topics.json` — the 15-topic taxonomy and every question's topic.
@@ -363,8 +395,9 @@ for a genuinely new date.
   platform, so a rebuild on Linux does not produce a whole-file diff.
 - **Deterministic output.** Sort every iteration over a set or a glob. No
   timestamps other than the explicit `generatedAt`. Same inputs, same bytes.
-- **No orphan keys.** A key in `overrides.json`, `official-topics.json`, or
-  `answers/*.json` that matches no question is an error, not a silent no-op.
+- **No orphan keys.** A key in `overrides.json`, the `assignments` of
+  `topics.json`, `answers/*.json` or one of the three question maps in
+  `tools/config.py` that matches no question is an error, not a silent no-op.
 - **Check stems _and_ options.** Noise detection, column-layout detection, and
   residue checks apply to both. A footer inside option `d` is as wrong as one
   inside the stem.
@@ -372,11 +405,13 @@ for a genuinely new date.
   and a single check mark aborts the run after all the work is done. Reconfigure
   `stdout` to UTF-8 at entry and keep progress output plain.
 
-### Correcting a derived answer
+### Correcting an explanation
 
-Edit `data/answers/<exam>.json` and rerun `build`. No application code changes.
-`data/question-bank.md` is the review surface: every question with its answer,
-provenance, reference, and rationale in readable form.
+Edit `data/answers/<paper>.json` and rerun `build`. No application code changes.
+An entry holds `explanation` and `reference` and nothing else — the letter comes
+from the published key, so the two can never disagree. `data/question-bank.md`
+is the review surface: every question with its answer, provenance, reference and
+explanation in readable form.
 
 ---
 
@@ -503,7 +538,8 @@ Faithfully reproduced, never silently "fixed". Each is recorded in the data so
 the app can act on it.
 
 - **The `AV2-PI` booklet is defective, and the official key proves it.** Items
-  14 and 16 reproduce items 13 and 15 verbatim, options included. But the
+  14 and 16 reprint items 13 and 15, options included — 16 to the character, 14
+  with the assertions of its list renumbered. But the
   published key reads `13=A, 14=B` and `15=C, 16=D` — and a key cannot give two
   letters to one question. So the real exam had _different_ questions at 14 and
   16, and the booklet in `exams/` is the thing that is wrong. Re-keying them to
@@ -516,17 +552,22 @@ the app can act on it.
 - **`AV2-MET-Q14` has two identical options.** Options `a` and `d` are the same
   string in the original PDF. Effectively a three-option question. Recorded in
   `knownDefects`, and the app treats a choice of either twin consistently.
-- **Three questions needed hand-written stems** because the PDF layout does not
-  resolve deterministically: `ENA25-Q14` and `AV2-MET-Q08` (two-column matching
-  tables that `pdftotext -layout` renders side by side) and `ENA18-Q40`
-  (closing text glued onto the last option). See `data/overrides.json`.
+- **Five questions carry an entry in `data/overrides.json`**, because
+  `pdftotext -layout` does not resolve their layout deterministically.
+  `ENA25-Q09`, `ENA25-Q14` and `AV2-MET-Q08` have a rewritten stem: two-column
+  matching tables rendered side by side, and in `AV2-MET-Q08` a second `a)-d)`
+  set that belongs to the stem. `AV2-POL-Q10` and `ENA18-Q40` were flagged,
+  reviewed and found already correct — their extracted text is pinned verbatim,
+  which is what clears the flag. Each entry's `_reason` says which of the two it
+  is.
 - **`AV2-MET` explanations rest on general methodology bibliography** — ABNT
   norms, the CAPES Qualis, classic references — not on the PDFs in
-  `references/`, which do not cover the subject. Their `reference` fields say
-  so plainly rather than pointing at a file that does not support them. A
-  reference naming no document is better than one naming the wrong document.
+  `references/`, which do not cover the subject. `AV2-MET-Q09` is the one
+  exception, backed by the Frascati manual. The other `reference` fields say
+  plainly that no file supports them rather than pointing at one that does not.
+  A reference naming no document is better than one naming the wrong document.
 - **`references/Ref8` has no text layer.** 127 pages of pure image; extracting
-  it yields zero characters. It is the PROSP PROFNIT book and was cited by 14
+  it yields zero characters. It is the PROSP PROFNIT book and is named by 15
   answers that could never be checked against it. It has since been OCRed, so
   its content is searchable — but the PDF in the repository is still
   unsearchable by ordinary tools, and anyone verifying against it needs to know
@@ -539,7 +580,7 @@ the time among officially-keyed questions but only 33% among derived ones
 (Fisher p=0.0042), and concluded that roughly 28 derived answers were suspect.
 
 When the real answer keys arrived, **that inference was wrong**. The derived
-answers agreed with the official keys 92% of the time, and the three genuine
+answers agreed with the official keys 97% of the time, and the three genuine
 errors were not the ones the length signal predicted — the `confidence` field,
 assigned by hand, predicted them precisely. Do not change an answer because a
 distribution looks unusual. Get the key.
@@ -547,6 +588,13 @@ distribution looks unusual. Get the key.
 ---
 
 ## 10. Working agreements
+
+### This is a fork, and the work goes upstream
+
+The repository forks [`mugubr/questionador`](https://github.com/mugubr/questionador)
+and exists to contribute back to it. Shape the work accordingly: small,
+independent commits a maintainer can review and take one at a time, not one
+sweeping change.
 
 ### Changes go through OpenSpec
 

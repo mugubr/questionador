@@ -11,6 +11,8 @@ docs/data/question-bank.js
 uv.lock
 package-lock.json
 
+# Installed dependencies, never ours to restyle. Prettier already skips
+# node_modules by default; .venv it does not, and it is full of JSON.
 node_modules/
 .venv/
 
