@@ -162,6 +162,7 @@ data/                         the bank and its editable source layers
   question-bank.json          generated: the canonical bank
   question-bank.md            generated: human review surface
   raw-questions.json          generated and versioned: the extraction anchor
+  answer-keys.json            generated and versioned: the parsed official keys
   overrides.json              hand-written parse fixes
   topics.json                 the taxonomy and all 144 topic assignments
   answers/*.json              explanations and references, one file per paper
@@ -281,21 +282,40 @@ confidence honestly and the label will be worth trusting.
 ## 6. The pipeline
 
 ```bash
-python -m tools extract    # exams/*.pdf      -> data/raw-questions.json
-python -m tools build      # + overrides + keys + answers -> data/ and docs/
+python -m tools extract    # exams/*.pdf -> raw-questions.json + answer-keys.json
+python -m tools build      # + overrides + answers + topics -> data/ and docs/
 python -m tools validate   # checks the published bank against the contract
 ```
+
+**`extract` is the only stage that runs a subprocess. `build` is pure assembly
+over committed files and must stay that way.** It is what lets anyone correct
+an explanation and rebuild without installing poppler, and it is what makes the
+CI rebuild guard meaningful — with no external tool in the loop, the only
+variable left is whether the committed bank is what the committed inputs and
+the current code produce. A test asserts that importing `tools.build` pulls in
+neither `tools.extract`, `subprocess`, `shutil` nor `datetime`; if that test
+starts failing, the dependency crept back.
 
 Layers, applied in this order, each one narrow and auditable:
 
 1. `data/raw-questions.json` — deterministic output of `extract`, versioned so
    the chain can be rebuilt and diffed without running `pdftotext`.
-2. `data/overrides.json` — hand-written fixes for layout the parser cannot
+2. `data/answer-keys.json` — the parsed official keys for all seven papers,
+   matched by question number, with `null` where a question was annulled.
+3. `data/overrides.json` — hand-written fixes for layout the parser cannot
    resolve. Each entry records its reason.
-3. Official answer keys — all seven papers, matched by question number.
 4. `data/answers/*.json` — the explanation and reference for each question that
    has one.
 5. `data/topics.json` — the 15-topic taxonomy and every question's topic.
+
+Both extraction artifacts carry the poppler version that produced them —
+provenance belongs to the step that ran the tool. `build` copies that stamp
+into the bank and refuses a pair whose stamps disagree, because that means they
+came from different `extract` runs.
+
+`generatedAt` carries forward from the committed bank rather than defaulting to
+today, so an unchanged rebuild produces unchanged bytes. `--generated-at` asks
+for a genuinely new date.
 
 ### Rules the pipeline obeys
 

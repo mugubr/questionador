@@ -31,7 +31,9 @@ docs/data/question-bank.js  linguist-generated=true
 # The other generated artifacts are deliberately NOT marked. They are committed
 # so that their diffs can be read: `data/question-bank.json` is the canonical
 # bank, `data/question-bank.md` is the human review surface, and
-# `data/raw-questions.json` is the extraction anchor the rebuild starts from.
+# `data/raw-questions.json` and `data/answer-keys.json` are the two extraction
+# artifacts the rebuild starts from -- the diff on an answer key is exactly the
+# thing nobody should be able to slip past a reviewer.
 # GitHub already leaves JSON and Markdown out of the language statistics.
 
 # Third-party PDFs: never diffed, never merged, never published.
