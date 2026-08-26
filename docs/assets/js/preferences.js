@@ -70,7 +70,10 @@ const Preferences = (function () {
     if (typeof source.shuffleOptions === 'boolean') {
       result.shuffleOptions = source.shuffleOptions;
     }
-    if (typeof source.sessionSize === 'number' && SIZES.indexOf(source.sessionSize) !== -1) {
+    if (
+      typeof source.sessionSize === 'number' &&
+      SIZES.indexOf(source.sessionSize) !== -1
+    ) {
       result.sessionSize = source.sessionSize;
     }
 

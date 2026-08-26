@@ -1,0 +1,32 @@
+{
+  "printWidth": 88,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "options": {
+        "printWidth": 100
+      }
+    },
+    {
+      "files": ["*.json", "*.jsonc"],
+      "options": {
+        "singleQuote": false
+      }
+    },
+    {
+      "files": ["*.md"],
+      "options": {
+        "proseWrap": "preserve"
+      }
+    }
+  ]
+}

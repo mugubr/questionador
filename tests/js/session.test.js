@@ -155,7 +155,10 @@ test('a history criterion with no history at all keeps everything unanswered', f
   const criteria = makeCriteria({ history: 'unanswered' });
 
   assert.deepEqual(Session.filter(pool, criteria, null), pool);
-  assert.deepEqual(Session.filter(pool, makeCriteria({ history: 'incorrect' }), null), []);
+  assert.deepEqual(
+    Session.filter(pool, makeCriteria({ history: 'incorrect' }), null),
+    []
+  );
 });
 
 // ---------------------------------------------------------------------------
@@ -188,7 +191,7 @@ test('an excluded question is drawn only when it is asked for by name', function
   assert.equal(Session.filter([reprint], criteria, null).length, 1);
 });
 
-test('none of the published bank\'s excluded questions reach a default deck', function () {
+test("none of the published bank's excluded questions reach a default deck", function () {
   const bank = publishedBank();
   const excluded = bank.questions
     .filter(function (question) {
@@ -286,10 +289,7 @@ test('shuffling the options remaps which display slot holds the answer', functio
     assert.equal(Session.isCorrectChoice(question, sourceLetter), isTheAnswer);
     /* What the student reads in that slot is the source option, not the
        option that happens to share the slot's own letter. */
-    assert.equal(
-      question.options[sourceLetter],
-      question.options[order[displayIndex]]
-    );
+    assert.equal(question.options[sourceLetter], question.options[order[displayIndex]]);
   });
 });
 
@@ -319,7 +319,12 @@ test('every drawn question gets its own presented order', function () {
 
 test('the printed order is kept when shuffling is off', function () {
   const session = draw([makeQuestion()], { shuffleOptions: false });
-  assert.deepEqual(Session.presentedOrder(session, makeQuestion()), ['a', 'b', 'c', 'd']);
+  assert.deepEqual(Session.presentedOrder(session, makeQuestion()), [
+    'a',
+    'b',
+    'c',
+    'd'
+  ]);
 });
 
 test('shuffling never rewrites the shared letter table', function () {
@@ -331,7 +336,12 @@ test('a stored order of the wrong length falls back to the printed one', functio
   const session = draw([makeQuestion()]);
   session.orders['ENA26-Q01'] = ['a', 'b'];
 
-  assert.deepEqual(Session.presentedOrder(session, makeQuestion()), ['a', 'b', 'c', 'd']);
+  assert.deepEqual(Session.presentedOrder(session, makeQuestion()), [
+    'a',
+    'b',
+    'c',
+    'd'
+  ]);
 });
 
 // ---------------------------------------------------------------------------
@@ -565,10 +575,7 @@ test('the statistics group the session by topic, sorted', function () {
 
 test('the topics of a set of questions are listed once, sorted', function () {
   const pool = [makeQuestion(), SECOND, makeQuestion({ id: 'ENA26-Q03' })];
-  assert.deepEqual(Session.topicsOf(pool), [
-    'marca-e-indicacao-geografica',
-    'patente'
-  ]);
+  assert.deepEqual(Session.topicsOf(pool), ['marca-e-indicacao-geografica', 'patente']);
 });
 
 // ---------------------------------------------------------------------------

@@ -24,7 +24,10 @@ const Session = (function () {
    * @returns {boolean} True when the bank records that defect.
    */
   function hasDefect(question, defect) {
-    return Array.isArray(question.knownDefects) && question.knownDefects.indexOf(defect) !== -1;
+    return (
+      Array.isArray(question.knownDefects) &&
+      question.knownDefects.indexOf(defect) !== -1
+    );
   }
 
   /**
@@ -151,13 +154,17 @@ const Session = (function () {
     /** @type {Record<string, OptionLetter[]>} */
     const orders = Object.create(null);
     deck.forEach(function (question) {
-      orders[question.id] = settings.shuffleOptions ? shuffle(LETTERS, random) : LETTERS.slice();
+      orders[question.id] = settings.shuffleOptions
+        ? shuffle(LETTERS, random)
+        : LETTERS.slice();
     });
 
     return {
       version: VERSION,
       signature: settings.signature,
-      deck: deck.map(function (question) { return question.id; }),
+      deck: deck.map(function (question) {
+        return question.id;
+      }),
       position: 0,
       answers: /** @type {Record<string, AnswerRecord>} */ (Object.create(null)),
       orders,
@@ -176,7 +183,9 @@ const Session = (function () {
    */
   function presentedOrder(session, question) {
     const stored = session.orders[question.id];
-    return Array.isArray(stored) && stored.length === LETTERS.length ? stored : LETTERS.slice();
+    return Array.isArray(stored) && stored.length === LETTERS.length
+      ? stored
+      : LETTERS.slice();
   }
 
   /**
@@ -384,7 +393,11 @@ const Session = (function () {
       if (!record || !question) {
         return;
       }
-      const current = totals.get(question.topic) || { topic: question.topic, correct: 0, answered: 0 };
+      const current = totals.get(question.topic) || {
+        topic: question.topic,
+        correct: 0,
+        answered: 0
+      };
       current.correct += record.correct ? 1 : 0;
       current.answered += 1;
       totals.set(question.topic, current);
@@ -443,7 +456,11 @@ const Session = (function () {
       const source = /** @type {Record<string, AnswerRecord>} */ (stored.answers);
       Object.keys(source).forEach(function (id) {
         const record = source[id];
-        if (record && typeof record === 'object' && LETTERS.indexOf(record.chosen) !== -1) {
+        if (
+          record &&
+          typeof record === 'object' &&
+          LETTERS.indexOf(record.chosen) !== -1
+        ) {
           answers[id] = { chosen: record.chosen, correct: record.correct === true };
         }
       });
@@ -464,12 +481,15 @@ const Session = (function () {
     return {
       version: typeof stored.version === 'number' ? stored.version : 0,
       signature: typeof stored.signature === 'string' ? stored.signature : '',
-      deck: stored.deck.filter(function (id) { return typeof id === 'string'; }),
+      deck: stored.deck.filter(function (id) {
+        return typeof id === 'string';
+      }),
       position: stored.position,
       answers,
       orders,
       correctCount: typeof stored.correctCount === 'number' ? stored.correctCount : 0,
-      incorrectCount: typeof stored.incorrectCount === 'number' ? stored.incorrectCount : 0,
+      incorrectCount:
+        typeof stored.incorrectCount === 'number' ? stored.incorrectCount : 0,
       startedAt: typeof stored.startedAt === 'number' ? stored.startedAt : 0
     };
   }

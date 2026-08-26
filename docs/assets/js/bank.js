@@ -78,24 +78,39 @@ const Bank = (function () {
     }
 
     const record = /** @type {Record<string, unknown>} */ (answer);
-    const hasLetter = typeof record.letter === 'string' &&
+    const hasLetter =
+      typeof record.letter === 'string' &&
       LETTERS.indexOf(/** @type {OptionLetter} */ (record.letter)) !== -1;
 
     if (!hasLetter) {
       if (record.letter !== undefined && record.letter !== null) {
-        return 'Questão ' + id + ': answer.letter deve ser a, b, c ou d (veio ' +
-          JSON.stringify(record.letter) + ').';
+        return (
+          'Questão ' +
+          id +
+          ': answer.letter deve ser a, b, c ou d (veio ' +
+          JSON.stringify(record.letter) +
+          ').'
+        );
       }
       if (!isFilledString(question.excludedReason)) {
-        return 'Questão ' + id + ': answer.letter só pode faltar quando a questão ' +
-          'traz excludedReason.';
+        return (
+          'Questão ' +
+          id +
+          ': answer.letter só pode faltar quando a questão ' +
+          'traz excludedReason.'
+        );
       }
     }
     if (typeof record.source !== 'string' || SOURCES.indexOf(record.source) === -1) {
-      return 'Questão ' + id + ': answer.source deve ser "official" (veio ' +
-        JSON.stringify(record.source) + '). Um banco com gabaritos derivados é ' +
+      return (
+        'Questão ' +
+        id +
+        ': answer.source deve ser "official" (veio ' +
+        JSON.stringify(record.source) +
+        '). Um banco com gabaritos derivados é ' +
         'anterior à recuperação das chaves oficiais; gere-o de novo com ' +
-        '"python -m tools build".';
+        '"python -m tools build".'
+      );
     }
     return null;
   }
@@ -137,11 +152,17 @@ const Bank = (function () {
     if (!isFilledString(question.stem)) {
       return 'Questão ' + id + ': enunciado ausente ou vazio.';
     }
-    if (question.excludedReason !== undefined &&
-        (typeof question.excludedReason !== 'string' ||
-         EXCLUDED_REASONS.indexOf(question.excludedReason) === -1)) {
-      return 'Questão ' + id + ': excludedReason deve ser "annulled" ou ' +
-        '"source-booklet-defect".';
+    if (
+      question.excludedReason !== undefined &&
+      (typeof question.excludedReason !== 'string' ||
+        EXCLUDED_REASONS.indexOf(question.excludedReason) === -1)
+    ) {
+      return (
+        'Questão ' +
+        id +
+        ': excludedReason deve ser "annulled" ou ' +
+        '"source-booklet-defect".'
+      );
     }
 
     return validateOptions(question, id) || validateAnswer(question, id);
@@ -182,14 +203,19 @@ const Bank = (function () {
     const root = /** @type {Record<string, unknown>} */ (data);
     if (root.questoes || root.provas) {
       return {
-        error: 'Este arquivo está no formato antigo, com campos em português. ' +
+        error:
+          'Este arquivo está no formato antigo, com campos em português. ' +
           'Gere o banco novamente com "python -m tools build".'
       };
     }
     if (root.version !== SUPPORTED_VERSION) {
       return {
-        error: 'Versão do banco não suportada: esperado ' + SUPPORTED_VERSION +
-          ', veio ' + JSON.stringify(root.version) + '.'
+        error:
+          'Versão do banco não suportada: esperado ' +
+          SUPPORTED_VERSION +
+          ', veio ' +
+          JSON.stringify(root.version) +
+          '.'
       };
     }
     if (!Array.isArray(root.exams) || root.exams.length === 0) {
@@ -283,7 +309,9 @@ const Bank = (function () {
    * @returns {string} A signature that changes whenever the bank does.
    */
   function signature(bank) {
-    return [bank.version, bank.generatedAt || 'sem-data', bank.questions.length].join(':');
+    return [bank.version, bank.generatedAt || 'sem-data', bank.questions.length].join(
+      ':'
+    );
   }
 
   /**

@@ -29,15 +29,15 @@ A escolha fica guardada no seu navegador e vale para as próximas visitas.
 
 144 questões, extraídas dos 7 cadernos oficiais em `exams/`.
 
-| Caderno     | Prova                                                     | Data       | Questões |
-| ----------- | --------------------------------------------------------- | ---------- | -------: |
-| `ENA25`     | Exame Nacional de Acesso — ingresso em 2025                | 2024-09-14 |       20 |
-| `ENA26`     | Exame Nacional de Acesso — ingresso em 2026                | 2025-11-22 |       20 |
-| `ENA18`     | Exame Nacional de Acesso — edital suplementar 2018-02      | 2018-06-30 |       40 |
-| `AV2-PI`    | Avaliação Nacional — Propriedade Intelectual                | 2023-11-18 |       16 |
-| `AV2-MET`   | Avaliação Nacional — Metodologia da Pesquisa                | 2021-11-06 |       16 |
-| `AV2-POL`   | Avaliação Nacional — Políticas Públicas de CT&I             | 2023-07-01 |       16 |
-| `AV2-PROSP` | Avaliação Nacional — Prospecção Tecnológica                 | 2020-10-24 |       16 |
+| Caderno     | Prova                                                 | Data       | Questões |
+| ----------- | ----------------------------------------------------- | ---------- | -------: |
+| `ENA25`     | Exame Nacional de Acesso — ingresso em 2025           | 2024-09-14 |       20 |
+| `ENA26`     | Exame Nacional de Acesso — ingresso em 2026           | 2025-11-22 |       20 |
+| `ENA18`     | Exame Nacional de Acesso — edital suplementar 2018-02 | 2018-06-30 |       40 |
+| `AV2-PI`    | Avaliação Nacional — Propriedade Intelectual          | 2023-11-18 |       16 |
+| `AV2-MET`   | Avaliação Nacional — Metodologia da Pesquisa          | 2021-11-06 |       16 |
+| `AV2-POL`   | Avaliação Nacional — Políticas Públicas de CT&I       | 2023-07-01 |       16 |
+| `AV2-PROSP` | Avaliação Nacional — Prospecção Tecnológica           | 2020-10-24 |       16 |
 
 Os 15 temas usados no filtro: informação tecnológica, inovação, marca e
 indicação geográfica, patente, desenho industrial, sistema de PI, direito
@@ -60,7 +60,7 @@ Cada gabarito passou por duas verificações antes de ser aceito:
    06 e 21. Um gabarito da prova irmã pareceria plausível e estaria inteiramente
    errado.
 2. **A ressalva de aleatorização.** Os gabaritos das AV2 dizem que se referem ao
-   caderno *conforme publicado* — é isso que torna válido casar pelo número da
+   caderno _conforme publicado_ — é isso que torna válido casar pelo número da
    questão. O do ENA18 não traz essa frase, mas ali a igualdade de MD5 torna a
    ressalva desnecessária, porque não existe outro caderno para a numeração
    divergir.
@@ -76,7 +76,7 @@ o gabarito — o gabarito é oficial. Ela existe para ensinar.
 - **`AV2-PI-Q14` e `AV2-PI-Q16` são defeito do caderno.** Elas reproduzem
   palavra por palavra as questões 13 e 15, alternativas incluídas — mas o
   gabarito oficial dá `13=A, 14=B` e `15=C, 16=D`. Um gabarito não pode dar duas
-  letras para a mesma questão, então a prova real tinha *outras* questões nas
+  letras para a mesma questão, então a prova real tinha _outras_ questões nas
   posições 14 e 16, e o caderno publicado é que está errado. As letras `B` e `D`
   pertencem a questões que ninguém tem.
 

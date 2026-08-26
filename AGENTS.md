@@ -33,7 +33,7 @@ English, without exception:
 - Identifiers: variables, functions, classes, constants, CSS classes, CSS
   custom properties, HTML `id` and `data-*` attributes.
 - Comments and docstrings.
-- JSON field names and enum *values* that never reach the screen
+- JSON field names and enum _values_ that never reach the screen
   (`"source": "official"`, `"confidence": "high"`).
 - Commit messages, `AGENTS.md`, `CLAUDE.md`, OpenSpec artifacts, test names.
 
@@ -107,6 +107,32 @@ decoration.
 
 Shared shapes (`Question`, `Session`, `QuestionBank`) are declared once in
 `docs/assets/js/types.js` with `@typedef` and referenced everywhere else.
+
+### Formatting — never by hand
+
+Two formatters own the whole repository and nothing is styled by hand.
+**`ruff format` owns Python. `prettier` owns everything else** — HTML, CSS,
+JavaScript, JSON, Markdown and the workflows. Both run in CI, and a diff should
+never be about whitespace.
+
+Settings live in `pyproject.toml` and `.prettierrc.json`: 88 columns (100 for
+HTML, where attributes run long), two-space indent, single quotes and
+semicolons in JavaScript, LF everywhere. They were chosen to match the code
+that already existed rather than to impose a new house style on it.
+
+`.prettierignore` earns its entries, and each one has a reason written next to
+it:
+
+- **Everything the pipeline generates.** Prettier and `python -m tools build`
+  would reformat those files against each other forever, and the CI rebuild
+  guard would fail on the difference. The pipeline owns their formatting.
+- **`openspec/changes/archive/`.** An archived change records what shipped;
+  reformatting it rewrites that record.
+- **`.claude/`.** Vendored plugin files, not ours to restyle.
+
+Markdown uses `proseWrap: preserve`. The prose here is hand-wrapped with
+deliberate breaks, and reflowing it churns every paragraph for no gain — the
+formatter still normalises tables, list markers and code fences.
 
 ### Type hints — mandatory
 
@@ -195,32 +221,36 @@ two must agree; a rule in one and not the other is a bug.
   "version": 1,
   "generatedAt": "2026-08-26",
   "toolchain": { "pdftotext": "25.07.0" },
-  "exams": [{
-    "id": "ENA26",              // proper noun, never translated
-    "title": "...",             // Portuguese
-    "date": "2025-11-22",
-    "file": "Prova_ENA26.pdf",
-    "hasOfficialAnswerKey": true
-  }],
-  "questions": [{
-    "id": "ENA26-Q01",          // always <exam>-Q<NN>, matches exam + number
-    "exam": "ENA26",
-    "number": 1,
-    "topic": "patentes",        // Portuguese: it is displayed
-    "stem": "...",              // Portuguese: the question body
-    "options": { "a": "...", "b": "...", "c": "...", "d": "..." },
-    "answer": {
-      "letter": "c",
-      "source": "official",     // official | derived
-      "confidence": "high",     // derived only: high | medium | low
-      "reference": "...",       // what was consulted
-      "explanation": "...",     // official: Portuguese, why this answer is right
-      "rationale": "..."        // derived only: Portuguese, how it was deduced
-    },
-    "duplicateOf": "AV2-PI-Q13",           // optional, set on known repeats
-    "knownDefects": ["identical-options"], // optional, defects of the source
-    "excludedReason": "annulled"           // optional; never drawn when present
-  }]
+  "exams": [
+    {
+      "id": "ENA26", // proper noun, never translated
+      "title": "...", // Portuguese
+      "date": "2025-11-22",
+      "file": "Prova_ENA26.pdf",
+      "hasOfficialAnswerKey": true
+    }
+  ],
+  "questions": [
+    {
+      "id": "ENA26-Q01", // always <exam>-Q<NN>, matches exam + number
+      "exam": "ENA26",
+      "number": 1,
+      "topic": "patentes", // Portuguese: it is displayed
+      "stem": "...", // Portuguese: the question body
+      "options": { "a": "...", "b": "...", "c": "...", "d": "..." },
+      "answer": {
+        "letter": "c",
+        "source": "official", // official | derived
+        "confidence": "high", // derived only: high | medium | low
+        "reference": "...", // what was consulted
+        "explanation": "...", // official: Portuguese, why this answer is right
+        "rationale": "..." // derived only: Portuguese, how it was deduced
+      },
+      "duplicateOf": "AV2-PI-Q13", // optional, set on known repeats
+      "knownDefects": ["identical-options"], // optional, defects of the source
+      "excludedReason": "annulled" // optional; never drawn when present
+    }
+  ]
 }
 ```
 
@@ -254,7 +284,7 @@ Two verification steps make a key usable, and neither is optional:
    06 and 21. A key for the wrong sibling would have looked plausible and been
    entirely wrong.
 2. **Check the randomization sentence.** The AV2 keys state that they refer to
-   the booklet *as published*, which is what makes matching by question number
+   the booklet _as published_, which is what makes matching by question number
    valid. The ENA18 key does not say it — there the MD5 match makes the
    assurance redundant, because there is no separate randomized booklet for the
    numbering to drift against. Never match by number without one or the other.
@@ -335,7 +365,7 @@ for a genuinely new date.
   timestamps other than the explicit `generatedAt`. Same inputs, same bytes.
 - **No orphan keys.** A key in `overrides.json`, `official-topics.json`, or
   `answers/*.json` that matches no question is an error, not a silent no-op.
-- **Check stems *and* options.** Noise detection, column-layout detection, and
+- **Check stems _and_ options.** Noise detection, column-layout detection, and
   residue checks apply to both. A footer inside option `d` is as wrong as one
   inside the stem.
 - **Never print non-ASCII to the console.** Windows defaults `stdout` to cp1252
@@ -424,7 +454,7 @@ query and an attribute selector are what this replaces, and they must not come
 back.
 
 `light-dark()` needs one safety net. A custom property holding an unsupported
-function still *parses*, so it wins the cascade and fails only at substitution
+function still _parses_, so it wins the cascade and fails only at substitution
 — which strips every color from the page instead of falling back. An
 `@supports not (color: light-dark(white, black))` block re-declares the light
 palette for those browsers. Only the light one: degrading to light theme is
@@ -440,10 +470,12 @@ No color is ever hardcoded outside the token block.
 Everything runs offline with no network and no service.
 
 ```bash
-python -m pytest              # the pipeline
-node --test "tests/js/*.test.js"         # the app's pure logic
-python -m tools validate      # the published bank against the contract
+python -m pytest                    # the pipeline
+node --test "tests/js/*.test.js"    # the app's pure logic
+python -m tools validate            # the published bank against the contract
 ruff check . && ruff format --check .
+npx prettier --check .
+npx tsc --project jsconfig.json
 mypy tools tests
 ```
 
@@ -473,7 +505,7 @@ the app can act on it.
 - **The `AV2-PI` booklet is defective, and the official key proves it.** Items
   14 and 16 reproduce items 13 and 15 verbatim, options included. But the
   published key reads `13=A, 14=B` and `15=C, 16=D` — and a key cannot give two
-  letters to one question. So the real exam had *different* questions at 14 and
+  letters to one question. So the real exam had _different_ questions at 14 and
   16, and the booklet in `exams/` is the thing that is wrong. Re-keying them to
   B and D would attach real answers to questions nobody has. They carry
   `duplicateOf` and `excludedReason: "source-booklet-defect"`, and are never

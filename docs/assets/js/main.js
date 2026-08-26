@@ -34,8 +34,10 @@ const Main = (function () {
 
     const message = document.createElement('p');
     message.className = 'panel__support';
-    message.textContent = 'Recarregue a página. Se o erro continuar, o site foi ' +
-      'publicado incompleto: ' + detail;
+    message.textContent =
+      'Recarregue a página. Se o erro continuar, o site foi ' +
+      'publicado incompleto: ' +
+      detail;
 
     panel.append(title, message);
     const main = document.querySelector('main');

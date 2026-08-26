@@ -1,66 +1,75 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Questionador PROFNIT</title>
-  <meta name="description" content="Sorteia questões das provas do PROFNIT e corrige suas respostas.">
-  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" sizes="any">
-  <script>
-    /* Applies the stored theme before the first paint, so reloading in dark
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Questionador PROFNIT</title>
+    <meta
+      name="description"
+      content="Sorteia questões das provas do PROFNIT e corrige suas respostas."
+    />
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" sizes="any" />
+    <script>
+      /* Applies the stored theme before the first paint, so reloading in dark
        does not flash a white page. The key must match Storage.KEYS.theme. */
-    (function () {
-      'use strict';
-      try {
-        var stored = window.localStorage.getItem('profnit.theme.v1');
-        if (stored === 'light' || stored === 'dark') {
-          document.documentElement.setAttribute('data-theme', stored);
+      (function () {
+        'use strict';
+        try {
+          var stored = window.localStorage.getItem('profnit.theme.v1');
+          if (stored === 'light' || stored === 'dark') {
+            document.documentElement.setAttribute('data-theme', stored);
+          }
+        } catch (error) {
+          /* Storage access throws in private mode; the system theme is the fallback. */
         }
-      } catch (error) {
-        /* Storage access throws in private mode; the system theme is the fallback. */
-      }
-    })();
-  </script>
-  <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body>
+      })();
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Ir para o conteúdo</a>
 
-<a class="skip-link" href="#main">Ir para o conteúdo</a>
+    <header class="site-header">
+      <div class="wrapper site-header__inner">
+        <div class="site-header__identity">
+          <span class="site-header__mark" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              focusable="false"
+            >
+              <path d="M5 3.6h11.2L19 6.4V20.4H5V3.6z"></path>
+              <path d="M8.6 9.4h6.8M8.6 13h4.2"></path>
+              <path d="M14.4 16.4a1.6 1.6 0 1 1 1.7 2.2v.7M16.1 21.1v.1"></path>
+            </svg>
+          </span>
+          <span class="site-header__names">
+            <h1 class="site-header__title">Questionador</h1>
+            <p class="site-header__subtitle">Provas do PROFNIT</p>
+          </span>
+        </div>
 
-<header class="site-header">
-  <div class="wrapper site-header__inner">
-    <div class="site-header__identity">
-      <span class="site-header__mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
-             stroke-linecap="round" stroke-linejoin="round" focusable="false">
-          <path d="M5 3.6h11.2L19 6.4V20.4H5V3.6z"></path>
-          <path d="M8.6 9.4h6.8M8.6 13h4.2"></path>
-          <path d="M14.4 16.4a1.6 1.6 0 1 1 1.7 2.2v.7M16.1 21.1v.1"></path>
-        </svg>
-      </span>
-      <span class="site-header__names">
-        <h1 class="site-header__title">Questionador</h1>
-        <p class="site-header__subtitle">Provas do PROFNIT</p>
-      </span>
-    </div>
+        <div class="site-header__controls">
+          <div class="scoreboard" id="scoreboard" hidden>
+            <p class="scoreboard__item scoreboard__item--correct">
+              <span class="scoreboard__value" id="score-correct">0</span>
+              <span class="scoreboard__label">acertos</span>
+            </p>
+            <p class="scoreboard__item scoreboard__item--incorrect">
+              <span class="scoreboard__value" id="score-incorrect">0</span>
+              <span class="scoreboard__label">erros</span>
+            </p>
+            <p class="scoreboard__item">
+              <span class="scoreboard__value" id="score-remaining">0</span>
+              <span class="scoreboard__label">restantes</span>
+            </p>
+          </div>
 
-    <div class="site-header__controls">
-      <div class="scoreboard" id="scoreboard" hidden>
-        <p class="scoreboard__item scoreboard__item--correct">
-          <span class="scoreboard__value" id="score-correct">0</span>
-          <span class="scoreboard__label">acertos</span>
-        </p>
-        <p class="scoreboard__item scoreboard__item--incorrect">
-          <span class="scoreboard__value" id="score-incorrect">0</span>
-          <span class="scoreboard__label">erros</span>
-        </p>
-        <p class="scoreboard__item">
-          <span class="scoreboard__value" id="score-remaining">0</span>
-          <span class="scoreboard__label">restantes</span>
-        </p>
-      </div>
-
-      <!--
+          <!--
         Three modes, three segments, all of them visible. A single cycling
         button hid two thirds of the model: you could not see that "sistema"
         existed, nor which mode was active without decoding one icon, and
@@ -69,324 +78,471 @@
         accessible name says the mode — with no ARIA of the app's own beyond
         naming the group.
       -->
-      <div class="segmented segmented--theme" id="theme-switch" role="radiogroup" aria-label="Tema">
-        <label class="segment segment--icon" title="Seguir o tema do sistema">
-          <input class="control__input" type="radio" name="theme-choice" value="system" id="theme-system">
-          <span class="segment__face">
-            <svg class="segment__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                 aria-hidden="true" focusable="false">
-              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
-              <path d="M8 21h8M12 17v4"></path>
-            </svg>
-            <span class="visually-hidden">Tema do sistema</span>
-          </span>
-        </label>
-        <label class="segment segment--icon" title="Tema claro">
-          <input class="control__input" type="radio" name="theme-choice" value="light" id="theme-light">
-          <span class="segment__face">
-            <svg class="segment__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                 aria-hidden="true" focusable="false">
-              <circle cx="12" cy="12" r="4"></circle>
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-            </svg>
-            <span class="visually-hidden">Tema claro</span>
-          </span>
-        </label>
-        <label class="segment segment--icon" title="Tema escuro">
-          <input class="control__input" type="radio" name="theme-choice" value="dark" id="theme-dark">
-          <span class="segment__face">
-            <svg class="segment__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                 aria-hidden="true" focusable="false">
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"></path>
-            </svg>
-            <span class="visually-hidden">Tema escuro</span>
-          </span>
-        </label>
+          <div
+            class="segmented segmented--theme"
+            id="theme-switch"
+            role="radiogroup"
+            aria-label="Tema"
+          >
+            <label class="segment segment--icon" title="Seguir o tema do sistema">
+              <input
+                class="control__input"
+                type="radio"
+                name="theme-choice"
+                value="system"
+                id="theme-system"
+              />
+              <span class="segment__face">
+                <svg
+                  class="segment__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                  <path d="M8 21h8M12 17v4"></path>
+                </svg>
+                <span class="visually-hidden">Tema do sistema</span>
+              </span>
+            </label>
+            <label class="segment segment--icon" title="Tema claro">
+              <input
+                class="control__input"
+                type="radio"
+                name="theme-choice"
+                value="light"
+                id="theme-light"
+              />
+              <span class="segment__face">
+                <svg
+                  class="segment__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path
+                    d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                  ></path>
+                </svg>
+                <span class="visually-hidden">Tema claro</span>
+              </span>
+            </label>
+            <label class="segment segment--icon" title="Tema escuro">
+              <input
+                class="control__input"
+                type="radio"
+                name="theme-choice"
+                value="dark"
+                id="theme-dark"
+              />
+              <span class="segment__face">
+                <svg
+                  class="segment__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"></path>
+                </svg>
+                <span class="visually-hidden">Tema escuro</span>
+              </span>
+            </label>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="progress" id="progress" role="progressbar" aria-label="Progresso da sessão"
-       aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext="Nenhuma sessão em andamento" hidden>
-    <div class="progress__bar" id="progress-bar"></div>
-  </div>
-</header>
+      <div
+        class="progress"
+        id="progress"
+        role="progressbar"
+        aria-label="Progresso da sessão"
+        aria-valuemin="0"
+        aria-valuemax="0"
+        aria-valuenow="0"
+        aria-valuetext="Nenhuma sessão em andamento"
+        hidden
+      >
+        <div class="progress__bar" id="progress-bar"></div>
+      </div>
+    </header>
 
-<main id="main">
-
-  <!--
+    <main id="main">
+      <!--
     The single announcement region. It is always in the DOM and never toggled
     with `hidden`, because content written into a hidden element and then
     revealed is the case screen readers handle worst.
   -->
-  <p class="visually-hidden" id="status" role="status"></p>
+      <p class="visually-hidden" id="status" role="status"></p>
 
-  <noscript>
-    <section class="panel wrapper">
-      <h2 class="panel__title">JavaScript é necessário</h2>
-      <p class="panel__support">
-        Este app sorteia e corrige as questões no próprio navegador, sem servidor.
-        Ative o JavaScript para usá-lo.
-      </p>
-    </section>
-  </noscript>
+      <noscript>
+        <section class="panel wrapper">
+          <h2 class="panel__title">JavaScript é necessário</h2>
+          <p class="panel__support">
+            Este app sorteia e corrige as questões no próprio navegador, sem servidor. Ative o
+            JavaScript para usá-lo.
+          </p>
+        </section>
+      </noscript>
 
-  <!-- 1. Falha ao carregar o banco embutido -->
-  <section class="panel wrapper" id="panel-error" hidden aria-labelledby="error-heading">
-    <div class="panel__head">
-      <svg class="panel__icon panel__icon--error" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-        <path d="M12 4.2 2.6 20h18.8L12 4.2z"></path>
-        <path d="M12 10v4.2M12 17.2v.1"></path>
-      </svg>
-      <h2 class="panel__title" id="error-heading" tabindex="-1">Não foi possível carregar o banco</h2>
-    </div>
-    <p class="panel__support">
-      O arquivo <code>data/question-bank.js</code> acompanha o site e é lido na abertura.
-      Ele não chegou ao navegador ou não passou na validação.
-    </p>
-    <p class="note note--error" id="error-detail"></p>
-    <p class="hint">
-      Para regerar o banco: <code>python -m tools build</code> e depois <code>python -m tools validate</code>.
-    </p>
-  </section>
+      <!-- 1. Falha ao carregar o banco embutido -->
+      <section class="panel wrapper" id="panel-error" hidden aria-labelledby="error-heading">
+        <div class="panel__head">
+          <svg
+            class="panel__icon panel__icon--error"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.9"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M12 4.2 2.6 20h18.8L12 4.2z"></path>
+            <path d="M12 10v4.2M12 17.2v.1"></path>
+          </svg>
+          <h2 class="panel__title" id="error-heading" tabindex="-1">
+            Não foi possível carregar o banco
+          </h2>
+        </div>
+        <p class="panel__support">
+          O arquivo <code>data/question-bank.js</code> acompanha o site e é lido na abertura. Ele
+          não chegou ao navegador ou não passou na validação.
+        </p>
+        <p class="note note--error" id="error-detail"></p>
+        <p class="hint">
+          Para regerar o banco: <code>python -m tools build</code> e depois
+          <code>python -m tools validate</code>.
+        </p>
+      </section>
 
-  <!-- 2. Filtros -->
-  <section class="panel wrapper" id="panel-filters" hidden aria-labelledby="filters-heading">
-    <h2 class="panel__title" id="filters-heading" tabindex="-1">O que você quer treinar?</h2>
-    <p class="panel__support" id="bank-summary"></p>
-    <p class="note note--quiet" id="storage-notice" hidden></p>
+      <!-- 2. Filtros -->
+      <section class="panel wrapper" id="panel-filters" hidden aria-labelledby="filters-heading">
+        <h2 class="panel__title" id="filters-heading" tabindex="-1">O que você quer treinar?</h2>
+        <p class="panel__support" id="bank-summary"></p>
+        <p class="note note--quiet" id="storage-notice" hidden></p>
 
-    <div class="resume" id="resume" hidden role="group" aria-labelledby="resume-title">
-      <p class="resume__title" id="resume-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-          <path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path>
-          <path d="M10.5 8.6 15.4 12l-4.9 3.4V8.6z"></path>
-        </svg>
-        Você tem uma sessão em andamento
-      </p>
-      <p class="resume__detail" id="resume-detail"></p>
-      <div class="actions">
-        <button type="button" class="button button--secondary" id="resume-continue">Continuar sessão</button>
-        <button type="button" class="button button--quiet" id="resume-discard">Descartar e começar do zero</button>
-      </div>
-    </div>
+        <div class="resume" id="resume" hidden role="group" aria-labelledby="resume-title">
+          <p class="resume__title" id="resume-title">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path>
+              <path d="M10.5 8.6 15.4 12l-4.9 3.4V8.6z"></path>
+            </svg>
+            Você tem uma sessão em andamento
+          </p>
+          <p class="resume__detail" id="resume-detail"></p>
+          <div class="actions">
+            <button type="button" class="button button--secondary" id="resume-continue">
+              Continuar sessão
+            </button>
+            <button type="button" class="button button--quiet" id="resume-discard">
+              Descartar e começar do zero
+            </button>
+          </div>
+        </div>
 
-    <!--
+        <!--
       The primary path. The number that will be drawn, a sentence describing
       what "Sortear" is about to do, and the button. The filters themselves
       live in the two disclosures below, closed until they are wanted.
     -->
-    <div class="start-card" id="start-card">
-      <p class="start-card__figure" id="selection-figure">
-        <span class="start-card__count" id="selection-count">0</span>
-        <span class="start-card__unit" id="selection-unit">questões no sorteio</span>
-      </p>
-      <p class="start-card__summary" id="selection-summary"></p>
-      <p class="note note--error" id="filters-notice" hidden></p>
-      <div class="start-card__actions">
-        <button type="button" class="button button--primary button--lg" id="start-button"
-                aria-describedby="selection-figure selection-summary start-disabled-reason">
-          <svg class="button__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M16.5 4.5 20 8l-3.5 3.5M16.5 12.5 20 16l-3.5 3.5"></path>
-            <path d="M4 8h2.6c1.4 0 2.6.7 3.4 1.9l2.6 4.2c.7 1.2 2 1.9 3.4 1.9H20"></path>
-            <path d="M4 16h2.6c1.4 0 2.6-.7 3.4-1.9l.5-.8M20 8h-3.6c-1.4 0-2.6.7-3.4 1.9l-.3.5"></path>
-          </svg>
-          Sortear questões
-        </button>
-        <button type="button" class="button button--quiet" id="reset-filters-button" hidden>
-          Limpar filtros
-        </button>
-      </div>
-      <p class="start-card__why" id="start-disabled-reason"></p>
-    </div>
-
-    <form class="filters" id="filter-form">
-      <details class="disclosure" id="disclosure-scope">
-        <summary class="disclosure__summary">
-          <span class="disclosure__label">Escolher provas e temas</span>
-          <span class="disclosure__state" id="scope-summary"></span>
-          <svg class="disclosure__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M6 9.5l6 6 6-6"></path>
-          </svg>
-        </summary>
-        <div class="disclosure__body">
-          <fieldset class="field">
-            <legend class="field__title">Prova</legend>
-            <div class="chips chips--exams" id="chips-exams"></div>
-          </fieldset>
-          <fieldset class="field">
-            <legend class="field__title">Tema</legend>
-            <div class="chips" id="chips-topics"></div>
-          </fieldset>
+        <div class="start-card" id="start-card">
+          <p class="start-card__figure" id="selection-figure">
+            <span class="start-card__count" id="selection-count">0</span>
+            <span class="start-card__unit" id="selection-unit">questões no sorteio</span>
+          </p>
+          <p class="start-card__summary" id="selection-summary"></p>
+          <p class="note note--error" id="filters-notice" hidden></p>
+          <div class="start-card__actions">
+            <button
+              type="button"
+              class="button button--primary button--lg"
+              id="start-button"
+              aria-describedby="selection-figure selection-summary start-disabled-reason"
+            >
+              <svg
+                class="button__icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M16.5 4.5 20 8l-3.5 3.5M16.5 12.5 20 16l-3.5 3.5"></path>
+                <path d="M4 8h2.6c1.4 0 2.6.7 3.4 1.9l2.6 4.2c.7 1.2 2 1.9 3.4 1.9H20"></path>
+                <path
+                  d="M4 16h2.6c1.4 0 2.6-.7 3.4-1.9l.5-.8M20 8h-3.6c-1.4 0-2.6.7-3.4 1.9l-.3.5"
+                ></path>
+              </svg>
+              Sortear questões
+            </button>
+            <button type="button" class="button button--quiet" id="reset-filters-button" hidden>
+              Limpar filtros
+            </button>
+          </div>
+          <p class="start-card__why" id="start-disabled-reason"></p>
         </div>
-      </details>
 
-      <details class="disclosure" id="disclosure-session">
-        <summary class="disclosure__summary">
-          <span class="disclosure__label">Ajustar a sessão</span>
-          <span class="disclosure__state" id="session-summary"></span>
-          <svg class="disclosure__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M6 9.5l6 6 6-6"></path>
-          </svg>
-        </summary>
-        <div class="disclosure__body">
-          <fieldset class="field">
-            <legend class="field__title">Quantas questões</legend>
-            <div class="segmented" id="chips-size"></div>
-          </fieldset>
-          <fieldset class="field">
-            <legend class="field__title">Histórico</legend>
-            <div class="chips" id="chips-history"></div>
-          </fieldset>
-          <fieldset class="field">
-            <legend class="field__title">Preferências</legend>
-            <div class="switches" id="chips-options"></div>
-          </fieldset>
-        </div>
-      </details>
-    </form>
+        <form class="filters" id="filter-form">
+          <details class="disclosure" id="disclosure-scope">
+            <summary class="disclosure__summary">
+              <span class="disclosure__label">Escolher provas e temas</span>
+              <span class="disclosure__state" id="scope-summary"></span>
+              <svg
+                class="disclosure__chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 9.5l6 6 6-6"></path>
+              </svg>
+            </summary>
+            <div class="disclosure__body">
+              <fieldset class="field">
+                <legend class="field__title">Prova</legend>
+                <div class="chips chips--exams" id="chips-exams"></div>
+              </fieldset>
+              <fieldset class="field">
+                <legend class="field__title">Tema</legend>
+                <div class="chips" id="chips-topics"></div>
+              </fieldset>
+            </div>
+          </details>
 
-    <details class="disclosure loader" id="loader">
-      <summary class="disclosure__summary">
-        <span class="disclosure__label">Carregar outro banco</span>
-        <span class="disclosure__state">só para testar um arquivo seu</span>
-        <svg class="disclosure__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-          <path d="M6 9.5l6 6 6-6"></path>
-        </svg>
-      </summary>
-      <div class="disclosure__body">
-        <p class="loader__note">
-          O banco publicado já vem carregado. Use esta opção apenas para testar um
-          arquivo <code>question-bank.json</code> gerado por você. Nada é enviado
-          para servidor algum, e o arquivo vale só até você recarregar a página.
-        </p>
-        <label class="dropzone" id="dropzone">
-          <span class="dropzone__title">Escolher arquivo ou arrastar aqui</span>
-          <span class="dropzone__detail">Arquivo JSON, até 20 MB</span>
-          <input type="file" class="visually-hidden" id="file-input" accept="application/json,.json">
-        </label>
-        <p class="note note--error" id="upload-notice" hidden></p>
-      </div>
-    </details>
-  </section>
+          <details class="disclosure" id="disclosure-session">
+            <summary class="disclosure__summary">
+              <span class="disclosure__label">Ajustar a sessão</span>
+              <span class="disclosure__state" id="session-summary"></span>
+              <svg
+                class="disclosure__chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 9.5l6 6 6-6"></path>
+              </svg>
+            </summary>
+            <div class="disclosure__body">
+              <fieldset class="field">
+                <legend class="field__title">Quantas questões</legend>
+                <div class="segmented" id="chips-size"></div>
+              </fieldset>
+              <fieldset class="field">
+                <legend class="field__title">Histórico</legend>
+                <div class="chips" id="chips-history"></div>
+              </fieldset>
+              <fieldset class="field">
+                <legend class="field__title">Preferências</legend>
+                <div class="switches" id="chips-options"></div>
+              </fieldset>
+            </div>
+          </details>
+        </form>
 
-  <!-- 3. Questão -->
-  <section class="panel wrapper" id="panel-question" hidden aria-labelledby="question-heading">
-    <div class="question-head">
-      <p class="question-head__exam" id="question-exam"></p>
-      <h2 class="panel__title" id="question-heading" tabindex="-1">Questão</h2>
-      <p class="question__meta" id="question-meta"></p>
-    </div>
-
-    <article class="question" id="question">
-      <p class="note note--warn" id="question-excluded" hidden></p>
-      <p class="note note--info" id="question-defect" hidden></p>
-      <p class="question__stem" id="question-stem"></p>
-      <ul class="options" id="options"></ul>
-    </article>
-
-    <div class="feedback" id="feedback" hidden>
-      <p class="feedback__verdict" id="feedback-verdict"></p>
-      <p class="feedback__note" id="feedback-answer"></p>
-      <p class="feedback__eyebrow" id="feedback-explanation-label"></p>
-      <p class="feedback__note feedback__note--explanation" id="feedback-explanation"></p>
-      <p class="feedback__aside" id="feedback-order-note"></p>
-      <p class="feedback__source" id="feedback-reference"></p>
-    </div>
-
-    <div class="actions">
-      <button type="button" class="button button--primary" id="next-button" disabled
-              aria-describedby="next-hint">Próxima</button>
-      <button type="button" class="button button--quiet" id="end-button">Encerrar sessão</button>
-      <p class="actions__hint" id="next-hint"></p>
-    </div>
-
-    <p class="hint keyboard-hint" id="keyboard-hint">
-      <span>Teclado:</span> <kbd>a</kbd><kbd>b</kbd><kbd>c</kbd><kbd>d</kbd>
-      <span>responde,</span> <kbd>Enter</kbd> <span>avança.</span>
-    </p>
-  </section>
-
-  <!-- 4. Resultado -->
-  <section class="panel wrapper" id="panel-results" hidden aria-labelledby="results-heading">
-    <h2 class="panel__title" id="results-heading" tabindex="-1">Sessão encerrada</h2>
-
-    <div class="report">
-      <div class="report__score">
-        <p class="report__value" id="score-summary">—</p>
-        <p class="report__label" id="score-label"></p>
-      </div>
-      <dl class="report__stats">
-        <div class="stat stat--correct">
-          <dt class="stat__label">Acertos</dt>
-          <dd class="stat__value" id="result-correct">0</dd>
-        </div>
-        <div class="stat stat--incorrect">
-          <dt class="stat__label">Erros</dt>
-          <dd class="stat__value" id="result-incorrect">0</dd>
-        </div>
-        <div class="stat" id="stat-skipped">
-          <dt class="stat__label">Não respondidas</dt>
-          <dd class="stat__value" id="result-skipped">0</dd>
-        </div>
-      </dl>
-      <p class="report__detail" id="score-detail"></p>
-    </div>
-
-    <div id="results-empty"></div>
-
-    <h3 class="subheading" id="topic-stats-heading" hidden>Desempenho por tema</h3>
-    <ul class="topic-stats" id="topic-stats"></ul>
-
-    <div class="review-head" id="review-head" hidden>
-      <h3 class="subheading" id="review-heading" hidden>Revisão</h3>
-      <label class="switch" id="review-toggle-chip" hidden>
-        <input type="checkbox" class="control__input" id="review-toggle" role="switch">
-        <span class="switch__track" aria-hidden="true">
-          <span class="switch__thumb">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"
-                 stroke-linecap="round" stroke-linejoin="round" focusable="false">
-              <path d="M4.5 12.5l5 5L19.5 6.5"></path>
+        <details class="disclosure loader" id="loader">
+          <summary class="disclosure__summary">
+            <span class="disclosure__label">Carregar outro banco</span>
+            <span class="disclosure__state">só para testar um arquivo seu</span>
+            <svg
+              class="disclosure__chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M6 9.5l6 6 6-6"></path>
             </svg>
-          </span>
-        </span>
-        <span class="switch__label">Revisar também os acertos</span>
-      </label>
-    </div>
-    <div class="review" id="review"></div>
+          </summary>
+          <div class="disclosure__body">
+            <p class="loader__note">
+              O banco publicado já vem carregado. Use esta opção apenas para testar um arquivo
+              <code>question-bank.json</code> gerado por você. Nada é enviado para servidor algum, e
+              o arquivo vale só até você recarregar a página.
+            </p>
+            <label class="dropzone" id="dropzone">
+              <span class="dropzone__title">Escolher arquivo ou arrastar aqui</span>
+              <span class="dropzone__detail">Arquivo JSON, até 20 MB</span>
+              <input
+                type="file"
+                class="visually-hidden"
+                id="file-input"
+                accept="application/json,.json"
+              />
+            </label>
+            <p class="note note--error" id="upload-notice" hidden></p>
+          </div>
+        </details>
+      </section>
 
-    <div class="actions">
-      <button type="button" class="button button--primary" id="new-session-button">Nova sessão</button>
-      <button type="button" class="button button--secondary" id="back-to-filters-button">Mudar filtros</button>
-    </div>
-  </section>
+      <!-- 3. Questão -->
+      <section class="panel wrapper" id="panel-question" hidden aria-labelledby="question-heading">
+        <div class="question-head">
+          <p class="question-head__exam" id="question-exam"></p>
+          <h2 class="panel__title" id="question-heading" tabindex="-1">Questão</h2>
+          <p class="question__meta" id="question-meta"></p>
+        </div>
 
-</main>
+        <article class="question" id="question">
+          <p class="note note--warn" id="question-excluded" hidden></p>
+          <p class="note note--info" id="question-defect" hidden></p>
+          <p class="question__stem" id="question-stem"></p>
+          <ul class="options" id="options"></ul>
+        </article>
 
-<footer class="site-footer">
-  <div class="wrapper">
-    <p>Questões extraídas dos cadernos oficiais das provas do PROFNIT.</p>
-    <p id="footer-provenance"></p>
-  </div>
-</footer>
+        <div class="feedback" id="feedback" hidden>
+          <p class="feedback__verdict" id="feedback-verdict"></p>
+          <p class="feedback__note" id="feedback-answer"></p>
+          <p class="feedback__eyebrow" id="feedback-explanation-label"></p>
+          <p class="feedback__note feedback__note--explanation" id="feedback-explanation"></p>
+          <p class="feedback__aside" id="feedback-order-note"></p>
+          <p class="feedback__source" id="feedback-reference"></p>
+        </div>
 
-<script src="assets/js/types.js" defer></script>
-<script src="data/question-bank.js" defer></script>
-<script src="assets/js/storage.js" defer></script>
-<script src="assets/js/theme.js" defer></script>
-<script src="assets/js/preferences.js" defer></script>
-<script src="assets/js/bank.js" defer></script>
-<script src="assets/js/session.js" defer></script>
-<script src="assets/js/ui.js" defer></script>
-<script src="assets/js/main.js" defer></script>
-</body>
+        <div class="actions">
+          <button
+            type="button"
+            class="button button--primary"
+            id="next-button"
+            disabled
+            aria-describedby="next-hint"
+          >
+            Próxima
+          </button>
+          <button type="button" class="button button--quiet" id="end-button">
+            Encerrar sessão
+          </button>
+          <p class="actions__hint" id="next-hint"></p>
+        </div>
+
+        <p class="hint keyboard-hint" id="keyboard-hint">
+          <span>Teclado:</span> <kbd>a</kbd><kbd>b</kbd><kbd>c</kbd><kbd>d</kbd>
+          <span>responde,</span> <kbd>Enter</kbd> <span>avança.</span>
+        </p>
+      </section>
+
+      <!-- 4. Resultado -->
+      <section class="panel wrapper" id="panel-results" hidden aria-labelledby="results-heading">
+        <h2 class="panel__title" id="results-heading" tabindex="-1">Sessão encerrada</h2>
+
+        <div class="report">
+          <div class="report__score">
+            <p class="report__value" id="score-summary">—</p>
+            <p class="report__label" id="score-label"></p>
+          </div>
+          <dl class="report__stats">
+            <div class="stat stat--correct">
+              <dt class="stat__label">Acertos</dt>
+              <dd class="stat__value" id="result-correct">0</dd>
+            </div>
+            <div class="stat stat--incorrect">
+              <dt class="stat__label">Erros</dt>
+              <dd class="stat__value" id="result-incorrect">0</dd>
+            </div>
+            <div class="stat" id="stat-skipped">
+              <dt class="stat__label">Não respondidas</dt>
+              <dd class="stat__value" id="result-skipped">0</dd>
+            </div>
+          </dl>
+          <p class="report__detail" id="score-detail"></p>
+        </div>
+
+        <div id="results-empty"></div>
+
+        <h3 class="subheading" id="topic-stats-heading" hidden>Desempenho por tema</h3>
+        <ul class="topic-stats" id="topic-stats"></ul>
+
+        <div class="review-head" id="review-head" hidden>
+          <h3 class="subheading" id="review-heading" hidden>Revisão</h3>
+          <label class="switch" id="review-toggle-chip" hidden>
+            <input type="checkbox" class="control__input" id="review-toggle" role="switch" />
+            <span class="switch__track" aria-hidden="true">
+              <span class="switch__thumb">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  focusable="false"
+                >
+                  <path d="M4.5 12.5l5 5L19.5 6.5"></path>
+                </svg>
+              </span>
+            </span>
+            <span class="switch__label">Revisar também os acertos</span>
+          </label>
+        </div>
+        <div class="review" id="review"></div>
+
+        <div class="actions">
+          <button type="button" class="button button--primary" id="new-session-button">
+            Nova sessão
+          </button>
+          <button type="button" class="button button--secondary" id="back-to-filters-button">
+            Mudar filtros
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrapper">
+        <p>Questões extraídas dos cadernos oficiais das provas do PROFNIT.</p>
+        <p id="footer-provenance"></p>
+      </div>
+    </footer>
+
+    <script src="assets/js/types.js" defer></script>
+    <script src="data/question-bank.js" defer></script>
+    <script src="assets/js/storage.js" defer></script>
+    <script src="assets/js/theme.js" defer></script>
+    <script src="assets/js/preferences.js" defer></script>
+    <script src="assets/js/bank.js" defer></script>
+    <script src="assets/js/session.js" defer></script>
+    <script src="assets/js/ui.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
 </html>

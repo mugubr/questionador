@@ -25,23 +25,35 @@ jobs:
       - name: Set up uv and Python
         uses: astral-sh/setup-uv@v10
         with:
-          python-version: "3.14"
+          python-version: '3.14'
           enable-cache: true
           cache-dependency-glob: pyproject.toml
 
       - name: Set up Node
         uses: actions/setup-node@v7
         with:
-          node-version: "24"
+          node-version: '24'
+          cache: npm
 
-      - name: Install the development tooling
+      - name: Install the Python tooling
         run: uv sync --group dev
+
+      - name: Install the Node tooling
+        # Prettier and TypeScript only. The app itself ships no dependencies and
+        # has no build step; package.json exists for these two checks alone.
+        run: npm ci
 
       - name: ruff check
         run: uv run ruff check .
 
       - name: ruff format --check
         run: uv run ruff format --check .
+
+      - name: prettier --check
+        # ruff owns the Python; prettier owns everything else -- HTML, CSS, JS,
+        # JSON, Markdown and these workflows. Between them nothing is formatted
+        # by hand, and no diff is ever about whitespace.
+        run: npx prettier --check .
 
       - name: mypy
         run: uv run mypy tools tests
@@ -58,12 +70,8 @@ jobs:
 
       - name: Type-check the JavaScript
         # The JSDoc annotations are load-bearing, so jsconfig.json runs here and
-        # not only in an editor. Installed on the fly: the app has no
-        # dependencies and the repository has no package.json to keep in sync.
-        run: |
-          npm install --no-save --no-package-lock --no-fund --no-audit \
-            typescript@5 @types/node@24
-          ./node_modules/.bin/tsc --project jsconfig.json
+        # not only in an editor.
+        run: npx tsc --project jsconfig.json
 
       - name: Validate the published bank
         run: uv run python -m tools validate

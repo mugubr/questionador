@@ -76,7 +76,10 @@ test('filter entries that are not filled strings are dropped', function () {
 });
 
 test('a history rule outside the three is refused', function () {
-  assert.equal(Preferences.normalize({ filters: { history: 'todas' } }).filters.history, 'all');
+  assert.equal(
+    Preferences.normalize({ filters: { history: 'todas' } }).filters.history,
+    'all'
+  );
   assert.equal(
     Preferences.normalize({ filters: { history: 'incorrect' } }).filters.history,
     'incorrect'
@@ -100,7 +103,8 @@ test('preferences saved before the excluded rename fall back safely', function (
 
 test('includeExcluded is only honoured when it is exactly true', function () {
   assert.equal(
-    Preferences.normalize({ filters: { includeExcluded: true } }).filters.includeExcluded,
+    Preferences.normalize({ filters: { includeExcluded: true } }).filters
+      .includeExcluded,
     true
   );
   assert.equal(

@@ -4,14 +4,7 @@
   "title": "PROFNIT question bank",
   "description": "The contract for data/question-bank.json. tools/validate.py implements it and the two must agree: a rule in one and not the other is a bug.",
   "type": "object",
-  "required": [
-    "version",
-    "generatedAt",
-    "toolchain",
-    "exams",
-    "topics",
-    "questions"
-  ],
+  "required": ["version", "generatedAt", "toolchain", "exams", "topics", "questions"],
   "additionalProperties": false,
   "properties": {
     "version": {
@@ -26,9 +19,7 @@
     },
     "toolchain": {
       "type": "object",
-      "required": [
-        "pdftotext"
-      ],
+      "required": ["pdftotext"],
       "additionalProperties": {
         "type": "string",
         "minLength": 1,
@@ -70,22 +61,11 @@
   "$defs": {
     "optionLetter": {
       "type": "string",
-      "enum": [
-        "a",
-        "b",
-        "c",
-        "d"
-      ]
+      "enum": ["a", "b", "c", "d"]
     },
     "exam": {
       "type": "object",
-      "required": [
-        "id",
-        "title",
-        "date",
-        "file",
-        "hasOfficialAnswerKey"
-      ],
+      "required": ["id", "title", "date", "file", "hasOfficialAnswerKey"],
       "additionalProperties": false,
       "properties": {
         "id": {
@@ -118,11 +98,7 @@
     },
     "topic": {
       "type": "object",
-      "required": [
-        "id",
-        "label",
-        "definition"
-      ],
+      "required": ["id", "label", "definition"],
       "additionalProperties": false,
       "properties": {
         "id": {
@@ -146,15 +122,7 @@
     },
     "question": {
       "type": "object",
-      "required": [
-        "id",
-        "exam",
-        "number",
-        "topic",
-        "stem",
-        "options",
-        "answer"
-      ],
+      "required": ["id", "exam", "number", "topic", "stem", "options", "answer"],
       "additionalProperties": false,
       "properties": {
         "id": {
@@ -185,12 +153,7 @@
         },
         "options": {
           "type": "object",
-          "required": [
-            "a",
-            "b",
-            "c",
-            "d"
-          ],
+          "required": ["a", "b", "c", "d"],
           "additionalProperties": false,
           "description": "The four options. Each one holds no page header or footer residue.",
           "properties": {
@@ -236,10 +199,7 @@
         },
         "excludedReason": {
           "type": "string",
-          "enum": [
-            "annulled",
-            "source-booklet-defect"
-          ],
+          "enum": ["annulled", "source-booklet-defect"],
           "description": "Why the question must never be drawn. It still belongs to the bank, to its paper's count and to the review surface. annulled: the official key prints ANULADA instead of a letter. source-booklet-defect: the printed booklet reprints an earlier question here, so the letter the key gives this number answers a question the bank does not hold."
         }
       },
@@ -249,30 +209,21 @@
             "properties": {
               "answer": {
                 "not": {
-                  "required": [
-                    "letter"
-                  ]
+                  "required": ["letter"]
                 }
               }
             },
-            "required": [
-              "answer"
-            ]
+            "required": ["answer"]
           },
           "then": {
-            "required": [
-              "excludedReason"
-            ]
+            "required": ["excludedReason"]
           }
         }
       ]
     },
     "answer": {
       "type": "object",
-      "required": [
-        "source",
-        "reference"
-      ],
+      "required": ["source", "reference"],
       "additionalProperties": false,
       "properties": {
         "letter": {
@@ -281,19 +232,12 @@
         },
         "source": {
           "type": "string",
-          "enum": [
-            "official",
-            "derived"
-          ],
+          "enum": ["official", "derived"],
           "description": "official means a published answer key states this, and nothing else."
         },
         "confidence": {
           "type": "string",
-          "enum": [
-            "high",
-            "medium",
-            "low"
-          ],
+          "enum": ["high", "medium", "low"],
           "description": "Derived answers only."
         },
         "reference": {
@@ -323,22 +267,12 @@
                 "const": "derived"
               }
             },
-            "required": [
-              "source"
-            ]
+            "required": ["source"]
           },
           "then": {
-            "required": [
-              "letter",
-              "source",
-              "confidence",
-              "reference",
-              "rationale"
-            ],
+            "required": ["letter", "source", "confidence", "reference", "rationale"],
             "not": {
-              "required": [
-                "explanation"
-              ]
+              "required": ["explanation"]
             }
           }
         },
@@ -349,22 +283,16 @@
                 "const": "official"
               }
             },
-            "required": [
-              "source"
-            ]
+            "required": ["source"]
           },
           "then": {
             "not": {
               "anyOf": [
                 {
-                  "required": [
-                    "confidence"
-                  ]
+                  "required": ["confidence"]
                 },
                 {
-                  "required": [
-                    "rationale"
-                  ]
+                  "required": ["rationale"]
                 }
               ]
             }

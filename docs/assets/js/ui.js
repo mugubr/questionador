@@ -29,9 +29,11 @@ const UI = (function () {
    * @type {Record<ExcludedReason, string>}
    */
   const EXCLUDED_LABELS = {
-    annulled: 'O gabarito oficial anulou esta questão: ela não tem resposta correta e ' +
+    annulled:
+      'O gabarito oficial anulou esta questão: ela não tem resposta correta e ' +
       'não entra no placar. Está aqui porque caiu na prova.',
-    'source-booklet-defect': 'O caderno publicado repete esta questão de outra do mesmo ' +
+    'source-booklet-defect':
+      'O caderno publicado repete esta questão de outra do mesmo ' +
       'exame, palavra por palavra, e o gabarito oficial dá letras diferentes para as duas — ' +
       'prova de que o caderno é que está errado. A resposta mostrada é a da questão repetida.'
   };
@@ -75,9 +77,11 @@ const UI = (function () {
    */
   const EMPTY_REASONS = {
     all: 'Nenhuma questão corresponde a esta combinação. Limpe os filtros ou escolha outra prova.',
-    incorrect: 'Você não errou nenhuma questão que passe por estes filtros. ' +
+    incorrect:
+      'Você não errou nenhuma questão que passe por estes filtros. ' +
       'Troque o histórico para "Todas" para treinar mesmo assim.',
-    unanswered: 'Você já respondeu todas as questões que passam por estes filtros. ' +
+    unanswered:
+      'Você já respondeu todas as questões que passam por estes filtros. ' +
       'Troque o histórico para "Todas" para repeti-las.'
   };
 
@@ -116,27 +120,89 @@ const UI = (function () {
   };
 
   const ELEMENT_IDS = [
-    'scoreboard', 'score-correct', 'score-incorrect', 'score-remaining',
-    'progress', 'progress-bar', 'theme-switch',
-    'theme-system', 'theme-light', 'theme-dark', 'status',
-    'panel-error', 'error-heading', 'error-detail',
-    'panel-filters', 'filters-heading', 'bank-summary', 'storage-notice', 'filter-form',
-    'chips-exams', 'chips-topics', 'chips-history',
-    'chips-size', 'chips-options', 'filters-notice',
-    'start-card', 'selection-figure', 'selection-count', 'selection-unit',
-    'selection-summary', 'start-disabled-reason', 'start-button', 'reset-filters-button',
-    'disclosure-scope', 'scope-summary', 'disclosure-session', 'session-summary',
-    'resume', 'resume-detail', 'resume-continue', 'resume-discard',
-    'loader', 'dropzone', 'file-input', 'upload-notice',
-    'panel-question', 'question-heading', 'question', 'question-exam',
-    'question-meta', 'question-excluded', 'question-defect', 'question-stem', 'options',
-    'feedback', 'feedback-verdict', 'feedback-answer', 'feedback-explanation-label',
-    'feedback-explanation', 'feedback-order-note', 'feedback-reference',
-    'next-button', 'next-hint', 'end-button',
-    'panel-results', 'results-heading', 'score-summary', 'score-label', 'score-detail',
-    'result-correct', 'result-incorrect', 'result-skipped', 'stat-skipped', 'results-empty',
-    'topic-stats', 'topic-stats-heading', 'review-head', 'review-heading', 'review-toggle',
-    'review-toggle-chip', 'review', 'new-session-button', 'back-to-filters-button',
+    'scoreboard',
+    'score-correct',
+    'score-incorrect',
+    'score-remaining',
+    'progress',
+    'progress-bar',
+    'theme-switch',
+    'theme-system',
+    'theme-light',
+    'theme-dark',
+    'status',
+    'panel-error',
+    'error-heading',
+    'error-detail',
+    'panel-filters',
+    'filters-heading',
+    'bank-summary',
+    'storage-notice',
+    'filter-form',
+    'chips-exams',
+    'chips-topics',
+    'chips-history',
+    'chips-size',
+    'chips-options',
+    'filters-notice',
+    'start-card',
+    'selection-figure',
+    'selection-count',
+    'selection-unit',
+    'selection-summary',
+    'start-disabled-reason',
+    'start-button',
+    'reset-filters-button',
+    'disclosure-scope',
+    'scope-summary',
+    'disclosure-session',
+    'session-summary',
+    'resume',
+    'resume-detail',
+    'resume-continue',
+    'resume-discard',
+    'loader',
+    'dropzone',
+    'file-input',
+    'upload-notice',
+    'panel-question',
+    'question-heading',
+    'question',
+    'question-exam',
+    'question-meta',
+    'question-excluded',
+    'question-defect',
+    'question-stem',
+    'options',
+    'feedback',
+    'feedback-verdict',
+    'feedback-answer',
+    'feedback-explanation-label',
+    'feedback-explanation',
+    'feedback-order-note',
+    'feedback-reference',
+    'next-button',
+    'next-hint',
+    'end-button',
+    'panel-results',
+    'results-heading',
+    'score-summary',
+    'score-label',
+    'score-detail',
+    'result-correct',
+    'result-incorrect',
+    'result-skipped',
+    'stat-skipped',
+    'results-empty',
+    'topic-stats',
+    'topic-stats-heading',
+    'review-head',
+    'review-heading',
+    'review-toggle',
+    'review-toggle-chip',
+    'review',
+    'new-session-button',
+    'back-to-filters-button',
     'footer-provenance'
   ];
 
@@ -290,7 +356,7 @@ const UI = (function () {
    */
   function formatDate(iso) {
     const parts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
-    return parts ? parts[3] + '/' + parts[2] + '/' + parts[1] : (iso || '');
+    return parts ? parts[3] + '/' + parts[2] + '/' + parts[1] : iso || '';
   }
 
   /**
@@ -323,14 +389,18 @@ const UI = (function () {
       return [];
     }
     const present = Session.topicsOf(bank.questions);
-    const declared = (bank.topics || []).map(function (topic) {
-      return topic.id;
-    }).filter(function (id) {
-      return present.indexOf(id) !== -1;
-    });
-    return declared.concat(present.filter(function (id) {
-      return declared.indexOf(id) === -1;
-    }));
+    const declared = (bank.topics || [])
+      .map(function (topic) {
+        return topic.id;
+      })
+      .filter(function (id) {
+        return present.indexOf(id) !== -1;
+      });
+    return declared.concat(
+      present.filter(function (id) {
+        return declared.indexOf(id) === -1;
+      })
+    );
   }
 
   /**
@@ -372,8 +442,10 @@ const UI = (function () {
     if (!question.answer.explanation || !isReordered(session, question)) {
       return '';
     }
-    return 'As letras citadas no comentário seguem a ordem do caderno original, ' +
-      'que não é a ordem sorteada aqui.';
+    return (
+      'As letras citadas no comentário seguem a ordem do caderno original, ' +
+      'que não é a ordem sorteada aqui.'
+    );
   }
 
   /**
@@ -427,7 +499,11 @@ const UI = (function () {
    * @returns {string} Something like `b) o depósito da patente`.
    */
   function quoteOption(session, question, sourceLetter) {
-    return displayLetter(session, question, sourceLetter) + ') ' + question.options[sourceLetter];
+    return (
+      displayLetter(session, question, sourceLetter) +
+      ') ' +
+      question.options[sourceLetter]
+    );
   }
 
   /* ---------- Panels ------------------------------------------------------ */
@@ -476,7 +552,8 @@ const UI = (function () {
   function renderTheme() {
     Theme.apply(state.theme);
     Theme.CHOICES.forEach(function (choice) {
-      /** @type {HTMLInputElement} */ (el['theme-' + choice]).checked = state.theme === choice;
+      /** @type {HTMLInputElement} */ (el['theme-' + choice]).checked =
+        state.theme === choice;
     });
   }
 
@@ -525,8 +602,11 @@ const UI = (function () {
 
     el.progress.setAttribute('aria-valuemax', String(total));
     el.progress.setAttribute('aria-valuenow', String(done));
-    el.progress.setAttribute('aria-valuetext', done + ' de ' + total + ' questões respondidas');
-    el['progress-bar'].style.width = total ? String(done / total * 100) + '%' : '0';
+    el.progress.setAttribute(
+      'aria-valuetext',
+      done + ' de ' + total + ' questões respondidas'
+    );
+    el['progress-bar'].style.width = total ? String((done / total) * 100) + '%' : '0';
   }
 
   /**
@@ -700,80 +780,95 @@ const UI = (function () {
 
     el['chips-exams'].replaceChildren();
     bank.exams.forEach(function (exam) {
-      el['chips-exams'].append(createChip({
-        group: 'exams',
-        variant: 'exam',
-        counted: true,
-        value: exam.id,
-        label: exam.id,
-        note: formatDate(exam.date),
-        title: exam.title,
-        type: 'checkbox',
-        checked: selected.exams.indexOf(exam.id) !== -1
-      }));
+      el['chips-exams'].append(
+        createChip({
+          group: 'exams',
+          variant: 'exam',
+          counted: true,
+          value: exam.id,
+          label: exam.id,
+          note: formatDate(exam.date),
+          title: exam.title,
+          type: 'checkbox',
+          checked: selected.exams.indexOf(exam.id) !== -1
+        })
+      );
     });
 
     el['chips-topics'].replaceChildren();
     orderedTopics().forEach(function (topic) {
       const entry = state.topics.get(topic);
-      el['chips-topics'].append(createChip({
-        group: 'topics',
-        counted: true,
-        value: topic,
-        label: topicLabel(topic),
-        /* The taxonomy carries a one-sentence definition per topic. As a
+      el['chips-topics'].append(
+        createChip({
+          group: 'topics',
+          counted: true,
+          value: topic,
+          label: topicLabel(topic),
+          /* The taxonomy carries a one-sentence definition per topic. As a
            tooltip it answers "what counts as prospecção?" without spending a
            line of the chip on it. */
-        hint: entry ? entry.definition : '',
-        type: 'checkbox',
-        checked: selected.topics.indexOf(topic) !== -1
-      }));
+          hint: entry ? entry.definition : '',
+          type: 'checkbox',
+          checked: selected.topics.indexOf(topic) !== -1
+        })
+      );
     });
 
     el['chips-history'].replaceChildren();
     /** @type {HistoryFilter[]} */
     const historyRules = ['all', 'incorrect', 'unanswered'];
     historyRules.forEach(function (rule) {
-      el['chips-history'].append(createChip({
-        group: 'history',
-        counted: true,
-        value: rule,
-        label: HISTORY_LABELS[rule],
-        type: 'radio',
-        name: 'history-filter',
-        checked: selected.history === rule
-      }));
+      el['chips-history'].append(
+        createChip({
+          group: 'history',
+          counted: true,
+          value: rule,
+          label: HISTORY_LABELS[rule],
+          type: 'radio',
+          name: 'history-filter',
+          checked: selected.history === rule
+        })
+      );
     });
 
     el['chips-size'].replaceChildren();
     Preferences.SIZES.forEach(function (size) {
-      el['chips-size'].append(createSegment({
-        group: 'size',
-        value: String(size),
-        label: size === 0 ? 'Todas' : String(size),
-        name: 'session-size',
-        checked: state.preferences.sessionSize === size
-      }));
+      el['chips-size'].append(
+        createSegment({
+          group: 'size',
+          value: String(size),
+          label: size === 0 ? 'Todas' : String(size),
+          name: 'session-size',
+          checked: state.preferences.sessionSize === size
+        })
+      );
     });
 
     el['chips-options'].replaceChildren();
-    el['chips-options'].append(createSwitch({
-      group: 'shuffle',
-      label: 'Embaralhar alternativas',
-      note: 'A ordem a-b-c-d do caderno é sorteada de novo em cada questão.',
-      checked: state.preferences.shuffleOptions
-    }));
+    el['chips-options'].append(
+      createSwitch({
+        group: 'shuffle',
+        label: 'Embaralhar alternativas',
+        note: 'A ordem a-b-c-d do caderno é sorteada de novo em cada questão.',
+        checked: state.preferences.shuffleOptions
+      })
+    );
 
     const excluded = excludedQuestions();
     if (excluded.length > 0) {
-      el['chips-options'].append(createSwitch({
-        group: 'excluded',
-        label: 'Incluir as questões fora do sorteio',
-        note: 'São ' + pluralize(excluded.length, 'questão', 'questões') + ': ' +
-          describeExcludedParts(excluded) +
-          '. Ficam de fora por padrão, e a razão aparece na própria questão.',
-        checked: selected.includeExcluded
-      }));
+      el['chips-options'].append(
+        createSwitch({
+          group: 'excluded',
+          label: 'Incluir as questões fora do sorteio',
+          note:
+            'São ' +
+            pluralize(excluded.length, 'questão', 'questões') +
+            ': ' +
+            describeExcludedParts(excluded) +
+            '. Ficam de fora por padrão, e a razão aparece na própria questão.',
+          checked: selected.includeExcluded
+        })
+      );
     }
 
     renderBankSummary();
@@ -914,7 +1009,9 @@ const UI = (function () {
    * @returns {void}
    */
   function setChipCount(group, value, count) {
-    const node = el['filter-form'].querySelector('[data-count-for="' + group + ':' + value + '"]');
+    const node = el['filter-form'].querySelector(
+      '[data-count-for="' + group + ':' + value + '"]'
+    );
     if (node) {
       node.textContent = String(count);
     }
@@ -938,29 +1035,42 @@ const UI = (function () {
 
     /** @type {FilterCriteria} */
     const base = {
-      exams: [], topics: [],
+      exams: [],
+      topics: [],
       history: 'all',
       includeExcluded: criteria.includeExcluded
     };
     const pool = Session.filter(bank.questions, base, state.history);
 
     bank.exams.forEach(function (exam) {
-      setChipCount('exams', exam.id, pool.filter(function (question) {
-        return question.exam === exam.id;
-      }).length);
+      setChipCount(
+        'exams',
+        exam.id,
+        pool.filter(function (question) {
+          return question.exam === exam.id;
+        }).length
+      );
     });
 
     orderedTopics().forEach(function (topic) {
-      setChipCount('topics', topic, pool.filter(function (question) {
-        return question.topic === topic;
-      }).length);
+      setChipCount(
+        'topics',
+        topic,
+        pool.filter(function (question) {
+          return question.topic === topic;
+        }).length
+      );
     });
 
     /** @type {HistoryFilter[]} */
     const historyRules = ['all', 'incorrect', 'unanswered'];
     historyRules.forEach(function (rule) {
       const scoped = Object.assign({}, criteria, { history: rule });
-      setChipCount('history', rule, Session.filter(bank.questions, scoped, state.history).length);
+      setChipCount(
+        'history',
+        rule,
+        Session.filter(bank.questions, scoped, state.history).length
+      );
     });
   }
 
@@ -971,9 +1081,11 @@ const UI = (function () {
    * @returns {boolean} True when at least one filter is narrowing the bank.
    */
   function isFiltered(criteria) {
-    return criteria.exams.length > 0 ||
+    return (
+      criteria.exams.length > 0 ||
       criteria.topics.length > 0 ||
-      criteria.history !== 'all';
+      criteria.history !== 'all'
+    );
   }
 
   /**
@@ -1019,7 +1131,9 @@ const UI = (function () {
     if (HISTORY_SUMMARY[criteria.history]) {
       parts.push(HISTORY_SUMMARY[criteria.history]);
     }
-    parts.push(settings.shuffleOptions ? 'alternativas embaralhadas' : 'ordem do caderno');
+    parts.push(
+      settings.shuffleOptions ? 'alternativas embaralhadas' : 'ordem do caderno'
+    );
     if (criteria.includeExcluded) {
       parts.push('com as excluídas');
     }
@@ -1038,7 +1152,8 @@ const UI = (function () {
    * @returns {string} Something like `20 questões · alternativas embaralhadas`.
    */
   function describeSession(criteria, settings) {
-    const length = settings.size === 0 ? 'todas as que passarem' : settings.size + ' questões';
+    const length =
+      settings.size === 0 ? 'todas as que passarem' : settings.size + ' questões';
     return length + ' · ' + describeMode(criteria, settings);
   }
 
@@ -1054,7 +1169,11 @@ const UI = (function () {
     if (state.drawn === state.poolSize) {
       return pluralize(state.drawn, 'questão no sorteio.', 'questões no sorteio.');
     }
-    return state.drawn + ' de ' + pluralize(state.poolSize, 'questão no sorteio.', 'questões no sorteio.');
+    return (
+      state.drawn +
+      ' de ' +
+      pluralize(state.poolSize, 'questão no sorteio.', 'questões no sorteio.')
+    );
   }
 
   /**
@@ -1081,15 +1200,19 @@ const UI = (function () {
     updateCounts(criteria);
 
     const pool = Session.filter(bank.questions, criteria, state.history);
-    const drawn = settings.size > 0 ? Math.min(settings.size, pool.length) : pool.length;
+    const drawn =
+      settings.size > 0 ? Math.min(settings.size, pool.length) : pool.length;
     const empty = pool.length === 0;
     state.drawn = drawn;
     state.poolSize = pool.length;
 
     el['selection-count'].textContent = String(drawn);
-    el['selection-unit'].textContent = drawn === pool.length
-      ? (drawn === 1 ? 'questão no sorteio' : 'questões no sorteio')
-      : 'de ' + pluralize(pool.length, 'questão', 'questões');
+    el['selection-unit'].textContent =
+      drawn === pool.length
+        ? drawn === 1
+          ? 'questão no sorteio'
+          : 'questões no sorteio'
+        : 'de ' + pluralize(pool.length, 'questão', 'questões');
     el['selection-summary'].textContent = empty
       ? 'Nenhuma questão passa por estes filtros.'
       : endSentence(describeScope(criteria) + ' · ' + describeMode(criteria, settings));
@@ -1098,7 +1221,9 @@ const UI = (function () {
     el['session-summary'].textContent = describeSession(criteria, settings);
 
     el['start-card'].classList.toggle('start-card--empty', empty);
-    el['start-disabled-reason'].textContent = empty ? EMPTY_REASONS[criteria.history] : '';
+    el['start-disabled-reason'].textContent = empty
+      ? EMPTY_REASONS[criteria.history]
+      : '';
     /** @type {HTMLButtonElement} */ (el['start-button']).disabled = empty;
     el['reset-filters-button'].hidden = !isFiltered(criteria);
 
@@ -1145,7 +1270,8 @@ const UI = (function () {
    */
   function renderResumeOffer() {
     const stored = Session.fromStored(AppStorage.readJson(AppStorage.KEYS.session));
-    const usable = stored &&
+    const usable =
+      stored &&
       Session.matchesBank(stored, state.byId, state.signature) &&
       !Session.isFinished(stored);
 
@@ -1158,8 +1284,12 @@ const UI = (function () {
 
     state.resumable = stored;
     el['resume-detail'].textContent =
-      Session.answeredCount(stored) + ' de ' + stored.deck.length + ' questões respondidas' +
-      (stored.startedAt ? ' · começou em ' + formatTimestamp(stored.startedAt) : '') + '.';
+      Session.answeredCount(stored) +
+      ' de ' +
+      stored.deck.length +
+      ' questões respondidas' +
+      (stored.startedAt ? ' · começou em ' + formatTimestamp(stored.startedAt) : '') +
+      '.';
     el.resume.hidden = false;
   }
 
@@ -1181,8 +1311,17 @@ const UI = (function () {
    */
   function formatTimestamp(epochMs) {
     const moment = new Date(epochMs);
-    return padTwo(moment.getDate()) + '/' + padTwo(moment.getMonth() + 1) + '/' +
-      moment.getFullYear() + ' às ' + padTwo(moment.getHours()) + ':' + padTwo(moment.getMinutes());
+    return (
+      padTwo(moment.getDate()) +
+      '/' +
+      padTwo(moment.getMonth() + 1) +
+      '/' +
+      moment.getFullYear() +
+      ' às ' +
+      padTwo(moment.getHours()) +
+      ':' +
+      padTwo(moment.getMinutes())
+    );
   }
 
   /* ---------- Question ---------------------------------------------------- */
@@ -1219,12 +1358,19 @@ const UI = (function () {
     meta.replaceChildren();
 
     const exam = state.exams.get(question.exam);
-    meta.append(createSpan([
-      question.exam,
-      exam ? formatDate(exam.date) : '',
-      'questão ' + question.number,
-      topicLabel(question.topic)
-    ].filter(Boolean).join(' · '), 'question__identity'));
+    meta.append(
+      createSpan(
+        [
+          question.exam,
+          exam ? formatDate(exam.date) : '',
+          'questão ' + question.number,
+          topicLabel(question.topic)
+        ]
+          .filter(Boolean)
+          .join(' · '),
+        'question__identity'
+      )
+    );
 
     meta.append(createBadge(SOURCE_LABELS[answer.source] || SOURCE_LABELS.official));
 
@@ -1241,15 +1387,20 @@ const UI = (function () {
        is one of the twins, so the second sentence is conditional. */
     const keyed = answer.letter;
     const twinned = Session.hasDefect(question, 'identical-options');
-    const answerHasTwin = twinned && keyed !== undefined && Session.LETTERS.some(function (letter) {
-      return letter !== keyed && question.options[letter] === question.options[keyed];
-    });
+    const answerHasTwin =
+      twinned &&
+      keyed !== undefined &&
+      Session.LETTERS.some(function (letter) {
+        return letter !== keyed && question.options[letter] === question.options[keyed];
+      });
     showNotice(
       el['question-defect'],
       twinned
         ? 'Atenção: o caderno original repete duas alternativas idênticas nesta questão, ' +
-          'que na prática oferece três respostas distintas.' +
-          (answerHasTwin ? ' Qualquer uma das duas idênticas conta como correta.' : '')
+            'que na prática oferece três respostas distintas.' +
+            (answerHasTwin
+              ? ' Qualquer uma das duas idênticas conta como correta.'
+              : '')
         : '',
       'info'
     );
@@ -1331,11 +1482,13 @@ const UI = (function () {
 
       const text = button.querySelector('.option__text');
       if (text) {
-        text.prepend(createIcon(
-          isChosen ? (isAnswer ? 'check-circle' : 'cross-circle') : 'check',
-          'option__mark',
-          isChosen ? 2 : 3
-        ));
+        text.prepend(
+          createIcon(
+            isChosen ? (isAnswer ? 'check-circle' : 'cross-circle') : 'check',
+            'option__mark',
+            isChosen ? 2 : 3
+          )
+        );
       }
 
       const body = button.querySelector('.option__body');
@@ -1344,9 +1497,13 @@ const UI = (function () {
         tag.className = 'option__tag';
         tag.append(
           createIcon(isAnswer ? 'check' : 'cross', '', 3.5),
-          createSpan(isAnswer
-            ? (isChosen ? 'Sua resposta, correta.' : 'Resposta correta, você não marcou.')
-            : 'Sua resposta, incorreta.')
+          createSpan(
+            isAnswer
+              ? isChosen
+                ? 'Sua resposta, correta.'
+                : 'Resposta correta, você não marcou.'
+              : 'Sua resposta, incorreta.'
+          )
         );
         body.append(tag);
       }
@@ -1368,19 +1525,26 @@ const UI = (function () {
       createIcon(record.correct ? 'check-circle' : 'cross-circle', '', 2),
       createSpan(record.correct ? 'Correto' : 'Incorreto')
     );
-    el['feedback-verdict'].className = 'feedback__verdict feedback__verdict--' +
+    el['feedback-verdict'].className =
+      'feedback__verdict feedback__verdict--' +
       (record.correct ? 'correct' : 'incorrect');
 
     el['feedback-answer'].replaceChildren();
     const keyed = answer.letter;
-    const lead = document.createTextNode(record.correct ? 'A resposta é ' : 'A resposta correta é ');
+    const lead = document.createTextNode(
+      record.correct ? 'A resposta é ' : 'A resposta correta é '
+    );
     const quoted = document.createElement('strong');
-    quoted.textContent = keyed ? endSentence(quoteOption(session, question, keyed)) : '';
+    quoted.textContent = keyed
+      ? endSentence(quoteOption(session, question, keyed))
+      : '';
     el['feedback-answer'].append(lead, quoted);
     if (!record.correct) {
-      el['feedback-answer'].append(document.createTextNode(
-        ' Você marcou ' + endSentence(quoteOption(session, question, record.chosen))
-      ));
+      el['feedback-answer'].append(
+        document.createTextNode(
+          ' Você marcou ' + endSentence(quoteOption(session, question, record.chosen))
+        )
+      );
     }
 
     /* The explanation used to justify a deduction and was hedged accordingly.
@@ -1390,7 +1554,9 @@ const UI = (function () {
       ? 'Por que esta é a resposta'
       : '';
     el['feedback-order-note'].textContent = orderNote(session, question);
-    el['feedback-reference'].textContent = answer.reference ? 'Fonte: ' + answer.reference : '';
+    el['feedback-reference'].textContent = answer.reference
+      ? 'Fonte: ' + answer.reference
+      : '';
     el.feedback.hidden = false;
   }
 
@@ -1407,12 +1573,25 @@ const UI = (function () {
     const correctText = keyed ? endSentence(quoteOption(session, question, keyed)) : '';
     const verdict = record.correct
       ? 'Correto. A resposta é ' + correctText
-      : 'Incorreto. Você marcou ' + endSentence(quoteOption(session, question, record.chosen)) +
-        ' A resposta correta é ' + correctText;
+      : 'Incorreto. Você marcou ' +
+        endSentence(quoteOption(session, question, record.chosen)) +
+        ' A resposta correta é ' +
+        correctText;
 
-    return verdict + ' Placar: ' + pluralize(session.correctCount, 'acerto', 'acertos') +
-      ', ' + pluralize(session.incorrectCount, 'erro', 'erros') + ', ' +
-      pluralize(Session.unansweredCount(session), 'questão restante', 'questões restantes') + '.';
+    return (
+      verdict +
+      ' Placar: ' +
+      pluralize(session.correctCount, 'acerto', 'acertos') +
+      ', ' +
+      pluralize(session.incorrectCount, 'erro', 'erros') +
+      ', ' +
+      pluralize(
+        Session.unansweredCount(session),
+        'questão restante',
+        'questões restantes'
+      ) +
+      '.'
+    );
   }
 
   /**
@@ -1427,7 +1606,9 @@ const UI = (function () {
       el['next-hint'].textContent = 'Questão anulada: não há o que marcar.';
       return;
     }
-    el['next-hint'].textContent = settled ? '' : 'Escolha uma alternativa para liberar o avanço.';
+    el['next-hint'].textContent = settled
+      ? ''
+      : 'Escolha uma alternativa para liberar o avanço.';
   }
 
   /**
@@ -1448,8 +1629,8 @@ const UI = (function () {
       return;
     }
 
-    el.question.className = 'question' +
-      (question.excludedReason ? ' question--excluded' : '');
+    el.question.className =
+      'question' + (question.excludedReason ? ' question--excluded' : '');
 
     el['question-heading'].textContent =
       'Questão ' + (session.position + 1) + ' de ' + session.deck.length;
@@ -1469,7 +1650,8 @@ const UI = (function () {
 
     const next = /** @type {HTMLButtonElement} */ (el['next-button']);
     next.disabled = !record && gradable;
-    next.textContent = session.position === session.deck.length - 1 ? 'Ver resultado' : 'Próxima';
+    next.textContent =
+      session.position === session.deck.length - 1 ? 'Ver resultado' : 'Próxima';
     renderNextHint(Boolean(record) || !gradable, gradable);
 
     updateScoreboard();
@@ -1497,7 +1679,12 @@ const UI = (function () {
     }
 
     state.session = graded;
-    state.history = AnswerHistory.record(state.history, question.id, record.correct, Date.now());
+    state.history = AnswerHistory.record(
+      state.history,
+      question.id,
+      record.correct,
+      Date.now()
+    );
     AppStorage.writeJson(AppStorage.KEYS.history, state.history);
     AppStorage.writeJson(AppStorage.KEYS.session, graded);
 
@@ -1552,7 +1739,10 @@ const UI = (function () {
     /* The gradability half of the guard is not optional: an annulled question
        can never be "answered", so requiring an answer here trapped the session
        on it forever once the excluded questions were opted into. */
-    if (!session || (!Session.isAnswered(session, question) && Session.isGradable(question))) {
+    if (
+      !session ||
+      (!Session.isAnswered(session, question) && Session.isGradable(question))
+    ) {
       return;
     }
 
@@ -1588,13 +1778,16 @@ const UI = (function () {
     el['topic-stats-heading'].hidden = stats.length === 0;
 
     stats.forEach(function (stat) {
-      const percent = Math.round(stat.correct / stat.answered * 100);
+      const percent = Math.round((stat.correct / stat.answered) * 100);
 
       const item = document.createElement('li');
       item.className = 'topic-stat';
       item.append(
         createSpan(topicLabel(stat.topic), 'topic-stat__name'),
-        createSpan(stat.correct + ' de ' + stat.answered + ' · ' + percent + '%', 'topic-stat__value')
+        createSpan(
+          stat.correct + ' de ' + stat.answered + ' · ' + percent + '%',
+          'topic-stat__value'
+        )
       );
 
       const meter = document.createElement('span');
@@ -1607,11 +1800,17 @@ const UI = (function () {
 
       const overall = lifetime.get(stat.topic);
       if (overall && overall.answered > stat.answered) {
-        item.append(createSpan(
-          overall.correct + ' de ' + overall.answered + ' no histórico (' +
-          Math.round(overall.correct / overall.answered * 100) + '%)',
-          'topic-stat__history'
-        ));
+        item.append(
+          createSpan(
+            overall.correct +
+              ' de ' +
+              overall.answered +
+              ' no histórico (' +
+              Math.round((overall.correct / overall.answered) * 100) +
+              '%)',
+            'topic-stat__history'
+          )
+        );
       }
 
       el['topic-stats'].append(item);
@@ -1637,14 +1836,18 @@ const UI = (function () {
 
     const head = document.createElement('p');
     head.className = 'review__head';
-    head.append(createSpan([
-      question.exam,
-      'questão ' + question.number,
-      topicLabel(question.topic)
-    ].join(' · '), 'review__meta'));
+    head.append(
+      createSpan(
+        [question.exam, 'questão ' + question.number, topicLabel(question.topic)].join(
+          ' · '
+        ),
+        'review__meta'
+      )
+    );
 
     const outcome = document.createElement('span');
-    outcome.className = 'review__outcome review__outcome--' + (entry.correct ? 'correct' : 'incorrect');
+    outcome.className =
+      'review__outcome review__outcome--' + (entry.correct ? 'correct' : 'incorrect');
     outcome.append(
       createIcon(entry.correct ? 'check' : 'cross', '', 3.5),
       createSpan(entry.correct ? 'você acertou' : 'você errou')
@@ -1662,7 +1865,8 @@ const UI = (function () {
       const isChosen = letter === entry.chosen;
 
       const option = document.createElement('li');
-      option.className = 'review__option' +
+      option.className =
+        'review__option' +
         (isAnswer ? ' review__option--answer' : '') +
         (isChosen && !isAnswer ? ' review__option--chosen' : '');
 
@@ -1675,8 +1879,12 @@ const UI = (function () {
       }
 
       const suffix = isAnswer
-        ? (isChosen ? ' — resposta correta, você marcou' : ' — resposta correta')
-        : (isChosen ? ' — você marcou' : '');
+        ? isChosen
+          ? ' — resposta correta, você marcou'
+          : ' — resposta correta'
+        : isChosen
+          ? ' — você marcou'
+          : '';
       option.append(createSpan(quoteOption(session, question, letter) + suffix));
       options.append(option);
     });
@@ -1717,7 +1925,8 @@ const UI = (function () {
       return;
     }
 
-    const includeCorrect = /** @type {HTMLInputElement} */ (el['review-toggle']).checked;
+    const includeCorrect = /** @type {HTMLInputElement} */ (el['review-toggle'])
+      .checked;
     const entries = Session.reviewEntries(session, state.byId, includeCorrect);
     const answered = Session.answeredCount(session);
 
@@ -1772,14 +1981,22 @@ const UI = (function () {
 
     /* A session with no answers measured nothing; reporting 0% would be a
        score, and there is no score to report. */
-    el['score-summary'].textContent = answered === 0
-      ? '—'
-      : String(Math.round(session.correctCount / answered * 100)) + '%';
+    el['score-summary'].textContent =
+      answered === 0
+        ? '—'
+        : String(Math.round((session.correctCount / answered) * 100)) + '%';
     el['score-label'].textContent = answered === 0 ? '' : 'de acerto';
-    el['score-detail'].textContent = answered === 0
-      ? 'Nenhuma questão respondida nesta sessão.'
-      : session.correctCount + ' de ' + answered + ' respondidas' +
-        (skipped > 0 ? ' · ' + skipped + (skipped === 1 ? ' não respondida' : ' não respondidas') : '') + '.';
+    el['score-detail'].textContent =
+      answered === 0
+        ? 'Nenhuma questão respondida nesta sessão.'
+        : session.correctCount +
+          ' de ' +
+          answered +
+          ' respondidas' +
+          (skipped > 0
+            ? ' · ' + skipped + (skipped === 1 ? ' não respondida' : ' não respondidas')
+            : '') +
+          '.';
 
     el['result-correct'].textContent = String(session.correctCount);
     el['result-incorrect'].textContent = String(session.incorrectCount);
@@ -1788,10 +2005,12 @@ const UI = (function () {
 
     el['results-empty'].replaceChildren();
     if (answered === 0) {
-      el['results-empty'].append(createEmptyState(
-        'Nada para revisar ainda',
-        'Esta sessão foi encerrada antes da primeira resposta. Sorteie de novo quando quiser começar.'
-      ));
+      el['results-empty'].append(
+        createEmptyState(
+          'Nada para revisar ainda',
+          'Esta sessão foi encerrada antes da primeira resposta. Sorteie de novo quando quiser começar.'
+        )
+      );
     }
 
     renderTopicStats(session);
@@ -1801,9 +2020,15 @@ const UI = (function () {
     AppStorage.remove(AppStorage.KEYS.session);
     state.resumable = null;
 
-    announce(answered === 0
-      ? 'Sessão encerrada sem respostas.'
-      : 'Sessão encerrada. ' + session.correctCount + ' acertos em ' + answered + ' questões respondidas.');
+    announce(
+      answered === 0
+        ? 'Sessão encerrada sem respostas.'
+        : 'Sessão encerrada. ' +
+            session.correctCount +
+            ' acertos em ' +
+            answered +
+            ' questões respondidas.'
+    );
 
     showPanel('results');
   }
@@ -1821,14 +2046,23 @@ const UI = (function () {
       return;
     }
 
-    const session = Session.create(bank.questions, state.preferences.filters, state.history, {
-      signature: state.signature,
-      size: state.preferences.sessionSize,
-      shuffleOptions: state.preferences.shuffleOptions
-    });
+    const session = Session.create(
+      bank.questions,
+      state.preferences.filters,
+      state.history,
+      {
+        signature: state.signature,
+        size: state.preferences.sessionSize,
+        shuffleOptions: state.preferences.shuffleOptions
+      }
+    );
 
     if (!session) {
-      showNotice(el['filters-notice'], 'Nenhuma questão corresponde a essa combinação de filtros.', 'error');
+      showNotice(
+        el['filters-notice'],
+        'Nenhuma questão corresponde a essa combinação de filtros.',
+        'error'
+      );
       announce('Nenhuma questão corresponde a essa combinação de filtros.');
       showPanel('filters');
       return;
@@ -1839,8 +2073,11 @@ const UI = (function () {
     state.resumable = null;
     el.resume.hidden = true;
     AppStorage.writeJson(AppStorage.KEYS.session, session);
-    announce('Sessão iniciada com ' + session.deck.length +
-      (session.deck.length === 1 ? ' questão.' : ' questões.'));
+    announce(
+      'Sessão iniciada com ' +
+        session.deck.length +
+        (session.deck.length === 1 ? ' questão.' : ' questões.')
+    );
     renderQuestion();
   }
 
@@ -1919,11 +2156,14 @@ const UI = (function () {
     adoptBank(result.bank, true);
     showNotice(
       el['upload-notice'],
-      'Banco carregado do arquivo, com ' + result.bank.questions.length +
+      'Banco carregado do arquivo, com ' +
+        result.bank.questions.length +
         ' questões. Ele vale só nesta aba: ao recarregar a página o banco publicado volta.',
       'info'
     );
-    announce('Banco carregado do arquivo, com ' + result.bank.questions.length + ' questões.');
+    announce(
+      'Banco carregado do arquivo, com ' + result.bank.questions.length + ' questões.'
+    );
     showPanel('filters');
   }
 
@@ -1939,14 +2179,21 @@ const UI = (function () {
     }
     const excluded = excludedQuestions();
     const sentences = [
-      'Os ' + bank.questions.length + ' gabaritos vêm das chaves de resposta oficiais ' +
-      'publicadas das ' + bank.exams.length + ' provas, conferidas contra os cadernos originais.'
+      'Os ' +
+        bank.questions.length +
+        ' gabaritos vêm das chaves de resposta oficiais ' +
+        'publicadas das ' +
+        bank.exams.length +
+        ' provas, conferidas contra os cadernos originais.'
     ];
     if (excluded.length > 0) {
-      sentences.push((excluded.length === 1
-        ? 'Uma questão fica fora do sorteio por padrão: '
-        : excluded.length + ' questões ficam fora do sorteio por padrão: ') +
-        describeExcludedParts(excluded) + '.');
+      sentences.push(
+        (excluded.length === 1
+          ? 'Uma questão fica fora do sorteio por padrão: '
+          : excluded.length + ' questões ficam fora do sorteio por padrão: ') +
+          describeExcludedParts(excluded) +
+          '.'
+      );
     }
     el['footer-provenance'].textContent = sentences.join(' ');
   }
@@ -1993,7 +2240,10 @@ const UI = (function () {
       event.preventDefault();
       zone.classList.remove('dropzone--active');
       const transfer = /** @type {DragEvent} */ (event).dataTransfer;
-      Bank.readFile(transfer && transfer.files ? transfer.files[0] : null, acceptLoadedBank);
+      Bank.readFile(
+        transfer && transfer.files ? transfer.files[0] : null,
+        acceptLoadedBank
+      );
     });
 
     el['file-input'].addEventListener('change', function (event) {
@@ -2035,7 +2285,12 @@ const UI = (function () {
    */
   function bindKeyboard() {
     document.addEventListener('keydown', function (event) {
-      if (el['panel-question'].hidden || event.metaKey || event.ctrlKey || event.altKey) {
+      if (
+        el['panel-question'].hidden ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.altKey
+      ) {
         return;
       }
 
@@ -2044,7 +2299,9 @@ const UI = (function () {
         return;
       }
 
-      const position = Session.LETTERS.indexOf(/** @type {OptionLetter} */ (String(event.key || '').toLowerCase()));
+      const position = Session.LETTERS.indexOf(
+        /** @type {OptionLetter} */ (String(event.key || '').toLowerCase())
+      );
       if (position !== -1) {
         event.preventDefault();
         chooseByPosition(position);
@@ -2057,7 +2314,11 @@ const UI = (function () {
       /* Enter belongs to whatever is focused; hijacking it turned "Encerrar
          sessão" into "Próxima". An inert control is not "whatever is focused"
          for this purpose — it would do nothing with the key. */
-      if (handlesKeys(target && target.closest('button, a[href], summary, [role="button"]'))) {
+      if (
+        handlesKeys(
+          target && target.closest('button, a[href], summary, [role="button"]')
+        )
+      ) {
         return;
       }
       if (/** @type {HTMLButtonElement} */ (el['next-button']).disabled) {
@@ -2116,13 +2377,17 @@ const UI = (function () {
       showNotice(
         el['storage-notice'],
         'O armazenamento local está indisponível neste navegador. O app funciona ' +
-        'normalmente, mas o tema, o histórico e a sessão em andamento não serão guardados.',
+          'normalmente, mas o tema, o histórico e a sessão em andamento não serão guardados.',
         'quiet'
       );
     }
 
-    state.preferences = Preferences.normalize(AppStorage.readJson(AppStorage.KEYS.preferences));
-    state.history = AnswerHistory.normalize(AppStorage.readJson(AppStorage.KEYS.history));
+    state.preferences = Preferences.normalize(
+      AppStorage.readJson(AppStorage.KEYS.preferences)
+    );
+    state.history = AnswerHistory.normalize(
+      AppStorage.readJson(AppStorage.KEYS.history)
+    );
 
     bindControls();
 
@@ -2130,7 +2395,7 @@ const UI = (function () {
     if (typeof embedded === 'undefined') {
       showBankFailure(
         'O arquivo data/question-bank.js não foi carregado. Se você abriu o site a ' +
-        'partir de uma cópia local, confirme que a pasta data/ veio junto.'
+          'partir de uma cópia local, confirme que a pasta data/ veio junto.'
       );
       return;
     }

@@ -1,0 +1,22 @@
+# Everything the Python pipeline writes. Prettier and `python -m tools build`
+# would reformat these against each other forever, and CI's rebuild guard would
+# fail on the difference. The pipeline owns their formatting.
+data/question-bank.json
+data/question-bank.md
+data/raw-questions.json
+data/answer-keys.json
+docs/data/question-bank.js
+
+# Lockfiles are owned by their package managers.
+uv.lock
+package-lock.json
+
+node_modules/
+.venv/
+
+# Vendored plugin files: not ours to reformat.
+.claude/
+
+# An archived change is a historical record of what shipped. Reformatting it
+# rewrites that record. The OpenSpec CLI also owns this format and parses it.
+openspec/changes/archive/
