@@ -1,20 +1,39 @@
 schema: spec-driven
 
-# Project context (optional)
-# This is shown to AI when creating artifacts.
-# Add your tech stack, conventions, style guides, domain knowledge, etc.
-# Example:
-#   context: |
-#     Tech stack: TypeScript, React, Node.js
-#     We use conventional commits
-#     Domain: e-commerce platform
+context: |
+  Read AGENTS.md at the repository root before producing any artifact. It is
+  the source of truth for this project and overrides anything stated here.
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always include a "Non-goals" section
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+  What this is: a static study app for the PROFNIT exams, published with GitHub
+  Pages from docs/. Two decoupled halves — a Python pipeline (tools/) that turns
+  exam PDFs into a validated question bank, and a plain HTML/CSS/JS app (docs/)
+  that consumes it.
+
+  Non-negotiable constraints:
+  - All code in English; all content shown to students in Portuguese.
+  - Google-style docstrings and full type hints on every Python signature;
+    // @ts-check plus typed JSDoc on every JavaScript function.
+  - Comments explain why, never what, and always end with a period.
+  - No CDN, no external request, no framework, no bundler, no build step for
+    the app. Classic scripts so file:// keeps working.
+  - The bank ships embedded as docs/data/question-bank.js so the site opens
+    already loaded.
+  - Every bank string reaches the DOM through textContent, never innerHTML.
+  - WCAG 2.2 level AA is the floor, verified in both light and dark themes.
+  - pdftotext is poppler only, pinned and version-checked; artifacts are
+    written with newline="\n" so rebuilds are byte-identical across platforms.
+
+  Provenance matters: only 40 of the 144 questions have a published answer key.
+  The other 104 are derived and carry a reference, a rationale and a confidence
+  level. Never promote a derived answer to official.
+
+rules:
+  proposal:
+    - State what breaks and what stays working, explicitly.
+    - Name the affected capabilities from openspec/specs/.
+  design:
+    - Record the alternatives that were rejected and why.
+    - Call out anything that changes the question bank contract.
+  tasks:
+    - Group tasks by the phase that lands as one commit.
+    - Every task is verifiable by a command or an observable outcome.
