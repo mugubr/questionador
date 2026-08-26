@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, type-check, test and verify the bank
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+
+      - name: Set up uv and Python
+        # Pinned to an exact release: astral-sh stopped publishing a floating
+        # major tag after v7, so `@v10` resolves to nothing and the job dies
+        # while preparing actions, before a single step runs.
+        uses: astral-sh/setup-uv@v10.0.1
+        with:
+          python-version: '3.14'
+          enable-cache: true
+          cache-dependency-glob: pyproject.toml
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install the Python tooling
+        run: uv sync --group dev
+
+      - name: Install the Node tooling
+        # Prettier and TypeScript only. The app itself ships no dependencies and
+        # has no build step; package.json exists for these two checks alone.
+        run: npm ci
+
+      - name: ruff check
+        run: uv run ruff check .
+
+      - name: ruff format --check
+        run: uv run ruff format --check .
+
+      - name: prettier --check
+        # ruff owns the Python; prettier owns everything else -- HTML, CSS, JS,
+        # JSON, Markdown and these workflows. Between them nothing is formatted
+        # by hand, and no diff is ever about whitespace.
+        run: npx prettier --check .
+
+      - name: mypy
+        run: uv run mypy tools tests
+
+      - name: pytest
+        run: uv run python -m pytest
+
+      - name: node --test
+        # The glob is quoted so node expands it rather than the shell, and it
+        # names the files explicitly: passing the directory makes node resolve
+        # `tests/js` as a module and fail with MODULE_NOT_FOUND before running
+        # a single test.
+        run: node --test "tests/js/*.test.js"
+
+      - name: Type-check the JavaScript
+        # The JSDoc annotations are load-bearing, so jsconfig.json runs here and
+        # not only in an editor.
+        run: npx tsc --project jsconfig.json
+
+      - name: Validate the published bank
+        run: uv run python -m tools validate
+
+      - name: Rebuild the bank
+        # Nothing in this job installs poppler, and nothing needs it. `extract`
+        # is the only stage that runs pdftotext, and its two artifacts —
+        # `data/raw-questions.json` and `data/answer-keys.json` — are committed
+        # exactly so the rest of the chain can be rebuilt from committed bytes.
+        # Installing poppler-utils here would only invite a step that
+        # re-extracts against whatever version Ubuntu ships — 24.02 today,
+        # against the 25.07.0 the artifacts record — and then fails on a
+        # difference that says nothing about the change under review.
+        # Re-extraction stays a local step, reviewed as the diff it produces.
+        run: uv run python -m tools build
+
+      - name: Fail if the rebuild changed a committed artifact
+        # The real guard, and it only became one when the rebuild stopped
+        # depending on the runner. `build` reads committed files, copies the
+        # pdftotext version out of the extraction artifacts instead of asking
+        # the binary again, and carries `generatedAt` forward from the
+        # committed bank instead of stamping today — so this comparison has one
+        # variable left: whether the committed bank, its markdown and the app's
+        # script are what the committed inputs and this commit's code produce.
+        # Byte for byte, on Linux as well as on the Windows machine that
+        # generated them, with a different poppler or none at all, tomorrow as
+        # well as today.
+        run: |
+          git add --intent-to-add .
+          if ! git diff --quiet; then
+            echo "::error::A rebuild changed the committed artifacts. Run 'python -m tools build' and commit the result."
+            git diff --stat
+            git diff
+            exit 1
+          fi

@@ -1,0 +1,32 @@
+{
+  // Type-checks the app from its JSDoc annotations. Nothing is ever emitted:
+  // the files in `docs/` are the files that ship, and there is no build step.
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+
+    // The app loads as classic <script> tags, not ES modules, so every file
+    // is a global script: a top-level `const Bank = {...}` in one file is
+    // visible from the next one, exactly as it is at runtime. "legacy" pins
+    // that down — under "auto" a stray package.json with "type": "module"
+    // would silently turn every file into a module and break the globals.
+    "moduleDetection": "legacy",
+
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+
+    "strict": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["docs/assets/js/**/*.js", "tests/js/**/*.js"],
+  // `docs/data/question-bank.js` is generated data, not hand-written code.
+  "exclude": ["node_modules", "docs/data"]
+}

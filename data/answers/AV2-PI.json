@@ -1,0 +1,66 @@
+{
+  "AV2-PI-Q01": {
+    "explanation": "LPI 9.279/1996: I é verdadeira (lei de 1996, pós-OMC/TRIPS); II é verdadeira (art. 40: invenção 20 anos, MU 15 anos); III é FALSA (art. 122 exige sinal 'visualmente perceptível' — sons não são registráveis no Brasil); IV é FALSA (art. 18, III veda patentear seres vivos, excetuando apenas microrganismos transgênicos — plantas não). Não verdadeiras: III e IV.",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, p. 21 (TRIPS/OMC) e p. 34 (a marca como 'sinal distintivo, visualmente perceptível'); Ref2-Patente_2021.pdf, seção 3.3, p. 22 (20 anos para invenção, 15 para modelo de utilidade) e seção 2.1.3, p. 16 (vedação de patentear o todo ou parte dos seres vivos, ressalvados os micro-organismos transgênicos)."
+  },
+  "AV2-PI-Q02": {
+    "explanation": "A CUP consagra o princípio do tratamento nacional (arts. 2º e 3º): domiciliados ou com estabelecimento efetivo em país membro são equiparados aos nacionais. As demais ignoram a territorialidade: nem a OMC nem o PCT concedem direito válido automaticamente em outros países.",
+    "reference": "Apoio parcial: Ref2-Patente_2021.pdf, seção 3.1, p. 17-19, expõe a CUP de 1883, a territorialidade, a prioridade unionista e o PCT — o que elimina as alternativas que supõem direito automático em outros países. A expressão 'tratamento nacional' não ocorre em nenhum PDF de `references/`: é dos arts. 2º e 3º da própria Convenção da União de Paris."
+  },
+  "AV2-PI-Q03": {
+    "explanation": "Lei 10.711/2003: a inscrição no RENASEM é obrigatória para produtores e comerciantes de sementes e mudas, com inscrição periódica dos campos de produção. A fiscalização do comércio interestadual e internacional é da União (MAPA), não do Estado, e o registro nacional de cultivares habilita a produção no País, não no exterior.",
+    "reference": "Sem apoio em `references/`: nenhum PDF do repositório menciona o RENASEM ou a Lei 10.711/2003 — Ref3-A-caminho-da-inovacao_2010.pdf, seção 5.2, p. 76-80, trata da proteção de cultivares pela Lei 9.456/1997, que é outro regime. Fonte real: Lei 10.711/2003 e o Decreto 5.153/2004, fora do repositório."
+  },
+  "AV2-PI-Q04": {
+    "explanation": "II reproduz a definição legal de marca (LPI art. 122: sinal distintivo visualmente perceptível não compreendido nas proibições legais) e IV descreve corretamente a função distintiva. I e III são falsas pelo mesmo motivo: marcas são bens negociáveis e sua titularidade pode ser cedida (LPI arts. 134 e seguintes).",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, p. 34 (a marca como sinal distintivo visualmente perceptível que identifica e distingue produtos) e p. 42 ('Pode ser licenciado e fornecer uma fonte alternativa de receita [...] Pode ser um ativo comercial de valor'), além de p. 22, que arrola a cessão entre os mecanismos de circulação dos bens de propriedade intelectual."
+  },
+  "AV2-PI-Q05": {
+    "explanation": "Conhecimento Tradicional Associado (I) e Cultivar (IV) são protegidos por regimes sui generis — respectivamente a Lei 13.123/2015 e a Lei 9.456/1997 —, fora da Propriedade Industrial. Desenho Industrial e Marca são ativos de Propriedade Industrial regidos pela LPI.",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, cap. 5 'Proteção sui generis', p. 72-81, que reúne topografia de circuito integrado, cultivares (5.2) e conhecimentos tradicionais (5.3), contra o cap. 3 'Propriedade industrial', p. 26-52, onde estão marca (3.3) e desenho industrial (3.4). A figura da p. 21 dá o mapa das categorias."
+  },
+  "AV2-PI-Q06": {
+    "explanation": "Vacina (I) e polímero sintético (III) são invenções patenteáveis. Uma nova espécie de gramínea (II) é obtenção vegetal, protegida por cultivar e vedada como patente pelo art. 18, III da LPI; um gene de Arabidopsis thaliana (IV) é material biológico encontrado na natureza, excluído pelo art. 10, IX.",
+    "reference": "Ref2-Patente_2021.pdf, seções 2.1.2 e 2.1.3, p. 16: excluem-se 'todo ou parte de seres vivos naturais e materiais biológicos encontrados na natureza, ou ainda que dela isolados, inclusive o genoma ou germoplasma' e 'o todo ou parte dos seres vivos'; o quadro IMPORTANTE ressalva os micro-organismos transgênicos."
+  },
+  "AV2-PI-Q07": {
+    "explanation": "Lei de Inovação 10.973/2004, art. 16: são competências do NIT desenvolver estudos de prospecção e inteligência competitiva (II) e promover e acompanhar o relacionamento da ICT com empresas, negociando e gerindo acordos de transferência de tecnologia (III). I é falsa porque a atribuição é desenvolver os estudos, não licitá-los a terceiros; IV é falsa pelo 'somente', que restringe indevidamente a avaliação. Sequência F, V, V, F.",
+    "reference": "Sem apoio em `references/`: as competências do NIT são do art. 16 da Lei 10.973/2004, texto legal fora do repositório — Ref3-A-caminho-da-inovacao_2010.pdf é de 2010 e só cita a Lei de Inovação nos Anexos A e B, p. 124-125, sem reproduzir o artigo. O papel do NIT no sistema aparece em Ref1-ENCTI-2024-2034.pdf, Quadro 2.1, p. 35."
+  },
+  "AV2-PI-Q08": {
+    "explanation": "Interface gráfica para apresentação de informações recai na exclusão do art. 10, VI da LPI (apresentação de informações) e no art. 10, VIII (programas de computador em si), por não produzir efeito técnico. As demais alternativas descrevem soluções com efeito técnico concreto — gestão de memória, controle de motor e processamento de imagens — e são patenteáveis como invenções implementadas em computador.",
+    "reference": "Ref2-Patente_2021.pdf, seção 2.1.2, p. 16: entre o que não é considerado invenção nem modelo de utilidade estão 'programa de computador em si' e 'apresentação de informações' — as duas exclusões em que recai a interface gráfica da alternativa correta."
+  },
+  "AV2-PI-Q09": {
+    "explanation": "I e II são verdadeiras (Madri trata do registro internacional de marcas; Berna, da proteção das obras e dos autores). III é falsa: o Protocolo de Madri não elimina o exame substantivo de cada escritório designado. IV é falsa: não existe 'patente internacional' — o PCT unifica o depósito, mas a concessão segue nacional. V é falsa: o Tratado de Budapeste existe justamente para EVITAR múltiplos depósitos de material biológico, reconhecendo um depósito único.",
+    "reference": "Apoio parcial: Ref3-A-caminho-da-inovacao_2010.pdf, p. 41 (o Protocolo de Madri como instrumento de registro de marcas no exterior) e p. 55 (a Convenção de Berna, de 1886, para obras literárias e artísticas); Ref2-Patente_2021.pdf, seção 3.1, p. 17-19 (o PCT unifica o depósito, mas a concessão segue nacional). O Tratado de Budapeste não é mencionado em nenhum PDF de `references/`."
+  },
+  "AV2-PI-Q10": {
+    "explanation": "I é verdadeira (LPI art. 98: obra de caráter puramente artístico não é desenho industrial); II é verdadeira (art. 100, II); IV é verdadeira (art. 100, I). III é FALSA porque descreve justamente o que É registrável — o desenho industrial é definido no art. 95 como forma plástica ornamental, tri ou bidimensional. Sequência V, V, F, V.",
+    "reference": "Apoio parcial: Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.4, p. 43-44, define o desenho industrial como forma plástica ornamental com resultado visual novo e original e fixa os requisitos de novidade, originalidade e aplicação industrial. As hipóteses específicas de indeferimento — caráter puramente artístico, forma comum ou vulgar — são dos arts. 98 e 100 da LPI 9.279/1996, fora de `references/`."
+  },
+  "AV2-PI-Q11": {
+    "explanation": "II é verdadeira (LPI art. 180: nome geográfico de uso comum não é IG) e III é verdadeira (produtor único legitimado pode requerer em nome próprio). I é falsa por trocar os conceitos: a definição apresentada é de Denominação de Origem (art. 178), não de Indicação de Procedência (art. 177). IV é falsa por inverter o art. 181, que PERMITE o nome geográfico como elemento de marca desde que não induza falsa procedência.",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.5, p. 47-48: a distinção entre indicação de procedência e denominação de origem, e a regra de que, 'quando não existir pluralidade de entidades, então o único produtor ou prestador de serviço estabelecido na região pode requerer diretamente a indicação geográfica' (assertiva III)."
+  },
+  "AV2-PI-Q12": {
+    "explanation": "A UPOV (1961) é o acordo multilateral que estabelece normas comuns para reconhecimento e proteção da propriedade de novas variedades vegetais obtidas por melhoristas. A alternativa d descreve a Convenção sobre Diversidade Biológica (repartição de benefícios) e a c descreve o Tratado de Budapeste (depósito de material biológico).",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, seção 5.2, p. 78-79: 'A organização que supervisiona mundialmente a proteção de novas variedades de plantas é a União Internacional para Proteção das Obtenções Vegetais (UPOV) [...] que, por meio de uma convenção, disciplina' a matéria, com a reciprocidade automática entre os países-membros."
+  },
+  "AV2-PI-Q13": {
+    "explanation": "I, II e III descrevem corretamente a IPC: melhora a busca de anterioridade, tem hierarquia Seções/Classes/Subclasses/Grupos e cobre toda a tecnologia com cerca de 70 mil grupos. IV é falsa: a IPC não classifica desenho industrial (isso cabe à Classificação de Locarno) nem programa de computador.",
+    "reference": "Sem apoio em `references/`: nenhum PDF do repositório descreve a estrutura da IPC. Ref2-Patente_2021.pdf é a cartilha de patentes do INPI e não menciona a classificação; Ref3-A-caminho-da-inovacao_2010.pdf só remete à CIP do INPI na bibliografia, p. 110, e trata da Classificação de Locarno, para desenhos industriais, na p. 44. Fonte real: o Guia da IPC (OMPI), fora do repositório."
+  },
+  "AV2-PI-Q14": {
+    "explanation": "Defeito do caderno publicado. A questão 14 impressa em `PROFNIT-AV2-PI.pdf` reproduz a questão 13, com a numeração das assertivas corrompida — a III foi absorvida pelo texto da II. O gabarito oficial, porém, dá 13=A e 14=B, e um gabarito não atribui duas letras à mesma questão: a prova real trazia outra questão neste número e o caderno publicado está defeituoso. A letra registrada aqui, a, é a que o gabarito dá à questão 13, que é o texto que de fato temos — as assertivas sobre busca de anterioridade, hierarquia Seções/Classes/Subclasses/Grupos e abrangência da IPC são verdadeiras, e a que atribui à IPC a classificação de desenho industrial e de programa de computador é falsa. A letra B, que o gabarito dá ao número 14, responde uma questão que não está no banco. Por isso esta questão nunca é sorteada.",
+    "reference": "Gabarito-Final_AV2-PI.pdf, linhas 13 e 14 da tabela QUESTÃO / RESPOSTA CORRETA (A e B), que é o que revela o defeito do caderno. Para o mérito, sem apoio em `references/`: nenhum PDF do repositório descreve a estrutura da IPC; a fonte real é o Guia da IPC (OMPI)."
+  },
+  "AV2-PI-Q15": {
+    "explanation": "II é verdadeira (a Convenção de Berna é administrada pela OMPI e conta com mais de cem signatários) e IV é verdadeira (o direito autoral protege a forma de expressão, não a ideia isolada). I é falsa por atribuir o direito autoral à CUP, quando a convenção aplicável é a de Berna. III é falsa por rotular como direito MORAL o que é direito PATRIMONIAL (utilizar, fruir e dispor — art. 28 da Lei 9.610/1998).",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, seção 4.1, p. 55 (a Convenção de Berna como marco da proteção das obras literárias e artísticas, e o direito autoral protegendo a forma de expressão, não a ideia isolada) e seção 4.2, p. 59, que situa 'utilizar, fruir e dispor' no direito patrimonial, e não no moral, como quer a assertiva III."
+  },
+  "AV2-PI-Q16": {
+    "explanation": "Defeito do caderno publicado. A questão 16 impressa em `PROFNIT-AV2-PI.pdf` é idêntica à 15. O gabarito oficial dá 15=C e 16=D, e um gabarito não atribui duas letras à mesma questão: a prova real trazia outra questão neste número e o caderno publicado está defeituoso. A letra registrada aqui, c, é a que o gabarito dá à questão 15, que é o texto que de fato temos — II e IV são verdadeiras, I confunde a Convenção de Berna com a CUP e III rotula como direito moral o direito patrimonial de utilizar, fruir e dispor da obra (art. 28 da Lei 9.610/1998). A letra D, que o gabarito dá ao número 16, responde uma questão que não está no banco. Por isso esta questão nunca é sorteada.",
+    "reference": "Gabarito-Final_AV2-PI.pdf, linhas 15 e 16 da tabela QUESTÃO / RESPOSTA CORRETA (C e D), que é o que revela o defeito do caderno. Para o mérito: Ref3-A-caminho-da-inovacao_2010.pdf, seção 4.1, p. 55 (Convenção de Berna; a forma de expressão, não a ideia) e seção 4.2, p. 59 (utilizar, fruir e dispor é direito patrimonial)."
+  }
+}

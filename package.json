@@ -1,0 +1,16 @@
+{
+  "name": "questionador-profnit",
+  "private": true,
+  "description": "Development tooling only. The app itself has no dependencies and no build step.",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "node --test \"tests/js/*.test.js\"",
+    "typecheck": "tsc --project jsconfig.json"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
+    "@types/node": "^24.3.0"
+  }
+}

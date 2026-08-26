@@ -1,0 +1,2194 @@
+/* =========================================================================
+   Questionador PROFNIT
+
+   Visual direction: academic editorial. A warm paper sheet floating on a
+   darker page, serif for anything that is read at length, sans for anything
+   that is operated, and color used semantically and never decoratively.
+
+   Three rules hold this file together:
+
+   1. Every color is a token, declared once with both themes side by side.
+   2. Every space and every type size comes from the scales below. A one-off
+      value is a bug, not a shortcut.
+   3. Every contrast pair was measured in both themes against the WCAG 2.2 AA
+      floor (4.5:1 for text, 3:1 for the boundary of an interactive control).
+      Changing a token means re-measuring it.
+   ========================================================================= */
+
+/* ---------- Theme switch -------------------------------------------------
+   `color-scheme` is what light-dark() reads, so the three declarations below
+   are the whole theme switch: no data-theme means "follow the system", and an
+   explicit choice pins it. This also makes the browser paint scrollbars and
+   form controls to match. Every token is then declared ONCE, with both values
+   side by side, instead of a dark palette duplicated across a media query and
+   an attribute selector that have to be hand-synchronized.
+   ------------------------------------------------------------------------ */
+
+:root {
+  color-scheme: light dark;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+:root {
+  /* ---- Surfaces: warm paper, not clinical white. ---- */
+  --surface: light-dark(oklch(97.5% 0.008 85), oklch(21% 0.012 60));
+  --surface-raised: light-dark(oklch(99.5% 0.004 85), oklch(25% 0.014 60));
+  --surface-sunken: light-dark(oklch(94% 0.012 85), oklch(16% 0.01 60));
+
+  --text: light-dark(oklch(23% 0.015 60), oklch(92% 0.01 85));
+  --text-soft: light-dark(oklch(45% 0.012 60), oklch(78% 0.012 85));
+  --text-faint: light-dark(oklch(51% 0.012 60), oklch(68% 0.012 85));
+
+  /* The label that sits on top of an ink-filled control. It has to invert
+     with the theme, because the ink fill itself is dark in light theme and
+     light in dark theme. */
+  --on-ink: light-dark(oklch(98.5% 0.004 85), oklch(17% 0.012 60));
+
+  /* --border is a decorative hairline. Anything that outlines an interactive
+     control uses --border-strong, which clears 3:1 on all three surfaces. */
+  --border: light-dark(oklch(84% 0.012 75), oklch(36% 0.014 60));
+  --border-strong: light-dark(oklch(60% 0.016 75), oklch(56% 0.016 60));
+
+  /* The focus ring owns its own hue so it can never be confused with a
+     provenance badge or with a grading color. */
+  --focus: light-dark(oklch(46% 0.19 262), oklch(80% 0.14 262));
+
+  /* ---- Grading. ---- */
+  --correct: light-dark(oklch(46% 0.14 152), oklch(80% 0.16 152));
+  --correct-surface: light-dark(oklch(94.5% 0.045 152), oklch(29% 0.055 152));
+  --incorrect: light-dark(oklch(49% 0.19 27), oklch(78% 0.15 27));
+  --incorrect-surface: light-dark(oklch(95% 0.038 27), oklch(29% 0.055 27));
+
+  /* ---- Provenance and caution. Every answer in the bank now comes from a
+     published key, so provenance is one calm slate mark rather than an axis;
+     --warn is what is left of the old amber, and it now means "this question
+     is out of the ordinary" — annulled, or repeated by a defective booklet. ---- */
+  --official: light-dark(oklch(41% 0.03 250), oklch(80% 0.026 250));
+  --official-surface: light-dark(oklch(94.5% 0.012 250), oklch(28% 0.018 250));
+  --warn: light-dark(oklch(47% 0.115 68), oklch(83% 0.125 75));
+  --warn-surface: light-dark(oklch(95.5% 0.045 78), oklch(30% 0.05 70));
+
+  /* Shadows carry their color through a token so the palette stays in one
+     place. In dark theme a shadow is nearly invisible, which is why depth is
+     carried by the surface ramp as well. */
+  --shadow-color: light-dark(oklch(30% 0.03 60 / 0.1), oklch(0% 0 0 / 0.45));
+  --shadow-sm: 0 1px 2px var(--shadow-color);
+  --shadow-md: 0 2px 4px var(--shadow-color), 0 8px 24px -12px var(--shadow-color);
+
+  /* ---- Type. System stacks only: no webfont, no external request. ---- */
+  --font-serif:
+    'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* One scale, roughly a minor third, with the two reading sizes fluid. */
+  --text-3xs: 0.6875rem; /* 11px - badges and eyebrow labels. */
+  --text-2xs: 0.75rem; /* 12px - counts, meta. */
+  --text-xs: 0.8125rem; /* 13px - footnotes, references. */
+  --text-sm: 0.875rem; /* 14px - secondary controls. */
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  --text-md: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
+  --text-lg: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+  --text-xl: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
+  --text-stem: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+  --text-display: clamp(1.5rem, 1.2rem + 1.6vw, 2.375rem);
+  --text-hero: clamp(2.75rem, 2rem + 3.4vw, 4.25rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.72;
+
+  /* ---- Space. One scale; --gutter is the only fluid member. ---- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  --fast: 120ms;
+  --normal: 200ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.3, 1);
+
+  --content-width: 54rem;
+
+  /* Two reading measures, and they are deliberately different units.
+
+     --measure-stem is a fixed column, because the stems are rendered
+     `pre-wrap`: `pdftotext -layout` baked the exam's own line breaks into the
+     data, 95% of those source lines are 83 characters or shorter, and 760px
+     is what 83 characters of the largest stem size occupy. A narrower column
+     would wrap a quarter of the lines and leave a two-word orphan under every
+     full one, which reads far worse than a long measure. Being fixed also
+     lines the stem, the options and the correction up on one right edge.
+
+     --measure-prose is in em, because prose the app writes itself carries no
+     line breaks and its measure really is a character count: 32em is about 70
+     characters at whatever size the text happens to be set in. */
+  --measure-stem: 47.5rem;
+  --measure-prose: 32em;
+
+  --target: 44px;
+}
+
+/* Safety net for browsers without light-dark(). A custom property holding an
+   unsupported function still parses, so it wins the cascade and only fails
+   when substituted — which would leave the page with no colors at all rather
+   than falling back. Re-declaring the light palette here is the only way to
+   avoid that. Such a browser gets light theme only, which is readable and
+   correct; the dark palette is deliberately not duplicated. */
+@supports not (color: light-dark(white, black)) {
+  :root {
+    --surface: oklch(97.5% 0.008 85);
+    --surface-raised: oklch(99.5% 0.004 85);
+    --surface-sunken: oklch(94% 0.012 85);
+
+    --text: oklch(23% 0.015 60);
+    --text-soft: oklch(45% 0.012 60);
+    --text-faint: oklch(51% 0.012 60);
+    --on-ink: oklch(98.5% 0.004 85);
+
+    --border: oklch(84% 0.012 75);
+    --border-strong: oklch(60% 0.016 75);
+    --focus: oklch(46% 0.19 262);
+
+    --correct: oklch(46% 0.14 152);
+    --correct-surface: oklch(94.5% 0.045 152);
+    --incorrect: oklch(49% 0.19 27);
+    --incorrect-surface: oklch(95% 0.038 27);
+
+    --official: oklch(41% 0.03 250);
+    --official-surface: oklch(94.5% 0.012 250);
+    --warn: oklch(47% 0.115 68);
+    --warn-surface: oklch(95.5% 0.045 78);
+
+    --shadow-color: oklch(30% 0.03 60 / 0.1);
+  }
+}
+
+/* ---------- Base ---------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--surface-sunken);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-text-size-adjust: 100%;
+}
+
+/* `hidden` loses to an explicit `display` at equal specificity, so every
+   component that sets one and is ever toggled has to restate it. Miss one and
+   the element simply stays on screen. This list is exactly the components the
+   app toggles; everything else relies on the browser default. */
+.scoreboard[hidden],
+.switch[hidden],
+.note[hidden],
+.resume[hidden],
+.button[hidden],
+.review-head[hidden] {
+  display: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+kbd {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  line-height: 1;
+  display: inline-block;
+  min-width: 1.5em;
+  text-align: center;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-xs);
+  padding: 0.2em 0.4em;
+}
+
+.wrapper {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-sm);
+  top: var(--space-sm);
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  transform: translateY(-200%);
+  background: var(--text);
+  color: var(--on-ink);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+/* ---------- Header ------------------------------------------------------- */
+
+/* Not sticky by default. The header holds the identity, the scoreboard and
+   the theme control, and below about 48rem those wrap onto three rows: 191px
+   at 320px wide, a quarter of the viewport, pinned over the question the
+   student is trying to read. It sticks only where it stays one row tall. */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 48rem) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  /* Only a sticky header can hide what focus just scrolled to. */
+  .panel__title,
+  .subheading,
+  .option,
+  .button {
+    scroll-margin-top: 5rem;
+  }
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-xs);
+}
+
+.site-header__identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  min-width: 0;
+}
+
+.site-header__mark {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  color: var(--official);
+}
+
+.site-header__mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.site-header__names {
+  min-width: 0;
+}
+
+.site-header__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: var(--leading-tight);
+}
+
+.site-header__subtitle {
+  margin: 0;
+  font-size: var(--text-3xs);
+  color: var(--text-faint);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.site-header__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* The scoreboard is an editorial marker, not a card. */
+.scoreboard {
+  display: flex;
+  gap: var(--space-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.scoreboard__item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3xs);
+}
+
+.scoreboard__value {
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.scoreboard__label {
+  font-size: var(--text-3xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.scoreboard__item--correct .scoreboard__value {
+  color: var(--correct);
+}
+.scoreboard__item--incorrect .scoreboard__value {
+  color: var(--incorrect);
+}
+
+.progress {
+  height: 3px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.progress__bar {
+  height: 100%;
+  width: 0;
+  background: var(--text);
+  transition: width var(--normal) var(--ease-out);
+}
+
+/* ---------- Panels ------------------------------------------------------- */
+
+main {
+  display: block;
+}
+
+/* The sheet: a warm page floating on the darker board. Below 44rem it goes
+   full-bleed, because a rounded card with side margins wastes width exactly
+   where there is none. */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-block: var(--space-md) var(--space-2xl);
+  padding-block: var(--space-lg) var(--space-xl);
+}
+
+@media (max-width: 44rem) {
+  .panel {
+    border-inline: 0;
+    border-radius: 0;
+    margin-block: 0 var(--space-lg);
+    box-shadow: none;
+  }
+}
+
+.panel__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-2xs);
+}
+
+.panel__icon {
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-top: 0.15em;
+}
+
+.panel__icon--error {
+  color: var(--incorrect);
+}
+
+.panel__title {
+  margin: 0 0 var(--space-2xs);
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: var(--leading-tight);
+  overflow-wrap: anywhere;
+}
+
+.panel__head .panel__title {
+  margin-bottom: 0;
+}
+.panel__title:focus-visible {
+  outline-offset: 4px;
+}
+
+.panel__support {
+  margin: 0 0 var(--space-md);
+  max-width: var(--measure-prose);
+  color: var(--text-soft);
+}
+
+.subheading {
+  margin: var(--space-xl) 0 var(--space-sm);
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Notes and notices -------------------------------------------- */
+
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2xs);
+  margin: var(--space-sm) 0 0;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid;
+  border-left-width: 3px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  max-width: var(--measure-prose);
+  overflow-wrap: anywhere;
+}
+
+.note__icon {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.15em;
+}
+.note__text {
+  min-width: 0;
+}
+
+.note--error {
+  border-color: var(--incorrect);
+  background: var(--incorrect-surface);
+  color: var(--text);
+}
+
+.note--error .note__icon {
+  color: var(--incorrect);
+}
+
+.note--info {
+  border-color: var(--official);
+  background: var(--official-surface);
+  color: var(--text);
+}
+
+.note--info .note__icon {
+  color: var(--official);
+}
+
+.note--warn {
+  border-color: var(--warn);
+  background: var(--warn-surface);
+  color: var(--text);
+}
+
+.note--warn .note__icon {
+  color: var(--warn);
+}
+
+/* The storage warning is real information but must not shout: it is a
+   condition of the browser, not a mistake the student made. */
+.note--quiet {
+  border-color: var(--border);
+  border-left-color: var(--border-strong);
+  background: var(--surface-sunken);
+  color: var(--text-soft);
+}
+
+.note--quiet .note__icon {
+  color: var(--text-faint);
+}
+
+.hint {
+  margin-top: var(--space-md);
+  font-size: var(--text-sm);
+  color: var(--text-faint);
+  max-width: var(--measure-prose);
+}
+
+.hint code {
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 0.1em 0.4em;
+}
+
+/* ---------- Buttons ------------------------------------------------------ */
+
+/* Three levels and nothing else. Primary is an ink fill and there is at most
+   one on screen; secondary is outlined; quiet is a text button for the action
+   that undoes or steps back. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  min-height: var(--target);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: var(--space-2xs) var(--space-md);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    background var(--fast),
+    border-color var(--fast),
+    color var(--fast),
+    box-shadow var(--fast),
+    transform var(--fast) var(--ease-out);
+}
+
+.button__icon {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.button--primary {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--on-ink);
+  box-shadow: var(--shadow-sm);
+}
+
+.button--primary:hover:not(:disabled) {
+  background: var(--text-soft);
+  border-color: var(--text-soft);
+}
+.button--primary:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.button--secondary {
+  background: var(--surface-raised);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.button--secondary:hover:not(:disabled) {
+  border-color: var(--text-faint);
+  background: var(--surface);
+}
+.button--secondary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.button--quiet {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-soft);
+}
+
+.button--quiet:hover:not(:disabled) {
+  color: var(--text);
+  background: var(--surface-sunken);
+}
+.button--quiet:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.button--lg {
+  font-size: var(--text-base);
+  min-height: 3.25rem;
+  padding-inline: var(--space-lg);
+}
+
+.button:focus-visible {
+  outline-offset: 3px;
+}
+
+/* A disabled control still has to be readable. Dropping the whole element to
+   45% opacity, which is what this used to do, takes its label below the
+   contrast floor; changing the fill to a flat inert grey does not. */
+.button:disabled {
+  cursor: not-allowed;
+  background: var(--surface-sunken);
+  border-color: var(--border);
+  color: var(--text-faint);
+  box-shadow: none;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-xs);
+  align-items: center;
+  margin-top: var(--space-md);
+}
+
+.actions__hint {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+}
+
+.actions__hint:empty {
+  display: none;
+}
+
+/* ---------- Resume banner ------------------------------------------------ */
+
+.resume {
+  display: grid;
+  gap: var(--space-2xs);
+  border: 1px solid var(--border-strong);
+  border-left-width: 4px;
+  border-left-color: var(--official);
+  border-radius: var(--radius-md);
+  background: var(--official-surface);
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.resume__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.resume__title svg {
+  flex: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--official);
+}
+
+.resume__detail {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-soft);
+}
+
+.resume .actions {
+  margin-top: var(--space-2xs);
+}
+
+/* ---------- The start card: the primary path ------------------------------
+   The first thing on the filters panel is not a filter. It is the number of
+   questions that will be drawn, a sentence describing the current selection,
+   and the button that starts the session. Everything else is folded away
+   behind two disclosures below it.
+   ------------------------------------------------------------------------ */
+
+.start-card {
+  display: grid;
+  gap: var(--space-xs);
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.start-card__figure {
+  grid-row: 1;
+  margin: 0;
+  padding-right: var(--space-md);
+  border-right: 1px solid var(--border);
+  text-align: center;
+  min-width: 0;
+}
+
+.start-card__count {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: var(--text-display);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.start-card__unit {
+  display: block;
+  font-size: var(--text-3xs);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.start-card__summary {
+  grid-row: 1;
+  margin: 0;
+  min-width: 0;
+  font-size: var(--text-sm);
+  color: var(--text-soft);
+  overflow-wrap: anywhere;
+}
+
+.start-card__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-xs);
+  align-items: center;
+}
+
+.start-card__why {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+}
+
+/* An empty reason must contribute nothing, including to the accessible
+   description of the button that points at it. */
+.start-card__why:empty {
+  display: none;
+}
+.start-card .note {
+  grid-column: 1 / -1;
+  margin-top: 0;
+  max-width: none;
+}
+
+.start-card--empty {
+  border-style: dashed;
+}
+.start-card--empty .start-card__count {
+  color: var(--text-faint);
+}
+
+@media (max-width: 34rem) {
+  .start-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .start-card__figure {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2xs);
+    text-align: left;
+    padding-right: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: var(--space-2xs);
+  }
+  .start-card__figure > * {
+    display: inline;
+  }
+  .start-card__summary {
+    grid-row: auto;
+  }
+}
+
+/* ---------- Disclosures --------------------------------------------------- */
+
+.disclosure {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  margin-bottom: var(--space-2xs);
+}
+
+.disclosure[open] {
+  background: var(--surface-raised);
+  border-color: var(--border-strong);
+}
+
+.disclosure__summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  min-height: var(--target);
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--text-sm);
+}
+
+.disclosure__summary::-webkit-details-marker {
+  display: none;
+}
+.disclosure__summary:hover {
+  background: var(--surface-sunken);
+}
+.disclosure__summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+.disclosure__label {
+  font-weight: 600;
+  flex: none;
+}
+
+.disclosure__state {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--text-faint);
+  font-size: var(--text-xs);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.disclosure__chevron {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--text-faint);
+  transition: transform var(--fast) var(--ease-out);
+}
+
+.disclosure[open] > .disclosure__summary .disclosure__chevron {
+  transform: rotate(180deg);
+}
+
+.disclosure__body {
+  display: grid;
+  gap: var(--space-md);
+  padding: var(--space-2xs) var(--space-sm) var(--space-md);
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-2xs);
+}
+
+/* ---------- Filter fields ------------------------------------------------ */
+
+.filters {
+  display: block;
+}
+
+.field {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.field__title {
+  padding: 0;
+  margin-bottom: var(--space-2xs);
+  font-size: var(--text-3xs);
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+
+/* Seven exams in a tidy grid instead of seven three-line blocks. The full
+   title is on the tooltip and in the accessible name; the slug and the date
+   are what a PROFNIT student actually scans for. */
+.chips--exams {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(10.5rem, 100%), 1fr));
+  gap: var(--space-2xs);
+}
+
+/* ---------- Selectable controls ------------------------------------------
+   Every chip, segment and switch is a <label> holding a visually hidden input
+   followed by the element that carries the visual treatment, so the selected
+   state is `input:checked + .face` rather than `:has(input:checked)` on the
+   label. Both express the same thing; the sibling combinator predates `:has()`
+   by twenty years, so the one state a filter absolutely must render correctly
+   does not rest on the newest selector in the file. The cost is one span per
+   control.
+   ------------------------------------------------------------------------ */
+
+.control__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  margin: 0;
+}
+
+.chip {
+  position: relative;
+  display: inline-flex;
+  max-width: 100%;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.chip__face {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  min-height: var(--target);
+  max-width: 100%;
+  min-width: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  background: var(--surface-raised);
+  color: var(--text);
+  padding: var(--space-3xs) var(--space-xs);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  overflow-wrap: anywhere;
+  transition:
+    border-color var(--fast),
+    background var(--fast),
+    color var(--fast);
+}
+
+.chip:hover .chip__face {
+  border-color: var(--text-faint);
+  background: var(--surface-sunken);
+}
+.control__input:focus-visible + .chip__face {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Selected is an ink fill AND a check mark: the fill alone would be a color
+   difference, and the previous border-only treatment measured 1.20:1. */
+.control__input:checked + .chip__face {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--on-ink);
+}
+
+.chip:hover .control__input:checked + .chip__face {
+  background: var(--text-soft);
+  border-color: var(--text-soft);
+}
+
+.chip__check {
+  flex: none;
+  width: 0.95rem;
+  height: 0.95rem;
+  display: none;
+}
+
+.control__input:checked + .chip__face .chip__check {
+  display: block;
+}
+
+.chip__label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.chip__count {
+  margin-left: auto;
+  padding-left: var(--space-3xs);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+}
+
+.control__input:checked + .chip__face .chip__count,
+.control__input:checked + .chip__face .chip__note {
+  color: var(--on-ink);
+}
+
+/* The exam chip is a two-line block: slug and count on the first line, the
+   date underneath. */
+.chip--exam {
+  display: block;
+}
+
+.chip--exam .chip__face {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 0 var(--space-3xs);
+  border-radius: var(--radius-md);
+  padding: var(--space-2xs) var(--space-xs);
+  text-align: left;
+}
+
+.chip--exam .chip__check {
+  grid-row: 1 / span 2;
+}
+
+.chip--exam .chip__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.chip--exam .chip__count {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.chip__note {
+  grid-column: 2 / -1;
+  grid-row: 2;
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Segmented control -------------------------------------------- */
+
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.segment {
+  position: relative;
+  display: inline-flex;
+  flex: 1 1 auto;
+  min-width: 3.25rem;
+  cursor: pointer;
+}
+
+.segment__face {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3xs);
+  width: 100%;
+  min-height: var(--target);
+  padding: var(--space-3xs) var(--space-xs);
+  border-radius: var(--radius-xs);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-soft);
+  transition:
+    background var(--fast),
+    color var(--fast);
+}
+
+.segment:hover .segment__face {
+  background: var(--surface);
+  color: var(--text);
+}
+.control__input:focus-visible + .segment__face {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.control__input:checked + .segment__face {
+  background: var(--text);
+  color: var(--on-ink);
+  box-shadow: var(--shadow-sm);
+}
+
+.segment__check {
+  flex: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  display: none;
+}
+.control__input:checked + .segment__face .segment__check {
+  display: block;
+}
+
+/* The icon-only segment, for the theme control. The active one is an ink fill:
+   a luminance change of about 15:1 against its neighbours, so the state is
+   legible with no color perception at all, and the native radio carries the
+   same fact to assistive tech as "checked". */
+.segment--icon {
+  min-width: var(--target);
+  flex: 0 0 auto;
+}
+.segment--icon .segment__face {
+  padding-inline: var(--space-2xs);
+}
+.segment__icon {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+.segmented--theme {
+  flex: none;
+}
+
+/* ---------- Switches ------------------------------------------------------ */
+
+.switches {
+  display: grid;
+  gap: var(--space-2xs);
+}
+
+.switch {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: var(--target);
+  padding: var(--space-3xs) var(--space-2xs);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--text-sm);
+}
+
+.switch:hover {
+  background: var(--surface-sunken);
+}
+.control__input:focus-visible + .switch__track {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.switch__track {
+  position: relative;
+  flex: none;
+  width: 2.6rem;
+  height: 1.5rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  background: var(--surface-sunken);
+  transition:
+    background var(--fast),
+    border-color var(--fast);
+}
+
+.switch__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  display: grid;
+  place-items: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--text-faint);
+  color: var(--surface-raised);
+  transition:
+    transform var(--fast) var(--ease-out),
+    background var(--fast);
+}
+
+.switch__thumb svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  opacity: 0;
+}
+
+.control__input:checked + .switch__track {
+  background: var(--correct-surface);
+  border-color: var(--correct);
+}
+
+.control__input:checked + .switch__track .switch__thumb {
+  transform: translateX(1.1rem);
+  background: var(--correct);
+  color: var(--on-ink);
+}
+
+.control__input:checked + .switch__track .switch__thumb svg {
+  opacity: 1;
+}
+
+.switch__label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.switch__note {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+}
+
+/* ---------- Secondary bank loader ---------------------------------------- */
+
+.loader {
+  margin-top: var(--space-lg);
+}
+.loader .disclosure__label {
+  color: var(--text-faint);
+  font-weight: 400;
+}
+
+.loader__note {
+  max-width: var(--measure-prose);
+  margin: 0 0 var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--text-soft);
+}
+
+.dropzone {
+  display: block;
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: var(--space-md) var(--space-sm);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color var(--fast),
+    background var(--fast);
+}
+
+.dropzone:hover {
+  border-color: var(--text-faint);
+  background: var(--surface-sunken);
+}
+.dropzone:focus-within {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+.dropzone--active {
+  border-color: var(--focus);
+  background: var(--surface-sunken);
+}
+
+.dropzone__title {
+  display: block;
+  font-weight: 600;
+}
+
+.dropzone__detail {
+  display: block;
+  margin-top: var(--space-3xs);
+  font-size: var(--text-sm);
+  color: var(--text-faint);
+}
+
+/* ---------- Question ----------------------------------------------------- */
+
+.question-head {
+  margin-bottom: var(--space-md);
+}
+
+.question-head__exam {
+  margin: 0 0 var(--space-3xs);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  overflow-wrap: anywhere;
+}
+
+.question__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  align-items: center;
+  margin: var(--space-2xs) 0 0;
+  font-size: var(--text-2xs);
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+}
+
+.question__identity {
+  font-variant-numeric: tabular-nums;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  border: 1px solid;
+  border-radius: var(--radius-pill);
+  padding: 0.2rem 0.6rem;
+  font-size: var(--text-3xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.badge__icon {
+  flex: none;
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+/* One badge, on every question, saying where the answer came from. It is
+   deliberately quiet: it is a constant, and a constant that shouts is noise. */
+.badge--official {
+  background: var(--official-surface);
+  border-color: var(--official);
+  color: var(--official);
+}
+
+/* The side rule carries the provenance signal through the whole reading. */
+.question__stem {
+  margin: 0 0 var(--space-md);
+  max-width: var(--measure-stem);
+  padding-left: var(--space-sm);
+  border-left: 3px solid var(--official);
+  font-family: var(--font-serif);
+  font-size: var(--text-stem);
+  line-height: var(--leading-relaxed);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* The rule is neutral on every ordinary question and only changes for one
+   that is on screen despite being outside the draw. */
+.question--excluded .question__stem {
+  border-left-color: var(--warn);
+}
+
+.options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2xs);
+  max-width: var(--measure-stem);
+}
+
+.options > li {
+  min-width: 0;
+}
+
+.option {
+  display: grid;
+  /* `auto minmax(0, 1fr)`, not `auto 1fr`: a grid item's automatic minimum
+     size is min-content, and overflow-wrap alone does not shrink it, which is
+     what pushed the page past the viewport at 320px. */
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-xs);
+  align-items: start;
+  width: 100%;
+  min-width: 0;
+  text-align: left;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-left-width: 4px;
+  border-left-color: var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+  transition:
+    border-color var(--fast),
+    background var(--fast),
+    box-shadow var(--fast),
+    transform var(--fast) var(--ease-out);
+}
+
+.option:hover:not([aria-disabled='true']) {
+  border-color: var(--text-faint);
+  border-left-color: var(--text);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transform: translateX(2px);
+}
+
+.option:hover:not([aria-disabled='true']) .option__letter {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--on-ink);
+}
+
+.option:active:not([aria-disabled='true']) {
+  transform: translateX(2px) translateY(1px);
+}
+.option[aria-disabled='true'] {
+  cursor: default;
+}
+
+.option__letter {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: none;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: lowercase;
+  transition:
+    background var(--fast),
+    border-color var(--fast),
+    color var(--fast);
+}
+
+.option__body {
+  min-width: 0;
+}
+
+.option__text {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* The mark and the tag are the non-color half of the grading signal; the
+   accessible name states the outcome in words on top of both. */
+.option__mark {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-right: var(--space-3xs);
+  vertical-align: -0.15rem;
+}
+
+.option__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  margin-top: var(--space-3xs);
+  font-size: var(--text-3xs);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.option__tag svg {
+  flex: none;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.option--correct {
+  border-color: var(--correct);
+  border-left-color: var(--correct);
+  background: var(--correct-surface);
+}
+
+.option--correct .option__letter {
+  border-color: var(--correct);
+  background: var(--correct);
+  color: var(--on-ink);
+}
+.option--correct .option__mark,
+.option--correct .option__tag {
+  color: var(--correct);
+}
+
+.option--incorrect {
+  border-color: var(--incorrect);
+  border-left-color: var(--incorrect);
+  background: var(--incorrect-surface);
+}
+
+.option--incorrect .option__letter {
+  border-color: var(--incorrect);
+  background: var(--incorrect);
+  color: var(--on-ink);
+}
+.option--incorrect .option__mark,
+.option--incorrect .option__tag {
+  color: var(--incorrect);
+}
+
+/* The options nobody picked. Opacity used to do this, which quietly dropped
+   the text below the contrast floor; explicit tokens do not. */
+.option--muted {
+  background: var(--surface-sunken);
+  border-color: var(--border);
+  border-left-color: var(--border);
+  color: var(--text-soft);
+}
+
+.option--muted .option__letter {
+  color: var(--text-faint);
+  border-color: var(--border-strong);
+}
+
+/* ---------- Feedback ----------------------------------------------------- */
+
+.feedback {
+  margin-top: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  padding: var(--space-sm) var(--space-md);
+  max-width: var(--measure-stem);
+  animation: reveal var(--normal) var(--ease-out);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.feedback__verdict {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  margin: 0 0 var(--space-2xs);
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.feedback__verdict svg {
+  flex: none;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+.feedback__verdict--correct {
+  color: var(--correct);
+}
+.feedback__verdict--incorrect {
+  color: var(--incorrect);
+}
+
+.feedback__eyebrow {
+  margin: var(--space-xs) 0 var(--space-3xs);
+  font-size: var(--text-3xs);
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.feedback__eyebrow:empty {
+  display: none;
+}
+
+.feedback__note {
+  margin: 0 0 var(--space-2xs);
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--text-soft);
+  overflow-wrap: anywhere;
+}
+
+.feedback__note--explanation {
+  color: var(--text);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.feedback__aside {
+  margin: 0 0 var(--space-2xs);
+  max-width: var(--measure-prose);
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+  overflow-wrap: anywhere;
+}
+
+/* An answer with no explanation leaves these paragraphs empty; an empty
+   paragraph would still take its margin. */
+.feedback__note:empty,
+.feedback__aside:empty,
+.feedback__source:empty {
+  display: none;
+}
+
+.feedback__note strong {
+  color: var(--text);
+}
+
+.feedback__source {
+  margin: var(--space-2xs) 0 0;
+  padding-top: var(--space-2xs);
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+  overflow-wrap: anywhere;
+}
+
+.keyboard-hint {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs);
+  align-items: center;
+  margin-top: var(--space-md);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--border);
+  font-size: var(--text-xs);
+}
+
+/* ---------- Results ------------------------------------------------------ */
+
+.report {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.report__score {
+  padding-right: var(--space-md);
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+
+.report__value {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-hero);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.report__label {
+  margin: 0;
+  font-size: var(--text-3xs);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.report__label:empty {
+  display: none;
+}
+
+.report__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin: 0;
+  min-width: 0;
+}
+
+.stat {
+  min-width: 0;
+}
+
+.stat__label {
+  margin: 0;
+  font-size: var(--text-3xs);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.stat__value {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat__value svg {
+  width: 1rem;
+  height: 1rem;
+}
+.stat--correct .stat__value {
+  color: var(--correct);
+}
+.stat--incorrect .stat__value {
+  color: var(--incorrect);
+}
+
+.report__detail {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-soft);
+}
+
+@media (max-width: 34rem) {
+  .report {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-sm);
+  }
+  .report__score {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2xs);
+    text-align: left;
+    padding-right: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: var(--space-2xs);
+  }
+}
+
+.topic-stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2xs);
+}
+
+.topic-stat {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-3xs) var(--space-sm);
+  align-items: baseline;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  padding: var(--space-2xs) var(--space-xs);
+}
+
+.topic-stat__name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.topic-stat__value {
+  font-size: var(--text-sm);
+  color: var(--text-soft);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* The bar is a second reading of the same number, never the only one: the
+   percentage is printed beside it. */
+.topic-stat__meter {
+  grid-column: 1 / -1;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.topic-stat__fill {
+  display: block;
+  height: 100%;
+  background: var(--correct);
+  transition: width var(--normal) var(--ease-out);
+}
+
+.topic-stat__history {
+  grid-column: 1 / -1;
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.review-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-xl);
+}
+
+.review-head .subheading {
+  margin: 0;
+}
+.review-head .switch {
+  margin: 0;
+}
+
+.review {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.review__item {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--incorrect);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.review__item--correct {
+  border-left-color: var(--correct);
+}
+
+.review__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  align-items: center;
+  margin: 0 0 var(--space-2xs);
+}
+
+.review__meta {
+  font-size: var(--text-2xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  overflow-wrap: anywhere;
+}
+
+.review__outcome {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  border: 1px solid;
+  border-radius: var(--radius-pill);
+  padding: 0.15rem 0.55rem;
+  font-size: var(--text-3xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.review__outcome svg {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+.review__outcome--correct {
+  color: var(--correct);
+  border-color: var(--correct);
+  background: var(--correct-surface);
+}
+.review__outcome--incorrect {
+  color: var(--incorrect);
+  border-color: var(--incorrect);
+  background: var(--incorrect-surface);
+}
+
+.review__stem {
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  max-width: var(--measure-stem);
+  margin: 0 0 var(--space-2xs);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.review__line {
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+  margin: var(--space-3xs) 0;
+  overflow-wrap: anywhere;
+}
+
+.review__line--explanation {
+  color: var(--text);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  margin-top: var(--space-2xs);
+  padding-top: var(--space-2xs);
+  border-top: 1px solid var(--border);
+}
+
+.review__line--aside {
+  color: var(--text-faint);
+  font-size: var(--text-xs);
+}
+
+.review__line--source {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.review__options {
+  list-style: none;
+  margin: var(--space-2xs) 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3xs);
+  max-width: var(--measure-stem);
+}
+
+.review__option {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-2xs);
+  align-items: start;
+  min-width: 0;
+  font-size: var(--text-sm);
+  color: var(--text-soft);
+  overflow-wrap: anywhere;
+}
+
+.review__option svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-top: 0.25em;
+}
+.review__marker {
+  color: var(--text-faint);
+}
+.review__option--chosen {
+  color: var(--incorrect);
+  font-weight: 600;
+}
+.review__option--answer {
+  color: var(--correct);
+  font-weight: 600;
+}
+
+/* ---------- Empty states -------------------------------------------------- */
+
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2xs);
+  text-align: center;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  padding: var(--space-lg) var(--space-md);
+  color: var(--text-soft);
+}
+
+.empty__icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--text-faint);
+}
+.empty__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--text);
+}
+.empty__detail {
+  margin: 0;
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+/* ---------- Footer ------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding-block: var(--space-sm) var(--space-lg);
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+}
+
+.site-footer p {
+  margin: var(--space-3xs) 0;
+  max-width: var(--measure-prose);
+}
+
+/* ---------- Accessibility ------------------------------------------------ */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Motion is short and purposeful, and all of it is optional. Every transform
+   this stylesheet applies is named again here, because zeroing the duration
+   of a transform that has no transition still leaves the transform. No
+   transform is ever applied from JavaScript, so this block is the whole
+   surface. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .option:hover:not([aria-disabled='true']),
+  .option:active:not([aria-disabled='true']),
+  .button--primary:active:not(:disabled),
+  .button--secondary:active:not(:disabled),
+  .button--quiet:active:not(:disabled) {
+    transform: none;
+  }
+
+  .disclosure[open] > .disclosure__summary .disclosure__chevron {
+    transform: none;
+  }
+
+  /* The switch thumb has to keep moving: its position is the state. Only the
+     easing is removed. */
+  .control__input:checked + .switch__track .switch__thumb {
+    transform: translateX(1.1rem);
+  }
+}
+
+/* The keyboard hint is dead weight where there is no keyboard. */
+@media (pointer: coarse) {
+  #keyboard-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 30rem) {
+  .site-header__inner {
+    padding-block: var(--space-2xs);
+  }
+  .site-header__controls {
+    gap: var(--space-2xs);
+  }
+  .scoreboard {
+    gap: var(--space-xs);
+  }
+  .option {
+    padding: var(--space-2xs) var(--space-xs);
+    gap: var(--space-2xs);
+  }
+  .review__item {
+    padding: var(--space-xs) var(--space-sm);
+  }
+  .panel {
+    padding-block: var(--space-md) var(--space-lg);
+  }
+}
+
+/* ---------- Print ---------------------------------------------------------
+   One thing only: let a student keep the report and the review on paper.
+   Everything that is a control, a filter or a question in progress is
+   dropped, and the palette is flattened to ink on white so a color printer
+   and a laser printer produce the same page.
+
+   The `:root` block below is the ONE place in this file where a color is
+   written literally instead of coming from a token. It is an exception on
+   purpose: `light-dark()` follows the screen theme, and a page printed from
+   dark theme would come out as ink on black. Everything after it still reads
+   the tokens, so the exception stays one block wide.
+   ------------------------------------------------------------------------ */
+
+@media print {
+  :root {
+    --surface: #fff;
+    --surface-raised: #fff;
+    --surface-sunken: #fff;
+    --text: #000;
+    --text-soft: #222;
+    --text-faint: #444;
+    --on-ink: #fff;
+    --border: #999;
+    --border-strong: #555;
+    --correct: #000;
+    --correct-surface: #fff;
+    --incorrect: #000;
+    --incorrect-surface: #fff;
+    --official: #000;
+    --official-surface: #fff;
+    --warn: #000;
+    --warn-surface: #fff;
+    --shadow-color: transparent;
+    --content-width: 100%;
+  }
+
+  body {
+    background: var(--surface);
+    font-size: 11pt;
+  }
+
+  .site-header__controls,
+  .progress,
+  .skip-link,
+  #panel-error,
+  #panel-filters,
+  #panel-question,
+  .review-head .switch,
+  #panel-results .actions {
+    display: none !important;
+  }
+
+  .site-header {
+    position: static;
+    box-shadow: none;
+    border-bottom: 1pt solid var(--text);
+  }
+
+  .panel {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .report,
+  .topic-stat,
+  .review__item {
+    border: 1pt solid var(--border);
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .review__item {
+    border-left-width: 3pt;
+    border-left-color: var(--text);
+  }
+  .review__option--answer::after {
+    content: ' (resposta correta)';
+  }
+  .review__option--chosen::after {
+    content: ' (você marcou)';
+  }
+
+  .subheading {
+    break-after: avoid;
+  }
+  a[href]::after {
+    content: '';
+  }
+}

@@ -1,10 +1,26 @@
+# Nothing under data/ or docs/ belongs here. The question bank, the markdown
+# review surface, the extraction anchor and the published site are committed on
+# purpose: their diffs are how a change to the bank gets reviewed.
+
+# Python
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
 
-# Texto intermediário da extração de PDF
-build/
-*.txt
-!requirements.txt
+# Tooling caches
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
 
+# Node: only ever present because CI installs typescript to type-check the app.
+# The app itself has no dependencies and no build step.
+node_modules/
+
+# Editors and operating systems
 .DS_Store
+Thumbs.db
+*.swp

@@ -1,0 +1,82 @@
+{
+  "ENA18-Q01": {
+    "explanation": "I, II e III reproduzem o tratamento das interações no Manual de Oslo: dependência da variedade e estrutura das interações, o espectro que vai de fontes passivas a parcerias cooperativas, e a conexão da empresa com os demais atores do sistema de inovação. IV é falsa pela palavra 'suficiente' — o Manual afirma que identificar as interações fornece evidências sobre a complexidade, mas NÃO basta para alimentar um modelo dinâmico com circuitos de retroalimentação.",
+    "reference": "Sem apoio em `references/`: as assertivas são do Manual de Oslo 3ª edição (OCDE/Eurostat/FINEP, 2005), fora do repositório — Ref7-Manual_de_Oslo_2018.pdf é a 4ª edição, de outubro de 2018, posterior a esta prova, e não contém 'retroalimentação'. Tema correlato na 4ª edição: Ref7-Manual_de_Oslo_2018.pdf, cap. 6, seção 6.3, p. 145-157 (fontes de conhecimento de entrada)."
+  },
+  "ENA18-Q02": {
+    "explanation": "I, III e IV são verdadeiras: o protótipo construído para novos melhoramentos é P&D; o desenvolvimento de software é P&D quando envolve avanço científico/tecnológico ou resolução sistemática de incerteza; e IV reproduz a definição canônica de P&D. II é falsa por inversão: a aceitação de um protótipo marca frequentemente o FIM da fase de desenvolvimento experimental, não o início de uma nova.",
+    "reference": "Ref6-OCDE-Manual-Frascati-em-portugues-Brasil.pdf, cap. 2: quadro 'Protótipos', §114-115, p. 54-55 (incluir em P&D quando o objetivo principal é a realização de novas melhorias; concluídos os testes, chega-se ao limite da P&D) e seção 2.4.1, §135, p. 60 (software é P&D quando exige progresso científico/tecnológico e dissipa incerteza de forma sistemática)."
+  },
+  "ENA18-Q03": {
+    "explanation": "As quatro assertivas correspondem ao tratamento dos obstáculos à inovação no Manual de Oslo: a existência de fatores que impedem, refreiam ou reduzem os resultados esperados (I); a ausência de infraestrutura como barreira, sobretudo fora dos grandes centros (II); a tipologia econômica, empresarial e legal dos fatores (III); e o fato de as barreiras poderem ser específicas de um tipo de inovação ou transversais a todos (IV).",
+    "reference": "Sem apoio em `references/` para a tipologia das assertivas, que é do Manual de Oslo 3ª edição (2005): 'obstruir' não ocorre em nenhum PDF do repositório. O tema aparece em Ref7-Manual_de_Oslo_2018.pdf (4ª edição), seção 7.7.2 e Tabela 7.8, p. 178-180 (fatores externos como barreiras ou obstáculos à inovação)."
+  },
+  "ENA18-Q04": {
+    "explanation": "I, II e IV são verdadeiras: a apropriabilidade afeta o incentivo a inovar, a impossibilidade de proteger contra imitação reduz esse incentivo, e os dados de patentes funcionam como resultado intermediário e sinal de capacitação inovadora. III é falsa por inverter o argumento do Manual: quando uma indústria opera bem sem métodos formais de proteção, promovê-los PODE refrear o fluxo de conhecimentos e elevar preços.",
+    "reference": "Sem apoio em `references/`: a palavra 'apropriabilidade' não ocorre em nenhum PDF do repositório; as assertivas são do Manual de Oslo 3ª edição (2005). Tratamento equivalente na 4ª edição: Ref7-Manual_de_Oslo_2018.pdf, seção 5.3.5 e Tabela 5.1, p. 125-126 (gestão e apropriação da propriedade intelectual)."
+  },
+  "ENA18-Q05": {
+    "explanation": "O Manual de Oslo inclui expressamente os softwares incorporados entre as características que caracterizam a inovação de produto. As demais alternativas são exclusões explícitas do Manual: mudanças ou melhoramentos menores (a), mudanças sazonais regulares como as de linhas de vestuário (b) e atualizações de rotina (d) não configuram inovação.",
+    "reference": "Sem apoio em `references/` para os 'softwares incorporados' como característica da inovação de produto, que é redação da 3ª edição do Manual de Oslo (2005). As exclusões usadas como distratores estão em Ref7-Manual_de_Oslo_2018.pdf (4ª edição), seção 3.4 'Mudanças que não são inovações', p. 86-88, que cita as mudanças sazonais na moda das roupas."
+  },
+  "ENA18-Q06": {
+    "explanation": "A questão pede a EXCEÇÃO entre exemplos de inovação de PRODUTO. Sistemas de fecho em vestuário (a), telefones IP (b) e alimentos com novas características funcionais (d) são exemplos de produto no Manual. A digitalização de processos de impressão é exemplo de inovação de PROCESSO — mudança no método de produção, não no bem ofertado.",
+    "reference": "Sem apoio em `references/`: os exemplos do enunciado (sistemas de fecho em vestuário, telefones IP) são do Manual de Oslo 3ª edição (2005) e não ocorrem em Ref7-Manual_de_Oslo_2018.pdf, que é a 4ª edição. Fonte real: Manual de Oslo 3ª ed., cap. 3, fora do repositório."
+  },
+  "ENA18-Q07": {
+    "explanation": "A questão pede a EXCEÇÃO entre exemplos de inovação de MARKETING. Nova concepção de frascos (a), novo símbolo de marca para posicionamento (b) e ofertas reservadas a portadores de cartão (c) são exemplos de marketing — concepção, promoção e posicionamento. As novas formas de garantia, incluindo a garantia estendida e garantias em pacote, são classificadas pelo Manual como inovação de PRODUTO em serviços.",
+    "reference": "Sem apoio em `references/`: a 4ª edição do Manual de Oslo eliminou a categoria 'inovação de marketing' — Ref7-Manual_de_Oslo_2018.pdf, §3.44, p. 81, registra a mudança em relação à 3ª edição. Fonte real: Manual de Oslo 3ª ed. (2005), cap. 3, fora do repositório."
+  },
+  "ENA18-Q08": {
+    "explanation": "II e IV são inovações organizacionais: introdução pela primeira vez de sistemas de gerenciamento da produção ou do fornecimento, e introdução pela primeira vez de padrões de controle de qualidade para fornecedores e subcontratados (relações externas). I é falsa porque método JÁ EM USO na empresa não constitui inovação; III é falsa porque o Manual exclui expressamente fusões e aquisições do conceito de inovação organizacional.",
+    "reference": "Sem apoio em `references/`: a 4ª edição do Manual de Oslo eliminou a categoria 'inovação organizacional' — Ref7-Manual_de_Oslo_2018.pdf, glossário, p. 283 ('tipo de inovação usado na edição anterior deste Manual') e §3.44-3.46, p. 81-82. Fonte real: Manual de Oslo 3ª ed. (2005), cap. 3, fora do repositório."
+  },
+  "ENA18-Q09": {
+    "explanation": "As quatro assertivas descrevem corretamente a circulação econômica da marca: a cessão exige anotação junto ao INPI (I); modificações ou adaptações podem demandar novo pedido e novas taxas (II); no licenciamento o titular conserva a propriedade e autoriza o uso por terceiros (III); e o licenciante mantém o controle de qualidade sobre os produtos identificados pela marca licenciada (IV), condição para preservar a função distintiva.",
+    "reference": "Ref4-Criando-uma-marca.pdf, perguntas 42 a 47, p. 72-77 (licenciamento de marca, o controle que o licenciante retém sobre o licenciado, e a venda ou cessão de marcas entre empresas) e pergunta 27, p. 49 (modificações da marca registrada podem exigir novo pedido)."
+  },
+  "ENA18-Q10": {
+    "explanation": "I, II e III são verdadeiras: a licença de marca é elemento essencial do contrato de franquia, o franqueador autoriza o franqueado a usar seus métodos comerciais, e a franquia se dá mediante compensação financeira ou royalties. IV é falsa ao negar ao franqueador o direito de supervisão e fiscalização — controle que é justamente o que preserva o padrão da rede franqueada.",
+    "reference": "Ref4-Criando-uma-marca.pdf, pergunta 46 'O que os acordos de franquia têm a ver com as marcas?', p. 75-76, com o exemplo NANDO'S: o franqueador licencia marca, modelo de negócio e know-how mediante taxa, e mantém os padrões da rede."
+  },
+  "ENA18-Q11": {
+    "explanation": "A alternativa a é a INCORRETA: o uso dos símbolos ®, TM e SM é facultativo, servindo de aviso ao público, e não condição obrigatória para denotar registro — a proteção decorre do registro em si. As demais estão corretas: ® indica marca já registrada (b), TM identifica marca de produto ou serviço (c) e SM é reservado a marcas de serviço (d).",
+    "reference": "Ref4-Criando-uma-marca.pdf, quadro 'TM ou ®?' ao lado da pergunta 35, p. 62: o uso dos símbolos não é obrigatório e habitualmente não confere proteção legal adicional; ® só depois do registro, TM para marcas não registradas e SM para serviços."
+  },
+  "ENA18-Q12": {
+    "explanation": "A alternativa b é a INCORRETA por trocar as definições: atestar a conformidade de produtos ou serviços a padrões e especificações técnicas é função da marca de CERTIFICAÇÃO (LPI art. 123, II), não da marca COLETIVA (art. 123, III), que identifica produtos provenientes de membros de uma determinada entidade. As demais estão corretas: marca notoriamente conhecida dispensa registro prévio no Brasil (art. 126), alto renome protege em todas as classes (art. 125) e uma empresa pode usar marcas distintas por linha de produto.",
+    "reference": "Ref4-Criando-uma-marca.pdf, perguntas 5 a 8, p. 15-20 (marcas de serviço, notoriamente conhecidas, coletivas e de certificação): a de certificação atesta conformidade a normas e especificações técnicas, a coletiva identifica origem em membros de uma entidade. Complementa Ref3-A-caminho-da-inovacao_2010.pdf, p. 36-37."
+  },
+  "ENA18-Q13": {
+    "explanation": "As quatro assertivas são recomendações consagradas para a escolha de uma marca: busca de anterioridade na base do INPI (I); facilidade de leitura, escrita, soletração e memorização, com adequação aos meios publicitários (II); ausência de conotações indesejáveis no idioma próprio e nos dos mercados-alvo (III); e disponibilidade do nome de domínio correspondente (IV).",
+    "reference": "Ref4-Criando-uma-marca.pdf, lista de verificação após a pergunta 11, p. 27 (marca fácil de ler, escrever, soletrar e lembrar, adaptada aos meios de publicidade; sem conotação indesejada nas línguas dos mercados de exportação; nome de domínio disponível) e pergunta 19, p. 43-44 (busca de anterioridade)."
+  },
+  "ENA18-Q14": {
+    "explanation": "As causas clássicas de recusa são termos genéricos (que designam o próprio produto), termos descritivos (que apenas indicam qualidade ou característica), marcas falaciosas (que induzem o consumidor a erro) e marcas contrárias à ordem pública ou à moral. As demais alternativas substituem um desses itens por 'termos administrativos' ou 'termos econômicos', categorias que não figuram entre os motivos de recusa.",
+    "reference": "Ref4-Criando-uma-marca.pdf, pergunta 17 'Quais as principais razões para o indeferimento de uma solicitação?', p. 38-41: motivos absolutos (termos genéricos, ausência de caráter distintivo, sinais descritivos, marcas enganosas, marcas contrárias à ordem pública ou à moral) e motivos relativos."
+  },
+  "ENA18-Q15": {
+    "explanation": "As quatro assertivas são corretas: o desenho industrial protege a natureza estética do produto acabado, independentemente de aspectos técnicos ou funcionais (I); abrange um espectro amplo de produtos, de mobiliário e instrumentos médicos a estampas têxteis e vestuário esportivo (II); alcança embalagens, recipientes e o feitio dos produtos (III); e admite configurações bi ou tridimensionais, ou combinação de elementos (IV).",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.4, p. 43 (o desenho industrial refere-se unicamente à natureza estética ou ornamental do produto acabado, distinta dos aspectos técnicos ou funcionais; características tri ou bidimensionais; embalagens, recipientes e apresentação dos produtos) e quadro resumo, p. 46."
+  },
+  "ENA18-Q16": {
+    "explanation": "I, III e IV são verdadeiras: a cumulação com o direito de autor é possível quando há relevância estética; o registro confere exploração exclusiva, licenciamento e o direito de impedir cópias; e a concessão exclui temporariamente terceiros de fabricar, ofertar, importar, exportar ou vender o produto. II é considerada falsa por dizer marca BIDIMENSIONAL — quando um desenho industrial passa a funcionar como marca no mercado, a proteção cabível é a de marca TRIDIMENSIONAL. Ressalva: desenhos bidimensionais, como estampas, podem de fato ser registrados como marca figurativa.",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.4, quadro resumo 'Desenho industrial', p. 46 (direito assegurado ao titular: uso exclusivo e proibição de terceiros de produzir, oferecer, importar, exportar ou vender) e p. 43-44 (desenho industrial e desenho artístico). A cumulação com marca tridimensional está em Ref3-A-caminho-da-inovacao_2010.pdf, p. 41-42."
+  },
+  "ENA18-Q17": {
+    "explanation": "A exigência INCORRETA é a da alternativa c: o desenho industrial deve servir de tipo de fabricação INDUSTRIAL, não artesanal — a possibilidade de reprodução industrial é justamente um dos requisitos legais (LPI art. 95). Novidade (a), originalidade (b) e a expressão em configuração externa ou conjunto ornamental de linhas e cores (d) são exigências corretas.",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.4, p. 44: 'para ser registrável, o desenho precisa atender aos requisitos de: Novidade; Originalidade; Utilização ou aplicação industrial' — é a aplicação industrial, e não a artesanal, que a lei exige. Quadro resumo na p. 46."
+  },
+  "ENA18-Q18": {
+    "explanation": "As quatro hipóteses são causas de exclusão do registro: ausência de novidade, originalidade ou de aptidão para servir de tipo de fabricação industrial (I); incorporação de símbolos ou emblemas oficiais protegidos (II); contrariedade à moral, à ordem pública, aos bons costumes ou ofensa à honra, à imagem e à liberdade de crença (III, LPI art. 100, I); e obras de caráter puramente artístico (IV, LPI art. 98).",
+    "reference": "Apoio parcial: Ref3-A-caminho-da-inovacao_2010.pdf, seção 3.4, p. 44, traz os requisitos cuja ausência gera a exclusão da assertiva I (novidade, originalidade, aplicação industrial). As demais hipóteses — símbolos oficiais, ofensa à moral e à ordem pública, caráter puramente artístico — são dos arts. 98 e 100 da LPI 9.279/1996, texto legal fora de `references/`."
+  },
+  "ENA18-Q19": {
+    "explanation": "A alternativa c é a INCORRETA porque nega a própria função do instituto: o período de graça existe justamente para que a divulgação feita pelo criador nos 180 dias anteriores ao depósito — inclusive por comercialização — NÃO destrua a novidade. As demais estão corretas: o prazo brasileiro é de 180 dias (a, LPI art. 96 §3º), a exibição em feiras e a publicação em catálogos estão abrangidas (b), e durante o período o criador ainda não detém direitos exclusivos (d).",
+    "reference": "Sem apoio em `references/`: a expressão 'período de graça' não ocorre em nenhum PDF do repositório, e o único prazo de 180 dias em Ref3-A-caminho-da-inovacao_2010.pdf, p. 45, é o do sigilo do pedido, que é outra figura. Fonte real: LPI 9.279/1996, art. 96, §3º."
+  },
+  "ENA18-Q20": {
+    "explanation": "I e III são verdadeiras: o contrato de licença pode delimitar territórios, prazo e tipos de produto, e o licenciamento é fonte suplementar de receita e forma comum de explorar o registro. II é falsa porque licenciar o uso no exterior pressupõe proteção obtida ou ao menos requerida naquele país — sem título, não há direito exclusivo a licenciar. IV é falsa por vedar o que é prática corrente: contratos de desenho industrial frequentemente integram acordos de licença mais amplos sobre o produto.",
+    "reference": "Ref3-A-caminho-da-inovacao_2010.pdf, seção 6.15, p. 97: os tipos de licença, a exigência de que o bem esteja formalmente protegido no país de interesse para poder ser licenciado (o que torna a assertiva II falsa) e a delimitação expressa de territórios nos contratos (assertiva I). Ver também p. 44 e p. 46."
+  }
+}

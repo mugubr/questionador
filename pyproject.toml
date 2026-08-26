@@ -1,0 +1,118 @@
+[project]
+name = "questionador-profnit"
+version = "1.0.0"
+description = "Pipeline that turns the PROFNIT exam PDFs into a validated question bank."
+readme = "README.md"
+requires-python = ">=3.14"
+authors = [{ name = "Miguel Muniz e Rubens Braz" }]
+# The pipeline and the web app both run on the standard library alone. Anything
+# added here would have to be installed before `python -m tools` could run.
+dependencies = []
+
+[dependency-groups]
+# Development tooling only. `uv sync` installs this group by default; a bare
+# environment can also use `uv pip install --group dev`.
+#
+# The upper bounds are deliberate. `ruff format` is allowed to change its
+# output between minor releases, so a floating requirement means CI and a
+# developer machine can disagree about a file that neither of them touched.
+dev = [
+  "ruff>=0.16.4,<0.17",
+  "mypy>=2.3,<3",
+  "pytest>=9.1,<10",
+  # Only tests/test_schema_agreement.py needs this: it feeds the same mutations
+  # to data/schema.json and to tools/validate.py and asserts they reject the
+  # same things. The pipeline itself never imports it -- the runtime stays
+  # dependency-free -- and the test skips cleanly when it is absent.
+  "jsonschema>=4.25,<5",
+]
+
+[tool.uv]
+# There is nothing to build or distribute: `tools` is imported from the
+# repository root, so uv manages the environment without a build backend.
+package = false
+
+# ---------------------------------------------------------------------------
+# ruff — linter and formatter
+# ---------------------------------------------------------------------------
+
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+src = ["tools", "tests"]
+
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle errors
+  "W",   # pycodestyle warnings
+  "F",   # pyflakes
+  "I",   # isort
+  "N",   # pep8-naming: identifiers are English and conventionally named
+  "UP",  # pyupgrade: X | None over Optional[X], list[str] over List[str]
+  "B",   # flake8-bugbear
+  "C4",  # flake8-comprehensions
+  "SIM", # flake8-simplify
+  "PTH", # flake8-use-pathlib
+  "D",   # pydocstyle: the mandatory Google-style docstrings
+  "ANN", # flake8-annotations: the mandatory type hints
+  "RUF", # ruff-specific rules
+]
+# ANN401 stays on: `Any` in a signature needs an explicit
+# `# noqa: ANN401` carrying the reason no narrower type works.
+ignore = [
+  # The exam material is Portuguese, so accented characters, the en dash and
+  # typographic quotes appear in string literals, docstrings and comments on
+  # purpose. These three rules only flag characters that *look* ambiguous.
+  "RUF001",
+  "RUF002",
+  "RUF003",
+]
+
+[tool.ruff.lint.pydocstyle]
+# Every module, class, function and method carries a Google-style docstring,
+# private helpers and test functions included. D1xx is never ignored: an
+# undocumented definition is a lint error, not a style preference.
+convention = "google"
+
+[tool.ruff.lint.isort]
+known-first-party = ["tools", "tests"]
+
+[tool.ruff.format]
+docstring-code-format = true
+line-ending = "lf"
+
+# ---------------------------------------------------------------------------
+# mypy — strict, over the pipeline and its tests
+# ---------------------------------------------------------------------------
+
+[tool.mypy]
+python_version = "3.14"
+files = ["tools", "tests"]
+strict = true
+# Strict mode already forbids untyped definitions and implicit `Any`. These add
+# the checks that catch a dead branch or a silenced error with no code.
+warn_unreachable = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
+pretty = true
+show_error_codes = true
+
+# ---------------------------------------------------------------------------
+# pytest
+# ---------------------------------------------------------------------------
+
+[tool.pytest.ini_options]
+minversion = "8.4"
+testpaths = ["tests"]
+# `tools` is imported from the repository root, which is not installed.
+pythonpath = ["."]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+python_classes = ["Test*"]
+addopts = [
+  "-ra",
+  "--strict-markers",
+  "--strict-config",
+  "--import-mode=importlib",
+]
+xfail_strict = true
+filterwarnings = ["error"]

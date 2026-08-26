@@ -1,0 +1,52 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Only after CI is green on the default branch. `workflow_run` fires on
+  # completion, so the conclusion is checked before anything is published.
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  # Never cancel a running deployment: a half-published site is worse than a
+  # queued one.
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Publish docs/
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Check out the commit CI passed on
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.ref }}
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload docs/
+        uses: actions/upload-pages-artifact@v5
+        with:
+          # Only this directory. The repository root would carry exams/ and
+          # references/ with it — 50 MB of third-party PDFs that must never be
+          # published.
+          path: docs
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,50 @@
+{
+  "_comment": "Hand-written parse fixes, applied over data/raw-questions.json by `python -m tools build`. Every entry exists because `pdftotext -layout` does not resolve the source layout deterministically, or because a question flagged for review was inspected and confirmed. Allowed keys: _reason, stem, options.",
+  "ENA25-Q09": {
+    "_reason": "Two-column matching table rendered side by side by pdftotext -layout, which pairs each first-column entry with the wrong second-column line. Rewritten as two stacked lists; no wording changed.",
+    "stem": "Associe a primeira com a segunda coluna:\n\nPrimeira coluna:\n1- Marca Tridimensional\n2- Marca Figurativa\n3- Marca Nominativa\n4- Marca Mista\n\nSegunda coluna:\n( ) Combinação de letras com logotipo\n( ) Formato do produto\n( ) Logotipo\n( ) Palavra\n\nA ordem CORRETA da segunda coluna é:",
+    "options": {
+      "a": "1, 4, 2 e 3.",
+      "b": "4, 3, 2 e 1.",
+      "c": "3, 1, 4 e 2.",
+      "d": "4, 1, 2 e 3."
+    },
+    "_verbatim": ["options"]
+  },
+  "ENA25-Q14": {
+    "_reason": "Two-column correlation table rendered side by side by pdftotext -layout. Rewritten as linear text.",
+    "stem": "Correlacione a coluna 1 com a coluna 2 (ou seja, letras com números).\n\nColuna 1:\nA. Inovação de produto\nB. Inovação de processo\nC. Inovação de marketing\nD. Inovação organizacional\n\nColuna 2:\n1. É a implementação de um novo método organizacional nas práticas de negócios da empresa, na organização do seu local de trabalho ou em suas relações externas.\n2. É a implementação de um novo método de marketing com mudanças significativas na concepção do produto ou em sua embalagem, no posicionamento do produto, em sua promoção ou na fixação de preços.\n3. É a implementação de um método de produção ou distribuição novo ou significativamente melhorado. Incluem-se mudanças significativas em técnicas, equipamentos e/ou softwares.\n4. É a introdução de um bem ou serviço novo ou significativamente melhorado no que concerne a suas características ou usos previstos; incluem-se melhoramentos significativos em especificações técnicas, componentes e materiais, softwares incorporados, facilidade de uso ou outras características funcionais.",
+    "options": {
+      "a": "A4, B3, C2 e D1",
+      "b": "A1, B3, C2 e D4",
+      "c": "A4, B1, C2 e D3",
+      "d": "A3, B1, C2 e D4"
+    },
+    "_verbatim": ["options"]
+  },
+  "AV2-MET-Q08": {
+    "_reason": "Two a)-d) sets in the same block: the first is the list of definitions to match (part of the stem), the second is the real options. The definitions were relabelled (a)-(d) inside the stem so they cannot collide with the options.",
+    "stem": "Os termos, abaixo, referem-se às definições utilizadas na NBR 6023:\n\n1. Monografia.\n2. Publicação seriada.\n3. Editor.\n4. Editora.\n\nDefinições:\n(a) Documento constituído de uma só parte ou de um número pré-estabelecido de partes que se complementam.\n(b) Casa publicadora, pessoa(s) ou instituição responsável pela produção editorial.\n(c) Responsável intelectual ou científico que atua na reunião de artigos para uma revista, jornal etc.\n(d) Publicação em qualquer tipo de suporte, editada em unidades físicas sucessivas, com designações numéricas e/ou cronológicas, e destinada a ser continuada indefinidamente.\n\nOrdenações propostas:\nI. 1d, 2a, 3b, 4c\nII. 1d, 2a, 3c, 4b\nIII. 1a, 2d, 3c, 4b\nIV. 1a, 2b, 3c, 4d\n\nA ordenação correta dos conceitos com os termos adequados é:",
+    "options": {
+      "a": "Apenas II está correta.",
+      "b": "Apenas I, II e III estão corretas.",
+      "c": "Apenas III está correta.",
+      "d": "Apenas IV e V estão corretas."
+    }
+  },
+  "AV2-POL-Q10": {
+    "_reason": "Flagged by the column-layout check because the stem announces 'Relacione as colunas I e II'. Reviewed: pdftotext already renders both columns stacked, so the extracted text is correct and is pinned here verbatim.",
+    "stem": "Em uma perspectiva histórica, foram diferentes ciclos de mudança tecnológica\nocorridos no Brasil. Relacione as colunas I e II e, após, selecione e alterativa que\ncontém a sequência correta do preenchimento das lacunas da coluna II, de cima\npara baixo.\n\nColuna I:\n1. Período: 1789-1849\n2. Período: 1849-1896\n3. Período: 1896-1940\n4. Período: 1940-1990\n5. Período após 1990 e atual\n\nColuna II.\n( ) Petróleo e Indústria Automotiva\n( ) Ferrovia, Aço e Carvão\n( ) Indústria Têxtil\n( ) Eletricidade e Química\n\n( ) TICs, Nanotecnologia, Biotecnologia, Engenharia Genética e Novas Fontes\nEnergéticas.\n\nAssinale a alternativa correta:",
+    "_verbatim": ["stem"]
+  },
+  "ENA18-Q40": {
+    "_reason": "The closing line 'BOA PROVA!' of the last page sits after the last option and is reported as trailing text. The four options are pinned here.",
+    "options": {
+      "a": "Ser nova, significando que não tenha sido comercialmente explorada no exterior nos últimos 10 anos e no Brasil nos últimos 5 anos.",
+      "b": "Ser distintiva, significando que seja claramente distinguível de qualquer outra variedade cuja existência seja reconhecida.",
+      "c": "Ser homogênea, significando que as plantas de uma variedade devem ser todas iguais ou muito semelhantes, salvo as variações previsíveis tendo em conta as particularidades de sua multiplicação ou reprodução.",
+      "d": "Ser estável, significando que a variedade deve permanecer sem modificações nas suas características relevantes após sucessivas reproduções ou multiplicações."
+    },
+    "_verbatim": ["options"]
+  }
+}
