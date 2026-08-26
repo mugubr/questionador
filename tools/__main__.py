@@ -40,7 +40,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     if not arguments or arguments[0] in {"-h", "--help"}:
         print(USAGE)
         print("\nStages:")
-        print("  extract   exams/*.pdf -> data/raw-questions.json")
+        print("  extract   exams/*.pdf -> data/raw-questions.json + answer-keys.json")
         print("  build     the data layers -> data/ and docs/data/")
         print("  validate  check the published bank against the contract")
         return 0 if arguments else 2

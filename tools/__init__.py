@@ -3,10 +3,12 @@
 Three stages, each one narrow and auditable:
 
 ``extract``
-    ``exams/*.pdf`` into ``data/raw-questions.json``.
+    ``exams/*.pdf`` into ``data/raw-questions.json`` and
+    ``data/answer-keys.json``. The only stage that runs ``pdftotext``.
 ``build``
-    the anchor plus the hand-written layers into ``data/question-bank.json``,
-    ``data/question-bank.md`` and ``docs/data/question-bank.js``.
+    those two artifacts plus the hand-written layers into
+    ``data/question-bank.json``, ``data/question-bank.md`` and
+    ``docs/data/question-bank.js``. Reads committed bytes and nothing else.
 ``validate``
     the published bank against the contract in ``data/schema.json``.
 

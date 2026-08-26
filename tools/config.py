@@ -22,6 +22,7 @@ ANSWERS_DIR = DATA_DIR / "answers"
 DOCS_DATA_DIR = REPO_ROOT / "docs" / "data"
 
 RAW_QUESTIONS_PATH = DATA_DIR / "raw-questions.json"
+ANSWER_KEYS_PATH = DATA_DIR / "answer-keys.json"
 OVERRIDES_PATH = DATA_DIR / "overrides.json"
 TOPICS_PATH = DATA_DIR / "topics.json"
 QUESTION_BANK_PATH = DATA_DIR / "question-bank.json"

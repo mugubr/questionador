@@ -363,6 +363,34 @@ class ExamEntry:
         }
 
 
+def parse_toolchain(
+    payload: Any,  # noqa: ANN401 - one decoded JSON value, validated here.
+) -> dict[str, str]:
+    """Validate the toolchain stamp an artifact of `extract` carries.
+
+    Both artifacts of `extract` record the build of ``pdftotext`` that produced
+    them, and `build` copies that stamp into the bank instead of asking the
+    binary again. The stamp is therefore load-bearing provenance, and a
+    malformed one has to be an error rather than an empty object.
+
+    Args:
+        payload: The decoded ``toolchain`` member of an artifact.
+
+    Returns:
+        The version of every tool that produced the artifact.
+
+    Raises:
+        ValueError: If the stamp is absent, empty, or not a map of non-empty
+            strings. The caller adds the file name.
+    """
+    if not isinstance(payload, dict) or not payload:
+        raise ValueError("'toolchain' must be a non-empty object")
+    for tool, version in payload.items():
+        if not isinstance(version, str) or not version.strip():
+            raise ValueError(f"toolchain {tool} must be a non-empty string")
+    return {str(tool): str(version) for tool, version in payload.items()}
+
+
 @dataclass(frozen=True)
 class QuestionBank:
     """The complete bank, exactly as it is published.

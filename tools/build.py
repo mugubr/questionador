@@ -4,7 +4,8 @@ Layers, applied in this order, each one narrow and auditable:
 
 1. ``data/raw-questions.json`` — the deterministic output of `extract`.
 2. ``data/overrides.json`` — hand-written parse fixes, each with its reason.
-3. The official answer key of every paper, matched by question number.
+3. ``data/answer-keys.json`` — the official key of every paper, also from
+   `extract`, matched by question number.
 4. ``data/answers/*.json`` — the explanation and the reference of each answer.
 5. ``data/topics.json`` — the taxonomy and one topic per question.
 
@@ -14,8 +15,17 @@ Three artifacts come out: ``data/question-bank.json`` (canonical),
 rendered in full and checked before any of them is written, so a failure never
 leaves two of them disagreeing.
 
+**This stage is hermetic: every byte it reads is a committed file.** It runs no
+subprocess, opens no PDF, and reads no clock. The `pdftotext` version it stamps
+into ``toolchain`` is copied from the extraction artifacts, which is where the
+tool actually ran, and the date it stamps into ``generatedAt`` is carried from
+the bank already committed unless ``--generated-at`` says otherwise. Both are
+what make a rebuild from unchanged inputs produce unchanged bytes — on a
+machine with no poppler at all, and tomorrow as well as today.
+
 Usage:
     python -m tools build
+    python -m tools build --generated-at 2026-08-26
 """
 
 from __future__ import annotations
@@ -25,15 +35,12 @@ import json
 import re
 import sys
 from collections.abc import Mapping, Sequence
-from datetime import date
 from pathlib import Path
 from typing import Any
 
 from tools import config, configure_stdio
-from tools.answer_keys import AnswerKeyError
-from tools.answer_keys import load_all as load_answer_keys
+from tools.answer_keys import AnswerKeyError, AnswerKeyTable, read_answer_keys
 from tools.config import EXAM_PAPERS, EXAM_PAPERS_BY_ID
-from tools.extract import ToolchainError, pdftotext_version
 from tools.models import (
     Answer,
     AnswerSource,
@@ -46,9 +53,17 @@ from tools.models import (
     QuestionBank,
     RawQuestion,
     Topic,
+    parse_toolchain,
 )
 
 QUESTION_ID_PATTERN = re.compile(r"^(?P<exam>[A-Z0-9-]+)-Q(?P<number>\d{2})$")
+
+# What `generatedAt` has to look like, checked here rather than only in
+# `validate`, so a typed `--generated-at` cannot reach a committed artifact.
+GENERATED_AT_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+# The only keys data/raw-questions.json may carry at its top level.
+RAW_QUESTIONS_FILE_KEYS = frozenset({"toolchain", "questions"})
 
 # The only keys an override entry may carry. Anything else is a typo that would
 # otherwise be applied as nothing at all.
@@ -211,33 +226,163 @@ def load_topics(path: Path) -> tuple[list[Topic], dict[str, str]]:
     return topics, {key: str(value) for key, value in assignments.items()}
 
 
-def load_raw_questions(path: Path) -> list[RawQuestion]:
-    """Read the committed extraction anchor.
+def load_raw_questions(path: Path) -> tuple[list[RawQuestion], dict[str, str]]:
+    """Read the committed extraction anchor and the toolchain that wrote it.
 
     Args:
         path: ``data/raw-questions.json``.
 
     Returns:
-        Every extracted question, in the order it was written.
+        Every extracted question, in the order it was written, and the version
+        of every external tool that produced it.
 
     Raises:
-        BuildError: If the file is not a list of well-formed questions.
+        BuildError: If the file is missing, or does not hold a toolchain stamp
+            and a list of well-formed questions. `build` never regenerates it:
+            producing it means reading seven PDFs with poppler, and quietly
+            doing that here is what made the build unreproducible.
     """
-    payload = read_json(path)
-    if not isinstance(payload, list):
+    if not path.exists():
         raise BuildError(
-            f"{path}: expected a JSON array, found {type(payload).__name__}"
+            f"{path} is missing. Run 'python -m tools extract' to produce it."
+        )
+    payload = read_json_object(path)
+    unknown = sorted(set(payload) - RAW_QUESTIONS_FILE_KEYS)
+    if unknown:
+        raise BuildError(f"{path}: unknown top-level key(s): {', '.join(unknown)}")
+
+    try:
+        toolchain = parse_toolchain(payload.get("toolchain"))
+    except ValueError as error:
+        raise BuildError(f"{path}: {error}") from error
+
+    declared = payload.get("questions")
+    if not isinstance(declared, list):
+        raise BuildError(
+            f"{path}: 'questions' must be a JSON array, found {type(declared).__name__}"
         )
 
     questions: list[RawQuestion] = []
-    for index, item in enumerate(payload):
+    for index, item in enumerate(declared):
         if not isinstance(item, dict):
             raise BuildError(f"{path}: entry {index} is not an object")
         try:
             questions.append(RawQuestion.from_json(item))
         except ValueError as error:
             raise BuildError(f"{path}: {error}") from error
-    return questions
+    return questions, toolchain
+
+
+def load_official_keys(path: Path) -> tuple[dict[str, AnswerKeyTable], dict[str, str]]:
+    """Read the committed answer keys and the toolchain that wrote them.
+
+    Args:
+        path: ``data/answer-keys.json``.
+
+    Returns:
+        The parsed key of each paper, by exam id, and the version of every
+        external tool that produced them.
+
+    Raises:
+        BuildError: If the artifact is missing or malformed. `build` never
+            regenerates it: the keys come out of seven PDFs, reading them needs
+            poppler, and quietly running the tool here is exactly what made the
+            build unreproducible.
+    """
+    try:
+        return read_answer_keys(path)
+    except AnswerKeyError as error:
+        raise BuildError(str(error)) from error
+
+
+def reconcile_toolchain(
+    raw_toolchain: Mapping[str, str], keys_toolchain: Mapping[str, str]
+) -> dict[str, str]:
+    """Confirm both extraction artifacts name the same tool versions.
+
+    `extract` writes the two in one run with one binary, so a disagreement
+    means one of them was produced by a different run and the pair no longer
+    describes a single extraction. Stamping either version into the bank would
+    then claim a provenance that is not true of half the input.
+
+    Args:
+        raw_toolchain: The stamp of ``data/raw-questions.json``.
+        keys_toolchain: The stamp of ``data/answer-keys.json``.
+
+    Returns:
+        The agreed versions, ready to be published as the bank's ``toolchain``.
+
+    Raises:
+        BuildError: If the two stamps differ in any tool or version.
+    """
+    if dict(raw_toolchain) != dict(keys_toolchain):
+        raise BuildError(
+            "the extraction artifacts disagree about the toolchain that "
+            f"produced them: {config.RAW_QUESTIONS_PATH.name} records "
+            f"{dict(raw_toolchain)} and {config.ANSWER_KEYS_PATH.name} records "
+            f"{dict(keys_toolchain)}. One of them is stale — run "
+            "'python -m tools extract' to rebuild both from the PDFs."
+        )
+    return dict(raw_toolchain)
+
+
+def check_extraction_is_current(
+    raw_questions: Sequence[RawQuestion],
+    official_keys: Mapping[str, Mapping[int, OptionLetter | None]],
+) -> None:
+    """Confirm the committed extraction still describes the registry.
+
+    Adding a paper to `tools.config` without re-running `extract` leaves the
+    artifacts covering the old set. The build would then fail somewhere far
+    from the cause — a question with no key, a paper with no questions — so the
+    mismatch is named here instead, with the command that fixes it.
+
+    Args:
+        raw_questions: The questions read from the extraction anchor.
+        official_keys: The keys read from the answer-key artifact.
+
+    Raises:
+        BuildError: If either artifact covers a different set of papers, or a
+            key does not cover its paper's questions.
+    """
+    errors = ErrorLog()
+    extracted = {question.exam for question in raw_questions}
+    registered = {paper.id for paper in EXAM_PAPERS}
+    keyed = {paper.id for paper in EXAM_PAPERS if paper.has_official_answer_key}
+
+    for exam_id in sorted(registered - extracted):
+        errors.add(config.RAW_QUESTIONS_PATH.name, f"holds no question of {exam_id}")
+    for exam_id in sorted(extracted - registered):
+        errors.add(
+            config.RAW_QUESTIONS_PATH.name,
+            f"holds questions of {exam_id}, which tools/config.py does not register",
+        )
+    for exam_id in sorted(keyed - set(official_keys)):
+        errors.add(config.ANSWER_KEYS_PATH.name, f"holds no key for {exam_id}")
+    for exam_id in sorted(set(official_keys) - keyed):
+        errors.add(
+            config.ANSWER_KEYS_PATH.name,
+            f"holds a key for {exam_id}, which tools/config.py does not register "
+            "as having one",
+        )
+
+    for paper in EXAM_PAPERS:
+        key = official_keys.get(paper.id)
+        if key is None:
+            continue
+        expected = set(range(1, paper.expected_questions + 1))
+        if set(key) != expected:
+            errors.add(
+                config.ANSWER_KEYS_PATH.name,
+                f"the key of {paper.id} covers {sorted(key)}, "
+                f"not questions 1..{paper.expected_questions}",
+            )
+
+    if errors:
+        raise BuildError(
+            "the committed extraction is stale — run 'python -m tools extract'\n"
+            + "\n".join(f"  - {item}" for item in errors)
+        )
 
 
 def load_explanations(directory: Path) -> dict[str, dict[str, Any]]:
@@ -453,21 +598,24 @@ def report_orphan_keys(
             errors.add(layer, f"{key} matches no question")
 
 
-def build_bank(generated_at: str, toolchain: Mapping[str, str]) -> QuestionBank:
+def build_bank(generated_at: str) -> QuestionBank:
     """Assemble the bank from every layer, reporting all problems at once.
 
     Args:
         generated_at: The build date, ``YYYY-MM-DD``.
-        toolchain: The version of every external tool that shaped the output.
 
     Returns:
         The assembled bank.
 
     Raises:
-        BuildError: If an input file is missing or malformed, or if any layer
-            leaves a question unresolved.
+        BuildError: If an input file is missing, malformed or stale, or if any
+            layer leaves a question unresolved.
     """
-    raw_questions = load_raw_questions(config.RAW_QUESTIONS_PATH)
+    raw_questions, raw_toolchain = load_raw_questions(config.RAW_QUESTIONS_PATH)
+    official_keys, keys_toolchain = load_official_keys(config.ANSWER_KEYS_PATH)
+    toolchain = reconcile_toolchain(raw_toolchain, keys_toolchain)
+    check_extraction_is_current(raw_questions, official_keys)
+
     overrides = {
         key: value
         for key, value in read_json_object(config.OVERRIDES_PATH).items()
@@ -476,11 +624,6 @@ def build_bank(generated_at: str, toolchain: Mapping[str, str]) -> QuestionBank:
     explanations = load_explanations(config.ANSWERS_DIR)
     topics, assignments = load_topics(config.TOPICS_PATH)
     topic_ids = {topic.id for topic in topics}
-
-    try:
-        official_keys = load_answer_keys()
-    except AnswerKeyError as error:
-        raise BuildError(str(error)) from error
 
     errors = ErrorLog()
     known_ids = {question.id for question in raw_questions}
@@ -772,6 +915,49 @@ def render_javascript(bank_json: str) -> str:
     )
 
 
+def carried_generated_at(path: Path) -> str:
+    """Read the build date the committed bank already carries.
+
+    This used to default to ``date.today()``, which meant a rebuild from
+    unchanged inputs produced changed bytes the next morning: the same
+    question bank, stamped with a different day. Carrying the committed date
+    forward instead makes a plain ``python -m tools build`` a fixpoint — same
+    inputs, same bytes, any day — which is the property the rebuild guard in
+    CI checks and the reason a correction to one explanation shows up as a
+    diff of that explanation and nothing else.
+
+    Requiring ``--generated-at`` on every run would buy the same
+    reproducibility, but it would make every CI job and every one-line fix
+    restate a date that is already committed two lines above the change, and a
+    date restated by hand is a date that eventually gets restated wrong. So the
+    flag stays for the case it is actually for — a genuinely new build date —
+    and is required only for the first build, when there is no committed bank
+    to carry a date from.
+
+    Args:
+        path: ``data/question-bank.json``, the bank being rebuilt.
+
+    Returns:
+        The ``generatedAt`` of the committed bank.
+
+    Raises:
+        BuildError: If there is no committed bank yet, or its ``generatedAt``
+            is missing or malformed. Both say to pass ``--generated-at``.
+    """
+    if not path.exists():
+        raise BuildError(
+            f"{path} does not exist yet, so there is no build date to carry "
+            "forward. Pass --generated-at YYYY-MM-DD for this first build."
+        )
+    previous = read_json_object(path).get("generatedAt")
+    if not isinstance(previous, str) or not GENERATED_AT_PATTERN.match(previous):
+        raise BuildError(
+            f"{path}: generatedAt is {previous!r}, not a YYYY-MM-DD date, so it "
+            "cannot be carried forward. Pass --generated-at YYYY-MM-DD."
+        )
+    return previous
+
+
 def write_text(path: Path, content: str) -> None:
     """Write one generated artifact with LF newlines on every platform.
 
@@ -802,19 +988,22 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     parser.add_argument(
         "--generated-at",
-        default=date.today().isoformat(),
-        help="the date recorded in generatedAt (default: today)",
+        help=(
+            "the date recorded in generatedAt "
+            "(default: the one the committed bank already carries)"
+        ),
     )
     args = parser.parse_args(argv)
 
     try:
-        version = pdftotext_version()
-    except ToolchainError as error:
-        print(f"ERROR: {error}", file=sys.stderr)
-        return 1
-
-    try:
-        bank = build_bank(args.generated_at, {"pdftotext": version})
+        generated_at = args.generated_at or carried_generated_at(
+            config.QUESTION_BANK_PATH
+        )
+        if not GENERATED_AT_PATTERN.match(generated_at):
+            raise BuildError(
+                f"--generated-at must be YYYY-MM-DD, found {generated_at!r}"
+            )
+        bank = build_bank(generated_at)
         bank_json = render_json(bank)
         markdown = render_markdown(bank)
     except BuildError as error:
@@ -839,6 +1028,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     explained = sum(1 for question in bank.questions if question.answer.explanation)
 
     print(f"Bank assembled: {len(bank.questions)} questions, {len(bank.exams)} exams")
+    print(f"  generated at:        {bank.generated_at}")
+    print(f"  pdftotext (poppler): {bank.toolchain.get('pdftotext', 'unknown')}")
     print(f"  official answer key: {official}")
     print(f"  derived:             {len(bank.questions) - official}")
     print(f"  topics:              {len(bank.topics)}")

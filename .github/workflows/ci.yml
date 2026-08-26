@@ -22,14 +22,6 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v7
 
-      - name: Install poppler-utils
-        # The pipeline refuses to run against Xpdf's pdftotext, so the real
-        # poppler binary has to be on PATH before `python -m tools` starts.
-        run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends --yes poppler-utils
-          pdftotext -v
-
       - name: Set up uv and Python
         uses: astral-sh/setup-uv@v10
         with:
@@ -73,16 +65,28 @@ jobs:
         run: uv run python -m tools validate
 
       - name: Rebuild the bank
-        # `data/raw-questions.json` is committed exactly so the chain can be
-        # rebuilt without pdftotext. Re-extracting here would compare against
-        # whatever poppler version Ubuntu ships, which is not the pinned one;
-        # re-extraction is a local step, checked by the diff it produces.
+        # Nothing in this job installs poppler, and nothing needs it. `extract`
+        # is the only stage that runs pdftotext, and its two artifacts —
+        # `data/raw-questions.json` and `data/answer-keys.json` — are committed
+        # exactly so the rest of the chain can be rebuilt from committed bytes.
+        # Installing poppler-utils here would only invite a step that
+        # re-extracts against whatever version Ubuntu ships — 24.02 today,
+        # against the 25.07.0 the artifacts record — and then fails on a
+        # difference that says nothing about the change under review.
+        # Re-extraction stays a local step, reviewed as the diff it produces.
         run: uv run python -m tools build
 
       - name: Fail if the rebuild changed a committed artifact
-        # The real guard: the committed bank must be exactly what the current
-        # inputs and the current code produce, byte for byte, on Linux as well
-        # as on the Windows machine that generated it.
+        # The real guard, and it only became one when the rebuild stopped
+        # depending on the runner. `build` reads committed files, copies the
+        # pdftotext version out of the extraction artifacts instead of asking
+        # the binary again, and carries `generatedAt` forward from the
+        # committed bank instead of stamping today — so this comparison has one
+        # variable left: whether the committed bank, its markdown and the app's
+        # script are what the committed inputs and this commit's code produce.
+        # Byte for byte, on Linux as well as on the Windows machine that
+        # generated them, with a different poppler or none at all, tomorrow as
+        # well as today.
         run: |
           git add --intent-to-add .
           if ! git diff --quiet; then

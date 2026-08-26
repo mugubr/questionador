@@ -1,13 +1,19 @@
-"""Turn the exam PDFs in ``exams/`` into ``data/raw-questions.json``.
+"""Turn the PDFs in ``exams/`` into the two committed extraction artifacts.
 
-One deterministic pass: cut the paper into questions, split each question into
-a stem and four options, and clean the header and footer noise. Anything that
-does not resolve mechanically is marked for review with the reason, rather than
-guessed at.
+One deterministic pass over the question booklets: cut the paper into
+questions, split each question into a stem and four options, and clean the
+header and footer noise. Anything that does not resolve mechanically is marked
+for review with the reason, rather than guessed at. A second pass reads the
+published answer key of every paper into ``data/answer-keys.json``.
+
+**This is the only stage that runs ``pdftotext``.** Both artifacts are
+committed and both record the poppler build that produced them, which is what
+lets `build` assemble the bank out of committed bytes alone — no poppler, no
+subprocess, and the same output on any machine on any day.
 
 The parsing functions take text and return structures, so they are exercised
-with inline strings; only `read_paper_text`, `pdftotext_version` and `main`
-touch a subprocess or the filesystem.
+with inline strings; only `pdf_to_text`, `pdftotext_version`, `read_paper_text`,
+`load_answer_key` and `main` touch a subprocess or the filesystem.
 
 Usage:
     python -m tools extract
@@ -22,10 +28,17 @@ import re
 import shutil
 import subprocess
 import sys
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from pathlib import Path
 
 from tools import config, configure_stdio
+from tools.answer_keys import (
+    AnswerKeyError,
+    AnswerKeyTable,
+    format_key,
+    parse_answer_key,
+    write_answer_keys,
+)
 from tools.config import EXAM_PAPERS, ExamPaper
 from tools.models import OptionLetter, ParsedBlock, ParseStatus, RawQuestion
 from tools.text_cleanup import (
@@ -155,6 +168,50 @@ def read_paper_text(paper: ExamPaper) -> str:
         ExtractionError: If the PDF cannot be read.
     """
     return strip_noise_lines(pdf_to_text(paper.pdf_path))
+
+
+def load_answer_key(paper: ExamPaper) -> AnswerKeyTable:
+    """Read the published answer key of one exam paper.
+
+    Args:
+        paper: The paper whose key should be read.
+
+    Returns:
+        The correct letter for every question number of that paper, None where
+        the key annulled the question.
+
+    Raises:
+        AnswerKeyError: If the paper has no key, the PDF is missing, or the
+            table does not cover the paper.
+    """
+    key_path = paper.answer_key_path
+    if key_path is None:
+        raise AnswerKeyError(f"{paper.id} has no published answer key")
+    if not key_path.exists():
+        raise AnswerKeyError(f"{paper.id}: answer key not found: {key_path}")
+
+    try:
+        text = pdf_to_text(key_path)
+    except ExtractionError as error:
+        raise AnswerKeyError(f"{paper.id}: {error}") from error
+
+    return parse_answer_key(text, paper.expected_questions, key_path.name)
+
+
+def load_answer_keys() -> dict[str, AnswerKeyTable]:
+    """Read every published answer key, in registry order.
+
+    Returns:
+        The answers of each paper that has a published key, keyed by paper id.
+
+    Raises:
+        AnswerKeyError: If any key cannot be read.
+    """
+    return {
+        paper.id: load_answer_key(paper)
+        for paper in EXAM_PAPERS
+        if paper.has_official_answer_key
+    }
 
 
 def split_question_block(lines: Sequence[str]) -> ParsedBlock:
@@ -431,18 +488,30 @@ def extract_all() -> list[RawQuestion]:
     return questions
 
 
-def write_raw_questions(questions: Sequence[RawQuestion], destination: Path) -> None:
+def write_raw_questions(
+    questions: Sequence[RawQuestion],
+    toolchain: Mapping[str, str],
+    destination: Path,
+) -> None:
     """Write the raw questions as the committed extraction anchor.
+
+    The poppler version is stamped here rather than by whoever reads the file,
+    because this is the step that actually ran the tool: what the stamp
+    promises is that *this* build of ``pdftotext`` produced *this* text.
 
     Written with an explicit LF newline so a rebuild on Windows does not turn
     into a whole-file diff on Linux.
 
     Args:
         questions: The questions to write, in publication order.
+        toolchain: The version of every external tool that produced them.
         destination: Where to write ``raw-questions.json``.
     """
     destination.parent.mkdir(parents=True, exist_ok=True)
-    payload = [question.to_json() for question in questions]
+    payload = {
+        "toolchain": dict(toolchain),
+        "questions": [question.to_json() for question in questions],
+    }
     with destination.open("w", encoding="utf-8", newline="\n") as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
@@ -461,19 +530,26 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="python -m tools extract",
         description=(
-            "Extract the questions of exams/*.pdf into data/raw-questions.json."
+            "Extract exams/*.pdf into data/raw-questions.json and "
+            "data/answer-keys.json."
         ),
     )
     parser.add_argument(
         "--report-only",
         action="store_true",
-        help="print the report without writing data/raw-questions.json",
+        help="print the report without writing either artifact",
     )
     parser.add_argument(
         "--output",
         type=Path,
         default=config.RAW_QUESTIONS_PATH,
         help="where to write the extraction anchor (default: data/raw-questions.json)",
+    )
+    parser.add_argument(
+        "--answer-keys-output",
+        type=Path,
+        default=config.ANSWER_KEYS_PATH,
+        help="where to write the parsed keys (default: data/answer-keys.json)",
     )
     args = parser.parse_args(argv)
 
@@ -509,9 +585,23 @@ def main(argv: Sequence[str] | None = None) -> int:
     else:
         print("\nNo question flagged for review.")
 
+    print("\nReading the published answer keys:\n")
+    try:
+        keys = load_answer_keys()
+    except AnswerKeyError as error:
+        print(f"ERROR: {error}", file=sys.stderr)
+        return 1
+    for exam_id, answers in keys.items():
+        print(f"  {exam_id:<10} {len(answers):>3} answers    {format_key(answers)}")
+
     if not args.report_only:
-        write_raw_questions(questions, args.output)
+        # The two artifacts carry the same stamp because one run of one binary
+        # produced both, and `build` refuses a pair whose stamps disagree.
+        toolchain = {"pdftotext": version}
+        write_raw_questions(questions, toolchain, args.output)
+        write_answer_keys(keys, toolchain, args.answer_keys_output)
         print(f"\nWritten: {args.output}")
+        print(f"Written: {args.answer_keys_output}")
 
     return 0
 
