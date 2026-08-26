@@ -11,9 +11,11 @@ Layers, applied in this order, each one narrow and auditable:
 
 Three artifacts come out: ``data/question-bank.json`` (canonical),
 ``data/question-bank.md`` (review surface) and ``docs/data/question-bank.js``
-(a mechanical wrapper of the JSON, loaded by a plain script tag). All three are
-rendered in full and checked before any of them is written, so a failure never
-leaves two of them disagreeing.
+(a mechanical wrapper of the JSON, loaded by a plain script tag). The two that
+can fail are rendered in full before either of them is written, so a question
+the markdown cannot render never leaves a published JSON behind it. The script
+is then wrapped from the JSON that was actually written, so it can never
+describe a bank nobody published.
 
 **This stage is hermetic: every byte it reads is a committed file.** It runs no
 subprocess, opens no PDF, and reads no clock. The `pdftotext` version it stamps
@@ -210,9 +212,8 @@ def load_topics(path: Path) -> tuple[list[Topic], dict[str, str]]:
             )
         )
 
-    duplicated = sorted(
-        {topic.id for topic in topics if [t.id for t in topics].count(topic.id) > 1}
-    )
+    slugs = [topic.id for topic in topics]
+    duplicated = sorted({slug for slug in slugs if slugs.count(slug) > 1})
     if duplicated:
         raise BuildError(f"{path}: duplicate topic id(s): {', '.join(duplicated)}")
 
@@ -524,10 +525,19 @@ def build_answer(
         errors.add(question_id, f"no entry in the official answer key of {exam_id}")
         return None
 
-    paper = EXAM_PAPERS_BY_ID[exam_id]
     # The key PDF is the whole provenance of an official answer, and it is what
-    # `reference` says when the answers file offers nothing better.
-    assert paper.answer_key_file is not None
+    # `reference` says when the answers file offers nothing better. Checked
+    # rather than asserted: an assert vanishes under `python -O`, and what would
+    # then reach the bank is the literal string "None" as the provenance of
+    # every answer of the paper.
+    key_pdf = EXAM_PAPERS_BY_ID[exam_id].answer_key_file
+    if key_pdf is None:
+        errors.add(
+            question_id,
+            f"the answer key of {exam_id} was parsed, but tools/config.py "
+            "registers no answer-key PDF to cite as the reference",
+        )
+        return None
 
     entry = explanations.get(question_id, {})
     unknown = sorted(set(entry) - EXPLANATION_KEYS)
@@ -545,7 +555,7 @@ def build_answer(
             return None
 
     explanation = entry.get("explanation")
-    reference = entry.get("reference") or paper.answer_key_file
+    reference = entry.get("reference") or key_pdf
     return Answer(
         letter=key[key_number],
         source=AnswerSource.OFFICIAL,

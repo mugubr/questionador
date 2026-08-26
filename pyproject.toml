@@ -1,10 +1,10 @@
 [project]
 name = "questionador-profnit"
-version = "0.1.0"
+version = "1.0.0"
 description = "Pipeline that turns the PROFNIT exam PDFs into a validated question bank."
 readme = "README.md"
 requires-python = ">=3.14"
-authors = [{ name = "Rubens Braz" }]
+authors = [{ name = "Miguel Muniz e Rubens Braz" }]
 # The pipeline and the web app both run on the standard library alone. Anything
 # added here would have to be installed before `python -m tools` could run.
 dependencies = []

@@ -12,8 +12,9 @@ lets `build` assemble the bank out of committed bytes alone — no poppler, no
 subprocess, and the same output on any machine on any day.
 
 The parsing functions take text and return structures, so they are exercised
-with inline strings; only `pdf_to_text`, `pdftotext_version`, `read_paper_text`,
-`load_answer_key` and `main` touch a subprocess or the filesystem.
+with inline strings; only `pdftotext_version`, `pdf_to_text`, `read_paper_text`,
+`load_answer_key`, `write_raw_questions` and `main` touch a subprocess or the
+filesystem.
 
 Usage:
     python -m tools extract

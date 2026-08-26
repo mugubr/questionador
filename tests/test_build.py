@@ -8,6 +8,7 @@ depend on how the key PDF was decoded.
 
 from __future__ import annotations
 
+import ast
 import json
 import subprocess
 import sys
@@ -38,6 +39,7 @@ from tools.build import (
     resolve_key_number,
     write_text,
 )
+from tools.config import ExamPaper
 from tools.models import (
     Answer,
     AnswerSource,
@@ -369,6 +371,37 @@ def test_build_answer_rejects_an_unknown_key_in_the_answers_file() -> None:
 
     assert answer is None
     assert any("unknown key(s): letter" in item for item in errors)
+
+
+def test_build_answer_refuses_a_paper_with_no_answer_key_pdf_registered(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Refuse to publish a provenance the registry cannot name.
+
+    The key PDF is the fallback `reference` of every official answer. An
+    `assert` used to stand where this check is, and an assert vanishes under
+    `python -O`: what would then reach the bank is the literal string "None"
+    as the provenance of every answer of the paper.
+
+    Args:
+        monkeypatch: Fixture used to stand in for the exam-paper registry.
+    """
+    paper = ExamPaper(
+        id="TEST",
+        file="Prova_TEST.pdf",
+        title="Caderno de teste",
+        date="2020-01-01",
+        expected_questions=1,
+    )
+    monkeypatch.setattr(build, "EXAM_PAPERS_BY_ID", {"TEST": paper})
+    errors = ErrorLog()
+
+    answer = build_answer(
+        "TEST-Q01", "TEST", 1, {"TEST": {1: OptionLetter.C}}, {}, errors
+    )
+
+    assert answer is None
+    assert any("no answer-key PDF" in item for item in errors)
 
 
 def test_build_answer_rejects_a_blank_explanation() -> None:
@@ -904,12 +937,16 @@ def test_main_refuses_a_malformed_generated_at(
 # The build is hermetic
 # --------------------------------------------------------------------------
 
+# Everything that would let `build` reach a PDF or a clock. Named once, so the
+# import-footprint check and the source scan can never guard different lists.
+FORBIDDEN_MODULES = ("tools.extract", "subprocess", "shutil", "datetime")
+
 # Imported in a fresh process, because the rest of this suite has `tools.extract`
 # in `sys.modules` long before any of these run.
-HERMETIC_DRIVER = """
+HERMETIC_DRIVER = f"""
 import sys
 
-FORBIDDEN = ("tools.extract", "subprocess", "shutil", "datetime")
+FORBIDDEN = {FORBIDDEN_MODULES!r}
 
 before = [name for name in FORBIDDEN if name in sys.modules]
 
@@ -963,12 +1000,38 @@ def test_importing_build_pulls_in_no_subprocess_and_no_clock() -> None:
     assert after == []
 
 
-def test_the_build_stage_never_names_the_binary() -> None:
-    """Keep the name of the tool out of the assembly stage entirely.
+def imported_modules(path: Path) -> set[str]:
+    """Collect every module one file imports, including inside a function body.
 
-    `extract` is the only stage that runs a subprocess. A mention of the binary
-    here would be the first step back towards running it.
+    Args:
+        path: The module to scan.
+
+    Returns:
+        The module named by every `import` and `from ... import` statement
+        anywhere in the file.
     """
-    source = Path(build.__file__).read_text(encoding="utf-8")
+    tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+    names: set[str] = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            names.update(alias.name for alias in node.names)
+        elif isinstance(node, ast.ImportFrom) and node.module is not None:
+            names.add(node.module)
+    return names
+
+
+def test_the_build_stage_never_looks_the_binary_up_or_runs_it() -> None:
+    """Keep the tool that reads PDFs out of the assembly stage.
+
+    `build` names the binary in one string, to publish the version its inputs
+    already recorded. What it must never do is locate it or run it, and it must
+    not import the modules that could — including from inside a function, which
+    the import-footprint check above cannot see, because that check only
+    observes what importing the module pulls in.
+    """
+    path = Path(build.__file__)
+    source = path.read_text(encoding="utf-8")
+
     assert "pdftotext_version" not in source
     assert "shutil.which" not in source
+    assert sorted(imported_modules(path) & set(FORBIDDEN_MODULES)) == []

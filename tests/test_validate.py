@@ -92,8 +92,14 @@ def test_the_minimal_bank_satisfies_the_contract() -> None:
 
 
 def test_the_bank_must_be_an_object() -> None:
-    """Refuse anything but a JSON object at the root."""
-    assert any("must be a JSON object" in item for item in errors_of([]))  # type: ignore[arg-type]
+    """Refuse anything but a JSON object at the root.
+
+    Calls `validate` rather than the `errors_of` helper, because the helper
+    promises a decoded bank and the whole point here is to hand it something
+    that is not one.
+    """
+    errors = validate([], expected_total=None)
+    assert any("must be a JSON object" in item for item in errors)
 
 
 def test_an_unknown_version_is_rejected() -> None:

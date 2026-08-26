@@ -53,7 +53,11 @@ sys.stdout.write(hashlib.sha256(payload.encode("utf-8")).hexdigest())
 
 
 def published_bank() -> dict[str, Any]:
-    """Read the committed question bank.
+    """Decode the committed question bank straight off disk.
+
+    Read rather than rebuilt on purpose: these tests are about the bytes the
+    repository actually publishes, so a bank that only the current code could
+    produce would defeat the point of every assertion below.
 
     Returns:
         The decoded bank, exactly as it is published.

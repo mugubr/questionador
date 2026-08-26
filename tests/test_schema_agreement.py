@@ -558,7 +558,11 @@ def load_schema() -> dict[str, Any]:
 
 
 def load_bank() -> Bank:
-    """Read the committed question bank.
+    """Decode the committed question bank afresh for one mutation to break.
+
+    Every mutation below edits the bank in place, so each case has to start
+    from its own copy: a shared one would carry the previous case's damage and
+    make the failures depend on the order the tests happened to run in.
 
     Returns:
         The decoded bank, exactly as it is published.

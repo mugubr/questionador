@@ -1,10 +1,10 @@
 """Tests for the extraction stage.
 
 The parsing functions take text and return structures, so everything here runs
-on inline strings and never opens a PDF. The three functions that do touch a
-subprocess or the filesystem are exercised through a fake `subprocess.run`,
-which is also how the poppler-versus-Xpdf guard is tested without installing
-either build.
+on inline strings and never opens a PDF. The two functions that do run a
+subprocess are exercised through a fake `subprocess.run`, which is also how the
+poppler-versus-Xpdf guard is tested without installing either build; the one
+that writes the extraction anchor is given a temporary directory.
 """
 
 from __future__ import annotations
@@ -15,11 +15,11 @@ import subprocess
 import sys
 from collections.abc import Callable, Sequence
 from pathlib import Path
-from typing import Any
+from typing import Any, NoReturn
 
 import pytest
 
-from tools import configure_stdio
+from tools import configure_stdio, extract
 from tools.config import ExamPaper
 from tools.extract import (
     ExtractionError,
@@ -240,6 +240,45 @@ def test_pdf_to_text_reports_a_missing_file() -> None:
     """Name the file rather than letting the subprocess fail obscurely."""
     with pytest.raises(ExtractionError, match="PDF not found"):
         pdf_to_text(Path("does-not-exist.pdf"))
+
+
+def test_main_checks_the_toolchain_before_it_reads_a_single_pdf(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Abort on the wrong binary before any extraction work happens.
+
+    The guard is only worth having if it runs first. Segmenting seven papers
+    with Xpdf and noticing afterwards produces a different bank from the same
+    PDFs, and the run that produced it reported nothing wrong.
+
+    Args:
+        monkeypatch: Fixture used to fail the toolchain guard, and to notice an
+            extraction that ran in spite of it.
+    """
+
+    def refuse_the_binary() -> str:
+        """Fail the way the guard fails on an Xpdf build.
+
+        Returns:
+            Never; the guard raises instead.
+
+        Raises:
+            ToolchainError: Always.
+        """
+        raise ToolchainError("pdftotext on PATH is not the poppler build")
+
+    def unreachable() -> NoReturn:
+        """Fail the test if the extraction ran anyway.
+
+        Raises:
+            AssertionError: Always.
+        """
+        raise AssertionError("extract_all ran after the toolchain guard failed")
+
+    monkeypatch.setattr(extract, "pdftotext_version", refuse_the_binary)
+    monkeypatch.setattr(extract, "extract_all", unreachable)
+
+    assert extract.main([]) == 1
 
 
 # --------------------------------------------------------------------------

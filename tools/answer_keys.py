@@ -66,9 +66,7 @@ class AnswerKeyError(RuntimeError):
     """Raised when an answer key is missing, malformed, or incomplete."""
 
 
-def parse_answer_key(
-    text: str, expected: int, source: str
-) -> dict[int, OptionLetter | None]:
+def parse_answer_key(text: str, expected: int, source: str) -> AnswerKeyTable:
     """Read the question-to-letter table out of an answer-key PDF's text.
 
     Args:
@@ -85,7 +83,7 @@ def parse_answer_key(
         AnswerKeyError: If a question repeats, an answer is missing, or the key
             covers a question the paper does not have.
     """
-    answers: dict[int, OptionLetter | None] = {}
+    answers: AnswerKeyTable = {}
     for line in text.splitlines():
         for match in ANSWER_CELL_PATTERN.finditer(line):
             number = int(match.group(1))

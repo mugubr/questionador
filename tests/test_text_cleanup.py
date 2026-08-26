@@ -8,12 +8,14 @@ that thirteen of them walked into the published bank.
 
 from __future__ import annotations
 
+import re
 import unicodedata
 
 import pytest
 
 from tools.text_cleanup import (
     DASH_CHARACTERS,
+    DASH_CLASS,
     close_unbalanced_quotes,
     collapse_space_runs,
     find_residue,
@@ -64,9 +66,22 @@ def test_normalize_dashes_folds_every_variant(dash: str) -> None:
     assert normalize_dashes(f"Etapa 1 {dash} Prova") == "Etapa 1 - Prova"
 
 
-def test_dash_characters_covers_every_variant() -> None:
-    """Keep the dash table and the dash character class in agreement."""
+def test_the_dash_table_and_the_dash_character_class_agree() -> None:
+    """Keep the two spellings of the same dash set from drifting apart.
+
+    `normalize_dashes` folds the characters listed in `DASH_CHARACTERS`, while
+    the roman-marker pattern matches the regex class `DASH_CLASS`. They are one
+    set written twice: a dash added to one and forgotten in the other is how a
+    pattern silently stops matching the footer it was written for.
+    """
     assert set(DASH_VARIANTS) <= set(DASH_CHARACTERS)
+
+    unmatched = [
+        character
+        for character in DASH_CHARACTERS
+        if re.fullmatch(DASH_CLASS, character) is None
+    ]
+    assert unmatched == []
 
 
 def test_normalize_dashes_leaves_other_text_alone() -> None:
