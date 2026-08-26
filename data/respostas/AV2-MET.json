@@ -1,0 +1,114 @@
+{
+  "AV2-MET-Q01": {
+    "letra": "a",
+    "confianca": "media",
+    "referencia": "PITHAN & VIDAL (2013), Ética e plágio acadêmico — bibliografia da disciplina",
+    "justificativa": "As quatro assertivas são afirmações convergentes com a premissa do enunciado: partem da interdisciplinaridade (I), da compreensão das questões éticas como meio de promover inovação (II), do impacto socioambiental conjunto com o empresarial (III) e do alinhamento com sustentabilidade e cultura (IV). Nenhuma contradiz a premissa, logo todas estão corretas. Confiança média: a questão é conceitualmente aberta e não tem âncora normativa.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q02": {
+    "letra": "c",
+    "confianca": "alta",
+    "referencia": "PITHAN & VIDAL (2013), citados no próprio enunciado",
+    "justificativa": "O artigo defende justamente a abordagem INTERDISCIPLINAR do plágio acadêmico. I é verdadeira (âmbito ético) e IV é verdadeira (âmbito pedagógico). II é falsa pelo advérbio 'somente', que nega a interdisciplinaridade defendida pelos autores; III é falsa ao excluir o âmbito institucional, que é uma das dimensões centrais do artigo.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q03": {
+    "letra": "d",
+    "confianca": "alta",
+    "referencia": "Classificação clássica dos tipos de conhecimento (Lakatos & Marconi; Bunge)",
+    "justificativa": "I é verdadeira (conhecimento como recurso econômico), III é verdadeira (conhecimento filosófico como fruto do raciocínio e da reflexão) e V é verdadeira (o procedimento científico delimita, fragmenta e analisa o objeto). II é falsa: o conhecimento religioso caracteriza-se por ser inspiracional e NÃO verificável — dizer que suas evidências são 'verificadas' contradiz sua definição. IV é falsa: formular hipóteses sobre fenômenos além da percepção objetiva não é traço do senso comum, que é superficial e assistemático.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q04": {
+    "letra": "c",
+    "confianca": "alta",
+    "referencia": "Bibliografia da disciplina sobre fontes de informação para gestão de PI e TT",
+    "justificativa": "A gestão de PI e TT exige, além das fontes científicas e tecnológicas, fontes de negócios (mercado, concorrência, financeiras). As demais alternativas são absolutistas e por isso falsas: 'as únicas informações confiáveis' (a), 'não possuem utilidade' (b) e 'devendo-se desconsiderar' releases e homepages (d) — que, ainda que enviesados, são fontes legítimas quando avaliadas criticamente.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q05": {
+    "letra": "d",
+    "confianca": "alta",
+    "referencia": "Bibliografia da disciplina sobre fontes de informação de negócios",
+    "justificativa": "CVM (a), B3 (b) e as áreas de Relações com Investidores nos sites das empresas (c) são de fato canais de divulgação de comunicados de companhias abertas. O Comex Stat é a base de estatísticas de comércio exterior do MDIC: traz dados agregados de exportação e importação por setor e produto, não comunicados societários. Por isso é a exceção pedida.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q06": {
+    "letra": "c",
+    "confianca": "alta",
+    "referencia": "Bibliografia da disciplina sobre bases de dados e busca de anterioridade",
+    "justificativa": "A pergunta é sobre a importância do CCN PARA a propriedade intelectual. Publicações seriadas constituem estado da técnica: localizar o registro do uso de uma tecnologia em periódico pode caracterizar a falta de novidade de uma invenção, destruindo o requisito de patenteabilidade. A alternativa b descreve uma função do catálogo, mas não sua relevância para PI; a d é falsa, pois a RPI é publicada pelo próprio INPI.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q07": {
+    "letra": "d",
+    "confianca": "media",
+    "referencia": "Bibliografia da disciplina sobre bases de patentes",
+    "justificativa": "O PATENTSCOPE, da OMPI, oferece a aba de análise que gera, sobre o resultado da busca, a distribuição preliminar por requerentes, inventores, datas de publicação e classificação. INPI e Latipat não trazem esse recurso analítico, e o Espacenet oferece filtros e estatísticas mais limitados. Confiança média: Espacenet também permite algum recorte por esses campos.",
+    "tema": "patentes"
+  },
+  "AV2-MET-Q08": {
+    "letra": "c",
+    "confianca": "alta",
+    "referencia": "ABNT NBR 6023 — Referências",
+    "justificativa": "Correlacionando pelas definições da NBR 6023: 1 (Monografia) = documento em uma só parte ou número pré-estabelecido de partes que se complementam; 2 (Publicação seriada) = editada em unidades físicas sucessivas, destinada a ser continuada indefinidamente; 3 (Editor) = responsável intelectual ou científico que reúne artigos; 4 (Editora) = casa publicadora responsável pela produção editorial. Logo 1a, 2d, 3c, 4b, que corresponde exatamente à ordenação III — e somente a ela.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q09": {
+    "letra": "d",
+    "confianca": "alta",
+    "referencia": "Ref6-OCDE-Manual-Frascati-em-portugues-Brasil.pdf",
+    "justificativa": "A questão pede a alternativa INCORRETA. Volume de patentes (a), balanço de pagamento tecnológico (b) e investimentos em P&D (c) são indicadores consagrados de inovação, conforme o Manual de Frascati. A alternativa d afirma que a publicação de artigos científicos NÃO é indicador utilizado — o oposto do que ocorre: produção científica é insumo corrente dos índices de inovação. Por ser a única afirmação falsa, é a resposta.",
+    "tema": "inovacao"
+  },
+  "AV2-MET-Q10": {
+    "letra": "a",
+    "confianca": "media",
+    "referencia": "Tipologia clássica de pesquisa (Gil; Lakatos & Marconi; Thiollent)",
+    "justificativa": "I, II e III reproduzem as definições correntes de pesquisa bibliográfica, experimental e estudo de caso. IV também é verdadeira na tipologia usual: a pesquisa-ação pressupõe intervenção planejada dos sujeitos na realidade, ao passo que a pesquisa participante se caracteriza pela interação entre pesquisador e sujeito sem necessariamente implicar ação planejada. Logo todas estão corretas. Confiança média: a distinção entre pesquisa-ação e participante varia entre autores.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q11": {
+    "letra": "b",
+    "confianca": "alta",
+    "referencia": "Qualis Técnico-Tecnológico — CAPES",
+    "justificativa": "I é verdadeira (o Qualis T&T foi criado para aperfeiçoar a mensuração da produção técnica e tecnológica dos programas de pós-graduação) e II é verdadeira (a produção está organizada em eixos, entre eles Produtos e Processos, que abrange base de dados técnico-científica, carta/mapa, cultivar, curadoria de coleções biológicas). III é falsa: atividades de capacitação — docência, criação e organização — constituem um dos eixos da produção técnico-tecnológica, e não uma exclusão.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q12": {
+    "letra": "c",
+    "confianca": "alta",
+    "referencia": "ABNT NBR 10719 — Relatório técnico e/ou científico",
+    "justificativa": "As quatro assertivas estão corretas: relatórios técnicos de pesquisa podem ser parciais ou finais (I); a NBR 10719 especifica os princípios gerais de elaboração e apresentação do relatório técnico e/ou científico (II); o laudo técnico é elaborado por profissional especializado no assunto (III); e relatórios gerenciais são documentos baseados em fatos, voltados à avaliação e à tomada de decisão (IV).",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q13": {
+    "letra": "d",
+    "confianca": "alta",
+    "referencia": "Bibliografia da disciplina sobre projetos de pesquisa tecnológica e TRL",
+    "justificativa": "I é verdadeira (formular um projeto de inovação é converter uma ideia em proposta de investimento), III é verdadeira (o escopo delimita o alcance e pode estar contido no objetivo) e IV é verdadeira (os impactos dependem do nível de maturidade tecnológica — TRL). II é falsa por negar que a formulação de um projeto tecnológico exija tempo e amadurecimento, quando o oposto é condição do processo.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q14": {
+    "letra": "b",
+    "confianca": "alta",
+    "referencia": "ABNT NBR 6022 — Artigo em publicação periódica científica impressa",
+    "justificativa": "Pela NBR 6022, a Introdução é a parte inicial do artigo, curta, que contextualiza o assunto, indica sua importância e delimita o tema — exatamente o que descreve a assertiva IV. I e III descrevem o Desenvolvimento (parte principal, com seções e subseções, onde estão os resultados) e II descreve as Considerações Finais/Conclusão. Logo apenas IV está correta.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q15": {
+    "letra": "a",
+    "confianca": "media",
+    "referencia": "Bibliografia da disciplina sobre fontes formais e informais de informação",
+    "justificativa": "II é verdadeira ao classificar periódicos, teses, bases de dados e livros como fontes formais, e IV é verdadeira ao afirmar que a avaliação da fonte — formal ou informal — subsidia o julgamento de confiança, limites e vieses. I é falsa por classificar bibliotecas e centros de informação como fontes informais, quando são canais formais; III é falsa pelo absolutismo ('toda informação é confiável'); V é falsa ao misturar indistintamente os níveis primário, secundário e terciário. Confiança média: a assertiva II inclui 'comunicações orais', usualmente tidas como canal informal.",
+    "tema": "metodologia"
+  },
+  "AV2-MET-Q16": {
+    "letra": "d",
+    "confianca": "alta",
+    "referencia": "Caracterização do conhecimento científico (Bunge; Lakatos & Marconi)",
+    "justificativa": "O conhecimento científico é caracterizado como factual, claro e preciso, comunicável, verificável, sistemático, geral, legal, explicativo e preditivo — a enumeração da alternativa d. A alternativa b descreve o conhecimento popular (senso comum); a c é autocontraditória ('falível, inexato onde as verdades são infalíveis') e mistura traços do conhecimento religioso; a a descreve de forma incompleta e aproxima-se do conhecimento filosófico.",
+    "tema": "metodologia"
+  }
+}

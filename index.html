@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Questionador PROFNIT</title>
+  <meta name="description" content="Sorteia questões das provas do PROFNIT e corrige suas respostas.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+</head>
+<body>
+
+<header class="cabecalho">
+  <div class="envoltorio cabecalho__interno">
+    <div>
+      <h1 class="cabecalho__titulo">Questionador</h1>
+      <p class="cabecalho__subtitulo">Provas do PROFNIT</p>
+    </div>
+    <div class="placar" id="placar" hidden aria-live="polite">
+      <div class="placar__item placar__item--acertos">
+        <span class="placar__valor" id="placar-acertos">0</span>
+        <span class="placar__rotulo">acertos</span>
+      </div>
+      <div class="placar__item placar__item--erros">
+        <span class="placar__valor" id="placar-erros">0</span>
+        <span class="placar__rotulo">erros</span>
+      </div>
+      <div class="placar__item">
+        <span class="placar__valor" id="placar-restantes">0</span>
+        <span class="placar__rotulo">restantes</span>
+      </div>
+    </div>
+  </div>
+  <div class="progresso"><div class="progresso__barra" id="progresso-barra"></div></div>
+</header>
+
+<main>
+
+  <!-- 1. Upload do banco -->
+  <section class="painel envoltorio" id="painel-upload" aria-labelledby="titulo-upload">
+    <h2 class="painel__titulo" id="titulo-upload">Carregue o banco de questões</h2>
+    <p class="painel__apoio">
+      Envie o arquivo <code>data/questions.json</code> deste repositório. Nada é enviado
+      para servidor algum — o arquivo é lido pelo próprio navegador.
+    </p>
+
+    <label class="solta" id="area-solta">
+      <span class="solta__icone" aria-hidden="true">📄</span>
+      <span class="solta__principal">Escolher arquivo ou arrastar aqui</span>
+      <span class="solta__secundario">Arquivo JSON, até 20 MB</span>
+      <input type="file" id="entrada-arquivo" accept="application/json,.json">
+    </label>
+
+    <p class="aviso aviso--erro" id="aviso-upload" role="alert" hidden></p>
+    <p class="aviso aviso--nota" id="aviso-armazenamento" hidden></p>
+
+    <p class="dica">
+      Para gerar ou atualizar o banco: <code>python3 scripts/extract.py &amp;&amp; python3 scripts/build.py</code>
+    </p>
+  </section>
+
+  <!-- 2. Filtros -->
+  <section class="painel envoltorio" id="painel-filtros" hidden aria-labelledby="titulo-filtros">
+    <h2 class="painel__titulo" id="titulo-filtros">O que você quer treinar?</h2>
+    <p class="painel__apoio" id="resumo-banco"></p>
+
+    <form class="filtros" id="formulario-filtros">
+      <fieldset class="grupo">
+        <legend class="grupo__titulo">Prova</legend>
+        <div class="fichas" id="fichas-provas"></div>
+      </fieldset>
+      <fieldset class="grupo">
+        <legend class="grupo__titulo">Tema</legend>
+        <div class="fichas" id="fichas-temas"></div>
+      </fieldset>
+      <fieldset class="grupo">
+        <legend class="grupo__titulo">Gabarito</legend>
+        <div class="fichas" id="fichas-procedencias"></div>
+      </fieldset>
+    </form>
+
+    <p class="aviso aviso--erro" id="aviso-filtros" role="alert" hidden></p>
+
+    <div class="acoes">
+      <button type="button" class="botao" id="botao-comecar">Sortear questões</button>
+      <button type="button" class="botao botao--discreto" id="botao-trocar-banco">Trocar banco</button>
+      <span id="contagem-selecao" class="dica" style="margin:0"></span>
+    </div>
+  </section>
+
+  <!-- 3. Questão -->
+  <section class="painel envoltorio" id="painel-questao" hidden aria-labelledby="titulo-questao">
+    <h2 class="so-leitor" id="titulo-questao">Questão</h2>
+
+    <article class="questao" id="questao">
+      <div class="questao__meta" id="questao-meta"></div>
+      <p class="questao__enunciado" id="questao-enunciado"></p>
+      <ul class="alternativas" id="alternativas"></ul>
+    </article>
+
+    <div class="correcao" id="correcao" hidden aria-live="polite">
+      <p class="correcao__veredito" id="correcao-veredito"></p>
+      <p class="correcao__nota" id="correcao-nota"></p>
+      <p class="correcao__fonte" id="correcao-fonte"></p>
+    </div>
+
+    <div class="acoes">
+      <button type="button" class="botao" id="botao-proxima" disabled>Próxima</button>
+      <button type="button" class="botao botao--discreto" id="botao-encerrar">Encerrar sessão</button>
+      <span class="dica" style="margin:0">Teclado: <kbd>a</kbd>–<kbd>d</kbd> responde, <kbd>Enter</kbd> avança</span>
+    </div>
+  </section>
+
+  <!-- 4. Resultado -->
+  <section class="painel envoltorio" id="painel-fim" hidden aria-labelledby="titulo-fim">
+    <h2 class="painel__titulo" id="titulo-fim">Sessão encerrada</h2>
+
+    <div class="resumo">
+      <div class="resumo__nota" id="fim-nota"></div>
+      <p class="resumo__detalhe" id="fim-detalhe"></p>
+    </div>
+
+    <h3 class="painel__titulo" id="titulo-revisao" hidden>Revisão dos erros</h3>
+    <div class="revisao" id="revisao"></div>
+
+    <div class="acoes">
+      <button type="button" class="botao" id="botao-nova">Nova sessão</button>
+      <button type="button" class="botao botao--discreto" id="botao-voltar-filtros">Mudar filtros</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="envoltorio">
+    <p>Questões extraídas dos cadernos oficiais em <code>Provas/</code>.</p>
+    <p id="rodape-procedencia"></p>
+  </div>
+</footer>
+
+<script src="js/storage.js" defer></script>
+<script src="js/bank.js" defer></script>
+<script src="js/session.js" defer></script>
+<script src="js/ui.js" defer></script>
+</body>
+</html>

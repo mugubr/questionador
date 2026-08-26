@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+
+# Texto intermediário da extração de PDF
+build/
+*.txt
+!requirements.txt
+
+.DS_Store

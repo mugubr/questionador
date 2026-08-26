@@ -1,0 +1,114 @@
+{
+  "AV2-PI-Q01": {
+    "letra": "c",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "LPI 9.279/1996: I é verdadeira (lei de 1996, pós-OMC/TRIPS); II é verdadeira (art. 40: invenção 20 anos, MU 15 anos); III é FALSA (art. 122 exige sinal 'visualmente perceptível' — sons não são registráveis no Brasil); IV é FALSA (art. 18, III veda patentear seres vivos, excetuando apenas microrganismos transgênicos — plantas não). Não verdadeiras: III e IV.",
+    "tema": "propriedade-intelectual"
+  },
+  "AV2-PI-Q02": {
+    "letra": "d",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "A CUP consagra o princípio do tratamento nacional (arts. 2º e 3º): domiciliados ou com estabelecimento efetivo em país membro são equiparados aos nacionais. As demais ignoram a territorialidade: nem a OMC nem o PCT concedem direito válido automaticamente em outros países.",
+    "tema": "propriedade-intelectual"
+  },
+  "AV2-PI-Q03": {
+    "letra": "b",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "Lei 10.711/2003: a inscrição no RENASEM é obrigatória para produtores e comerciantes de sementes e mudas, com inscrição periódica dos campos de produção. A fiscalização do comércio interestadual e internacional é da União (MAPA), não do Estado, e o registro nacional de cultivares habilita a produção no País, não no exterior.",
+    "tema": "cultivares"
+  },
+  "AV2-PI-Q04": {
+    "letra": "c",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "II reproduz a definição legal de marca (LPI art. 122: sinal distintivo visualmente perceptível não compreendido nas proibições legais) e IV descreve corretamente a função distintiva. I e III são falsas pelo mesmo motivo: marcas são bens negociáveis e sua titularidade pode ser cedida (LPI arts. 134 e seguintes).",
+    "tema": "marcas"
+  },
+  "AV2-PI-Q05": {
+    "letra": "d",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "Conhecimento Tradicional Associado (I) e Cultivar (IV) são protegidos por regimes sui generis — respectivamente a Lei 13.123/2015 e a Lei 9.456/1997 —, fora da Propriedade Industrial. Desenho Industrial e Marca são ativos de Propriedade Industrial regidos pela LPI.",
+    "tema": "propriedade-intelectual"
+  },
+  "AV2-PI-Q06": {
+    "letra": "b",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "Vacina (I) e polímero sintético (III) são invenções patenteáveis. Uma nova espécie de gramínea (II) é obtenção vegetal, protegida por cultivar e vedada como patente pelo art. 18, III da LPI; um gene de Arabidopsis thaliana (IV) é material biológico encontrado na natureza, excluído pelo art. 10, IX.",
+    "tema": "patentes"
+  },
+  "AV2-PI-Q07": {
+    "letra": "b",
+    "confianca": "alta",
+    "referencia": "Ref3-A-caminho-da-inovacao_2010.pdf",
+    "justificativa": "Lei de Inovação 10.973/2004, art. 16: são competências do NIT desenvolver estudos de prospecção e inteligência competitiva (II) e promover e acompanhar o relacionamento da ICT com empresas, negociando e gerindo acordos de transferência de tecnologia (III). I é falsa porque a atribuição é desenvolver os estudos, não licitá-los a terceiros; IV é falsa pelo 'somente', que restringe indevidamente a avaliação. Sequência F, V, V, F.",
+    "tema": "transferencia-tecnologia"
+  },
+  "AV2-PI-Q08": {
+    "letra": "b",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "Interface gráfica para apresentação de informações recai na exclusão do art. 10, VI da LPI (apresentação de informações) e no art. 10, VIII (programas de computador em si), por não produzir efeito técnico. As demais alternativas descrevem soluções com efeito técnico concreto — gestão de memória, controle de motor e processamento de imagens — e são patenteáveis como invenções implementadas em computador.",
+    "tema": "patentes"
+  },
+  "AV2-PI-Q09": {
+    "letra": "d",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "I e II são verdadeiras (Madri trata do registro internacional de marcas; Berna, da proteção das obras e dos autores). III é falsa: o Protocolo de Madri não elimina o exame substantivo de cada escritório designado. IV é falsa: não existe 'patente internacional' — o PCT unifica o depósito, mas a concessão segue nacional. V é falsa: o Tratado de Budapeste existe justamente para EVITAR múltiplos depósitos de material biológico, reconhecendo um depósito único.",
+    "tema": "propriedade-intelectual"
+  },
+  "AV2-PI-Q10": {
+    "letra": "c",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "I é verdadeira (LPI art. 98: obra de caráter puramente artístico não é desenho industrial); II é verdadeira (art. 100, II); IV é verdadeira (art. 100, I). III é FALSA porque descreve justamente o que É registrável — o desenho industrial é definido no art. 95 como forma plástica ornamental, tri ou bidimensional. Sequência V, V, F, V.",
+    "tema": "desenho-industrial"
+  },
+  "AV2-PI-Q11": {
+    "letra": "b",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "II é verdadeira (LPI art. 180: nome geográfico de uso comum não é IG) e III é verdadeira (produtor único legitimado pode requerer em nome próprio). I é falsa por trocar os conceitos: a definição apresentada é de Denominação de Origem (art. 178), não de Indicação de Procedência (art. 177). IV é falsa por inverter o art. 181, que PERMITE o nome geográfico como elemento de marca desde que não induza falsa procedência.",
+    "tema": "indicacao-geografica"
+  },
+  "AV2-PI-Q12": {
+    "letra": "a",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "A UPOV (1961) é o acordo multilateral que estabelece normas comuns para reconhecimento e proteção da propriedade de novas variedades vegetais obtidas por melhoristas. A alternativa d descreve a Convenção sobre Diversidade Biológica (repartição de benefícios) e a c descreve o Tratado de Budapeste (depósito de material biológico).",
+    "tema": "cultivares"
+  },
+  "AV2-PI-Q13": {
+    "letra": "a",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "I, II e III descrevem corretamente a IPC: melhora a busca de anterioridade, tem hierarquia Seções/Classes/Subclasses/Grupos e cobre toda a tecnologia com cerca de 70 mil grupos. IV é falsa: a IPC não classifica desenho industrial (isso cabe à Classificação de Locarno) nem programa de computador.",
+    "tema": "patentes"
+  },
+  "AV2-PI-Q14": {
+    "letra": "a",
+    "confianca": "media",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "Questão duplicada da 13 no caderno original, com a numeração das assertivas corrompida (a III foi absorvida pelo texto da II). Mantidas as mesmas alternativas e o mesmo mérito: as assertivas sobre busca de anterioridade, hierarquia e abrangência da IPC são verdadeiras, e a que atribui à IPC a classificação de desenho industrial e programa de computador é falsa. Confiança média pela corrupção do enunciado na fonte.",
+    "tema": "patentes"
+  },
+  "AV2-PI-Q15": {
+    "letra": "c",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "II é verdadeira (a Convenção de Berna é administrada pela OMPI e conta com mais de cem signatários) e IV é verdadeira (o direito autoral protege a forma de expressão, não a ideia isolada). I é falsa por atribuir o direito autoral à CUP, quando a convenção aplicável é a de Berna. III é falsa por rotular como direito MORAL o que é direito PATRIMONIAL (utilizar, fruir e dispor — art. 28 da Lei 9.610/1998).",
+    "tema": "direito-autoral"
+  },
+  "AV2-PI-Q16": {
+    "letra": "c",
+    "confianca": "alta",
+    "referencia": "Ref2-Patente_2021.pdf",
+    "justificativa": "Questão idêntica à 15 no caderno original. Mesmo mérito: II e IV são verdadeiras; I confunde a Convenção de Berna com a CUP e III rotula como direito moral o direito patrimonial de utilizar, fruir e dispor da obra (art. 28 da Lei 9.610/1998).",
+    "tema": "direito-autoral"
+  }
+}
