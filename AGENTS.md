@@ -163,8 +163,8 @@ data/                         the bank and its editable source layers
   question-bank.md            generated: human review surface
   raw-questions.json          generated and versioned: the extraction anchor
   overrides.json              hand-written parse fixes
-  official-topics.json        topic for the officially-keyed questions
-  answers/*.json              derived answers, one file per exam paper
+  topics.json                 the taxonomy and all 144 topic assignments
+  answers/*.json              explanations and references, one file per paper
 
 tools/                        the Python package
   __main__.py                 CLI: python -m tools <extract|build|validate>
@@ -213,10 +213,12 @@ two must agree; a rule in one and not the other is a bug.
       "source": "official",     // official | derived
       "confidence": "high",     // derived only: high | medium | low
       "reference": "...",       // what was consulted
-      "rationale": "..."        // Portuguese: why this answer
+      "explanation": "...",     // official: Portuguese, why this answer is right
+      "rationale": "..."        // derived only: Portuguese, how it was deduced
     },
     "duplicateOf": "AV2-PI-Q13",           // optional, set on known repeats
-    "knownDefects": ["identical-options"]  // optional, defects of the source
+    "knownDefects": ["identical-options"], // optional, defects of the source
+    "excludedReason": "annulled"           // optional; never drawn when present
   }]
 }
 ```
@@ -226,20 +228,53 @@ Invariants the validator enforces:
 - `id == f"{exam}-Q{number:02d}"`. Three fields, one truth.
 - Every `exam` appears in `exams[]`, and every exam has at least one question.
 - Per-paper counts match `tools/config.py`, and numbering is contiguous 1..N.
-- `source: "official"` carries no `confidence` and no `rationale`.
+- `source: "official"` never carries `confidence`; it may carry `explanation`
+  and `reference`.
 - `source: "derived"` carries all of `confidence`, `reference`, `rationale`.
+- A question may omit `answer.letter` **only** when `excludedReason` is set.
+- Every `topic` exists in the bank's `topics` array.
 - No stem or option holds page-header or footer residue.
 - A `duplicateOf` target exists and is not itself a duplicate.
 
 ### Provenance is not optional
 
-Only ENA25 and ENA26 have a published answer key — 40 questions. The other 104
-answers were **derived** from the reference PDFs and applicable law. Each one
-records its reference, its rationale, and a confidence level, and the app marks
-it visibly. A derived answer can be wrong, and the data says so.
+**All seven papers have a published answer key, and every one of the 144
+answers is `official`.** The keys live in `exams/` alongside the booklets. They
+were recovered from `profnit.org.br`, whose `/exames/` page is a complete
+archive back to 2016 and serves fine with a browser `User-Agent` — start there,
+not at the Wayback CDX index.
 
-Never promote a derived answer to `official`. `official` means "a published
-answer key states this", nothing else.
+Two verification steps make a key usable, and neither is optional:
+
+1. **Prove the booklet identity.** Download the published question booklet and
+   compare its MD5 against the copy in `exams/`. All seven match byte for byte.
+   This matters more than it sounds: PROFNIT ran **two different ENA18
+   Suplementar papers** for the same intake, and the other one annuls questions
+   06 and 21. A key for the wrong sibling would have looked plausible and been
+   entirely wrong.
+2. **Check the randomization sentence.** The AV2 keys state that they refer to
+   the booklet *as published*, which is what makes matching by question number
+   valid. The ENA18 key does not say it — there the MD5 match makes the
+   assurance redundant, because there is no separate randomized booklet for the
+   numbering to drift against. Never match by number without one or the other.
+
+`derived` stays in the schema, the validator and `models.py` because a future
+paper may arrive without a key. But nothing in the bank is derived today, and
+the code must not pretend otherwise or carry branches nothing exercises.
+
+Where a derived rationale already existed, it survives as `explanation`: the
+answer is published fact, and the reasoning is still what teaches. It carries
+no `confidence`, because a published answer has none.
+
+Never promote an answer to `official` without the key PDF in `exams/` and both
+checks above. `official` means "a published answer key states this", nothing
+else.
+
+**The derivation work was measurably good, and that is a fact, not a
+reassurance.** Of the 103 comparable derived answers, 98 were already right —
+88 of 89 marked `high`, and 0 of 2 marked `low`. The hand-assigned confidence
+predicted the errors exactly. When something must be deduced again, label its
+confidence honestly and the label will be worth trusting.
 
 ---
 
@@ -257,9 +292,10 @@ Layers, applied in this order, each one narrow and auditable:
    the chain can be rebuilt and diffed without running `pdftotext`.
 2. `data/overrides.json` — hand-written fixes for layout the parser cannot
    resolve. Each entry records its reason.
-3. Official answer keys — ENA25 and ENA26, matched by question number.
-4. `data/answers/*.json` — the 104 derived answers.
-5. `data/official-topics.json` — topics for the officially-keyed questions.
+3. Official answer keys — all seven papers, matched by question number.
+4. `data/answers/*.json` — the explanation and reference for each question that
+   has one.
+5. `data/topics.json` — the 15-topic taxonomy and every question's topic.
 
 ### Rules the pipeline obeys
 
@@ -359,12 +395,21 @@ Three states — system, light, dark. The choice persists in `localStorage` and 
 small inline script in `<head>` applies `data-theme` **before first paint**, so
 reloading in dark does not flash white.
 
-Define the full light palette on bare `:root`. Redefine only the tokens that
-change under
-`@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) }`
-and again under `:root[data-theme="dark"]`, sharing one declaration list — never
-two hand-synchronized copies. Declare `color-scheme` so the browser paints its
-own surfaces to match.
+Each color token is declared **once**, with both values side by side, using
+`light-dark()`. The whole theme switch is then three `color-scheme`
+declarations — bare `:root` follows the system, `[data-theme="light"]` and
+`[data-theme="dark"]` pin it — and the browser paints its own scrollbars and
+form controls to match for free. Two hand-synchronized palettes in a media
+query and an attribute selector are what this replaces, and they must not come
+back.
+
+`light-dark()` needs one safety net. A custom property holding an unsupported
+function still *parses*, so it wins the cascade and fails only at substitution
+— which strips every color from the page instead of falling back. An
+`@supports not (color: light-dark(white, black))` block re-declares the light
+palette for those browsers. Only the light one: degrading to light theme is
+graceful, and duplicating the dark palette would reintroduce exactly the
+hazard `light-dark()` removed.
 
 No color is ever hardcoded outside the token block.
 
@@ -405,26 +450,47 @@ publishes after it passes.
 Faithfully reproduced, never silently "fixed". Each is recorded in the data so
 the app can act on it.
 
-- **`AV2-PI` repeats questions.** Q14 duplicates Q13 with corrupted assertion
-  numbering (`I, II, III, III`), and Q16 is identical to Q15. Sixteen numbered
-  items, fourteen distinct questions. Both repeats carry `duplicateOf` and are
-  excluded from the draw by default.
+- **The `AV2-PI` booklet is defective, and the official key proves it.** Items
+  14 and 16 reproduce items 13 and 15 verbatim, options included. But the
+  published key reads `13=A, 14=B` and `15=C, 16=D` — and a key cannot give two
+  letters to one question. So the real exam had *different* questions at 14 and
+  16, and the booklet in `exams/` is the thing that is wrong. Re-keying them to
+  B and D would attach real answers to questions nobody has. They carry
+  `duplicateOf` and `excludedReason: "source-booklet-defect"`, and are never
+  drawn.
+- **`AV2-POL-Q14` is annulled.** The official key prints `ANULADA` where a
+  letter should be. The question has no `answer.letter` and carries
+  `excludedReason: "annulled"`.
 - **`AV2-MET-Q14` has two identical options.** Options `a` and `d` are the same
   string in the original PDF. Effectively a three-option question. Recorded in
-  `knownDefects`.
+  `knownDefects`, and the app treats a choice of either twin consistently.
 - **Three questions needed hand-written stems** because the PDF layout does not
   resolve deterministically: `ENA25-Q14` and `AV2-MET-Q08` (two-column matching
   tables that `pdftotext -layout` renders side by side) and `ENA18-Q40`
   (closing text glued onto the last option). See `data/overrides.json`.
-- **`AV2-MET` answers rest on general methodology bibliography** — ABNT norms,
-  the CAPES Qualis, classic references — not on the PDFs in `references/`,
-  which do not cover the subject. Their `reference` fields say so plainly
-  rather than pointing at a file that does not support them.
-- **Derived answers show a weaker length bias than the official ones.** In the
-  40 officially-keyed questions the correct option is the longest 60% of the
-  time; in the 104 derived ones, 33% (Fisher p=0.0042). This is a signal that
-  some derived keys may be wrong, not proof. Treat it as a standing reason to
-  re-review, and never as grounds to change an answer on its own.
+- **`AV2-MET` explanations rest on general methodology bibliography** — ABNT
+  norms, the CAPES Qualis, classic references — not on the PDFs in
+  `references/`, which do not cover the subject. Their `reference` fields say
+  so plainly rather than pointing at a file that does not support them. A
+  reference naming no document is better than one naming the wrong document.
+- **`references/Ref8` has no text layer.** 127 pages of pure image; extracting
+  it yields zero characters. It is the PROSP PROFNIT book and was cited by 14
+  answers that could never be checked against it. It has since been OCRed, so
+  its content is searchable — but the PDF in the repository is still
+  unsearchable by ordinary tools, and anyone verifying against it needs to know
+  that before concluding "the source does not say this".
+
+### One superseded finding, kept as a lesson
+
+A statistical audit once flagged that the correct option is the longest 60% of
+the time among officially-keyed questions but only 33% among derived ones
+(Fisher p=0.0042), and concluded that roughly 28 derived answers were suspect.
+
+When the real answer keys arrived, **that inference was wrong**. The derived
+answers agreed with the official keys 92% of the time, and the three genuine
+errors were not the ones the length signal predicted — the `confidence` field,
+assigned by hand, predicted them precisely. Do not change an answer because a
+distribution looks unusual. Get the key.
 
 ---
 
