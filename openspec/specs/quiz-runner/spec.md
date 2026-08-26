@@ -1,188 +1,199 @@
 # quiz-runner Specification
 
 ## Purpose
-TBD - created by archiving change quiz-questoes-profnit. Update Purpose after archive.
+
+The static web app a student actually uses. It takes a validated question bank,
+draws questions according to the chosen filters, collects one answer per
+question and grades it immediately, shows the rationale and the reference behind
+each answer key, flags every derived answer so it is never mistaken for an
+official one, and keeps the score and the progress of the session.
+
+It is plain HTML, CSS and JavaScript with no build step, no framework and no
+network request at runtime, so it works when `index.html` is opened straight
+from disk over `file://`. Every string that comes from the bank reaches the DOM
+through `textContent`, and the bank is validated before it is used.
+
 ## Requirements
-### Requirement: Carregamento do banco por upload de arquivo
 
-O app SHALL receber o banco de questões através do upload de um arquivo JSON pelo usuário, sem realizar requisições de rede, de modo a funcionar ao abrir `index.html` diretamente no navegador.
+### Requirement: Bank loading by file upload
 
-#### Scenario: Upload pelo seletor de arquivos
+The app SHALL receive the question bank through a JSON file uploaded by the user, without making any network request, so that it works when `index.html` is opened directly in the browser.
 
-- **WHEN** o usuário seleciona um arquivo JSON válido no seletor de arquivos
-- **THEN** o banco é carregado e a tela de sorteio fica disponível
-- **AND** o app exibe o total de questões carregadas
+#### Scenario: Upload through the file picker
 
-#### Scenario: Upload por arrastar e soltar
+- **WHEN** the user selects a valid JSON file in the file picker
+- **THEN** the bank is loaded and the draw screen becomes available
+- **AND** the app displays the total number of loaded questions
 
-- **WHEN** o usuário arrasta um arquivo JSON válido para a área de upload
-- **THEN** o comportamento é idêntico ao do seletor de arquivos
+#### Scenario: Upload by drag and drop
 
-#### Scenario: Execução sem servidor HTTP
+- **WHEN** the user drags a valid JSON file onto the upload area
+- **THEN** the behaviour is identical to the file picker
 
-- **WHEN** `index.html` é aberto via `file://`
-- **THEN** o app carrega e opera normalmente, sem erro de CORS
+#### Scenario: Running without an HTTP server
 
-### Requirement: Validação do banco recebido
+- **WHEN** `index.html` is opened over `file://`
+- **THEN** the app loads and operates normally, with no CORS error
 
-O app SHALL validar o arquivo enviado antes de usá-lo e SHALL exibir um erro legível sem descartar um banco previamente carregado.
+### Requirement: Validation of the received bank
 
-#### Scenario: JSON malformado
+The app SHALL validate the uploaded file before using it and SHALL display a readable error without discarding a previously loaded bank.
 
-- **WHEN** o arquivo enviado não é JSON válido
-- **THEN** o app exibe uma mensagem de erro identificando o problema
-- **AND** o banco carregado anteriormente permanece ativo
+#### Scenario: Malformed JSON
 
-#### Scenario: Schema inválido
+- **WHEN** the uploaded file is not valid JSON
+- **THEN** the app displays an error message identifying the problem
+- **AND** the previously loaded bank stays active
 
-- **WHEN** o JSON não contém `versao` e uma lista `questoes` não vazia
-- **THEN** o app rejeita o arquivo com mensagem explicando o campo ausente
+#### Scenario: Invalid schema
 
-#### Scenario: Questão com resposta inválida
+- **WHEN** the JSON does not contain `versao` and a non-empty `questoes` list
+- **THEN** the app rejects the file with a message explaining the missing field
 
-- **WHEN** alguma questão tem `resposta.letra` fora de `a`–`d` ou não possui as 4 alternativas
-- **THEN** o app rejeita o banco identificando a questão inválida
+#### Scenario: Question with an invalid answer
 
-#### Scenario: Conteúdo textual hostil
+- **WHEN** some question has `resposta.letra` outside `a`–`d` or does not have the 4 options
+- **THEN** the app rejects the bank identifying the invalid question
 
-- **WHEN** o texto de uma questão contém marcação HTML
-- **THEN** ela é renderizada como texto literal via `textContent`, sem interpretação de HTML
+#### Scenario: Hostile textual content
 
-### Requirement: Persistência do banco e do progresso
+- **WHEN** the text of a question contains HTML markup
+- **THEN** it is rendered as literal text through `textContent`, with no HTML interpretation
 
-O app SHALL armazenar o último banco válido e o progresso da sessão em `localStorage`, e SHALL continuar funcionando quando esse armazenamento estiver indisponível.
+### Requirement: Persistence of the bank and of the progress
 
-#### Scenario: Retorno após recarregar
+The app SHALL store the last valid bank and the progress of the session in `localStorage`, and SHALL keep working when that storage is unavailable.
 
-- **WHEN** o usuário recarrega a página após ter enviado um banco válido
-- **THEN** o banco é restaurado do cache, sem exigir novo upload
+#### Scenario: Coming back after a reload
 
-#### Scenario: Armazenamento indisponível
+- **WHEN** the user reloads the page after having uploaded a valid bank
+- **THEN** the bank is restored from the cache, with no new upload required
 
-- **WHEN** `localStorage` lança exceção na leitura ou na escrita
-- **THEN** o app opera normalmente, apenas exigindo o upload a cada sessão
+#### Scenario: Storage unavailable
 
-#### Scenario: Substituição do banco
+- **WHEN** `localStorage` throws on read or on write
+- **THEN** the app operates normally, only requiring the upload once per session
 
-- **WHEN** o usuário envia um novo arquivo JSON válido
-- **THEN** o banco em cache é substituído e a sessão em andamento é reiniciada
+#### Scenario: Replacing the bank
 
-### Requirement: Filtros do conjunto sorteável
+- **WHEN** the user uploads a new valid JSON file
+- **THEN** the cached bank is replaced and the session in progress is restarted
 
-O app SHALL permitir restringir o conjunto de questões por prova, por tema e por procedência do gabarito, antes de iniciar a sessão.
+### Requirement: Filters on the drawable set
 
-#### Scenario: Filtro por prova
+The app SHALL allow the drawable set of questions to be restricted by exam paper, by topic and by answer-key provenance, before the session starts.
 
-- **WHEN** o usuário seleciona apenas `ENA26`
-- **THEN** somente as 20 questões desse caderno entram no sorteio
+#### Scenario: Filter by exam paper
 
-#### Scenario: Filtro por procedência
+- **WHEN** the user selects only `ENA26`
+- **THEN** only the 20 questions of that paper enter the draw
 
-- **WHEN** o usuário escolhe apenas gabaritos oficiais
-- **THEN** somente as 40 questões de ENA25 e ENA26 entram no sorteio
+#### Scenario: Filter by provenance
 
-#### Scenario: Filtro sem resultados
+- **WHEN** the user chooses official answer keys only
+- **THEN** only the 40 questions of ENA25 and ENA26 enter the draw
 
-- **WHEN** a combinação de filtros não retorna nenhuma questão
-- **THEN** o app informa isso e não permite iniciar a sessão
+#### Scenario: Filter with no results
 
-### Requirement: Sorteio sem repetição
+- **WHEN** the combination of filters returns no question
+- **THEN** the app says so and does not allow the session to start
 
-O app SHALL sortear as questões embaralhando o conjunto filtrado e consumindo-o como um baralho, sem repetir uma questão dentro da mesma sessão.
+### Requirement: Draw without repetition
 
-#### Scenario: Sequência sem repetição
+The app SHALL draw the questions by shuffling the filtered set and consuming it like a deck, without repeating a question within the same session.
 
-- **WHEN** o usuário percorre N questões de um conjunto de N
-- **THEN** cada questão aparece exatamente uma vez
+#### Scenario: Sequence without repetition
 
-#### Scenario: Fim do baralho
+- **WHEN** the user goes through N questions of a set of N
+- **THEN** each question appears exactly once
 
-- **WHEN** a última questão do baralho é respondida
-- **THEN** a sessão termina e o placar final é exibido
+#### Scenario: End of the deck
 
-#### Scenario: Banco preservado
+- **WHEN** the last question of the deck is answered
+- **THEN** the session ends and the final score is displayed
 
-- **WHEN** o conjunto filtrado é embaralhado
-- **THEN** o array do banco carregado não é modificado
+#### Scenario: Bank preserved
 
-### Requirement: Resposta e correção imediata
+- **WHEN** the filtered set is shuffled
+- **THEN** the array of the loaded bank is not modified
 
-O app SHALL apresentar as 4 alternativas, aceitar uma escolha por questão e corrigir imediatamente, exibindo a justificativa e a referência quando existirem.
+### Requirement: Answering and immediate grading
 
-#### Scenario: Resposta correta
+The app SHALL present the 4 options, accept one choice per question and grade it immediately, displaying the rationale and the reference when they exist.
 
-- **WHEN** o usuário escolhe a alternativa que corresponde ao gabarito
-- **THEN** a alternativa é marcada como correta e o acerto entra no placar
+#### Scenario: Correct answer
 
-#### Scenario: Resposta incorreta
+- **WHEN** the user chooses the option that matches the answer key
+- **THEN** the option is marked as correct and the hit enters the score
 
-- **WHEN** o usuário escolhe uma alternativa diferente do gabarito
-- **THEN** a escolha é marcada como incorreta, a alternativa correta é destacada, e o erro entra no placar
+#### Scenario: Incorrect answer
 
-#### Scenario: Justificativa de resposta derivada
+- **WHEN** the user chooses an option different from the answer key
+- **THEN** the choice is marked as incorrect, the correct option is highlighted, and the miss enters the score
 
-- **WHEN** a questão corrigida tem `procedencia: "derivada"`
-- **THEN** a justificativa e a referência consultada são exibidas junto da correção
+#### Scenario: Rationale of a derived answer
 
-#### Scenario: Escolha travada após corrigir
+- **WHEN** the graded question has `procedencia: "derivada"`
+- **THEN** the rationale and the consulted reference are displayed next to the grading
 
-- **WHEN** a questão já foi corrigida
-- **THEN** as alternativas não aceitam nova escolha para aquela questão
+#### Scenario: Choice locked after grading
 
-### Requirement: Aviso de gabarito derivado
+- **WHEN** the question has already been graded
+- **THEN** the options do not accept a new choice for that question
 
-O app SHALL sinalizar visualmente as questões cuja resposta não vem de gabarito oficial, para que o usuário nunca as confunda com resposta oficial.
+### Requirement: Derived answer key warning
 
-#### Scenario: Selo em questão derivada
+The app SHALL visually flag the questions whose answer does not come from an official answer key, so that the user never confuses them with an official answer.
 
-- **WHEN** uma questão com `procedencia: "derivada"` é exibida
-- **THEN** um selo de aviso indica que a resposta foi derivada dos materiais de referência
+#### Scenario: Badge on a derived question
 
-#### Scenario: Questão oficial sem selo
+- **WHEN** a question with `procedencia: "derivada"` is displayed
+- **THEN** a warning badge indicates that the answer was derived from the reference material
 
-- **WHEN** uma questão com `procedencia: "oficial"` é exibida
-- **THEN** nenhum selo de aviso é mostrado
+#### Scenario: Official question without a badge
 
-#### Scenario: Indicação de confiança baixa
+- **WHEN** a question with `procedencia: "oficial"` is displayed
+- **THEN** no warning badge is shown
 
-- **WHEN** uma questão derivada tem `confianca: "baixa"`
-- **THEN** o selo diferencia esse nível dos demais
+#### Scenario: Low confidence indication
 
-### Requirement: Placar e revisão dos erros
+- **WHEN** a derived question has `confianca: "baixa"`
+- **THEN** the badge distinguishes that level from the others
 
-O app SHALL manter o placar da sessão em andamento e SHALL permitir revisar as questões erradas ao final.
+### Requirement: Score and review of the mistakes
 
-#### Scenario: Placar durante a sessão
+The app SHALL keep the score of the session in progress and SHALL allow the missed questions to be reviewed at the end.
 
-- **WHEN** o usuário está respondendo
-- **THEN** o app mostra acertos, erros e quantas questões restam no baralho
+#### Scenario: Score during the session
 
-#### Scenario: Revisão ao final
+- **WHEN** the user is answering
+- **THEN** the app shows hits, misses and how many questions are left in the deck
 
-- **WHEN** a sessão termina
-- **THEN** o app lista as questões erradas com o enunciado, a resposta escolhida e a resposta correta
+#### Scenario: Review at the end
 
-#### Scenario: Nova sessão
+- **WHEN** the session ends
+- **THEN** the app lists the missed questions with the stem, the chosen answer and the correct answer
 
-- **WHEN** o usuário inicia uma nova sessão
-- **THEN** o placar é zerado e o conjunto filtrado é reembaralhado
+#### Scenario: New session
 
-### Requirement: Operação por teclado
+- **WHEN** the user starts a new session
+- **THEN** the score is reset and the filtered set is reshuffled
 
-O app SHALL permitir responder e avançar pelo teclado, com foco visível.
+### Requirement: Keyboard operation
 
-#### Scenario: Seleção por tecla
+The app SHALL allow the user to answer and to advance from the keyboard, with visible focus.
 
-- **WHEN** o usuário pressiona `a`, `b`, `c` ou `d`
-- **THEN** a alternativa correspondente é selecionada
+#### Scenario: Selection by key
 
-#### Scenario: Avanço por tecla
+- **WHEN** the user presses `a`, `b`, `c` or `d`
+- **THEN** the corresponding option is selected
 
-- **WHEN** o usuário pressiona `Enter` em uma questão já corrigida
-- **THEN** o app avança para a próxima questão do baralho
+#### Scenario: Advancing by key
 
-#### Scenario: Navegação por Tab
+- **WHEN** the user presses `Enter` on an already graded question
+- **THEN** the app advances to the next question of the deck
 
-- **WHEN** o usuário navega com `Tab`
-- **THEN** os controles interativos recebem foco visível, em ordem coerente com a leitura
+#### Scenario: Tab navigation
 
+- **WHEN** the user navigates with `Tab`
+- **THEN** the interactive controls receive visible focus, in an order consistent with the reading order

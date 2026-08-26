@@ -1,167 +1,180 @@
 # question-bank-extraction Specification
 
 ## Purpose
-TBD - created by archiving change quiz-questoes-profnit. Update Purpose after archive.
+
+The Python pipeline that turns the official PROFNIT exam PDFs into a validated,
+versioned question bank. It covers text extraction with `pdftotext -layout`,
+header and footer removal, the segmentation of questions and options, the
+per-paper count assertions that make a silently incomplete bank impossible,
+matching against the two published answer keys, the derivation and labelling of
+the 104 answers that have no published key, the flagging of questions the parser
+cannot resolve deterministically, and the publication of the bank in both a
+machine-readable and a human-reviewable form.
+
+It runs on a developer machine and never in the browser. Provenance is part of
+the contract: an answer is either backed by a published answer key or recorded
+as derived, with its reference, its rationale and a confidence level.
+
 ## Requirements
-### Requirement: Extração de texto dos cadernos de questões
 
-O pipeline SHALL extrair o texto dos 7 cadernos de questões em `Provas/` usando `pdftotext -layout`, preservando a ordem e a indentação necessárias para o parsing subsequente.
+### Requirement: Text extraction from the question papers
 
-#### Scenario: Extração de todos os cadernos
+The pipeline SHALL extract the text of the 7 question papers in `Provas/` using `pdftotext -layout`, preserving the order and the indentation that the subsequent parsing needs.
 
-- **WHEN** o script de extração é executado sobre `Provas/`
-- **THEN** ele produz um arquivo de texto para cada um dos 7 cadernos (`Prova_ENA18`, `Prova_ENA25`, `Prova_ENA26`, `PROFNIT-AV2-PI`, `PROFNIT-AV2-MET`, `PROFNIT-AV2-POL`, `PROFNIT-AV2-201024-PROSP`)
-- **AND** os 2 arquivos de gabarito são processados separadamente, não como cadernos
+#### Scenario: Extraction of every paper
 
-#### Scenario: PDF sem camada de texto
+- **WHEN** the extraction script is run over `Provas/`
+- **THEN** it produces one text file for each of the 7 papers (`Prova_ENA18`, `Prova_ENA25`, `Prova_ENA26`, `PROFNIT-AV2-PI`, `PROFNIT-AV2-MET`, `PROFNIT-AV2-POL`, `PROFNIT-AV2-201024-PROSP`)
+- **AND** the 2 answer-key files are processed separately, not as question papers
 
-- **WHEN** `pdftotext` retorna menos de 10 linhas para um PDF de prova
-- **THEN** o script aborta com erro identificando o arquivo, em vez de gerar questões vazias
+#### Scenario: PDF with no text layer
 
-### Requirement: Remoção de cabeçalho e rodapé
+- **WHEN** `pdftotext` returns fewer than 10 lines for an exam PDF
+- **THEN** the script aborts with an error identifying the file, instead of generating empty questions
 
-O parser SHALL remover cabeçalhos e rodapés de página antes de segmentar as questões, para que enunciados cortados por quebra de página sejam remontados corretamente.
+### Requirement: Header and footer removal
 
-#### Scenario: Rodapé no meio de um enunciado
+The parser SHALL remove page headers and footers before segmenting the questions, so that stems cut by a page break are reassembled correctly.
 
-- **WHEN** o rodapé `18 de novembro de 2023   PI   Página 7 de 8` aparece entre o enunciado e as alternativas da questão 16 de `PROFNIT-AV2-PI`
-- **THEN** a questão extraída contém o enunciado completo seguido das 4 alternativas
-- **AND** o texto do rodapé não aparece em nenhum campo da questão
+#### Scenario: Footer in the middle of a stem
 
-#### Scenario: Cabeçalho institucional do ENA18
+- **WHEN** the footer `18 de novembro de 2023   PI   Página 7 de 8` appears between the stem and the options of question 16 of `PROFNIT-AV2-PI`
+- **THEN** the extracted question contains the complete stem followed by the 4 options
+- **AND** the footer text does not appear in any field of the question
 
-- **WHEN** as linhas `Associação Fórum Nacional de Gestores…`, `Programa de Pós-Graduação em…` e `PROFNIT` aparecem no topo de cada página de `Prova_ENA18`
-- **THEN** essas linhas são removidas antes da segmentação
+#### Scenario: Institutional header of ENA18
 
-#### Scenario: Resíduo de rodapé detectado na validação
+- **WHEN** the lines `Associação Fórum Nacional de Gestores…`, `Programa de Pós-Graduação em…` and `PROFNIT` appear at the top of every page of `Prova_ENA18`
+- **THEN** those lines are removed before the segmentation
 
-- **WHEN** o texto de qualquer questão extraída contém `Página \d+ de \d+` ou `Pg\. \d+/\d+`
-- **THEN** a validação falha identificando a questão afetada
+#### Scenario: Footer residue detected during validation
 
-### Requirement: Segmentação de questões e alternativas
+- **WHEN** the text of any extracted question contains `Página \d+ de \d+` or `Pg\. \d+/\d+`
+- **THEN** validation fails identifying the affected question
 
-O parser SHALL reconhecer os dois marcadores de questão presentes no acervo e extrair exatamente 4 alternativas rotuladas de `a` a `d` por questão.
+### Requirement: Segmentation of questions and options
 
-#### Scenario: Marcador em caixa alta
+The parser SHALL recognise the two question markers present in the collection and extract exactly 4 options labelled `a` to `d` per question.
 
-- **WHEN** o parser encontra uma linha `QUESTÃO 01` ou `QUESTÃO 01.`
-- **THEN** ele inicia uma nova questão de número 1
+#### Scenario: Upper-case marker
 
-#### Scenario: Marcador em caixa mista
+- **WHEN** the parser finds a line `QUESTÃO 01` or `QUESTÃO 01.`
+- **THEN** it starts a new question with number 1
 
-- **WHEN** o parser encontra uma linha `Questão 01`
-- **THEN** ele inicia uma nova questão de número 1
+#### Scenario: Mixed-case marker
 
-#### Scenario: Enunciado com bloco de assertivas romanas
+- **WHEN** the parser finds a line `Questão 01`
+- **THEN** it starts a new question with number 1
 
-- **WHEN** o enunciado contém assertivas numeradas `I.`, `II.`, `III.`, `IV.`
-- **THEN** o bloco é preservado integralmente no campo de enunciado, com as quebras de linha mantidas
-- **AND** as assertivas romanas não são confundidas com alternativas
+#### Scenario: Stem with a block of Roman-numbered assertions
 
-#### Scenario: Questão colada por quebra de página
+- **WHEN** the stem contains assertions numbered `I.`, `II.`, `III.`, `IV.`
+- **THEN** the block is preserved in full in the stem field, with the line breaks kept
+- **AND** the Roman assertions are not confused with options
 
-- **WHEN** o marcador `Questão 04` aparece imediatamente após a última alternativa da questão 03 em `Prova_ENA26`, sem linha em branco
-- **THEN** as duas questões são segmentadas separadamente
+#### Scenario: Question glued by a page break
 
-### Requirement: Asserção de contagem por caderno
+- **WHEN** the marker `Questão 04` appears immediately after the last option of question 03 in `Prova_ENA26`, with no blank line
+- **THEN** the two questions are segmented separately
 
-O parser SHALL falhar quando a contagem extraída divergir do esperado, em vez de emitir um banco incompleto.
+### Requirement: Per-paper count assertion
 
-#### Scenario: Contagem correta
+The parser SHALL fail when the extracted count diverges from the expected one, instead of emitting an incomplete bank.
 
-- **WHEN** a extração termina
-- **THEN** o total é de 144 questões, distribuídas como ENA18=40, ENA25=20, ENA26=20 e 16 para cada um dos 4 cadernos AV2
+#### Scenario: Correct count
 
-#### Scenario: Contagem divergente
+- **WHEN** the extraction finishes
+- **THEN** the total is 144 questions, distributed as ENA18=40, ENA25=20, ENA26=20 and 16 for each of the 4 AV2 papers
 
-- **WHEN** um caderno produz um número de questões diferente do esperado
-- **THEN** o script falha reportando o caderno, o esperado e o obtido
+#### Scenario: Divergent count
 
-#### Scenario: Questão com número de alternativas incorreto
+- **WHEN** a paper produces a number of questions different from the expected one
+- **THEN** the script fails reporting the paper, the expected count and the obtained count
 
-- **WHEN** uma questão extraída não tem exatamente 4 alternativas `a`–`d`
-- **THEN** o script falha reportando o identificador da questão
+#### Scenario: Question with the wrong number of options
 
-### Requirement: Casamento com gabarito oficial
+- **WHEN** an extracted question does not have exactly 4 options `a`–`d`
+- **THEN** the script fails reporting the identifier of the question
 
-O pipeline SHALL casar as questões de ENA25 e ENA26 com os gabaritos oficiais correspondentes, pelo número da questão.
+### Requirement: Matching against the official answer key
 
-#### Scenario: Casamento por número
+The pipeline SHALL match the questions of ENA25 and ENA26 against the corresponding official answer keys, by question number.
 
-- **WHEN** o gabarito `Gabarito-Final_ENA26` indica `1 → B`
-- **THEN** a questão `ENA26-Q01` recebe `resposta.letra: "b"` e `resposta.procedencia: "oficial"`
+#### Scenario: Matching by number
 
-#### Scenario: Gabarito incompleto
+- **WHEN** the answer key `Gabarito-Final_ENA26` states `1 → B`
+- **THEN** question `ENA26-Q01` receives `resposta.letra: "b"` and `resposta.procedencia: "oficial"`
 
-- **WHEN** um gabarito não fornece as 20 respostas esperadas
-- **THEN** o script falha em vez de deixar questões sem resposta silenciosamente
+#### Scenario: Incomplete answer key
 
-#### Scenario: Resposta oficial dispensa justificativa
+- **WHEN** an answer key does not provide the 20 expected answers
+- **THEN** the script fails instead of silently leaving questions without an answer
 
-- **WHEN** uma questão tem `procedencia: "oficial"`
-- **THEN** os campos `confianca` e `justificativa` são omitidos
+#### Scenario: An official answer needs no rationale
 
-### Requirement: Derivação e rotulagem das respostas sem gabarito
+- **WHEN** a question has `procedencia: "oficial"`
+- **THEN** the fields `confianca` and `justificativa` are omitted
 
-Para as 104 questões sem gabarito publicado, o pipeline SHALL registrar a resposta derivada acompanhada de procedência, nível de confiança, referência consultada e justificativa.
+### Requirement: Derivation and labelling of the answers with no official key
 
-#### Scenario: Questão derivada completa
+For the 104 questions with no published answer key, the pipeline SHALL record the derived answer together with its provenance, confidence level, consulted reference and rationale.
 
-- **WHEN** uma questão de `Prova_ENA18` ou de um caderno AV2 recebe resposta
-- **THEN** `resposta.procedencia` é `"derivada"`
-- **AND** `resposta.confianca` é `"alta"`, `"media"` ou `"baixa"`
-- **AND** `resposta.referencia` cita a fonte efetivamente consultada — um arquivo de `Materiais/` quando o conteúdo estiver coberto por ele, ou a norma, lei ou bibliografia pertinente quando não estiver
-- **AND** `resposta.justificativa` é um texto não vazio explicando a escolha
+#### Scenario: Complete derived question
 
-#### Scenario: Conteúdo fora do alcance de Materiais/
+- **WHEN** a question from `Prova_ENA18` or from an AV2 paper receives an answer
+- **THEN** `resposta.procedencia` is `"derivada"`
+- **AND** `resposta.confianca` is `"alta"`, `"media"` or `"baixa"`
+- **AND** `resposta.referencia` cites the source that was actually consulted — a file from `Materiais/` when the content is covered by it, or the applicable norm, law or bibliography when it is not
+- **AND** `resposta.justificativa` is a non-empty text explaining the choice
 
-- **WHEN** a questão trata de assunto não coberto pelos PDFs de `Materiais/` — como as normas ABNT, o Qualis CAPES e a tipologia de pesquisa cobrados em `PROFNIT-AV2-MET`
-- **THEN** `resposta.referencia` nomeia a fonte real (norma, lei ou bibliografia da disciplina)
-- **AND** nenhuma citação a `Materiais/` é fabricada para satisfazer o formato
+#### Scenario: Content outside the reach of Materiais/
 
-#### Scenario: Enunciado que cita a referência
+- **WHEN** the question deals with a subject not covered by the PDFs in `Materiais/` — such as the ABNT norms, the CAPES Qualis and the research typology examined in `PROFNIT-AV2-MET`
+- **THEN** `resposta.referencia` names the real source (norm, law or bibliography of the discipline)
+- **AND** no citation to `Materiais/` is fabricated to satisfy the format
 
-- **WHEN** o enunciado cita explicitamente um material (ex.: "De acordo com o material *Criando uma marca* (OMPI)")
-- **THEN** `resposta.referencia` aponta para o arquivo correspondente em `Materiais/`
+#### Scenario: Stem that cites the reference
 
-#### Scenario: Derivação indecidível
+- **WHEN** the stem explicitly cites a material (e.g. "De acordo com o material *Criando uma marca* (OMPI)")
+- **THEN** `resposta.referencia` points to the corresponding file in `Materiais/`
 
-- **WHEN** os materiais de referência não sustentam uma única alternativa com segurança
-- **THEN** a questão recebe `confianca: "baixa"` e permanece no banco, em vez de ser removida
+#### Scenario: Underivable answer
 
-### Requirement: Marcação de questões que exigem revisão manual
+- **WHEN** the reference material does not support a single option with confidence
+- **THEN** the question receives `confianca: "baixa"` and stays in the bank, instead of being removed
 
-O parser SHALL sinalizar questões cuja estrutura não pôde ser resolvida de forma determinística, em vez de aplicar heurísticas de adivinhação.
+### Requirement: Flagging of questions that require manual review
 
-#### Scenario: Questão de correlação em duas colunas
+The parser SHALL flag questions whose structure could not be resolved deterministically, instead of applying guessing heuristics.
 
-- **WHEN** o parser encontra a questão 14 de `Prova_ENA25`, cujo texto tem colunas lado a lado (`Coluna 1` × `Coluna 2`)
-- **THEN** a questão é marcada com `parse_status: "revisar"`
-- **AND** o relatório de extração lista todas as questões marcadas para revisão
+#### Scenario: Two-column matching question
 
-#### Scenario: Revisão concluída
+- **WHEN** the parser finds question 14 of `Prova_ENA25`, whose text has side-by-side columns (`Coluna 1` × `Coluna 2`)
+- **THEN** the question is flagged with `parse_status: "revisar"`
+- **AND** the extraction report lists every question flagged for review
 
-- **WHEN** uma questão marcada é reescrita manualmente como texto linear
-- **THEN** seu `parse_status` passa a `"ok"`
-- **AND** a validação exige que nenhuma questão publicada permaneça em `"revisar"`
+#### Scenario: Review completed
 
-### Requirement: Publicação em dois formatos
+- **WHEN** a flagged question is manually rewritten as linear text
+- **THEN** its `parse_status` becomes `"ok"`
+- **AND** validation requires that no published question remains in `"revisar"`
 
-O pipeline SHALL publicar o banco em `data/questions.json` para consumo pelo app e em `data/questoes.md` para leitura e revisão humana.
+### Requirement: Publication in two formats
 
-#### Scenario: JSON validado contra o schema
+The pipeline SHALL publish the bank in `data/questions.json` for consumption by the app and in `data/questoes.md` for human reading and review.
 
-- **WHEN** `data/questions.json` é gerado
-- **THEN** ele valida contra `data/schema.json`
-- **AND** contém `versao`, a lista de `provas` e as 144 `questoes`
+#### Scenario: JSON validated against the schema
 
-#### Scenario: Markdown de revisão
+- **WHEN** `data/questions.json` is generated
+- **THEN** it validates against `data/schema.json`
+- **AND** it contains `versao`, the list of `provas` and the 144 `questoes`
 
-- **WHEN** `data/questoes.md` é gerado
-- **THEN** cada questão aparece com prova, número, enunciado, as 4 alternativas, a resposta, a procedência e — quando derivada — a referência e a justificativa
+#### Scenario: Review markdown
 
-#### Scenario: Correção manual de uma resposta derivada
+- **WHEN** `data/questoes.md` is generated
+- **THEN** every question appears with its paper, number, stem, the 4 options, the answer, the provenance and — when derived — the reference and the rationale
 
-- **WHEN** o revisor corrige uma letra de resposta derivada
-- **THEN** a correção é feita nos arquivos de dados, sem alteração no código do app
+#### Scenario: Manual correction of a derived answer
 
+- **WHEN** the reviewer corrects the letter of a derived answer
+- **THEN** the correction is made in the data files, with no change to the app code
