@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, type-check, test and verify the bank
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+
+      - name: Install poppler-utils
+        # The pipeline refuses to run against Xpdf's pdftotext, so the real
+        # poppler binary has to be on PATH before `python -m tools` starts.
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes poppler-utils
+          pdftotext -v
+
+      - name: Set up uv and Python
+        uses: astral-sh/setup-uv@v10
+        with:
+          python-version: "3.14"
+          enable-cache: true
+          cache-dependency-glob: pyproject.toml
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+
+      - name: Install the development tooling
+        run: uv sync --group dev
+
+      - name: ruff check
+        run: uv run ruff check .
+
+      - name: ruff format --check
+        run: uv run ruff format --check .
+
+      - name: mypy
+        run: uv run mypy tools tests
+
+      - name: pytest
+        run: uv run python -m pytest
+
+      - name: node --test
+        run: node --test tests/js/
+
+      - name: Type-check the JavaScript
+        # The JSDoc annotations are load-bearing, so jsconfig.json runs here and
+        # not only in an editor. Installed on the fly: the app has no
+        # dependencies and the repository has no package.json to keep in sync.
+        run: |
+          npm install --no-save --no-package-lock --no-fund --no-audit \
+            typescript@5 @types/node@24
+          ./node_modules/.bin/tsc --project jsconfig.json
+
+      - name: Validate the published bank
+        run: uv run python -m tools validate
+
+      - name: Rebuild the bank
+        # `data/raw-questions.json` is committed exactly so the chain can be
+        # rebuilt without pdftotext. Re-extracting here would compare against
+        # whatever poppler version Ubuntu ships, which is not the pinned one;
+        # re-extraction is a local step, checked by the diff it produces.
+        run: uv run python -m tools build
+
+      - name: Fail if the rebuild changed a committed artifact
+        # The real guard: the committed bank must be exactly what the current
+        # inputs and the current code produce, byte for byte, on Linux as well
+        # as on the Windows machine that generated it.
+        run: |
+          git add --intent-to-add .
+          if ! git diff --quiet; then
+            echo "::error::A rebuild changed the committed artifacts. Run 'python -m tools build' and commit the result."
+            git diff --stat
+            git diff
+            exit 1
+          fi

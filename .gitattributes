@@ -1,0 +1,40 @@
+# Every text file is stored with LF and checked out with LF, on every platform.
+#
+# This is not cosmetic. The pipeline writes its artifacts with newline="\n", so
+# a bank generated on Windows and one rebuilt on Linux CI are byte-identical
+# only if Git also refuses to translate line endings on checkout. Without this
+# file, core.autocrlf=true hands the rebuild a CRLF working tree and the diff
+# guard in CI reports the whole file as changed.
+* text=auto eol=lf
+
+# Spelled out for the generated artifacts and the source that produces them, so
+# the rule survives someone relaxing the wildcard above.
+*.json  text eol=lf
+*.md    text eol=lf
+*.js    text eol=lf
+*.css   text eol=lf
+*.html  text eol=lf
+*.py    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.svg   text eol=lf
+*.toml  text eol=lf
+*.txt   text eol=lf
+
+# `docs/data/question-bank.js` is the bank re-emitted as a script assignment —
+# machine output with no reviewable content of its own, and large enough to
+# make the repository look like it is written in generated JavaScript. Marked
+# generated so it stays out of the language statistics and out of pull request
+# diffs.
+docs/data/question-bank.js  linguist-generated=true
+
+# The other generated artifacts are deliberately NOT marked. They are committed
+# so that their diffs can be read: `data/question-bank.json` is the canonical
+# bank, `data/question-bank.md` is the human review surface, and
+# `data/raw-questions.json` is the extraction anchor the rebuild starts from.
+# GitHub already leaves JSON and Markdown out of the language statistics.
+
+# Third-party PDFs: never diffed, never merged, never published.
+*.pdf              binary
+exams/**/*.pdf     binary
+references/**/*.pdf binary
