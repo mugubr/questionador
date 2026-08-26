@@ -2,13 +2,11 @@
 
 Sorteia questões das provas do PROFNIT, corrige na hora e mostra por que aquela é a resposta.
 
-**➜ [rubensbraz.github.io/questionador-profnit](https://rubensbraz.github.io/questionador-profnit/)**
+**➜ https://mugubr.github.io/questionador/**
 
 Abra o link e comece. Não há nada para instalar, nada para enviar, nenhum cadastro: as 144 questões já vêm carregadas na página.
 
 Se preferir estudar sem internet, baixe o repositório e abra `docs/index.html` com dois cliques — funciona igual, direto do arquivo.
-
-> **Este repositório é um fork de [mugubr/questionador](https://github.com/mugubr/questionador), e existe para contribuir de volta com ele.** Tudo aqui foi feito com a intenção de virar pull request no projeto original. Se você é mantenedor de lá, as mudanças estão organizadas em commits pequenos e independentes, e a seção [Contribuindo](#contribuindo) explica onde estão as regras que elas seguem.
 
 ## Como usar
 
