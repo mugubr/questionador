@@ -690,7 +690,7 @@
       },
       "parseStatus": "review",
       "issues": [
-        "stem: two columns rendered side by side — rewrite as linear text"
+        "stem: two columns rendered side by side - rewrite as linear text"
       ]
     },
     {
@@ -762,7 +762,7 @@
       },
       "parseStatus": "review",
       "issues": [
-        "stem: column-matching wording — confirm the layout resolved"
+        "stem: column-matching wording - confirm the layout resolved"
       ]
     },
     {
@@ -1464,7 +1464,7 @@
       },
       "parseStatus": "review",
       "issues": [
-        "duplicated a)-d) set (a, b, c, d) — the first one probably belongs to the stem",
+        "duplicated a)-d) set (a, b, c, d) - the first one probably belongs to the stem",
         "text after the last option: 'I. 1d, 2a, 3b, 4c II. 1d, 2a, 3c, 4b III. 1a, 2d, 3c, 4b. IV...'"
       ]
     },
@@ -1719,7 +1719,7 @@
       },
       "parseStatus": "review",
       "issues": [
-        "stem: column-matching wording — confirm the layout resolved"
+        "stem: column-matching wording - confirm the layout resolved"
       ]
     },
     {

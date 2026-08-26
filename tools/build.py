@@ -69,7 +69,8 @@ RAW_QUESTIONS_FILE_KEYS = frozenset({"toolchain", "questions"})
 
 # The only keys an override entry may carry. Anything else is a typo that would
 # otherwise be applied as nothing at all.
-OVERRIDE_KEYS = frozenset({"_reason", "stem", "options"})
+OVERRIDABLE_FIELDS = frozenset({"stem", "options"})
+OVERRIDE_KEYS = OVERRIDABLE_FIELDS | frozenset({"_reason", "_verbatim"})
 
 # The only keys an entry of data/answers/<exam>.json may carry. The letter is
 # not among them: it is read from the published key, so the two can never
@@ -321,7 +322,7 @@ def reconcile_toolchain(
             "the extraction artifacts disagree about the toolchain that "
             f"produced them: {config.RAW_QUESTIONS_PATH.name} records "
             f"{dict(raw_toolchain)} and {config.ANSWER_KEYS_PATH.name} records "
-            f"{dict(keys_toolchain)}. One of them is stale — run "
+            f"{dict(keys_toolchain)}. One of them is stale - run "
             "'python -m tools extract' to rebuild both from the PDFs."
         )
     return dict(raw_toolchain)
@@ -381,7 +382,7 @@ def check_extraction_is_current(
 
     if errors:
         raise BuildError(
-            "the committed extraction is stale — run 'python -m tools extract'\n"
+            "the committed extraction is stale - run 'python -m tools extract'\n"
             + "\n".join(f"  - {item}" for item in errors)
         )
 
@@ -436,9 +437,14 @@ def apply_override(
 ) -> RawQuestion:
     """Overlay a hand-written fix on one extracted question.
 
-    An override has to replace text. One that carries only a comment would
-    otherwise clear the review flag while changing nothing, which is how a
-    question marked for review can quietly reach the bank untouched.
+    Clearing the review flag is the whole power of an override, so every field
+    it carries must be accounted for. A field that replaces the extracted text
+    is a fix. A field identical to the extracted text is a *pin*: someone read
+    what the parser produced, found it correct, and wants the flag cleared
+    without changing a character. Both are legitimate, and they must be told
+    apart, because a pin silently reverts whatever a later ``extract`` run
+    produces for that field. ``_verbatim`` names the pinned fields, which turns
+    that revert into a build failure the next time the two diverge.
 
     Args:
         question: The question as extracted.
@@ -460,6 +466,17 @@ def apply_override(
         errors.add(question.id, "override must set 'stem' or 'options'")
         return question
 
+    verbatim = override.get("_verbatim", [])
+    if not isinstance(verbatim, list) or not all(
+        item in OVERRIDABLE_FIELDS for item in verbatim
+    ):
+        errors.add(
+            question.id,
+            "override '_verbatim' must list field names, each one of "
+            f"{', '.join(sorted(OVERRIDABLE_FIELDS))}",
+        )
+        return question
+
     if stem is not None and (not isinstance(stem, str) or not stem.strip()):
         errors.add(question.id, "override 'stem' must be a non-empty string")
         return question
@@ -473,6 +490,29 @@ def apply_override(
     ):
         errors.add(question.id, "override 'options' must map letters to strings")
         return question
+
+    for field, replacement, extracted in (
+        ("stem", stem, question.stem),
+        ("options", options, dict(question.options)),
+    ):
+        if replacement is None:
+            continue
+        pinned = field in verbatim
+        if replacement == extracted and not pinned:
+            errors.add(
+                question.id,
+                f"override '{field}' is identical to the extracted text. Drop it, "
+                f"or add it to '_verbatim' to record that it was reviewed as-is",
+            )
+            return question
+        if replacement != extracted and pinned:
+            errors.add(
+                question.id,
+                f"override '{field}' is declared verbatim but no longer matches "
+                f"the extracted text. Re-read the question and either update the "
+                f"override or drop it from '_verbatim'",
+            )
+            return question
 
     return RawQuestion(
         id=question.id,
@@ -657,7 +697,7 @@ def build_bank(generated_at: str) -> QuestionBank:
 
         if question.parse_status is not ParseStatus.OK:
             errors.add(
-                question.id, f"still flagged for review — {'; '.join(question.issues)}"
+                question.id, f"still flagged for review - {'; '.join(question.issues)}"
             )
             continue
 

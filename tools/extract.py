@@ -343,7 +343,7 @@ def detect_issues(
     repeated = [letter for letter in letters if counts[letter] > 1]
     if repeated:
         issues.append(
-            f"duplicated a)-d) set ({', '.join(repeated)}) — the first one probably "
+            f"duplicated a)-d) set ({', '.join(repeated)}) - the first one probably "
             "belongs to the stem"
         )
 
@@ -363,11 +363,11 @@ def detect_issues(
     for name, value in fields:
         if has_side_by_side_columns(value):
             issues.append(
-                f"{name}: two columns rendered side by side — rewrite as linear text"
+                f"{name}: two columns rendered side by side - rewrite as linear text"
             )
         elif mentions_column_matching(value):
             issues.append(
-                f"{name}: column-matching wording — confirm the layout resolved"
+                f"{name}: column-matching wording - confirm the layout resolved"
             )
 
         residue = find_residue(value)

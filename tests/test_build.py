@@ -218,6 +218,71 @@ def test_an_override_that_only_carries_a_comment_is_rejected() -> None:
     assert list(errors) == ["ENA26-Q01: override must set 'stem' or 'options'"]
 
 
+def test_an_override_identical_to_the_extracted_text_needs_declaring() -> None:
+    """Refuse a field that replaces the extracted text with the same text.
+
+    Two of the committed overrides are pins: someone read what the parser
+    produced, found it correct, and wanted the review flag cleared without
+    changing a character. That is legitimate, but indistinguishable from a
+    stale copy-paste unless it says so, so it has to be declared.
+    """
+    question = make_raw()
+    errors = ErrorLog()
+
+    result = apply_override(question, {"stem": question.stem}, errors)
+
+    assert result is question
+    assert result.parse_status is ParseStatus.REVIEW
+    assert any("identical to the extracted text" in item for item in errors)
+
+
+def test_a_declared_pin_clears_the_review_flag() -> None:
+    """Accept a pinned field, which is the whole point of declaring one."""
+    question = make_raw()
+    errors = ErrorLog()
+
+    result = apply_override(
+        question, {"stem": question.stem, "_verbatim": ["stem"]}, errors
+    )
+
+    assert result.stem == question.stem
+    assert result.parse_status is ParseStatus.OK
+    assert not errors
+
+
+def test_a_pin_that_no_longer_matches_fails_the_build() -> None:
+    """Refuse a pin whose text has drifted from what the parser now produces.
+
+    This is the failure the declaration exists to cause. A pin silently reverts
+    whatever a later `extract` run produces for that field, so the moment the
+    two diverge the build has to stop and ask for a human to re-read the
+    question, rather than publishing text nobody reviewed.
+    """
+    question = make_raw()
+    errors = ErrorLog()
+
+    result = apply_override(
+        question, {"stem": "outro texto qualquer", "_verbatim": ["stem"]}, errors
+    )
+
+    assert result is question
+    assert result.parse_status is ParseStatus.REVIEW
+    assert any("declared verbatim but no longer matches" in item for item in errors)
+
+
+def test_an_override_verbatim_must_name_real_fields() -> None:
+    """Refuse a typo in `_verbatim`, which would silently pin nothing."""
+    question = make_raw()
+    errors = ErrorLog()
+
+    result = apply_override(
+        question, {"stem": question.stem, "_verbatim": ["enunciado"]}, errors
+    )
+
+    assert result is question
+    assert any("'_verbatim' must list field names" in item for item in errors)
+
+
 def test_an_override_with_an_unknown_key_is_rejected() -> None:
     """Refuse a typo that would otherwise be applied as nothing at all."""
     errors = ErrorLog()
