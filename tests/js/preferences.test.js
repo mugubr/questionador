@@ -24,6 +24,8 @@ test('the defaults leave the excluded questions out of the draw', function () {
   assert.equal(defaults.version, Preferences.VERSION);
   assert.equal(defaults.shuffleOptions, true);
   assert.equal(defaults.sessionSize, 20);
+  assert.equal(defaults.examMode, false);
+  assert.equal(defaults.examDurationMinutes, 60);
   assert.deepEqual(defaults.filters, {
     exams: [],
     topics: [],
@@ -57,6 +59,29 @@ test('a session size the app does not offer is refused', function () {
 test('a shuffle flag that is not a boolean is refused', function () {
   assert.equal(Preferences.normalize({ shuffleOptions: 'sim' }).shuffleOptions, true);
   assert.equal(Preferences.normalize({ shuffleOptions: false }).shuffleOptions, false);
+});
+
+test('an exam-mode flag that is not a boolean is refused', function () {
+  assert.equal(Preferences.normalize({ examMode: 'sim' }).examMode, false);
+  assert.equal(Preferences.normalize({ examMode: true }).examMode, true);
+});
+
+test('an exam duration the app does not offer is refused', function () {
+  assert.equal(
+    Preferences.normalize({ examDurationMinutes: 45 }).examDurationMinutes,
+    60
+  );
+  assert.equal(
+    Preferences.normalize({ examDurationMinutes: '30' }).examDurationMinutes,
+    60
+  );
+
+  /** @type {number[]} */ (Preferences.EXAM_DURATIONS).forEach(function (minutes) {
+    assert.equal(
+      Preferences.normalize({ examDurationMinutes: minutes }).examDurationMinutes,
+      minutes
+    );
+  });
 });
 
 test('filter entries that are not filled strings are dropped', function () {

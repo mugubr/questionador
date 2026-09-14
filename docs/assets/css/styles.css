@@ -80,6 +80,9 @@
   --shadow-sm: 0 1px 2px var(--shadow-color);
   --shadow-md: 0 2px 4px var(--shadow-color), 0 8px 24px -12px var(--shadow-color);
 
+  /* The dialog backdrop, dimming the app behind a confirmation prompt. */
+  --backdrop: light-dark(oklch(20% 0.02 60 / 0.35), oklch(0% 0 0 / 0.55));
+
   /* ---- Type. System stacks only: no webfont, no external request. ---- */
   --font-serif:
     'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
@@ -180,6 +183,7 @@
     --warn-surface: oklch(95.5% 0.045 78);
 
     --shadow-color: oklch(30% 0.03 60 / 0.1);
+    --backdrop: oklch(20% 0.02 60 / 0.35);
   }
 }
 
@@ -204,6 +208,7 @@ body {
    the element simply stays on screen. This list is exactly the components the
    app toggles; everything else relies on the browser default. */
 .scoreboard[hidden],
+.scoreboard__item[hidden],
 .switch[hidden],
 .note[hidden],
 .resume[hidden],
@@ -355,6 +360,8 @@ kbd {
 /* The scoreboard is an editorial marker, not a card. */
 .scoreboard {
   display: flex;
+  flex-wrap: wrap;
+  min-width: 0;
   gap: var(--space-sm);
   font-variant-numeric: tabular-nums;
 }
@@ -384,6 +391,17 @@ kbd {
 }
 .scoreboard__item--incorrect .scoreboard__value {
   color: var(--incorrect);
+}
+/* --warn, not --incorrect: this sits right next to the "erros" count once
+   grading is visible, and reusing the grading red there would make "time is
+   short" read as "you are failing". The underline is the non-color half of
+   the cue for a sighted visitor with no screen reader; the status region
+   announces the same 5-minute and 1-minute checkpoints in words for whoever
+   cannot see either. */
+.scoreboard__item--timer.scoreboard__item--warning .scoreboard__value {
+  color: var(--warn);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .progress {
@@ -633,6 +651,22 @@ main {
   background: var(--surface-sunken);
 }
 .button--quiet:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Reserved for an action that discards something: ending a session early,
+   confirming a destructive prompt. The red is the point, so it never doubles
+   as the grading color's neighbor in the same view. */
+.button--danger {
+  background: transparent;
+  border-color: var(--incorrect);
+  color: var(--incorrect);
+}
+
+.button--danger:hover:not(:disabled) {
+  background: var(--incorrect-surface);
+}
+.button--danger:active:not(:disabled) {
   transform: translateY(1px);
 }
 
@@ -1543,6 +1577,24 @@ main {
   border-color: var(--border-strong);
 }
 
+/* Modo prova marks the choice without saying whether it is right — that only
+   shows up in the results panel, once the whole session is over. */
+.option--selected {
+  border-color: var(--official);
+  border-left-color: var(--official);
+  background: var(--official-surface);
+}
+
+.option--selected .option__letter {
+  border-color: var(--official);
+  background: var(--official);
+  color: var(--on-ink);
+}
+.option--selected .option__mark,
+.option--selected .option__tag {
+  color: var(--official);
+}
+
 /* ---------- Feedback ----------------------------------------------------- */
 
 .feedback {
@@ -1658,6 +1710,12 @@ main {
 }
 
 /* ---------- Results ------------------------------------------------------ */
+
+/* The exam-mode summary note sits flush against the score card below it:
+   neither carries a margin the other side, so without this they touch. */
+.note--quiet:not([hidden]) + .report {
+  margin-top: var(--space-md);
+}
 
 .report {
   display: grid;
@@ -2023,6 +2081,43 @@ main {
   max-width: var(--measure-prose);
 }
 
+/* ---------- Confirmation dialog ------------------------------------------- */
+
+.confirm-dialog {
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  max-width: 26rem;
+  width: calc(100% - var(--space-lg));
+  background: var(--surface-raised);
+  color: var(--text);
+  box-shadow: var(--shadow-md);
+}
+
+.confirm-dialog::backdrop {
+  background: var(--backdrop);
+}
+
+.confirm-dialog__title {
+  margin: 0 0 var(--space-2xs);
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+}
+
+.confirm-dialog__detail {
+  margin: 0 0 var(--space-md);
+  color: var(--text-soft);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+.confirm-dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2xs) var(--space-xs);
+}
+
 /* ---------- Accessibility ------------------------------------------------ */
 
 .visually-hidden {
@@ -2056,7 +2151,8 @@ main {
   .option:active:not([aria-disabled='true']),
   .button--primary:active:not(:disabled),
   .button--secondary:active:not(:disabled),
-  .button--quiet:active:not(:disabled) {
+  .button--quiet:active:not(:disabled),
+  .button--danger:active:not(:disabled) {
     transform: none;
   }
 
@@ -2133,6 +2229,7 @@ main {
     --warn: #000;
     --warn-surface: #fff;
     --shadow-color: transparent;
+    --backdrop: transparent;
     --content-width: 100%;
   }
 

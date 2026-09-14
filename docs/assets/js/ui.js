@@ -127,8 +127,12 @@ const UI = (function () {
    */
   const ELEMENT_IDS = [
     'scoreboard',
+    'scoreboard-correct',
     'score-correct',
+    'scoreboard-incorrect',
     'score-incorrect',
+    'scoreboard-timer',
+    'score-timer',
     'score-remaining',
     'progress',
     'progress-bar',
@@ -150,6 +154,8 @@ const UI = (function () {
     'chips-history',
     'chips-size',
     'chips-options',
+    'field-exam-duration',
+    'chips-exam-duration',
     'filters-notice',
     'start-card',
     'selection-figure',
@@ -188,8 +194,11 @@ const UI = (function () {
     'next-button',
     'next-hint',
     'end-button',
+    'end-session-dialog',
+    'end-session-confirm',
     'panel-results',
     'results-heading',
+    'report-mode',
     'score-summary',
     'score-label',
     'score-detail',
@@ -241,7 +250,11 @@ const UI = (function () {
     /** @type {number} How many questions the next draw would take. */
     drawn: 0,
     /** @type {number} How many questions pass the current filters. */
-    poolSize: 0
+    poolSize: 0,
+    /** @type {number | null} The handle of the running exam-mode countdown, if any. */
+    timerHandle: null,
+    /** @type {Set<number>} Which countdown checkpoints, in ms remaining, were already announced. */
+    timerWarned: new Set()
   };
 
   /* ---------- Small helpers ---------------------------------------------- */
@@ -534,6 +547,7 @@ const UI = (function () {
 
     if (name !== 'question') {
       resetProgress();
+      stopTimer();
     }
     if (!changed) {
       return;
@@ -623,6 +637,120 @@ const UI = (function () {
     el.progress.setAttribute('aria-valuenow', '0');
     el.progress.setAttribute('aria-valuetext', 'Nenhuma sessão em andamento');
     el['progress-bar'].style.width = '0';
+  }
+
+  /* ---------- Exam-mode timer ---------------------------------------------- */
+
+  /** How long before the deadline each checkpoint is announced out loud. */
+  const TIMER_CHECKPOINTS = [
+    { ms: 5 * 60000, message: 'Atenção: restam 5 minutos de prova.' },
+    { ms: 60000, message: 'Atenção: resta 1 minuto de prova.' }
+  ];
+
+  /** Below this many milliseconds left, the timer also carries a warning color. */
+  const TIMER_LOW_MS = TIMER_CHECKPOINTS[0].ms;
+
+  /**
+   * Announce the checkpoints the countdown has newly crossed.
+   *
+   * Each one fires exactly once per session: `state.timerWarned` is reset
+   * whenever a session starts or resumes, never on every tick.
+   *
+   * @param {number} remainingMs - Milliseconds left on the clock.
+   * @returns {void}
+   */
+  function announceTimerCheckpoints(remainingMs) {
+    TIMER_CHECKPOINTS.forEach(function (checkpoint) {
+      if (remainingMs <= checkpoint.ms && !state.timerWarned.has(checkpoint.ms)) {
+        state.timerWarned.add(checkpoint.ms);
+        announce(checkpoint.message);
+      }
+    });
+  }
+
+  /**
+   * Stop the running countdown, if any.
+   *
+   * @returns {void}
+   */
+  function stopTimer() {
+    if (state.timerHandle !== null) {
+      window.clearInterval(state.timerHandle);
+      state.timerHandle = null;
+    }
+  }
+
+  /**
+   * Advance the countdown display by one tick, ending the session at zero.
+   *
+   * @returns {void}
+   */
+  function tickTimer() {
+    const session = state.session;
+    if (!session || !session.examMode || session.deadline === null) {
+      stopTimer();
+      return;
+    }
+
+    const remaining = Session.remainingMs(session, Date.now());
+    if (remaining === null) {
+      stopTimer();
+      return;
+    }
+
+    el['score-timer'].textContent = Session.formatDuration(remaining);
+    el['scoreboard-timer'].classList.toggle(
+      'scoreboard__item--warning',
+      remaining > 0 && remaining <= TIMER_LOW_MS
+    );
+    announceTimerCheckpoints(remaining);
+
+    if (remaining <= 0) {
+      stopTimer();
+      if (state.panel === 'question') {
+        const dialog = /** @type {HTMLDialogElement} */ (el['end-session-dialog']);
+        if (dialog.open) {
+          dialog.close();
+        }
+        announce('O tempo da prova esgotou. A sessão foi encerrada automaticamente.');
+        renderResults();
+      }
+    }
+  }
+
+  /**
+   * Start (or skip) the countdown for the session that was just drawn or resumed.
+   *
+   * Also toggles the scoreboard between the live acertos/erros count and the
+   * clock: showing both would let the running score leak the correctness of
+   * every earlier answer, which is exactly what exam mode hides.
+   *
+   * @returns {void}
+   */
+  function startTimerIfNeeded() {
+    stopTimer();
+    const session = state.session;
+    const timed = Boolean(session && session.examMode && session.deadline !== null);
+
+    el['scoreboard-timer'].hidden = !timed;
+    el['scoreboard-correct'].hidden = timed;
+    el['scoreboard-incorrect'].hidden = timed;
+    if (!timed) {
+      return;
+    }
+
+    /* Resuming a session already past a checkpoint must not re-announce it:
+       only checkpoints the countdown has not reached yet start unwarned. */
+    const remaining = Session.remainingMs(session, Date.now());
+    state.timerWarned = new Set(
+      TIMER_CHECKPOINTS.filter(function (checkpoint) {
+        return remaining !== null && remaining <= checkpoint.ms;
+      }).map(function (checkpoint) {
+        return checkpoint.ms;
+      })
+    );
+    tickTimer();
+    state.timerHandle = window.setInterval(tickTimer, 1000);
   }
 
   /* ---------- Filter controls --------------------------------------------- */
@@ -857,6 +985,27 @@ const UI = (function () {
         checked: state.preferences.shuffleOptions
       })
     );
+    el['chips-options'].append(
+      createSwitch({
+        group: 'examMode',
+        label: 'Modo prova',
+        note: 'Cronômetro regressivo e nenhuma correção até o fim da sessão, como numa prova real.',
+        checked: state.preferences.examMode
+      })
+    );
+
+    el['chips-exam-duration'].replaceChildren();
+    Preferences.EXAM_DURATIONS.forEach(function (minutes) {
+      el['chips-exam-duration'].append(
+        createSegment({
+          group: 'examDuration',
+          value: String(minutes),
+          label: minutes + ' min',
+          name: 'exam-duration',
+          checked: state.preferences.examDurationMinutes === minutes
+        })
+      );
+    });
 
     const excluded = excludedQuestions();
     if (excluded.length > 0) {
@@ -981,13 +1130,16 @@ const UI = (function () {
   }
 
   /**
-   * Read the session size and the option-shuffling switch back from the form.
+   * Read the session size and the switches back from the form.
    *
-   * @returns {{size: number, shuffleOptions: boolean}} What the controls currently say.
+   * @returns {{size: number, shuffleOptions: boolean, examMode: boolean,
+   *   examDurationMinutes: number}} What the controls currently say.
    */
   function readSettings() {
     let size = state.preferences.sessionSize;
     let shuffleOptions = false;
+    let examMode = false;
+    let examDurationMinutes = state.preferences.examDurationMinutes;
 
     const inputs = el['filter-form'].querySelectorAll('input');
     inputs.forEach(function (input) {
@@ -998,10 +1150,14 @@ const UI = (function () {
         size = Number(input.value);
       } else if (input.dataset.group === 'shuffle') {
         shuffleOptions = true;
+      } else if (input.dataset.group === 'examMode') {
+        examMode = true;
+      } else if (input.dataset.group === 'examDuration') {
+        examDurationMinutes = Number(input.value);
       }
     });
 
-    return { size, shuffleOptions };
+    return { size, shuffleOptions, examMode, examDurationMinutes };
   }
 
   /**
@@ -1013,8 +1169,11 @@ const UI = (function () {
    * @returns {void}
    */
   function setChipCount(group, value, count) {
+    /* value comes from a hand-loaded bank's exam/topic id, which Bank.validate
+       only requires to be a non-empty string: escape it, or a stray quote in
+       an untrusted file breaks the attribute selector and throws. */
     const node = el['filter-form'].querySelector(
-      '[data-count-for="' + group + ':' + value + '"]'
+      '[data-count-for="' + CSS.escape(group + ':' + value) + '"]'
     );
     if (node) {
       node.textContent = String(count);
@@ -1127,7 +1286,8 @@ const UI = (function () {
    * Describe how the session will be run, leaving out how long it will be.
    *
    * @param {FilterCriteria} criteria - The criteria the form currently holds.
-   * @param {{size: number, shuffleOptions: boolean}} settings - The session settings.
+   * @param {{size: number, shuffleOptions: boolean, examMode?: boolean,
+   *   examDurationMinutes?: number}} settings - The session settings.
    * @returns {string} Something like `só as que errei · alternativas embaralhadas`.
    */
   function describeMode(criteria, settings) {
@@ -1141,6 +1301,9 @@ const UI = (function () {
     if (criteria.includeExcluded) {
       parts.push('com as excluídas');
     }
+    if (settings.examMode) {
+      parts.push('modo prova · ' + settings.examDurationMinutes + ' min');
+    }
     return parts.join(' · ');
   }
 
@@ -1152,7 +1315,8 @@ const UI = (function () {
    * because that is the section the length is set in.
    *
    * @param {FilterCriteria} criteria - The criteria the form currently holds.
-   * @param {{size: number, shuffleOptions: boolean}} settings - The session settings.
+   * @param {{size: number, shuffleOptions: boolean, examMode?: boolean,
+   *   examDurationMinutes?: number}} settings - The session settings.
    * @returns {string} Something like `20 questões · alternativas embaralhadas`.
    */
   function describeSession(criteria, settings) {
@@ -1197,9 +1361,12 @@ const UI = (function () {
       version: Preferences.VERSION,
       shuffleOptions: settings.shuffleOptions,
       sessionSize: settings.size,
+      examMode: settings.examMode,
+      examDurationMinutes: settings.examDurationMinutes,
       filters: criteria
     };
     AppStorage.writeJson(AppStorage.KEYS.preferences, state.preferences);
+    el['field-exam-duration'].hidden = !settings.examMode;
 
     updateCounts(criteria);
 
@@ -1270,7 +1437,8 @@ const UI = (function () {
   /**
    * Offer to continue a session that was interrupted, if there is one.
    *
-   * @returns {void}
+   * @returns {boolean} True when the app already navigated to the results
+   *   panel on its own, because an exam-mode clock ran out while it was away.
    */
   function renderResumeOffer() {
     const stored = Session.fromStored(AppStorage.readJson(AppStorage.KEYS.session));
@@ -1283,18 +1451,38 @@ const UI = (function () {
       state.resumable = null;
       el.resume.hidden = true;
       AppStorage.remove(AppStorage.KEYS.session);
-      return;
+      return false;
+    }
+
+    /* A real exam does not grant extra time to whoever closed the tab: the
+       deadline is checked here, before offering to resume, rather than
+       trusting the countdown to catch it after the fact. */
+    if (stored.examMode && Session.isTimeUp(stored, Date.now())) {
+      state.session = stored;
+      state.resumable = null;
+      el.resume.hidden = true;
+      renderResults();
+      announce(
+        'O tempo da prova esgotou enquanto você estava fora. A sessão foi ' +
+          'encerrada e o resultado está pronto.'
+      );
+      return true;
     }
 
     state.resumable = stored;
+    const remaining = Session.remainingMs(stored, Date.now());
     el['resume-detail'].textContent =
       Session.answeredCount(stored) +
       ' de ' +
       stored.deck.length +
       ' questões respondidas' +
       (stored.startedAt ? ' · começou em ' + formatTimestamp(stored.startedAt) : '') +
+      (remaining !== null
+        ? ' · ' + Session.formatDuration(remaining) + ' restantes na prova'
+        : '') +
       '.';
     el.resume.hidden = false;
+    return false;
   }
 
   /**
@@ -1453,30 +1641,59 @@ const UI = (function () {
   }
 
   /**
-   * Mark the options once the question is graded.
+   * Mark the options once the question is answered.
    *
    * `aria-disabled` rather than `disabled`, so the options stay reachable by
    * keyboard and by a screen reader after the answer — the guard against a
    * second choice lives in the session logic, not in the control.
    *
-   * Four states have to be told apart without color: the answer you chose and
-   * got right, the answer you chose and got wrong, the right answer you did
-   * not choose, and the ones nobody picked. The first three carry an icon and
-   * a written tag; the fourth is dimmed to a flat, still-readable grey.
+   * Outside exam mode, four states have to be told apart without color: the
+   * answer you chose and got right, the answer you chose and got wrong, the
+   * right answer you did not choose, and the ones nobody picked. The first
+   * three carry an icon and a written tag; the fourth is dimmed to a flat,
+   * still-readable grey.
    *
-   * @param {Question} question - The graded question.
-   * @param {AnswerRecord} record - The grade.
+   * In exam mode `reveal` is false: nothing here may say whether the choice
+   * was right, only which one it was, so the student sees no more than they
+   * would filling in a paper answer sheet.
+   *
+   * @param {Question} question - The answered question.
+   * @param {AnswerRecord} record - The grade, read only when `reveal` is true.
+   * @param {boolean} reveal - Whether correctness may be shown at all.
    * @returns {void}
    */
-  function markGradedOptions(question, record) {
+  function markAnsweredOptions(question, record, reveal) {
     const buttons = el.options.querySelectorAll('button.option');
     buttons.forEach(function (node) {
       const button = /** @type {HTMLButtonElement} */ (node);
       const letter = /** @type {OptionLetter} */ (button.dataset.letter);
       button.setAttribute('aria-disabled', 'true');
+      const isChosen = letter === record.chosen;
+
+      if (!reveal) {
+        if (!isChosen) {
+          button.classList.add('option--muted');
+          return;
+        }
+        button.classList.add('option--selected');
+        const text = button.querySelector('.option__text');
+        if (text) {
+          text.prepend(createIcon('check', 'option__mark', 2));
+        }
+        const body = button.querySelector('.option__body');
+        if (body) {
+          const tag = document.createElement('span');
+          tag.className = 'option__tag';
+          tag.append(
+            createIcon('check', '', 3.5),
+            createSpan('Você marcou esta alternativa.')
+          );
+          body.append(tag);
+        }
+        return;
+      }
 
       const isAnswer = Session.isCorrectChoice(question, letter);
-      const isChosen = letter === record.chosen;
       if (!isAnswer && !isChosen) {
         button.classList.add('option--muted');
         return;
@@ -1599,6 +1816,28 @@ const UI = (function () {
   }
 
   /**
+   * Compose the status-region sentence for an exam-mode answer.
+   *
+   * Deliberately silent on correctness and on the running score: revealing
+   * either would give away the grade one question early, which is the one
+   * thing exam mode exists to hold back until the results panel.
+   *
+   * @param {Session} session - The running session, already graded.
+   * @returns {string} One complete sentence.
+   */
+  function examOutcomeSentence(session) {
+    return (
+      'Resposta registrada. ' +
+      pluralize(
+        Session.unansweredCount(session),
+        'questão restante',
+        'questões restantes'
+      ) +
+      '.'
+    );
+  }
+
+  /**
    * Say why "Próxima" is inert, or what the student is looking at when it is not.
    *
    * @param {boolean} settled - Whether the question on screen needs no more input.
@@ -1645,9 +1884,14 @@ const UI = (function () {
 
     const gradable = Session.isGradable(question);
     const record = Session.recordOf(session, question);
+    const reveal = Session.shouldReveal(session);
     if (record) {
-      markGradedOptions(question, record);
-      renderFeedback(session, question, record);
+      markAnsweredOptions(question, record, reveal);
+      if (reveal) {
+        renderFeedback(session, question, record);
+      } else {
+        el.feedback.hidden = true;
+      }
     } else {
       el.feedback.hidden = true;
     }
@@ -1676,6 +1920,13 @@ const UI = (function () {
       return;
     }
 
+    /* A backgrounded tab can throttle the 1-second tick well past the
+       deadline; the clock itself, not just the display, gates a late answer. */
+    if (session.examMode && Session.isTimeUp(session, Date.now())) {
+      renderResults();
+      return;
+    }
+
     const graded = Session.answer(session, question, sourceLetter);
     const record = Session.recordOf(graded, question);
     if (!record) {
@@ -1692,14 +1943,19 @@ const UI = (function () {
     AppStorage.writeJson(AppStorage.KEYS.history, state.history);
     AppStorage.writeJson(AppStorage.KEYS.session, graded);
 
-    markGradedOptions(question, record);
-    renderFeedback(graded, question, record);
+    const reveal = Session.shouldReveal(graded);
+    markAnsweredOptions(question, record, reveal);
+    if (reveal) {
+      renderFeedback(graded, question, record);
+    }
     updateScoreboard();
 
     const next = /** @type {HTMLButtonElement} */ (el['next-button']);
     next.disabled = false;
     renderNextHint(true, true);
-    announce(outcomeSentence(graded, question, record));
+    announce(
+      reveal ? outcomeSentence(graded, question, record) : examOutcomeSentence(graded)
+    );
 
     /* Focus goes to "Próxima", never to the option that was just graded. That
        option is now aria-disabled, so it swallows Enter and does nothing with
@@ -1983,6 +2239,23 @@ const UI = (function () {
     const answered = Session.answeredCount(session);
     const skipped = session.deck.length - answered;
 
+    /* The countdown itself already told the student they were being timed;
+       what the report adds is the number that mattered: how long the whole
+       attempt actually took. Capped at the deadline: a reload discovered long
+       after time was up must not report hours of "exam time" that never
+       happened. */
+    const examElapsedMs =
+      session.deadline !== null
+        ? Math.min(Date.now(), session.deadline) - session.startedAt
+        : Date.now() - session.startedAt;
+    showNotice(
+      el['report-mode'],
+      session.examMode
+        ? 'Modo prova · tempo total: ' + Session.formatDuration(examElapsedMs) + '.'
+        : '',
+      'quiet'
+    );
+
     /* A session with no answers measured nothing; reporting 0% would be a
        score, and there is no score to report. */
     el['score-summary'].textContent =
@@ -2037,6 +2310,18 @@ const UI = (function () {
     showPanel('results');
   }
 
+  /**
+   * Ask for confirmation before ending the session early.
+   *
+   * "Encerrar sessão" throws away every unanswered question, which is not
+   * something a stray click should be able to do.
+   *
+   * @returns {void}
+   */
+  function openEndSessionDialog() {
+    /** @type {HTMLDialogElement} */ (el['end-session-dialog']).showModal();
+  }
+
   /* ---------- Session control --------------------------------------------- */
 
   /**
@@ -2057,7 +2342,9 @@ const UI = (function () {
       {
         signature: state.signature,
         size: state.preferences.sessionSize,
-        shuffleOptions: state.preferences.shuffleOptions
+        shuffleOptions: state.preferences.shuffleOptions,
+        examMode: state.preferences.examMode,
+        durationMinutes: state.preferences.examDurationMinutes
       }
     );
 
@@ -2077,10 +2364,12 @@ const UI = (function () {
     state.resumable = null;
     el.resume.hidden = true;
     AppStorage.writeJson(AppStorage.KEYS.session, session);
+    startTimerIfNeeded();
     announce(
       'Sessão iniciada com ' +
         session.deck.length +
-        (session.deck.length === 1 ? ' questão.' : ' questões.')
+        (session.deck.length === 1 ? ' questão.' : ' questões.') +
+        (session.examMode ? ' Modo prova ativado.' : '')
     );
     renderQuestion();
   }
@@ -2097,6 +2386,7 @@ const UI = (function () {
     state.session = state.resumable;
     state.resumable = null;
     el.resume.hidden = true;
+    startTimerIfNeeded();
     renderQuestion();
   }
 
@@ -2140,7 +2430,8 @@ const UI = (function () {
    *
    * @param {QuestionBank} bank - The validated bank.
    * @param {boolean} borrowed - True when the user loaded it by hand.
-   * @returns {void}
+   * @returns {boolean} True when the app already navigated on its own — see
+   *   `renderResumeOffer`.
    */
   function adoptBank(bank, borrowed) {
     state.bank = bank;
@@ -2156,9 +2447,9 @@ const UI = (function () {
     if (borrowed) {
       state.resumable = null;
       el.resume.hidden = true;
-    } else {
-      renderResumeOffer();
+      return false;
     }
+    return renderResumeOffer();
   }
 
   /**
@@ -2308,6 +2599,7 @@ const UI = (function () {
     document.addEventListener('keydown', function (event) {
       if (
         el['panel-question'].hidden ||
+        /** @type {HTMLDialogElement} */ (el['end-session-dialog']).open ||
         event.metaKey ||
         event.ctrlKey ||
         event.altKey
@@ -2366,7 +2658,8 @@ const UI = (function () {
     el['resume-continue'].addEventListener('click', resumeSession);
     el['resume-discard'].addEventListener('click', discardSession);
     el['next-button'].addEventListener('click', advance);
-    el['end-button'].addEventListener('click', renderResults);
+    el['end-button'].addEventListener('click', openEndSessionDialog);
+    el['end-session-confirm'].addEventListener('click', renderResults);
     el['new-session-button'].addEventListener('click', startSession);
     el['back-to-filters-button'].addEventListener('click', backToFilters);
     el['review-toggle'].addEventListener('change', renderReview);
@@ -2425,7 +2718,10 @@ const UI = (function () {
       return;
     }
 
-    adoptBank(result.bank, false);
+    const forcedResults = adoptBank(result.bank, false);
+    if (forcedResults) {
+      return;
+    }
     showPanel('filters', false);
 
     /* A student who arrives with a narrowed selection saved from last time

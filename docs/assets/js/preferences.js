@@ -20,6 +20,9 @@ const Preferences = (function () {
   /** @type {number[]} Offered session sizes; 0 means "every question that matches". */
   const SIZES = [10, 20, 50, 0];
 
+  /** @type {number[]} Offered exam-mode durations, in minutes. */
+  const EXAM_DURATIONS = [30, 60, 90, 120];
+
   /**
    * Build the default preferences.
    *
@@ -30,6 +33,8 @@ const Preferences = (function () {
       version: VERSION,
       shuffleOptions: true,
       sessionSize: 20,
+      examMode: false,
+      examDurationMinutes: 60,
       filters: {
         exams: [],
         topics: [],
@@ -76,6 +81,15 @@ const Preferences = (function () {
     ) {
       result.sessionSize = source.sessionSize;
     }
+    if (typeof source.examMode === 'boolean') {
+      result.examMode = source.examMode;
+    }
+    if (
+      typeof source.examDurationMinutes === 'number' &&
+      EXAM_DURATIONS.indexOf(source.examDurationMinutes) !== -1
+    ) {
+      result.examDurationMinutes = source.examDurationMinutes;
+    }
 
     if (source.filters && typeof source.filters === 'object') {
       const filters = /** @type {Record<string, unknown>} */ (source.filters);
@@ -93,7 +107,7 @@ const Preferences = (function () {
     return result;
   }
 
-  return { VERSION, SIZES, defaults, normalize };
+  return { VERSION, SIZES, EXAM_DURATIONS, defaults, normalize };
 })();
 
 /* The node test runner loads these classic scripts into a shared context, where

@@ -116,6 +116,9 @@
  * @property {number} correctCount
  * @property {number} incorrectCount
  * @property {number} startedAt - Epoch milliseconds.
+ * @property {boolean} examMode - Whether this session hides grading until the results panel.
+ * @property {number | null} deadline - Epoch milliseconds the exam-mode clock runs out at,
+ *   or null outside exam mode.
  */
 
 /**
@@ -138,6 +141,8 @@
  * @property {number} version
  * @property {boolean} shuffleOptions
  * @property {number} sessionSize - `0` means "all the questions that match".
+ * @property {boolean} examMode - Timed session with no grading shown until the end.
+ * @property {number} examDurationMinutes - Only meaningful when examMode is true.
  * @property {FilterCriteria} filters
  */
 
