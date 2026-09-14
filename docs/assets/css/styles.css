@@ -2081,6 +2081,26 @@ main {
   max-width: var(--measure-prose);
 }
 
+.site-footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  min-height: var(--target);
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-footer__link:hover {
+  color: var(--text);
+}
+
+.site-footer__icon {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+}
+
 /* ---------- Confirmation dialog ------------------------------------------- */
 
 .confirm-dialog {
