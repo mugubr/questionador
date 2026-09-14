@@ -2196,6 +2196,8 @@ Prova de 2021-11-06 · `PROFNIT-AV2-MET.pdf` · 16 questões · gabarito oficial
 
 ### AV2-MET-Q08 · Comunicação científica
 
+> Defeitos da fonte: phantom-item-reference.
+
 > Os termos, abaixo, referem-se às definições utilizadas na NBR 6023:
 >
 > 1. Monografia.

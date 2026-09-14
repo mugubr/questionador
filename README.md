@@ -57,7 +57,8 @@ As três continuam no banco e no arquivo de revisão, com o motivo registrado. O
 Defeitos dos cadernos originais. Estão reproduzidos com fidelidade e registrados no dado, em vez de corrigidos em silêncio.
 
 - **A `AV2-MET-Q14` tem duas alternativas iguais.** As alternativas `a` e `d` são a mesma frase no PDF original. Na prática, é uma questão de três alternativas — e o app avisa isso na tela.
-- **Quatro questões precisaram de enunciado reescrito à mão** porque o layout do PDF não se resolve de forma determinística: `ENA25-Q09`, `ENA25-Q14` e `AV2-MET-Q08` (correlação em duas colunas, que o `pdftotext -layout` renderiza lado a lado) e `ENA18-Q40` (texto de encerramento colado na última alternativa). As reescritas estão em `data/overrides.json`, cada uma com o motivo registrado.
+- **Cinco questões têm uma entrada em `data/overrides.json`**, porque o layout do PDF não se resolve de forma determinística. `ENA25-Q09`, `ENA25-Q14` e `AV2-MET-Q08` têm o enunciado reescrito à mão: tabelas de correlação em duas colunas que o `pdftotext -layout` renderiza lado a lado (e, em `AV2-MET-Q08`, um segundo conjunto a)-d) que pertence ao enunciado, não às alternativas). `AV2-POL-Q10` e `ENA18-Q40` foram sinalizadas, revisadas e confirmadas corretas — o texto extraído é fixado exatamente como veio, sem reescrita. Cada entrada registra o motivo.
+- **`AV2-MET-Q08` também cita um item que o enunciado não lista.** A alternativa `d` fala da ordenação "IV e V", mas o enunciado só numera os itens de I a IV. Confirmado contra o caderno impresso: é um defeito da prova, não da reescrita acima.
 - **Nem toda explicação tem um PDF de `references/` que a sustente.** As de metodologia, por exemplo, se apoiam em normas da ABNT, no Qualis da CAPES e em bibliografia clássica, que não estão no repositório. Quando é esse o caso, o campo de referência **diz isso** e nomeia a fonte real, em vez de apontar para um arquivo que não trata do assunto.
 
 ## Achou uma explicação errada?

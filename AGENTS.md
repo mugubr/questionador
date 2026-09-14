@@ -552,6 +552,12 @@ the app can act on it.
 - **`AV2-MET-Q14` has two identical options.** Options `a` and `d` are the same
   string in the original PDF. Effectively a three-option question. Recorded in
   `knownDefects`, and the app treats a choice of either twin consistently.
+- **`AV2-MET-Q08`'s option `d` cites an item the stem never lists.** The stem's
+  "Ordenações propostas" numbers its items I through IV; option `d` reads
+  "Apenas IV e V estão corretas," and there is no V. Confirmed against the
+  printed booklet — a defect of the source, not of the stem-rewrite override
+  this question also carries. Recorded in `knownDefects` as
+  `phantom-item-reference`.
 - **Five questions carry an entry in `data/overrides.json`**, because
   `pdftotext -layout` does not resolve their layout deterministically.
   `ENA25-Q09`, `ENA25-Q14` and `AV2-MET-Q08` have a rewritten stem: two-column
