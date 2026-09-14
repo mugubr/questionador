@@ -186,6 +186,8 @@ jsconfig.json                 type-checking for the JavaScript
 .editorconfig                 the same settings for the editor
 .gitattributes                LF for every generated artifact
 .gitignore                    caches only; nothing under data/ or docs/
+uv.lock                       pinned Python dev dependencies; owned by uv
+package-lock.json             pinned prettier/typescript versions; owned by npm
 
 .github/workflows/
   ci.yml                      lint, type-check, test, validate, rebuild guard
