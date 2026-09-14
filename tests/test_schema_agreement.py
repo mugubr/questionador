@@ -95,6 +95,24 @@ def unknown_excluded_reason(bank: Bank) -> None:
     question(bank, "AV2-PI-Q14")["excludedReason"] = "because-i-said-so"
 
 
+def derived_answer_missing_letter_on_excluded_question(bank: Bank) -> None:
+    """Turn an excluded question's letter-less answer into a derived one.
+
+    `AV2-POL-Q14` is annulled and already has no `letter`, which is legal
+    only because its answer is official (there is no key to defer to). A
+    derived answer has no key at all, so it always needs its own letter,
+    excluded or not.
+
+    Args:
+        bank: The bank to break.
+    """
+    answer = question(bank, "AV2-POL-Q14")["answer"]
+    answer["source"] = "derived"
+    answer["confidence"] = "high"
+    answer["rationale"] = "porque sim"
+    answer.pop("explanation", None)
+
+
 def uppercase_letter(bank: Bank) -> None:
     """Write the answer letter in upper case, as the key PDFs print it.
 
@@ -291,6 +309,18 @@ def toolchain_without_pdftotext(bank: Bank) -> None:
     bank["toolchain"] = {}
 
 
+def blank_toolchain_entry(bank: Bank) -> None:
+    """Give a non-required toolchain entry a blank version.
+
+    `pdftotext` is the only entry the validator checked for non-blankness
+    before this test existed; every other key was only type-checked.
+
+    Args:
+        bank: The bank to break.
+    """
+    bank["toolchain"]["extra-tool"] = "   "
+
+
 def empty_known_defects(bank: Bank) -> None:
     """Record an empty list of defects, which says nothing at all.
 
@@ -431,6 +461,10 @@ SHARED_MUTATIONS: tuple[tuple[str, Mutation], ...] = (
         drop_the_reason_of_the_letterless_question,
     ),
     ("excludedReason outside the enum", unknown_excluded_reason),
+    (
+        "derived answer.letter dropped on an excluded question",
+        derived_answer_missing_letter_on_excluded_question,
+    ),
     ("answer.letter in upper case", uppercase_letter),
     ("answer.letter outside a-d", letter_outside_the_options),
     ("answer without a source", missing_source),
@@ -452,6 +486,7 @@ SHARED_MUTATIONS: tuple[tuple[str, Mutation], ...] = (
     ("an unsupported bank version", unknown_bank_version),
     ("a malformed generatedAt", malformed_generated_at),
     ("a toolchain without pdftotext", toolchain_without_pdftotext),
+    ("a blank toolchain entry that is not pdftotext", blank_toolchain_entry),
     ("an empty knownDefects array", empty_known_defects),
     ("an empty questions array", empty_questions_array),
     ("an empty exams array", empty_exams_array),

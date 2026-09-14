@@ -41,7 +41,7 @@ from tools.answer_keys import (
     write_answer_keys,
 )
 from tools.config import EXAM_PAPERS, ExamPaper
-from tools.models import OptionLetter, ParsedBlock, ParseStatus, RawQuestion
+from tools.models import ErrorLog, OptionLetter, ParsedBlock, ParseStatus, RawQuestion
 from tools.text_cleanup import (
     find_residue,
     has_side_by_side_columns,
@@ -463,16 +463,26 @@ def check_paper(questions: Sequence[RawQuestion], paper: ExamPaper) -> None:
 def extract_all() -> list[RawQuestion]:
     """Extract every paper in the registry, in registry order.
 
+    A paper that fails to read or to segment does not stop the run: the
+    problem is recorded and the rest of the papers are still tried, so a
+    poppler upgrade that breaks two papers at once is reported as two
+    problems in one run, not one problem per rerun.
+
     Returns:
-        Every question of every paper.
+        Every question of every paper that extracted cleanly.
 
     Raises:
-        ExtractionError: If any paper fails to read or to segment.
+        ExtractionError: If any paper failed to read or to segment.
     """
     questions: list[RawQuestion] = []
+    errors = ErrorLog()
     for paper in EXAM_PAPERS:
-        of_paper = segment_questions(read_paper_text(paper), paper)
-        check_paper(of_paper, paper)
+        try:
+            of_paper = segment_questions(read_paper_text(paper), paper)
+            check_paper(of_paper, paper)
+        except ExtractionError as error:
+            errors.add(paper.id, str(error))
+            continue
         flagged = [
             question
             for question in of_paper
@@ -481,6 +491,12 @@ def extract_all() -> list[RawQuestion]:
         mark = "OK" if not flagged else f"{len(flagged)} to review"
         print(f"  {paper.id:<10} {len(of_paper):>3} questions   {mark}")
         questions.extend(of_paper)
+
+    if errors:
+        raise ExtractionError(
+            f"{len(errors)} paper(s) failed to extract\n"
+            + "\n".join(f"  - {item}" for item in errors)
+        )
 
     if len(questions) != config.EXPECTED_QUESTION_TOTAL:
         raise ExtractionError(
