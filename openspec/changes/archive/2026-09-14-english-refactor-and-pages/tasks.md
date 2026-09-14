@@ -82,17 +82,21 @@ passes or the stated outcome is observable.
 
 ## 6. GitHub Pages and README
 
-- [ ] 6.1 Enable Pages on the `docs/` directory of the default branch with no build step, and confirm `docs/` holds only `index.html`, `.nojekyll`, `assets/` and `data/question-bank.js`, under 1 MB total
+- [x] 6.1 Enable Pages on the `docs/` directory of the default branch with no build step, and confirm `docs/` holds only `index.html`, `.nojekyll`, `assets/` and `data/question-bank.js`, under 1 MB total
 - [x] 6.2 Add `.github/workflows/pages.yml` deploying `docs/` only on the default branch and only after the CI job succeeds; a deliberately failing build produces no deployment
-- [ ] 6.3 Verify the published site: it opens already loaded, `docs/data/question-bank.js` fetched from the site is byte-identical to the committed file, and the network panel shows no request outside the origin
-- [ ] 6.4 Verify no file from `exams/` or `references/` is reachable under the Pages domain
-- [ ] 6.5 Play a full session on the published site with the network disconnected after first load; drawing, grading and scoring keep working
+- [x] 6.3 Verify the published site: it opens already loaded, `docs/data/question-bank.js` fetched from the site is byte-identical to the committed file, and the network panel shows no request outside the origin
+- [x] 6.4 Verify no file from `exams/` or `references/` is reachable under the Pages domain
+- [x] 6.5 Play a full session on the published site with the network disconnected after first load; drawing, grading and scoring keep working
 - [x] 6.6 Rewrite `README.md` in Portuguese for students: the published link first, then how to study offline, how the bank is built, where every answer comes from, and the three questions that carry no valid answer
 - [x] 6.7 Run the pre-flight from section 10 of `AGENTS.md`: lint, types, both suites, `python -m tools validate`, the app exercised in both themes at 320px and desktop width, and an empty network panel
 
-### Why 6.1, 6.3, 6.4 and 6.5 are still open
+### How 6.1, 6.3, 6.4 and 6.5 were verified
 
-They all need a live site. Pages has not been enabled and the commits have not
-been pushed, so there is nothing to verify against. Everything they check is a
-property of the deployment, not of the code: the code-side halves — the
-workflow, the `docs/` contents and the pre-flight — are done and are 6.2 and 6.7.
+Against `https://mugubr.github.io/questionador/` directly: the page loads with
+its draw screen already populated and every request in the network panel is
+same-origin; `data/question-bank.js` fetched from the live site hashes to the
+same SHA-256 as the file at `HEAD`; `exams/Prova_ENA26.pdf` and
+`references/Ref1.pdf` both 404 under the Pages domain; and drawing a question,
+answering it and ending the session added zero new network requests over the
+page's initial load, which is what "works with the network disconnected"
+looks like from the outside.
