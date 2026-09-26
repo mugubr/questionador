@@ -20,48 +20,73 @@ jobs:
 
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up uv and Python
-        # Pinned to an exact release: astral-sh stopped publishing a floating
-        # major tag after v7, so `@v10` resolves to nothing and the job dies
-        # while preparing actions, before a single step runs.
-        uses: astral-sh/setup-uv@v10.0.1
+        # Every action here is pinned to a commit SHA, not a tag: a tag can be
+        # repointed (accidentally or by a compromised maintainer account), a
+        # SHA cannot. astral-sh also stopped publishing a floating major tag
+        # after v7, so a bare `@v10` resolves to nothing and the job dies
+        # while preparing actions, before a single step runs -- pinning to the
+        # commit sidesteps that failure mode too, not just the security one.
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           python-version: '3.14'
           enable-cache: true
-          cache-dependency-glob: pyproject.toml
+          cache-dependency-glob: |
+            pyproject.toml
+            uv.lock
 
       - name: Set up Node
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: '24'
           cache: npm
 
       - name: Install the Python tooling
-        run: uv sync --group dev
+        # --locked, not a bare sync: if uv.lock ever drifts from
+        # pyproject.toml, this must fail loudly instead of silently
+        # re-resolving, the same guarantee `npm ci` already gives the Node
+        # side below.
+        run: uv sync --locked --group dev
 
       - name: Install the Node tooling
         # Prettier and TypeScript only. The app itself ships no dependencies and
         # has no build step; package.json exists for these two checks alone.
         run: npm ci
 
+      # Every check below runs even when an earlier one fails: continue-on-error
+      # keeps the step from stopping the job, and the aggregator at the end is
+      # what actually fails it. A push that breaks lint AND tests should say so
+      # in one run, not reveal the second problem only after the first is fixed
+      # and pushed again.
+
       - name: ruff check
+        id: ruff_check
+        continue-on-error: true
         run: uv run ruff check .
 
       - name: ruff format --check
+        id: ruff_format
+        continue-on-error: true
         run: uv run ruff format --check .
 
       - name: prettier --check
         # ruff owns the Python; prettier owns everything else -- HTML, CSS, JS,
         # JSON, Markdown and these workflows. Between them nothing is formatted
         # by hand, and no diff is ever about whitespace.
+        id: prettier
+        continue-on-error: true
         run: npx prettier --check .
 
       - name: mypy
+        id: mypy
+        continue-on-error: true
         run: uv run mypy tools tests
 
       - name: pytest
+        id: pytest
+        continue-on-error: true
         run: uv run python -m pytest
 
       - name: node --test
@@ -69,14 +94,20 @@ jobs:
         # names the files explicitly: passing the directory makes node resolve
         # `tests/js` as a module and fail with MODULE_NOT_FOUND before running
         # a single test.
+        id: node_test
+        continue-on-error: true
         run: node --test "tests/js/*.test.js"
 
       - name: Type-check the JavaScript
         # The JSDoc annotations are load-bearing, so jsconfig.json runs here and
         # not only in an editor.
+        id: tsc
+        continue-on-error: true
         run: npx tsc --project jsconfig.json
 
       - name: Validate the published bank
+        id: validate
+        continue-on-error: true
         run: uv run python -m tools validate
 
       - name: Rebuild the bank
@@ -89,6 +120,8 @@ jobs:
         # against the 25.07.0 the artifacts record — and then fails on a
         # difference that says nothing about the change under review.
         # Re-extraction stays a local step, reviewed as the diff it produces.
+        id: rebuild
+        continue-on-error: true
         run: uv run python -m tools build
 
       - name: Fail if the rebuild changed a committed artifact
@@ -102,6 +135,8 @@ jobs:
         # Byte for byte, on Linux as well as on the Windows machine that
         # generated them, with a different poppler or none at all, tomorrow as
         # well as today.
+        id: rebuild_guard
+        continue-on-error: true
         run: |
           git add --intent-to-add .
           if ! git diff --quiet; then
@@ -110,3 +145,31 @@ jobs:
             git diff
             exit 1
           fi
+
+      - name: Fail the job if any check above failed
+        # Every check step above set continue-on-error, so a failure among
+        # them never reached here on its own -- this is what turns their
+        # outcomes back into a real job failure, after every one of them has
+        # had the chance to run and report.
+        if: always()
+        env:
+          RUFF_CHECK: ${{ steps.ruff_check.outcome }}
+          RUFF_FORMAT: ${{ steps.ruff_format.outcome }}
+          PRETTIER: ${{ steps.prettier.outcome }}
+          MYPY: ${{ steps.mypy.outcome }}
+          PYTEST: ${{ steps.pytest.outcome }}
+          NODE_TEST: ${{ steps.node_test.outcome }}
+          TSC: ${{ steps.tsc.outcome }}
+          VALIDATE: ${{ steps.validate.outcome }}
+          REBUILD: ${{ steps.rebuild.outcome }}
+          REBUILD_GUARD: ${{ steps.rebuild_guard.outcome }}
+        run: |
+          status=0
+          for name in RUFF_CHECK RUFF_FORMAT PRETTIER MYPY PYTEST NODE_TEST TSC VALIDATE REBUILD REBUILD_GUARD; do
+            outcome="${!name}"
+            echo "$name: $outcome"
+            if [ "$outcome" = "failure" ]; then
+              status=1
+            fi
+          done
+          exit $status

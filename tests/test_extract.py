@@ -603,6 +603,49 @@ def test_check_paper_accepts_the_expected_paper() -> None:
     check_paper(segment_questions(PAPER_TEXT, TEST_PAPER), TEST_PAPER)
 
 
+def test_extract_all_accumulates_errors_across_every_paper(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Report every broken paper in one run, not just the first.
+
+    A poppler upgrade that changes how two different PDFs segment should not
+    take two separate runs to discover both problems.
+
+    Args:
+        monkeypatch: Fixture to substitute the paper registry and the reader.
+    """
+    broken = tuple(
+        ExamPaper(
+            id=f"BROKEN-{letter}",
+            file=f"Prova_BROKEN_{letter}.pdf",
+            title=f"Caderno quebrado {letter}",
+            date="2020-01-01",
+            expected_questions=2,
+        )
+        for letter in ("A", "B")
+    )
+    monkeypatch.setattr(extract, "EXAM_PAPERS", broken)
+
+    def fake_read_paper_text(paper: ExamPaper) -> NoReturn:
+        """Fail every paper the same way `read_paper_text` would on a bad PDF.
+
+        Args:
+            paper: The paper `extract_all` is currently trying to read.
+
+        Raises:
+            ExtractionError: Always.
+        """
+        raise ExtractionError(f"{paper.file}: could not read")
+
+    monkeypatch.setattr(extract, "read_paper_text", fake_read_paper_text)
+
+    with pytest.raises(ExtractionError, match=r"2 paper\(s\) failed") as excinfo:
+        extract.extract_all()
+
+    assert "BROKEN-A" in str(excinfo.value)
+    assert "BROKEN-B" in str(excinfo.value)
+
+
 # --------------------------------------------------------------------------
 # Writing the extraction anchor
 # --------------------------------------------------------------------------

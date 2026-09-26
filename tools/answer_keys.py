@@ -180,6 +180,8 @@ def read_answer_keys(path: Path) -> tuple[dict[str, AnswerKeyTable], dict[str, s
         ) from error
     except OSError as error:
         raise AnswerKeyError(f"could not read {path}: {error}") from error
+    except UnicodeDecodeError as error:
+        raise AnswerKeyError(f"{path} is not valid UTF-8: {error}") from error
     except json.JSONDecodeError as error:
         raise AnswerKeyError(f"invalid JSON in {path}: {error}") from error
 

@@ -119,8 +119,8 @@ def validate_root(
             if not is_nonempty_text(toolchain.get(tool)):
                 errors.add("toolchain", f"missing the version of {tool}")
         for tool, version in toolchain.items():
-            if not isinstance(version, str):
-                errors.add("toolchain", f"{tool} version must be a string")
+            if not is_nonempty_text(version):
+                errors.add("toolchain", f"{tool} version must be a non-empty string")
 
     return True
 
@@ -247,9 +247,11 @@ def validate_options(question: dict[str, Any], where: str, errors: ErrorLog) -> 
 def validate_answer(question: dict[str, Any], where: str, errors: ErrorLog) -> None:
     """Check the answer and the provenance rules that go with its source.
 
-    A question may leave `letter` out only when it carries an `excludedReason`:
-    the official key annulled it, so there is no correct option to record. Any
-    other answer without a letter is an answer the app cannot grade.
+    A question may leave `letter` out only when it carries an `excludedReason`
+    *and* the answer is official: the official key annulled it, so there is no
+    correct option to record. A derived answer always needs one, excluded or
+    not, since there is no key to defer to. Any other answer without a letter
+    is an answer the app cannot grade.
 
     Args:
         question: The decoded question.
@@ -270,6 +272,11 @@ def validate_answer(question: dict[str, Any], where: str, errors: ErrorLog) -> N
             errors.add(
                 where,
                 "answer.letter is missing, which only an excluded question may do",
+            )
+        elif answer.get("source") == AnswerSource.DERIVED:
+            errors.add(
+                where,
+                "a derived answer.letter is required even on an excluded question",
             )
     elif answer.get("letter") not in LETTERS:
         errors.add(

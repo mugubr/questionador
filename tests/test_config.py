@@ -8,6 +8,7 @@ with its parts, and no entry keyed to a question that does not exist.
 
 from __future__ import annotations
 
+import hashlib
 import re
 
 from tools import config
@@ -154,3 +155,21 @@ def test_every_booklet_defect_exclusion_is_also_a_known_duplicate() -> None:
     for question_id, reason in config.EXCLUDED_QUESTIONS.items():
         if reason is ExcludedReason.SOURCE_BOOKLET_DEFECT:
             assert question_id in config.KNOWN_DUPLICATES
+
+
+def test_every_paper_is_pinned_in_the_md5_table() -> None:
+    """Keep the checkable-provenance table complete as papers are added."""
+    assert {paper.file for paper in EXAM_PAPERS} == set(config.EXAM_BOOKLET_MD5)
+
+
+def test_every_booklet_matches_its_pinned_md5() -> None:
+    """Catch a booklet in `exams/` silently drifting from what AGENTS.md pins.
+
+    AGENTS.md section 5 claims every booklet matches the one published at
+    profnit.org.br byte for byte. `EXAM_BOOKLET_MD5` is what makes that
+    re-checkable without downloading the originals again; this test is what
+    makes it re-checked, on every run, against the file actually committed.
+    """
+    for paper in EXAM_PAPERS:
+        digest = hashlib.md5(paper.pdf_path.read_bytes()).hexdigest()
+        assert digest == config.EXAM_BOOKLET_MD5[paper.file]

@@ -93,6 +93,21 @@ class ExamPaper:
         )
 
 
+# AGENTS.md claims all seven booklets in exams/ match the published PDF byte
+# for byte; these are the MD5s that back that claim, so re-checking it later
+# means downloading the booklet again and comparing a hash, not eyeballing.
+# fmt: off
+EXAM_BOOKLET_MD5 = {
+    "Prova_ENA18.pdf":                  "c4a2b9a0a4c417341bebbb7a48be89d1",
+    "Prova_ENA25.pdf":                  "1aafb4bf7f7fce0680828faebee49da8",
+    "Prova_ENA26.pdf":                  "5a2a5501f3405a9777871c65c8f43903",
+    "PROFNIT-AV2-PI.pdf":               "28d9fd875dbbacc9a5253e9b4a5e11f8",
+    "PROFNIT-AV2-MET.pdf":              "394e541faaadcf45b63ceb70965b1e35",
+    "PROFNIT-AV2-POL.pdf":              "226765e1e621ce15b9d090ac8b34d7d6",
+    "PROFNIT-AV2-201024-PROSP.pdf":     "b39d5e96b1be002abf555dceea5110c4",
+}
+# fmt: on
+
 EXAM_PAPERS: tuple[ExamPaper, ...] = (
     ExamPaper(
         id="ENA18",
@@ -169,8 +184,12 @@ KNOWN_DUPLICATES: Mapping[str, str] = MappingProxyType(
 
 # Defects of the printed paper, reproduced faithfully and recorded so the app
 # can warn about them. AV2-MET-Q14 prints the same string as options a and d.
+# AV2-MET-Q08's option d ("Apenas IV e V estão corretas") refers to item V,
+# but the stem's "Ordenações propostas" list only goes up to IV -- confirmed
+# against the printed booklet, not an artifact of the stem-rewrite override.
 KNOWN_DEFECTS: Mapping[str, tuple[str, ...]] = MappingProxyType(
     {
+        "AV2-MET-Q08": ("phantom-item-reference",),
         "AV2-MET-Q14": ("identical-options",),
     }
 )

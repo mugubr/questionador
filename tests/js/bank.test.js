@@ -106,7 +106,7 @@ test('a question with no letter and no reason is rejected', function () {
   });
   const result = Bank.validate(makeBank([question]));
 
-  assert.ok(result.error);
+  assert.match(result.error, /excludedReason/);
   assert.equal(result.bank, undefined);
 });
 
@@ -116,12 +116,12 @@ test('a letter outside a-d is rejected even on an excluded question', function (
     answer: { letter: 'e', source: 'official', reference: 'Gabarito.pdf' }
   });
 
-  assert.ok(Bank.validate(makeBank([question])).error);
+  assert.match(Bank.validate(makeBank([question])).error, /a, b, c ou d/);
 });
 
 test('an excludedReason outside the enum is rejected', function () {
   const question = makeQuestion({ excludedReason: 'porque-sim' });
-  assert.ok(Bank.validate(makeBank([question])).error);
+  assert.match(Bank.validate(makeBank([question])).error, /excludedReason/);
 });
 
 // ---------------------------------------------------------------------------
@@ -132,35 +132,39 @@ test('a missing option is rejected', function () {
   const question = makeQuestion({
     options: { a: 'Um.', b: 'Dois.', c: 'Tres.' }
   });
-  assert.ok(Bank.validate(makeBank([question])).error);
+  assert.match(Bank.validate(makeBank([question])).error, /alternativa "d"/);
 });
 
 test('an option present but blank is rejected', function () {
   const question = makeQuestion({
     options: { a: 'Um.', b: '   ', c: 'Tres.', d: 'Quatro.' }
   });
-  assert.ok(Bank.validate(makeBank([question])).error);
+  assert.match(Bank.validate(makeBank([question])).error, /alternativa "b"/);
 });
 
 test('a question without a stem is rejected', function () {
-  assert.ok(Bank.validate(makeBank([makeQuestion({ stem: '  ' })])).error);
+  const error = Bank.validate(makeBank([makeQuestion({ stem: '  ' })])).error;
+  assert.match(error, /enunciado/);
 });
 
 test('a question without a topic is rejected', function () {
-  assert.ok(Bank.validate(makeBank([makeQuestion({ topic: '' })])).error);
+  const error = Bank.validate(makeBank([makeQuestion({ topic: '' })])).error;
+  assert.match(error, /"topic"/);
 });
 
 test('a question without a number is rejected', function () {
-  assert.ok(Bank.validate(makeBank([makeQuestion({ number: '1' })])).error);
+  const error = Bank.validate(makeBank([makeQuestion({ number: '1' })])).error;
+  assert.match(error, /"number"/);
 });
 
 test('a repeated question id is rejected', function () {
   const result = Bank.validate(makeBank([makeQuestion(), makeQuestion()]));
-  assert.ok(result.error);
+  assert.match(result.error, /id repetido/);
 });
 
 test('an answer that is not an object is rejected', function () {
-  assert.ok(Bank.validate(makeBank([makeQuestion({ answer: 'c' })])).error);
+  const error = Bank.validate(makeBank([makeQuestion({ answer: 'c' })])).error;
+  assert.match(error, /"answer"/);
 });
 
 // ---------------------------------------------------------------------------
@@ -168,9 +172,9 @@ test('an answer that is not an object is rejected', function () {
 // ---------------------------------------------------------------------------
 
 test('a bank that is not an object is rejected', function () {
-  assert.ok(Bank.validate(null).error);
-  assert.ok(Bank.validate([]).error);
-  assert.ok(Bank.validate('texto').error);
+  assert.match(Bank.validate(null).error, /objeto JSON na raiz/);
+  assert.match(Bank.validate([]).error, /objeto JSON na raiz/);
+  assert.match(Bank.validate('texto').error, /objeto JSON na raiz/);
 });
 
 test('an unsupported version is rejected', function () {
@@ -186,18 +190,143 @@ test('the old Portuguese format is rejected by name', function () {
 });
 
 test('an empty exams or questions list is rejected', function () {
-  assert.ok(Bank.validate(makeBank([makeQuestion()], { exams: [] })).error);
-  assert.ok(Bank.validate(makeBank([])).error);
+  const noExams = Bank.validate(makeBank([makeQuestion()], { exams: [] }));
+  const noQuestions = Bank.validate(makeBank([]));
+
+  assert.match(noExams.error, /"exams"/);
+  assert.match(noQuestions.error, /"questions"/);
 });
 
 test('an exam without a title is rejected', function () {
   const bank = makeBank([makeQuestion()], { exams: [{ id: 'ENA26' }] });
-  assert.ok(Bank.validate(bank).error);
+  assert.match(Bank.validate(bank).error, /"title"/);
 });
 
 test('topics that are not a list are rejected', function () {
   const bank = makeBank([makeQuestion()], { topics: {} });
-  assert.ok(Bank.validate(bank).error);
+  assert.match(Bank.validate(bank).error, /"topics"/);
+});
+
+// ---------------------------------------------------------------------------
+// Reading a hand-picked file.
+// ---------------------------------------------------------------------------
+//
+// `FileReader` is replaced with a fake constructor for the duration of each
+// test, rather than relying on Node's own global one: the fake is driven
+// synchronously (`done` runs before `Bank.readFile` returns), so nothing
+// here needs to await a real read, and the tests do not depend on whichever
+// FileReader implementation the Node version running them happens to ship.
+
+test('readFile refuses when nothing was selected', function () {
+  /** @type {any} */
+  let captured;
+  Bank.readFile(null, function (/** @type {any} */ result) {
+    captured = result;
+  });
+
+  assert.deepEqual(captured, { error: 'Nenhum arquivo selecionado.' });
+});
+
+test('readFile refuses an oversized file without ever touching FileReader', function () {
+  const originalFileReader = globalThis.FileReader;
+  /** @type {any} */ (globalThis).FileReader = function () {
+    throw new Error('FileReader must not be constructed for an oversized file');
+  };
+
+  try {
+    /** @type {any} */
+    let captured;
+    /** @type {any} */
+    const oversized = { size: 21 * 1024 * 1024 };
+    Bank.readFile(oversized, function (/** @type {any} */ result) {
+      captured = result;
+    });
+
+    assert.match(captured.error, /grande demais/);
+  } finally {
+    globalThis.FileReader = originalFileReader;
+  }
+});
+
+test('readFile hands a valid file straight to the validator', function () {
+  const originalFileReader = globalThis.FileReader;
+  const text = JSON.stringify(makeBank([makeQuestion()]));
+  /** @type {any} */ (globalThis).FileReader = function () {
+    /** @type {any} */
+    const reader = {};
+    reader.readAsText = function () {
+      reader.result = text;
+      reader.onload();
+    };
+    return reader;
+  };
+
+  try {
+    /** @type {any} */
+    let captured;
+    /** @type {any} */
+    const file = { size: text.length };
+    Bank.readFile(file, function (/** @type {any} */ result) {
+      captured = result;
+    });
+
+    assert.equal(captured.error, undefined);
+    assert.equal(captured.bank.questions.length, 1);
+  } finally {
+    globalThis.FileReader = originalFileReader;
+  }
+});
+
+test('readFile reports a FileReader failure instead of hanging', function () {
+  const originalFileReader = globalThis.FileReader;
+  /** @type {any} */ (globalThis).FileReader = function () {
+    /** @type {any} */
+    const reader = {};
+    reader.readAsText = function () {
+      reader.onerror();
+    };
+    return reader;
+  };
+
+  try {
+    /** @type {any} */
+    let captured;
+    /** @type {any} */
+    const file = { size: 10 };
+    Bank.readFile(file, function (/** @type {any} */ result) {
+      captured = result;
+    });
+
+    assert.match(captured.error, /Não foi possível ler/);
+  } finally {
+    globalThis.FileReader = originalFileReader;
+  }
+});
+
+test('readFile reports readAsText throwing synchronously', function () {
+  const originalFileReader = globalThis.FileReader;
+  /** @type {any} */ (globalThis).FileReader = function () {
+    /** @type {any} */
+    const reader = {};
+    reader.readAsText = function () {
+      throw new Error('disco em chamas');
+    };
+    return reader;
+  };
+
+  try {
+    /** @type {any} */
+    let captured;
+    /** @type {any} */
+    const file = { size: 10 };
+    Bank.readFile(file, function (/** @type {any} */ result) {
+      captured = result;
+    });
+
+    assert.match(captured.error, /Falha ao abrir/);
+  } finally {
+    globalThis.FileReader = originalFileReader;
+  }
 });
 
 // ---------------------------------------------------------------------------

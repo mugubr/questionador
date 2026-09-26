@@ -2073,7 +2073,10 @@ window.QUESTION_BANK = {
         "source": "official",
         "reference": "ABNT NBR 6023 — Informação e documentação: referências. Norma fora de `references/`; nenhum PDF do repositório a reproduz.",
         "explanation": "Correlacionando pelas definições da NBR 6023: 1 (Monografia) = documento em uma só parte ou número pré-estabelecido de partes que se complementam; 2 (Publicação seriada) = editada em unidades físicas sucessivas, destinada a ser continuada indefinidamente; 3 (Editor) = responsável intelectual ou científico que reúne artigos; 4 (Editora) = casa publicadora responsável pela produção editorial. Logo 1a, 2d, 3c, 4b, que corresponde exatamente à ordenação III — e somente a ela."
-      }
+      },
+      "knownDefects": [
+        "phantom-item-reference"
+      ]
     },
     {
       "id": "AV2-MET-Q09",

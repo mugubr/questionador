@@ -55,13 +55,17 @@
 
         <div class="site-header__controls">
           <div class="scoreboard" id="scoreboard" hidden>
-            <p class="scoreboard__item scoreboard__item--correct">
+            <p class="scoreboard__item scoreboard__item--correct" id="scoreboard-correct">
               <span class="scoreboard__value" id="score-correct">0</span>
               <span class="scoreboard__label">acertos</span>
             </p>
-            <p class="scoreboard__item scoreboard__item--incorrect">
+            <p class="scoreboard__item scoreboard__item--incorrect" id="scoreboard-incorrect">
               <span class="scoreboard__value" id="score-incorrect">0</span>
               <span class="scoreboard__label">erros</span>
+            </p>
+            <p class="scoreboard__item scoreboard__item--timer" id="scoreboard-timer" hidden>
+              <span class="scoreboard__value" id="score-timer" role="timer">00:00</span>
+              <span class="scoreboard__label">tempo</span>
             </p>
             <p class="scoreboard__item">
               <span class="scoreboard__value" id="score-remaining">0</span>
@@ -373,6 +377,10 @@
                 <legend class="field__title">Preferências</legend>
                 <div class="switches" id="chips-options"></div>
               </fieldset>
+              <fieldset class="field" id="field-exam-duration" hidden>
+                <legend class="field__title">Duração da prova</legend>
+                <div class="segmented" id="chips-exam-duration"></div>
+              </fieldset>
             </div>
           </details>
         </form>
@@ -450,7 +458,7 @@
           >
             Próxima
           </button>
-          <button type="button" class="button button--quiet" id="end-button">
+          <button type="button" class="button button--danger" id="end-button">
             Encerrar sessão
           </button>
           <p class="actions__hint" id="next-hint"></p>
@@ -465,6 +473,7 @@
       <!-- 4. The result of the session. -->
       <section class="panel wrapper" id="panel-results" hidden aria-labelledby="results-heading">
         <h2 class="panel__title" id="results-heading" tabindex="-1">Sessão encerrada</h2>
+        <p class="note note--quiet" id="report-mode" hidden></p>
 
         <div class="report">
           <div class="report__score">
@@ -532,8 +541,64 @@
       <div class="wrapper">
         <p>Questões extraídas dos cadernos oficiais das provas do PROFNIT.</p>
         <p id="footer-provenance"></p>
+        <p>
+          <a
+            class="site-footer__link"
+            href="https://github.com/mugubr/questionador"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              class="site-footer__icon"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53
+                .63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+                0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+                1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
+                0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38
+                A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+              ></path>
+            </svg>
+            <span>Ver o projeto no GitHub</span>
+            <span class="visually-hidden">(abre em nova aba)</span>
+          </a>
+        </p>
       </div>
     </footer>
+
+    <dialog
+      class="confirm-dialog"
+      id="end-session-dialog"
+      aria-labelledby="end-session-title"
+      aria-describedby="end-session-detail"
+    >
+      <form method="dialog">
+        <h2 class="confirm-dialog__title" id="end-session-title">Encerrar sessão?</h2>
+        <p class="confirm-dialog__detail" id="end-session-detail">
+          As questões ainda não respondidas ficarão marcadas como não respondidas. Essa ação não
+          pode ser desfeita.
+        </p>
+        <div class="confirm-dialog__actions">
+          <button type="submit" class="button button--secondary" value="cancel" autofocus>
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            class="button button--danger"
+            id="end-session-confirm"
+            value="confirm"
+          >
+            Sim, encerrar
+          </button>
+        </div>
+      </form>
+    </dialog>
 
     <script src="assets/js/types.js" defer></script>
     <script src="data/question-bank.js" defer></script>

@@ -10,9 +10,14 @@ Se preferir estudar sem internet, baixe o repositório e abra `docs/index.html` 
 
 ## Como usar
 
-1. Escolha os filtros (caderno, tema, quantidade, o que você ainda não acertou).
-2. Sorteie as questões.
-3. Responda; a correção aparece na hora, com a explicação.
+1. Escolha os filtros (caderno, tema, quantidade, o que você ainda não acertou ou nunca respondeu).
+2. Ajuste a sessão: quantas questões, se as alternativas vêm embaralhadas a cada sorteio e, se quiser treinar sob pressão, o **modo prova**.
+3. Sorteie as questões.
+4. Responda; fora do modo prova, a correção aparece na hora, com a explicação.
+
+Fechar a aba no meio de uma sessão não perde o progresso: ao reabrir o link, o app oferece continuar de onde parou.
+
+**Modo prova:** liga um cronômetro (30, 60, 90 ou 120 minutos) e esconde a correção — nem certo/errado, nem placar, nem explicação — até a sessão terminar, como numa prova de verdade. Faltando 5 minutos e depois 1 minuto, um aviso é mostrado na tela e também falado para quem usa leitor de tela. A sessão termina por conta própria quando o tempo esgota, mesmo que a aba tenha ficado em segundo plano, e o relatório final mostra quanto tempo a prova durou. Encerrar uma sessão antes do fim, em qualquer modo, pede confirmação — a ação descarta as questões ainda não respondidas.
 
 **Teclado:** `a`, `b`, `c` e `d` selecionam a alternativa correspondente; `Enter` avança para a próxima questão depois que a atual já foi corrigida. Os atalhos cedem a vez para o controle que estiver com o foco, então navegar por `Tab` e acionar botões com `Enter` continua funcionando normalmente.
 
@@ -57,7 +62,8 @@ As três continuam no banco e no arquivo de revisão, com o motivo registrado. O
 Defeitos dos cadernos originais. Estão reproduzidos com fidelidade e registrados no dado, em vez de corrigidos em silêncio.
 
 - **A `AV2-MET-Q14` tem duas alternativas iguais.** As alternativas `a` e `d` são a mesma frase no PDF original. Na prática, é uma questão de três alternativas — e o app avisa isso na tela.
-- **Quatro questões precisaram de enunciado reescrito à mão** porque o layout do PDF não se resolve de forma determinística: `ENA25-Q09`, `ENA25-Q14` e `AV2-MET-Q08` (correlação em duas colunas, que o `pdftotext -layout` renderiza lado a lado) e `ENA18-Q40` (texto de encerramento colado na última alternativa). As reescritas estão em `data/overrides.json`, cada uma com o motivo registrado.
+- **Cinco questões têm uma entrada em `data/overrides.json`**, porque o layout do PDF não se resolve de forma determinística. `ENA25-Q09`, `ENA25-Q14` e `AV2-MET-Q08` têm o enunciado reescrito à mão: tabelas de correlação em duas colunas que o `pdftotext -layout` renderiza lado a lado (e, em `AV2-MET-Q08`, um segundo conjunto a)-d) que pertence ao enunciado, não às alternativas). `AV2-POL-Q10` e `ENA18-Q40` foram sinalizadas, revisadas e confirmadas corretas — o texto extraído é fixado exatamente como veio, sem reescrita. Cada entrada registra o motivo.
+- **`AV2-MET-Q08` também cita um item que o enunciado não lista.** A alternativa `d` fala da ordenação "IV e V", mas o enunciado só numera os itens de I a IV. Confirmado contra o caderno impresso: é um defeito da prova, não da reescrita acima.
 - **Nem toda explicação tem um PDF de `references/` que a sustente.** As de metodologia, por exemplo, se apoiam em normas da ABNT, no Qualis da CAPES e em bibliografia clássica, que não estão no repositório. Quando é esse o caso, o campo de referência **diz isso** e nomeia a fonte real, em vez de apontar para um arquivo que não trata do assunto.
 
 ## Achou uma explicação errada?

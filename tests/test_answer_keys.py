@@ -13,9 +13,11 @@ from pathlib import Path
 
 import pytest
 
+from tools import config
 from tools.answer_keys import (
     AnswerKeyError,
     format_key,
+    main,
     parse_answer_key,
     read_answer_keys,
     write_answer_keys,
@@ -286,3 +288,45 @@ def test_an_artifact_that_is_not_json_is_rejected(tmp_path: Path) -> None:
 
     with pytest.raises(AnswerKeyError, match="invalid JSON"):
         read_answer_keys(path)
+
+
+def test_main_reports_a_missing_artifact(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Exit non-zero and name the problem, instead of a raw traceback.
+
+    Args:
+        tmp_path: Fixture providing a directory that stays empty.
+        monkeypatch: Fixture to point ANSWER_KEYS_PATH at the empty directory.
+        capsys: Fixture to capture what main() printed.
+    """
+    monkeypatch.setattr(config, "ANSWER_KEYS_PATH", tmp_path / "answer-keys.json")
+
+    assert main([]) == 1
+    assert "ERROR" in capsys.readouterr().err
+
+
+def test_main_prints_every_committed_key(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Print the toolchain and one line per exam, and exit zero.
+
+    Args:
+        tmp_path: Fixture providing the directory to write the artifact into.
+        monkeypatch: Fixture to point ANSWER_KEYS_PATH at the written file.
+        capsys: Fixture to capture what main() printed.
+    """
+    path = tmp_path / "answer-keys.json"
+    write_answer_keys(
+        {"ENA26": {1: OptionLetter.C, 2: None}}, {"pdftotext": "25.07.0"}, path
+    )
+    monkeypatch.setattr(config, "ANSWER_KEYS_PATH", path)
+
+    assert main([]) == 0
+    out = capsys.readouterr().out
+    assert "pdftotext (poppler) 25.07.0" in out
+    assert "ENA26 (2 answers)" in out

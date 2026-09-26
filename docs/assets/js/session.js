@@ -136,9 +136,12 @@ const Session = (function () {
    * @param {Question[]} questions - The whole bank.
    * @param {FilterCriteria} criteria - The filters to apply first.
    * @param {AnswerHistory | null} history - A history from AnswerHistory.normalize, or null.
-   * @param {{signature: string, size: number, shuffleOptions: boolean, now?: number, random?: () => number}} settings
+   * @param {{signature: string, size: number, shuffleOptions: boolean, examMode?: boolean,
+   *   durationMinutes?: number, now?: number, random?: () => number}} settings
    *   `size` of 0 means "every question that matches"; `shuffleOptions` decides
    *   whether the four options are presented in the order the paper prints them.
+   *   `examMode` hides grading until the results panel and, together with a
+   *   positive `durationMinutes`, sets a countdown deadline.
    * @returns {Session | null} The new session, or null when the filters match nothing.
    */
   function create(questions, criteria, history, settings) {
@@ -159,6 +162,13 @@ const Session = (function () {
         : LETTERS.slice();
     });
 
+    const now = typeof settings.now === 'number' ? settings.now : Date.now();
+    const examMode = Boolean(settings.examMode);
+    const durationMinutes =
+      typeof settings.durationMinutes === 'number' ? settings.durationMinutes : 0;
+    const deadline =
+      examMode && durationMinutes > 0 ? now + durationMinutes * 60000 : null;
+
     return {
       version: VERSION,
       signature: settings.signature,
@@ -170,8 +180,76 @@ const Session = (function () {
       orders,
       correctCount: 0,
       incorrectCount: 0,
-      startedAt: settings.now || Date.now()
+      startedAt: now,
+      examMode,
+      deadline
     };
+  }
+
+  /**
+   * Give the time left before an exam-mode session's clock runs out.
+   *
+   * The deadline is an absolute timestamp set at draw time, so it keeps
+   * counting down across a page reload instead of granting extra time to
+   * whoever closes the tab.
+   *
+   * @param {Session | null} session - The session to read.
+   * @param {number} now - Epoch milliseconds to measure against.
+   * @returns {number | null} Milliseconds left, floored at zero, or null outside exam mode.
+   */
+  function remainingMs(session, now) {
+    if (!session || session.deadline === null || session.deadline === undefined) {
+      return null;
+    }
+    return Math.max(0, session.deadline - now);
+  }
+
+  /**
+   * Report whether an exam-mode session's clock has run out.
+   *
+   * @param {Session | null} session - The session to read.
+   * @param {number} now - Epoch milliseconds to measure against.
+   * @returns {boolean} True once the deadline has passed.
+   */
+  function isTimeUp(session, now) {
+    const remaining = remainingMs(session, now);
+    return remaining !== null && remaining <= 0;
+  }
+
+  /**
+   * Decide whether a session's grading may be shown at all.
+   *
+   * The one thing exam mode exists to hold back: outside it, every answer is
+   * revealed as soon as it is chosen.
+   *
+   * @param {Session} session - The session to read.
+   * @returns {boolean} True when correctness may be shown.
+   */
+  function shouldReveal(session) {
+    return !session.examMode;
+  }
+
+  /**
+   * Format a duration for the countdown and results-panel displays.
+   *
+   * @param {number} ms - Milliseconds, never negative.
+   * @returns {string} `MM:SS`, or `H:MM:SS` past the first hour.
+   */
+  function formatDuration(ms) {
+    const totalSeconds = Math.max(0, Math.ceil(ms / 1000));
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    /**
+     * @param {number} value
+     * @returns {string}
+     */
+    const pad = function (value) {
+      return String(value).padStart(2, '0');
+    };
+    return hours > 0
+      ? hours + ':' + pad(minutes) + ':' + pad(seconds)
+      : pad(minutes) + ':' + pad(seconds);
   }
 
   /**
@@ -499,7 +577,9 @@ const Session = (function () {
       orders,
       correctCount,
       incorrectCount: graded.length - correctCount,
-      startedAt: typeof stored.startedAt === 'number' ? stored.startedAt : 0
+      startedAt: typeof stored.startedAt === 'number' ? stored.startedAt : 0,
+      examMode: stored.examMode === true,
+      deadline: typeof stored.deadline === 'number' ? stored.deadline : null
     };
   }
 
@@ -512,6 +592,10 @@ const Session = (function () {
     filter,
     shuffle,
     create,
+    remainingMs,
+    isTimeUp,
+    shouldReveal,
+    formatDuration,
     presentedOrder,
     currentQuestion,
     isFinished,

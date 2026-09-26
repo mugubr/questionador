@@ -140,6 +140,8 @@ def read_json(path: Path) -> Any:  # noqa: ANN401 - JSON decodes to any value.
         raise BuildError(f"required file is missing: {path}") from error
     except OSError as error:
         raise BuildError(f"could not read {path}: {error}") from error
+    except UnicodeDecodeError as error:
+        raise BuildError(f"{path} is not valid UTF-8: {error}") from error
     except json.JSONDecodeError as error:
         raise BuildError(f"invalid JSON in {path}: {error}") from error
 

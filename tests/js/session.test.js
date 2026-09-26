@@ -418,7 +418,80 @@ test('a new session starts unanswered, at the top of its deck', function () {
   assert.equal(session.correctCount, 0);
   assert.equal(session.incorrectCount, 0);
   assert.equal(session.startedAt, 1700000000000);
+  assert.equal(session.examMode, false);
+  assert.equal(session.deadline, null);
   assert.equal(Session.isFinished(session), false);
+});
+
+// ---------------------------------------------------------------------------
+// Exam mode: a countdown deadline and no grading until the results panel.
+// ---------------------------------------------------------------------------
+
+test('exam mode with a duration sets a deadline past the start time', function () {
+  const session = draw([makeQuestion()], { examMode: true, durationMinutes: 30 });
+
+  assert.equal(session.examMode, true);
+  assert.equal(session.deadline, 1700000000000 + 30 * 60000);
+});
+
+test('exam mode with no duration sets no deadline at all', function () {
+  const session = draw([makeQuestion()], { examMode: true });
+
+  assert.equal(session.examMode, true);
+  assert.equal(session.deadline, null);
+});
+
+test('a positive duration outside exam mode sets no deadline', function () {
+  const session = draw([makeQuestion()], { durationMinutes: 30 });
+
+  assert.equal(session.examMode, false);
+  assert.equal(session.deadline, null);
+});
+
+test('remainingMs counts down to zero and never goes negative', function () {
+  const session = draw([makeQuestion()], { examMode: true, durationMinutes: 30 });
+  const deadline = session.deadline;
+
+  assert.equal(Session.remainingMs(session, deadline - 5000), 5000);
+  assert.equal(Session.remainingMs(session, deadline), 0);
+  assert.equal(Session.remainingMs(session, deadline + 5000), 0);
+});
+
+test('remainingMs is null outside exam mode, and for no session at all', function () {
+  const session = draw([makeQuestion()]);
+
+  assert.equal(Session.remainingMs(session, Date.now()), null);
+  assert.equal(Session.remainingMs(null, Date.now()), null);
+});
+
+test('isTimeUp turns true only once the deadline has passed', function () {
+  const session = draw([makeQuestion()], { examMode: true, durationMinutes: 30 });
+  const deadline = session.deadline;
+
+  assert.equal(Session.isTimeUp(session, deadline - 1), false);
+  assert.equal(Session.isTimeUp(session, deadline), true);
+  assert.equal(Session.isTimeUp(session, deadline + 1), true);
+});
+
+test('isTimeUp is always false outside exam mode', function () {
+  const session = draw([makeQuestion()]);
+  assert.equal(Session.isTimeUp(session, Number.MAX_SAFE_INTEGER), false);
+});
+
+test('shouldReveal is false only in exam mode', function () {
+  assert.equal(Session.shouldReveal(draw([makeQuestion()], { examMode: true })), false);
+  assert.equal(Session.shouldReveal(draw([makeQuestion()])), true);
+});
+
+test('formatDuration rounds up to the next whole second', function () {
+  assert.equal(Session.formatDuration(0), '00:00');
+  assert.equal(Session.formatDuration(59999), '01:00');
+  assert.equal(Session.formatDuration(-1), '00:00');
+});
+
+test('formatDuration switches to H:MM:SS only past the first hour', function () {
+  assert.equal(Session.formatDuration(3599000), '59:59');
+  assert.equal(Session.formatDuration(3600000), '1:00:00');
 });
 
 // ---------------------------------------------------------------------------
@@ -604,6 +677,58 @@ test('a session survives being written out and read back', function () {
     Session.presentedOrder(restored, question),
     Session.presentedOrder(graded, question)
   );
+});
+
+test('an exam-mode session survives being written out and read back', function () {
+  const question = makeQuestion();
+  const session = draw([question], { examMode: true, durationMinutes: 30 });
+
+  const restored = Session.fromStored(JSON.parse(JSON.stringify(session)));
+
+  assert.equal(restored.examMode, true);
+  assert.equal(restored.deadline, session.deadline);
+});
+
+test('a session stored before exam mode existed restores to no deadline', function () {
+  const restored = Session.fromStored({
+    version: 1,
+    signature: 's',
+    deck: ['ENA26-Q01'],
+    position: 0,
+    startedAt: 5
+  });
+
+  assert.equal(restored.examMode, false);
+  assert.equal(restored.deadline, null);
+});
+
+test('a wrong-typed examMode or deadline is refused, not coerced', function () {
+  const restored = Session.fromStored({
+    version: 1,
+    signature: 's',
+    deck: ['ENA26-Q01'],
+    position: 0,
+    startedAt: 5,
+    examMode: 'sim',
+    deadline: '1700000000000'
+  });
+
+  assert.equal(restored.examMode, false);
+  assert.equal(restored.deadline, null);
+});
+
+test('a stored deadline already in the past restores as already timed out', function () {
+  const restored = Session.fromStored({
+    version: 1,
+    signature: 's',
+    deck: ['ENA26-Q01'],
+    position: 0,
+    startedAt: 5,
+    examMode: true,
+    deadline: 10
+  });
+
+  assert.equal(Session.isTimeUp(restored, 20), true);
 });
 
 test('a stored session is refused when the bank changed', function () {
